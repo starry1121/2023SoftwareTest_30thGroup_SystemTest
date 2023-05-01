@@ -3,6 +3,9 @@
 </template>
 
 <style>
+/*引入阿里字体图标*/
+@import './assets/iconfont/iconfont.css';
+
 *{
   padding: 0px;
   margin: 0px;
@@ -15,5 +18,6 @@ ul{
 }
 a{
   text-decoration: none;
+  color: #333;
 }
 </style>

@@ -21,7 +21,7 @@
                         <el-button color="#7A74C2" class="btn" type="primary">查看地点</el-button>
                     </div>
                     <div>
-                        <el-button color="#7A74C2" style="margin-top:10px;" class="btn" type="primary">联系招聘方</el-button>
+                        <el-button color="#7A74C2" style="margin-top:10px;" class="btn" type="primary" @click="contact">联系招聘方</el-button>
                     </div>
                 </el-col>
             </el-row>
@@ -105,9 +105,26 @@
 // @ is an alias to /src
 import { ElMessage } from 'element-plus'
 import 'element-plus/es/components/message/style/index'
+import {useRouter} from 'vue-router';
 
 export default {
 name: 'jobDetail',
+setup(){
+    const router = useRouter();
+    const contact = () => {
+      router.replace({
+        path: '/jobhunter/message/conversations/privatechat/fdee46b0-4b01-4590-bdba-6586d7617f95',
+        query: {
+          name: 'Tracy',
+          avatar: '/static/images/Avatar-3.png'
+        }
+      });
+    };
+
+    return {
+      contact
+    };
+},
 components: {
 },
 data(){
@@ -130,6 +147,7 @@ data(){
             reason:null
         },
         company:{}
+        
     }
 },
 created() {
@@ -303,6 +321,17 @@ methods: {
             })
         })
     },
+    
+    // contact(){
+    //     const router = useRouter();
+    //     router.replace({
+    //         path: '/jobhunter/message/conversations/privatechat/' + 'fdee46b0-4b01-4590-bdba-6586d7617f95',
+    //         query: {
+    //             name: 'Tracy',
+    //             avatar: '/static/images/Avatar-3.png'
+    //         }
+    //     }); 
+    // }
 }
 }
 </script>

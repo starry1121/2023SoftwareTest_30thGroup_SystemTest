@@ -49,6 +49,19 @@
         <el-col :span="15" class="card">
             <el-row justify="center">
                 <el-tabs v-model="select" class="tabs" style="width:90%;margin-top:10px;">
+                    <el-tab-pane name="消息" label="&emsp;&nbsp;消息&nbsp;&emsp;">
+                        <router-link to="/jobhunter/message/conversations" replace>
+                            <template #label>
+                                &emsp;&nbsp;消息
+                                <span v-if="unreadAmount" class="menu-unread">{{ unreadAmount }}</span>
+                                &emsp;
+                                <span v-if="!unreadAmount">&nbsp;</span>
+                            </template>
+                        </router-link> 
+                        <el-row>
+                            <router-view/>
+                        </el-row>
+                    </el-tab-pane>
                     <el-tab-pane label="&emsp;&nbsp;通知&nbsp;&emsp;" name="通知">
                         <el-scrollbar max-height="480px">
                             <el-row justify="center" v-if="notification_list">
@@ -67,87 +80,12 @@
                             </el-row>
                             <el-empty style="height:478px;" v-if="!notification_list" description="您还未收到任何通知" />
                         </el-scrollbar>
-                    </el-tab-pane>              
-                    <el-tab-pane label="&emsp;&nbsp;消息&nbsp;&emsp;" name="消息">
-                        <el-row>
-                            <el-col :span="7">
-                                <el-scrollbar height="520px" style="padding:0px 20px;">
-                                    <div v-for="item in jobhuntersession_list" :key="item" class="session">
-                                    <el-avatar :size="50" fit="cover" :src="item.headportrait"/>
-                                    <span class="nickname">{{ item.nickname }}</span>
-                                    <el-button color="#444076" size="small" class="btn" icon="ArrowRightBold" circle @click="nickName=item.nickname;display=true;"></el-button>
-                                </div>
-                                </el-scrollbar>
-                            </el-col>
-                            <el-col :span="17">
-                                <el-container class="chatting"  v-if="display">
-                                    <el-header>
-                                        <el-row justify="center">
-                                            <h3 style="margin-top:15px;">
-                                                {{ nickName }}
-                                            </h3>
-                                        </el-row>
-                                    </el-header>
-                                    <el-main style="background-color: #fff;margin-bottom: 20px;border-radius: 10px;">
-                                        <el-scrollbar>
-                                            <div v-for="item in message_list" :key="item">
-                                                <el-row>
-                                                    <span class="message">{{ item.content }}</span>
-                                                </el-row>
-                                            </div>
-                                        </el-scrollbar>
-                                    </el-main>
-                                    <el-footer>
-                                        <el-input
-                                            class="inputComment"
-                                            v-model="dComment"
-                                            maxlength="30"
-                                            placeholder="Please input"
-                                            show-word-limit
-                                            type="text"
-                                        >
-                                        <template #append><el-button type="primary">发送</el-button></template>
-                                        </el-input>
-                                    </el-footer>
-                                </el-container>
-                                <el-empty style="height:478px;" v-if="!display" description="请选择会话" />
-                                <!-- <div>
-                                    <el-scrollbar height="520px" style="padding:0px 20px;">
-                              
-                                        <div v-for="item in message_list" :key="item">
-                                            <el-avatar :size="50" fit="cover" :src="item.headportrait"/>
-                                            <span>{{ item.content }}</span>
-                                        </div>
-
-                                    </el-scrollbar>
-                                </div> -->
-                            </el-col>  
-                        </el-row>
                     </el-tab-pane>
                 </el-tabs>
             </el-row>
     
         </el-col>
         </el-row>
-        <el-dialog v-model="dialogFormVisible" title="提交申诉" align-center draggable>
-            <el-form :model="appeal" label-width="120px">
-                <el-form-item label="申诉类型">
-                    <el-radio-group v-model="appeal.appealType">
-                        <el-radio label="求职者评价申诉">评价申诉</el-radio>
-                        <el-radio label="支付申诉">支付申诉</el-radio>
-                    </el-radio-group>
-                </el-form-item>
-                <el-form-item class="input" label="申诉理由">
-                    <el-input v-model="appeal.appealContent" :rows="5" type="textarea"/>
-                </el-form-item>
-            </el-form>
-            <template #footer>
-            <span class="dialog-footer">
-                <el-button v-if="display" @click="dialogFormVisible=false;">取消</el-button>
-                <el-button v-if="display" @click="apply">确认</el-button>
-            </span>
-            </template>
-        </el-dialog>
     </div>
   </template>
   
@@ -157,12 +95,56 @@
     import 'element-plus/es/components/message/style/index'
     import 'element-plus/es/components/message-box/style/index'
     import { BellFilled } from "@element-plus/icons-vue";
+    import {ref, onBeforeMount, inject} from 'vue';
 
     export default {
     name: "jobhunterFavorites",
+    components: {
+        personNav,
+        BellFilled,
+    },
+    setup(){
+        const GoEasy = inject('GoEasy');
+        const goEasy = inject('goEasy');
+
+        let unreadAmount = ref(0);
+
+        function connectGoEasy() {
+            goEasy.connect({
+            id: 10014,
+            data: {name: 'Boaibai', avatar: 'http://dummyimage.com/400x400'},
+            onSuccess: function () {  //连接成功
+                console.log("GoEasy connect successfully.") //连接成功
+            },
+            onFailed: function (error) { //连接失败
+                console.log("Failed to connect GoEasy, code:" + error.code + ",error:" + error.content);
+            },
+            onProgress: function (attempts) { //连接或自动重连中
+                console.log("GoEasy is connecting", attempts);
+            }
+            });
+        }
+
+        function setUnreadNumber(content) {
+            unreadAmount.value = content.unreadTotal;
+            console.log("未读"+unreadAmount.value)
+        }
+
+        onBeforeMount(() => {
+            if (goEasy.getConnectionStatus() === 'disconnected') {
+            connectGoEasy();  //连接goeasy
+            }
+            goEasy.im.on(GoEasy.IM_EVENT.CONVERSATIONS_UPDATED, setUnreadNumber);
+        })
+
+        return {
+            unreadAmount,
+        };
+
+    },
     data () {
     return {
-        select:"通知",
+        select:"消息",
         dialogFormVisible:false,
         nickName:null,
         display:false,
@@ -361,10 +343,6 @@
         //     console.log(error);
         // })
     },
-    components: {
-        personNav,
-        BellFilled,
-    },
   }
   </script>
   
@@ -397,6 +375,21 @@
     border-left: 8px solid #FFCAA6;
     font-size: 20px;
   }
+
+  .menu-unread {
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #d02129;
+    color: #ffffff;
+  }
+
   .form{
     max-width: 460px;
     margin: 40px  0px;

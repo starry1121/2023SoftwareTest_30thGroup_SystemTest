@@ -19,6 +19,8 @@ import jobhunterAuthen from '../views/jobhunterPage/person/Authen.vue'
 import jobhunterFavorites from '../views/jobhunterPage/person/Favorites.vue'
 import jobhunterOrder from '../views/jobhunterPage/person/Order.vue'
 import jobhunterMessage from '../views/jobhunterPage/person/Message.vue'
+import Conversations from '../components/Conversations.vue'
+import PrivateChat from '../components/PrivateChat.vue'
 
 import recruiterHomeView from '../views/recruiterPage/HomeView.vue'
 import recruiterUpJob from '../views/recruiterPage/UpJob.vue'
@@ -113,10 +115,21 @@ const routes = [
   {
     path: '/jobhunter/message',
     name: 'jobhunterMessage',
-    component: jobhunterMessage
+    component: jobhunterMessage,
+    redirect: '/jobhunter/message/conversations',
+    children: [
+        {
+            path: 'conversations',
+            component: Conversations,
+            children: [
+                {
+                    path: 'privatechat/:id',
+                    component: PrivateChat,
+                },
+            ],
+        },
+    ],
   },
-  
-
   {
     path: '/recruiter',
     name: 'recruiterHomeView',
