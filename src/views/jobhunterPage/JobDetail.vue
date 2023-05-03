@@ -21,7 +21,7 @@
                         <el-button color="#7A74C2" class="btn" type="primary">查看地点</el-button>
                     </div>
                     <div>
-                        <el-button color="#7A74C2" style="margin-top:10px;" class="btn" type="primary" @click="contact">联系招聘方</el-button>
+                        <el-button color="#7A74C2" style="margin-top:10px;" class="btn" type="primary" @click="contact(recruiterInfo)">联系招聘方</el-button>
                     </div>
                 </el-col>
             </el-row>
@@ -111,12 +111,12 @@ export default {
 name: 'jobDetail',
 setup(){
     const router = useRouter();
-    const contact = () => {
+    const contact = (i) => {
       router.replace({
-        path: '/jobhunter/message/conversations/privatechat/fdee46b0-4b01-4590-bdba-6586d7617f95',
+        path: '/jobhunter/message/conversations/privatechat/'+i.email,
         query: {
-          name: 'Tracy',
-          avatar: '/static/images/Avatar-3.png'
+          name: i.companyName,
+          avatar: i.headportrait
         }
       });
     };
@@ -131,6 +131,7 @@ data(){
     return{
         applyState:null,
         recruiterId:null,
+        recruiterInfo:{},
         dialogFormVisible:false,
         dialogFormVisible1:false,
         contactMethod:null,
@@ -195,7 +196,8 @@ created() {
         .then(resu => {
             console.log(resu.data.data.company_list);
             this.company=resu.data.data.company_list;
-            console.log(this.company);
+            this.recruiterInfo=resu.data.data.company_list;
+            console.log('招聘方信息'+this.recruiterInfo);
         })
         .catch(function (error) {
             console.log(error);

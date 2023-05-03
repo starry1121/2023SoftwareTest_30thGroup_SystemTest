@@ -280,8 +280,13 @@
     }
   
     .conversation-name {
+      text-align: left;
       font-size: 12px;
       font-weight: 500;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2; /* 这里是超出几行省略 */
+      overflow: hidden;
     }
   
     .conversation-time {
@@ -289,6 +294,7 @@
       color: #B9B9B9;
       display: flex;
       flex-direction: column;
+      font-size: 10px;
     }
   
     .conversation-bottom {

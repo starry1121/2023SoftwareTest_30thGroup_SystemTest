@@ -11,7 +11,7 @@
         <nav class="icon">
             <router-link to="/jobhunter/message"><a href="#"><el-icon><BellFilled /></el-icon></a></router-link>
         </nav>
-        <el-avatar class="head_photo" :size="50" fit="cover" src="http://dummyimage.com/400x400" />
+        <el-avatar class="head_photo" :size="50" fit="cover" :src="userInfo.headportrait" />
     </div>
 </template>
 
@@ -19,9 +19,29 @@
 import { BellFilled } from "@element-plus/icons-vue";
     export default {
         name: "NavHeader",
+        data () {
+            return {
+                userInfo:{},
+            }
+        },
         components: {
             BellFilled,
         },
+        created() {
+        this.jobhunterId=localStorage.getItem('userId')
+        this.$axios({
+            method: 'get',
+            url: '/api/Jobhunter/personInfo/get/?jobhunterId='+localStorage.getItem('userId'),
+        })
+        .then(res => {
+            console.log(res.data.data);
+            this.userInfo=res.data.data.person_list[0];
+            console.log(this.userInfo);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+    },
     }
 </script>
 

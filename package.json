@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
+    "ali-oss": "^6.17.1",
     "axios": "^1.2.1",
     "core-js": "^3.8.3",
+    "cos-js-sdk-v5": "^1.4.16",
     "element-china-area-data": "^5.0.2",
     "element-plus": "^2.2.26",
     "goeasy": "^2.6.4",
