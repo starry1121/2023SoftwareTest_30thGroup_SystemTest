@@ -150,12 +150,22 @@
     const IMAGE_MAX_HEIGHT = 150;
     const emojiUrl = 'https://imgcache.qq.com/open/qcloud/tim/assets/emoji/';
     const emojiMap = {
-      '[么么哒]': 'emoji_3@2x.png',
-      '[乒乓]': 'emoji_4@2x.png',
-      '[便便]': 'emoji_5@2x.png',
-      '[信封]': 'emoji_6@2x.png',
+      // '[么么哒]': 'emoji_3@2x.png',
+      // '[乒乓]': 'emoji_4@2x.png',
+      // '[便便]': 'emoji_5@2x.png',
+      // '[信封]': 'emoji_6@2x.png',
+      // '[偷笑]': 'emoji_7@2x.png',
+      // '[傲慢]': 'emoji_8@2x.png',
+      '[OK]': 'emoji_1@2x.png',
+      '[乖巧]': 'emoji_18@2x.png',
       '[偷笑]': 'emoji_7@2x.png',
       '[傲慢]': 'emoji_8@2x.png',
+      '[再见]': 'emoji_9@2x.png',
+      '[尴尬]': 'emoji_10@2x.png',
+      '[咖啡]': 'emoji_25@2x.png',
+      '[呆]': 'emoji_15@2x.png',
+      '[发抖]': 'emoji_16@2x.png',
+      '[可怜]': 'emoji_17@2x.png',
     };
     
     let friend = ref({
