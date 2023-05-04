@@ -120,7 +120,6 @@ setup(){
         }
       });
     };
-
     return {
       contact
     };
@@ -194,9 +193,9 @@ created() {
             url: '/api/recruiter/personInfo/get?recruiterId='+this.recruiterId,
         })
         .then(resu => {
-            console.log(resu.data.data.company_list);
-            this.company=resu.data.data.company_list;
-            this.recruiterInfo=resu.data.data.company_list;
+            console.log(resu.data.data.company_list[0]);
+            this.company=resu.data.data.company_list[0];
+            this.recruiterInfo=resu.data.data.company_list[0];
             console.log('招聘方信息'+this.recruiterInfo);
         })
         .catch(function (error) {

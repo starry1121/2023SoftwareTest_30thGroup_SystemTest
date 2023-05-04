@@ -11,7 +11,24 @@
         <nav class="icon">
             <router-link to="/recruiter/message"><a href="#"><el-icon><BellFilled /></el-icon></a></router-link>
         </nav>
-        <el-avatar class="head_photo" :size="50" fit="cover" src="http://dummyimage.com/400x400" />
+        <el-popover
+            placement="bottom"                    
+        >
+            <template #reference>
+                <el-avatar class="head_photo" :size="50" fit="cover" :src="headportrait" />
+            </template>
+            <el-row justify="center">
+                <el-button class="btn" link>
+                    <router-link class="text" to="/recruiter/company">企业中心</router-link>
+                </el-button>
+            </el-row>
+            <hr style="margin: 10px 0px;">
+            <el-row justify="center">
+                <el-button class="btn" link>
+                    <router-link class="text" to="/">退出登录</router-link>
+                </el-button>
+            </el-row>
+        </el-popover>
     </div>
 </template>
 
@@ -22,6 +39,24 @@ import { BellFilled } from "@element-plus/icons-vue";
         components: {
             BellFilled,
         },
+        data () {
+            return {
+                headportrait:null,
+            }
+        },
+        created() {
+            this.$axios({
+                method: 'get',
+                url: '/api/recruiter/personInfo/get?recruiterId='+localStorage.getItem('userId'),
+            })
+            .then(res => {
+                console.log('用户信息0'+res.data.data.company_list[0].headportrait);
+                this.headportrait=res.data.data.company_list[0].headportrait;
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        }
     }
 </script>
 
@@ -92,5 +127,14 @@ import { BellFilled } from "@element-plus/icons-vue";
         margin-top: 10px;
         position: relative;
         left: 37vw;
+    }
+    .btn{
+        color: #FFC353;
+        height: 30px;
+        width: 80px;
+    }
+    .btn .text{
+        text-decoration:none;
+        color: #023764;
     }
 </style>

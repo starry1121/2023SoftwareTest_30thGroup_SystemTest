@@ -59,7 +59,7 @@
                         <el-table-column prop="jobhunter.school" label="学校" />
                         <el-table-column label="操作">
                             <template #default="scope">
-                                <el-button round size="small">私信</el-button>
+                                <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
                                 <el-button type="primary" round size="small"
                                     @click="offer(scope.row)">录用</el-button>
                                 <el-button size="small" type="danger" round
@@ -85,8 +85,8 @@
                         <el-table-column prop="jobhunter.email" label="电子邮箱"/>
                         <el-table-column prop="jobhunter.school" label="学校" />
                         <el-table-column label="操作">
-                            <template #default>
-                                <el-button round size="small">私信</el-button>
+                            <template #default="scope">
+                                <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -109,7 +109,7 @@
                         <el-table-column prop="jobhunter.school" label="学校" />
                         <el-table-column label="操作">
                             <template #default="scope">
-                                <el-button round size="small">私信</el-button>
+                                <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
                                 <el-button type="primary" round size="small"
                                     @click="finishJob(scope.row)">确认工作完成</el-button>
                             </template>
@@ -136,7 +136,7 @@
                         <el-table-column prop="score2" label="我的评分" />
                         <el-table-column label="操作">
                         <template #default="scope">
-                            <el-button round size="small">私信</el-button>
+                            <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
                             <el-button type="primary" round size="small"
                                 @click="score(scope.row.orderId)">评分</el-button>
                         </template>
@@ -181,12 +181,28 @@
 <script>
 // @ is an alias to /src
 import { ElMessage,ElMessageBox } from 'element-plus'
-    import 'element-plus/es/components/message/style/index'
-    import 'element-plus/es/components/message-box/style/index'
+import 'element-plus/es/components/message/style/index'
+import 'element-plus/es/components/message-box/style/index'
+import {useRouter} from 'vue-router';
 
 export default {
     name: 'jobDetail',
     components: {
+    },
+    setup(){
+        const router = useRouter();
+        const contact = (i) => {
+        router.replace({
+            path: '/recruiter/message/conversations/privatechat/'+i.email,
+            query: {
+                name: i.nickname,
+                avatar: i.headportrait
+            }
+        });
+        };
+        return {
+        contact
+        };
     },
     data() {
         return {

@@ -1,4 +1,4 @@
-<template>
+<template> 
     <companyNav/>
     <div class="bg">
         <br>
@@ -43,6 +43,19 @@
         <el-col :span="15" class="card">
             <el-row justify="center">
                 <el-tabs v-model="select" class="tabs" style="width:90%;margin-top:10px;">
+                    <el-tab-pane label="&emsp;&nbsp;消息&nbsp;&emsp;" name="消息">
+                        <router-link to="/recruiter/message/conversations" replace>
+                            <template #label>
+                                &emsp;&nbsp;消息
+                                <span v-if="unreadAmount" class="menu-unread">{{ unreadAmount }}</span>
+                                &emsp;
+                                <span v-if="!unreadAmount">&nbsp;</span>
+                            </template>
+                        </router-link> 
+                        <el-row>
+                            <router-view/>
+                        </el-row>
+                    </el-tab-pane>
                     <el-tab-pane label="&emsp;&nbsp;通知&nbsp;&emsp;" name="通知">
                         <el-scrollbar max-height="480px">
                             <el-row justify="center" v-if="notification_list">
@@ -62,62 +75,6 @@
                             <el-empty style="height:478px;" v-if="!notification_list" description="您还未收到任何通知" />
                         </el-scrollbar>
                     </el-tab-pane>              
-                    <el-tab-pane label="&emsp;&nbsp;消息&nbsp;&emsp;" name="消息">
-                        <el-row>
-                            <el-col :span="7">
-                                <el-scrollbar height="520px" style="padding:0px 20px;">
-                                    <div v-for="item in jobhuntersession_list" :key="item" class="session">
-                                    <el-avatar :size="50" fit="cover" :src="item.headportrait"/>
-                                    <span class="nickname">{{ item.nickname }}</span>
-                                    <el-button color="#444076" size="small" class="btn" icon="ArrowRightBold" circle @click="nickName=item.nickname;display=true;"></el-button>
-                                </div>
-                                </el-scrollbar>
-                            </el-col>
-                            <el-col :span="17">
-                                <el-container class="chatting"  v-if="display">
-                                    <el-header>
-                                        <el-row justify="center">
-                                            <h3 style="margin-top:15px;">
-                                                {{ nickName }}
-                                            </h3>
-                                        </el-row>
-                                    </el-header>
-                                    <el-main style="background-color: #fff;margin-bottom: 20px;border-radius: 10px;">
-                                        <el-scrollbar>
-                                            <div v-for="item in message_list" :key="item">
-                                                <el-row>
-                                                    <span class="message">{{ item.content }}</span>
-                                                </el-row>
-                                            </div>
-                                        </el-scrollbar>
-                                    </el-main>
-                                    <el-footer>
-                                        <el-input
-                                            class="inputComment"
-                                            v-model="dComment"
-                                            maxlength="30"
-                                            placeholder="Please input"
-                                            show-word-limit
-                                            type="text"
-                                        >
-                                        <template #append><el-button type="primary">发送</el-button></template>
-                                        </el-input>
-                                    </el-footer>
-                                </el-container>
-                                <el-empty style="height:478px;" v-if="!display" description="请选择会话" />
-                                <!-- <div>
-                                    <el-scrollbar height="520px" style="padding:0px 20px;">
-                              
-                                        <div v-for="item in message_list" :key="item">
-                                            <el-avatar :size="50" fit="cover" :src="item.headportrait"/>
-                                            <span>{{ item.content }}</span>
-                                        </div>
-
-                                    </el-scrollbar>
-                                </div> -->
-                            </el-col>  
-                        </el-row>
-                    </el-tab-pane>
                 </el-tabs>
             </el-row>
     
@@ -151,12 +108,56 @@
     import 'element-plus/es/components/message/style/index'
     import 'element-plus/es/components/message-box/style/index'
     import { BellFilled } from "@element-plus/icons-vue";
+    import {ref, onBeforeMount, inject} from 'vue';
 
     export default {
     name: "jobhunterFavorites",
+    setup(){
+        const GoEasy = inject('GoEasy');
+        const goEasy = inject('goEasy');
+
+        let unreadAmount = ref(0);
+
+        function connectGoEasy() {
+            goEasy.connect({
+                id: localStorage.getItem('chatId'),
+                data: {name: localStorage.getItem('chatName'), avatar: localStorage.getItem('chatAvatar')},
+            onSuccess: function () {  //连接成功
+                console.log("GoEasy connect successfully.") //连接成功
+            },
+            onFailed: function (error) { //连接失败
+                console.log("Failed to connect GoEasy, code:" + error.code + ",error:" + error.content);
+            },
+            onProgress: function (attempts) { //连接或自动重连中
+                console.log("GoEasy is connecting", attempts);
+            }
+            });
+        }
+
+        function setUnreadNumber(content) {
+            unreadAmount.value = content.unreadTotal;
+            console.log("未读"+unreadAmount.value)
+        }
+
+        onBeforeMount(() => {
+            if (goEasy.getConnectionStatus() === 'disconnected') {
+                connectGoEasy();  //连接goeasy
+            }
+            else{
+                goEasy.disconnect();
+                connectGoEasy();  //连接goeasy
+            }
+            goEasy.im.on(GoEasy.IM_EVENT.CONVERSATIONS_UPDATED, setUnreadNumber);
+        })
+
+        return {
+            unreadAmount,
+        };
+
+    },
     data () {
     return {
-        select:"通知",
+        select:"消息",
         dialogFormVisible:false,
         nickName:null,
         display:false,
@@ -174,100 +175,8 @@
                 title: "东况上类可"
             }
         ],
-        jobhuntersession_list: [
-            {
-                sessionId: 1,
-                recuriterId: 1,
-                nickname: "汤秀英",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 2,
-                recuriterId: 2,
-                nickname: "崔秀兰",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 1,
-                recuriterId: 1,
-                nickname: "汤秀英",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 2,
-                recuriterId: 2,
-                nickname: "崔秀兰",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 1,
-                recuriterId: 1,
-                nickname: "汤秀英",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 2,
-                recuriterId: 2,
-                nickname: "崔秀兰",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 1,
-                recuriterId: 1,
-                nickname: "汤秀英",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 2,
-                recuriterId: 2,
-                nickname: "崔秀兰",
-                headportrait: "http://dummyimage.com/400x400"
-            }
-        ],
-        message_list: [
-            {
-                messageId: 1,
-                content: "in laboris aliqua",
-                sendTime: "2004-08-25 03:18:44",
-                receiverId: 1,
-                senderId: 2
-            },
-            {
-                messageId: 2,
-                content: "Excepteur qui deserunt sit",
-                sendTime: "2016-02-22 21:11:21",
-                receiverId: 2,
-                senderId: 1
-            },
-            {
-                messageId: 1,
-                content: "in laboris aliqua",
-                sendTime: "2004-08-25 03:18:44",
-                receiverId: 1,
-                senderId: 2
-            },
-            {
-                messageId: 2,
-                content: "Excepteur qui deserunt sit",
-                sendTime: "2016-02-22 21:11:21",
-                receiverId: 2,
-                senderId: 1
-            },
-            {
-                messageId: 1,
-                content: "in laboris aliqua",
-                sendTime: "2004-08-25 03:18:44",
-                receiverId: 1,
-                senderId: 2
-            },
-            {
-                messageId: 2,
-                content: "Excepteur qui deserunt sit",
-                sendTime: "2016-02-22 21:11:21",
-                receiverId: 2,
-                senderId: 1
-            }
-        ],
+        jobhuntersession_list: [{}],
+        message_list: [{}],
         appeal:{
             orderId:null,
             appealContent:null,

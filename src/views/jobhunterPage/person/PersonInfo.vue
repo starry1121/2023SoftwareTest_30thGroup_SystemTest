@@ -1,4 +1,4 @@
-<template>
+<template> 
     <personNav/>
     <div class="bg">
         <br>

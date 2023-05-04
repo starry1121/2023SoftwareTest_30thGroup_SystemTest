@@ -168,13 +168,40 @@ export default {
                         type: 'success',
                     })
                     if(localStorage.getItem('userType')=='jobhunter'){
-                        this.$router.push('/jobhunter')
+                        this.jobhunterId=localStorage.getItem('userId')
+                        this.$axios({
+                            method: 'get',
+                            url: '/api/Jobhunter/personInfo/get/?jobhunterId='+localStorage.getItem('userId'),
+                        })
+                        .then(res => {
+                            console.log(res.data.data.person_list[0]);
+                            localStorage.setItem('chatId',res.data.data.person_list[0].email);
+                            localStorage.setItem('chatName',res.data.data.person_list[0].nickname);
+                            localStorage.setItem('chatAvatar',res.data.data.person_list[0].headportrait);
+                            this.$router.push('/jobhunter')
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
                     }
                     if(localStorage.getItem('userType')=='admin'){
                         this.$router.push('/admin/personAuthentication')
                     }
                     if(localStorage.getItem('userType')=='recruiter'){
-                        this.$router.push('/recruiter')
+                        this.$axios({
+                            method: 'get',
+                            url: '/api/recruiter/personInfo/get?recruiterId='+localStorage.getItem('userId'),
+                        })
+                        .then(res => {
+                            console.log(res.data.data.company_list[0]);
+                            localStorage.setItem('chatId',res.data.data.company_list[0].email);
+                            localStorage.setItem('chatName',res.data.data.company_list[0].companyName);
+                            localStorage.setItem('chatAvatar',res.data.data.company_list[0].headportrait);
+                            this.$router.push('/recruiter')
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
                     }
                 }else{
                     ElMessage({

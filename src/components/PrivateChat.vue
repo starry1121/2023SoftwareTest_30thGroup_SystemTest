@@ -140,12 +140,10 @@
     const GoEasy = inject('GoEasy');
     const goEasy = inject('goEasy');
     const currentUser = {
-        id: '10014',
-        name: 'Boaibai',
-        password: '123',
-        avatar: 'http://dummyimage.com/400x400',
-        email: '278803847@qq.com',
-        phone: '15379989315',
+      id: localStorage.getItem('chatId'),
+      name: localStorage.getItem('chatName'),
+      avatar: localStorage.getItem('chatAvatar'),
+      email: localStorage.getItem('chatId'),
     };
   
     const IMAGE_MAX_WIDTH = 200;

@@ -1,4 +1,4 @@
-<template>
+<template> 
     <personNav/>
     <div class="bg">
         <br>
@@ -111,8 +111,8 @@
 
         function connectGoEasy() {
             goEasy.connect({
-            id: 10014,
-            data: {name: 'Boaibai', avatar: 'http://dummyimage.com/400x400'},
+                id: localStorage.getItem('chatId'),
+                data: {name: localStorage.getItem('chatName'), avatar: localStorage.getItem('chatAvatar')},
             onSuccess: function () {  //连接成功
                 console.log("GoEasy connect successfully.") //连接成功
             },
@@ -132,7 +132,11 @@
 
         onBeforeMount(() => {
             if (goEasy.getConnectionStatus() === 'disconnected') {
-            connectGoEasy();  //连接goeasy
+                connectGoEasy();  //连接goeasy
+            }
+            else{
+                goEasy.disconnect();
+                connectGoEasy();  //连接goeasy
             }
             goEasy.im.on(GoEasy.IM_EVENT.CONVERSATIONS_UPDATED, setUnreadNumber);
         })
@@ -162,100 +166,8 @@
                 title: "东况上类可"
             }
         ],
-        jobhuntersession_list: [
-            {
-                sessionId: 1,
-                recuriterId: 1,
-                nickname: "汤秀英",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 2,
-                recuriterId: 2,
-                nickname: "崔秀兰",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 1,
-                recuriterId: 1,
-                nickname: "汤秀英",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 2,
-                recuriterId: 2,
-                nickname: "崔秀兰",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 1,
-                recuriterId: 1,
-                nickname: "汤秀英",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 2,
-                recuriterId: 2,
-                nickname: "崔秀兰",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 1,
-                recuriterId: 1,
-                nickname: "汤秀英",
-                headportrait: "http://dummyimage.com/400x400"
-            },
-            {
-                sessionId: 2,
-                recuriterId: 2,
-                nickname: "崔秀兰",
-                headportrait: "http://dummyimage.com/400x400"
-            }
-        ],
-        message_list: [
-            {
-                messageId: 1,
-                content: "in laboris aliqua",
-                sendTime: "2004-08-25 03:18:44",
-                receiverId: 1,
-                senderId: 2
-            },
-            {
-                messageId: 2,
-                content: "Excepteur qui deserunt sit",
-                sendTime: "2016-02-22 21:11:21",
-                receiverId: 2,
-                senderId: 1
-            },
-            {
-                messageId: 1,
-                content: "in laboris aliqua",
-                sendTime: "2004-08-25 03:18:44",
-                receiverId: 1,
-                senderId: 2
-            },
-            {
-                messageId: 2,
-                content: "Excepteur qui deserunt sit",
-                sendTime: "2016-02-22 21:11:21",
-                receiverId: 2,
-                senderId: 1
-            },
-            {
-                messageId: 1,
-                content: "in laboris aliqua",
-                sendTime: "2004-08-25 03:18:44",
-                receiverId: 1,
-                senderId: 2
-            },
-            {
-                messageId: 2,
-                content: "Excepteur qui deserunt sit",
-                sendTime: "2016-02-22 21:11:21",
-                receiverId: 2,
-                senderId: 1
-            }
-        ],
+        jobhuntersession_list: [{}],
+        message_list: [{}],
         appeal:{
             orderId:null,
             appealContent:null,

@@ -153,7 +153,20 @@ const routes = [
   {
     path: '/recruiter/message',
     name: 'recruiterMessage',
-    component: recruiterMessage
+    component: recruiterMessage,
+    redirect: '/recruiter/message/conversations',
+    children: [
+        {
+            path: 'conversations',
+            component: Conversations,
+            children: [
+                {
+                    path: 'privatechat/:id',
+                    component: PrivateChat,
+                },
+            ],
+        },
+    ],
   },
   {
     path: '/recruiter/upJob',

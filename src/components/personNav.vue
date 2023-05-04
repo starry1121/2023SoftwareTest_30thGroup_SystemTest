@@ -11,7 +11,24 @@
         <nav class="icon">
             <router-link to="/jobhunter/message"><a href="#"><el-icon><BellFilled /></el-icon></a></router-link>
         </nav>
-        <el-avatar class="head_photo" :size="50" fit="cover" :src="headportrait" />
+        <el-popover
+            placement="bottom"                    
+        >
+            <template #reference>
+                <el-avatar class="head_photo" :size="50" fit="cover" :src="headportrait" />
+            </template>
+            <el-row justify="center">
+                <el-button class="btn" link>
+                    <router-link class="text" to="/jobhunter/person">个人中心</router-link>
+                </el-button>
+            </el-row>
+            <hr style="margin: 10px 0px;">
+            <el-row justify="center">
+                <el-button class="btn" link>
+                    <router-link class="text" to="/">退出登录</router-link>
+                </el-button>
+            </el-row>
+        </el-popover>
     </div>
 </template>
 
@@ -28,7 +45,6 @@ import { BellFilled } from "@element-plus/icons-vue";
             }
         },
         created() {
-            this.jobhunterId=localStorage.getItem('userId')
             this.$axios({
                 method: 'get',
                 url: '/api/Jobhunter/personInfo/get/?jobhunterId='+localStorage.getItem('userId'),
@@ -36,7 +52,6 @@ import { BellFilled } from "@element-plus/icons-vue";
             .then(res => {
                 console.log(res.data.data);
                 this.headportrait=res.data.data.person_list[0].headportrait;
-                console.log(this.userInfo);
             })
             .catch(function (error) {
                 console.log(error);
@@ -112,5 +127,14 @@ import { BellFilled } from "@element-plus/icons-vue";
         margin-top: 10px;
         position: relative;
         left: 37vw;
+    }
+    .btn{
+        color: #FFC353;
+        height: 30px;
+        width: 80px;
+    }
+    .btn .text{
+        text-decoration:none;
+        color: #023764;
     }
 </style>

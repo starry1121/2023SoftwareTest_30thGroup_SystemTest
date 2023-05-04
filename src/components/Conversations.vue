@@ -26,10 +26,7 @@
                     <div class="conversation-bottom">
                       <div class="conversation-content" v-if="conversation.lastMessage.recalled">
                         <div v-if="conversation.type === 'private'">
-                          {{ conversation.lastMessage.senderId === currentUser.id ? '你' : `"${conversation.data.name}"` }}撤回了一条消息
-                        </div>
-                        <div v-if="conversation.type === 'group'">
-                          {{ conversation.lastMessage.senderId === currentUser.id ? '你' : `"${conversation.lastMessage.senderData.name}"` }}撤回了一条消息
+                          {{ conversation.lastMessage.senderId === currentUser.id ? '你' : '对方' }}撤回了一条消息
                         </div>
                       </div>
                       <div class="conversation-content" v-else>
@@ -38,10 +35,7 @@
                           [未读]
                         </div>
                         <div v-if="conversation.type === 'private'">
-                          {{ conversation.lastMessage.senderId === currentUser.id ? '我' : conversation.data.name }}:
-                        </div>
-                        <div v-else>
-                          {{ conversation.lastMessage.senderId === currentUser.id ? '我' : conversation.lastMessage.senderData.name }}:
+                          {{ conversation.lastMessage.senderId === currentUser.id ? '我' : '对方' }}:
                         </div>
                         <span class="text" v-if="conversation.lastMessage.type === 'text'">{{conversation.lastMessage.payload.text}}</span>
                         <span v-else-if="conversation.lastMessage.type === 'image'">[图片消息]</span>
@@ -77,12 +71,10 @@
         const GoEasy = inject('GoEasy');
         const goEasy = inject('goEasy');
         const currentUser = {
-            id: '10014',
-            name: 'Boaibai',
-            password: '123',
-            avatar: 'http://dummyimage.com/400x400',
-            email: '278803847@qq.com',
-            phone: '15379989315',
+            id: localStorage.getItem('chatId'),
+            name: localStorage.getItem('chatName'),
+            avatar: localStorage.getItem('chatAvatar'),
+            email: localStorage.getItem('chatId'),
         };
     
         let conversations = ref([]);
