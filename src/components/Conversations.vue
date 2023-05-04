@@ -151,12 +151,24 @@
     
         function chatLocation (conversation) {
           // localStorage.setItem('conversationUserId',conversation.userId);
-          let path = '/jobhunter/message/conversations/privatechat/'+conversation.userId
-          return {
-            path: path,
-            query: {
-              name: conversation.data.name,
-              avatar: conversation.data.avatar
+          if(localStorage.getItem('userType')=='jobhunter'){
+            let path = '/jobhunter/message/conversations/privatechat/'+conversation.userId
+            return {
+              path: path,
+              query: {
+                name: conversation.data.name,
+                avatar: conversation.data.avatar
+              }
+            }
+          }
+          else if(localStorage.getItem('userType')=='recruiter'){
+            let path = '/recruiter/message/conversations/privatechat/'+conversation.userId
+            return {
+              path: path,
+              query: {
+                name: conversation.data.name,
+                avatar: conversation.data.avatar
+              }
             }
           }
         }
