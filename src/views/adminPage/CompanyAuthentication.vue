@@ -52,10 +52,12 @@
         <el-container class="" style="height: 100vh">
             <el-header class="header">
                 <el-row>
-                    <el-col :span="22" class="title">
+                    <el-col :span="22">
                     </el-col>
-                    <el-col :span="2" class="text">
-                        你好！管理员
+                    <el-col :span="2">
+                        <el-button plain type="primary">
+                            <router-link to="/">退出登录</router-link>
+                        </el-button>
                     </el-col>
                 </el-row>
             </el-header>
@@ -404,4 +406,14 @@ margin: 0 auto;
 --el-pagination-button-bg-color:#fff;
 --el-pagination-hover-color: #167fdb;
 }
+
+.btn{
+    color: #FFC353;
+    height: 30px;
+    width: 80px;
+}
+.btn .text{
+    text-decoration:none;
+    color: #023764;
+} 
 </style>
