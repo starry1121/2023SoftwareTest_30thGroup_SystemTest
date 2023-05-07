@@ -74,16 +74,17 @@
                         highlight-current-row
                         @current-change="getCurrentRow"
                     >
-                        <el-table-column label="序号" type="index" width="150" />
-                        <el-table-column prop="recuriterID" label="招聘方ID" sortable width="170"/>
-                        <el-table-column prop="companyType" label="企业类型" sortable width="170"/>
-                        <el-table-column prop="companyID" label="企业资格证号"/>
+                        <el-table-column label="序号" type="index" width="80" />
+                        <el-table-column prop="recruiterId" label="招聘方ID" sortable width="120"/>
+                        <el-table-column prop="companyType" label="公司类型" width="120"/>
+                        <el-table-column prop="companyName" label="公司名称" width="120"/>
+                        <el-table-column prop="companyId" label="资质证号"/>
                         <el-table-column label="证件照片">
                             <template #default="scope">
-                                <el-image style="width: 100px; height: 100px" :src="scope.row.certification" :fit="fit" />
+                                <el-image style="width: 12vw; height: 9vw" :src="scope.row.certification" :fit="fit" />
                             </template>
                         </el-table-column>
-                        <el-table-column prop="applyTime" sortable label="申请时间" />
+                        <el-table-column prop="applyTime" sortable label="申请时间"/>
                         <el-table-column
                             prop="checkStatus"
                             label="状态"
@@ -91,30 +92,35 @@
                             :filters="[
                                 { text: '已通过', value: '已通过' },
                                 { text: '未通过', value: '未通过' },
+                                { text: '未审核', value: '未审核' },
                             ]"
                             :filter-method="filterTag"
                             filter-placement="bottom-end"
                             >
                             <template #default="scope">
                                 <el-tag
-                                v-if="scope.row.checkStatus == '已通过'"
-                                :type="success"
-                                disable-transitions
+                                    v-if="scope.row.checkStatus == '未审核'"
+                                    disable-transitions
+                                >未审核</el-tag>
+                                <el-tag
+                                    v-if="scope.row.checkStatus == '已通过'"
+                                    type="success"
+                                    disable-transitions
                                 >已通过</el-tag>
                                 <el-tag
-                                v-if="scope.row.checkStatus =='未通过'"
-                                :type="scope.row.checkStatus === '已通过' ? 'success' : 'danger'"
-                                disable-transitions
+                                    v-if="scope.row.checkStatus =='未通过'"
+                                    type="danger"
+                                    disable-transitions
                                 >未通过</el-tag>
                             </template>
                         </el-table-column>
                         <el-table-column fixed="right" label="操作" width="120">
                             <template #default="operation">
-                                <el-button v-if="operation.row.result == null" :disabled="operation.row.checkStatus =='已通过'" link type="primary" size="small" @click="dialogFormVisible = true"
+                                <el-button v-if="operation.row.checkStatus =='未审核'" link type="primary" size="small" @click="dialogFormVisible = true"
                                 >审核</el-button>
-                                <el-button v-if="operation.row.result != null" :disabled="operation.row.checkStatus =='已通过'" link type="primary" size="small" @click="dialogFormVisible = true"
+                                <el-button v-if="operation.row.checkStatus !='未审核'" link type="primary" size="small" @click="dialogFormVisible = true"
                                 >查看</el-button>
-                                <el-button link type="primary" size="small" @click="confirmDelete">删除</el-button>
+                                <!-- <el-button link type="primary" size="small" @click="confirmDelete">删除</el-button> -->
                             </template>
                         </el-table-column>
                     </el-table>
@@ -131,31 +137,54 @@
                             />
                         </div>
                     </el-row>
-                    <el-dialog v-model="dialogFormVisible" title="审批申请" align-center draggable>
+                    <el-dialog v-model="dialogFormVisible" title="申请详情" align-center draggable>
                         <el-form :model="apply">
-                        <el-form-item label="企业类型" label-width="70px">
-                            <el-input disabled v-model="apply.companyType" autocomplete="off" />
-                        </el-form-item>
-                        <el-form-item label="证件号码" label-width="70px">
-                            <el-input disabled v-model="apply.companyID" autocomplete="off" />
-                        </el-form-item>
-                        <el-form-item label="证件照片" label-width="70px">
-                            <el-image style="width: 100px; height: 100px" :src="apply.certification" :fit="fit" />
-                        </el-form-item>
-                        <el-form-item required v-if="display" label="结果" label-width="70px">
-                            <el-input :disabled="apply.result != null" v-model="result" autocomplete="off" type="textarea" :rows="3"/>
-                        </el-form-item>
-                        <el-form-item required v-if="apply.result != null" label="结果" label-width="70px">
-                            <el-input :disabled="apply.result != null" v-model="apply.result" autocomplete="off" type="textarea" :rows="3"/>
-                        </el-form-item>
+                            <el-form-item label="审核时间" label-width="80px">
+                                <el-input disabled v-model="apply.checkTime" autocomplete="off" />
+                            </el-form-item>
+                            <el-form-item label="公司类型" label-width="80px">
+                                <el-tag disable-transitions>{{ apply.companyType }}</el-tag>
+                            </el-form-item>
+                            <el-form-item label="公司名称" label-width="80px">
+                                <el-input disabled v-model="apply.companyName" autocomplete="off" />
+                            </el-form-item>
+                            <el-form-item label="资质证号" label-width="80px">
+                                <el-input disabled v-model="apply.companyId" autocomplete="off" />
+                            </el-form-item>
+                            <el-form-item label="证件照片" label-width="80px">
+                                <el-image style="width: 16vw; height: 12vw" :src="apply.certification" :fit="fit" />
+                            </el-form-item>
+                            <el-form-item v-if="apply.checkStatus!='未审核'" label="审核状态" label-width="80px">
+                                <el-tag
+                                    v-if="apply.checkStatus == '已通过'"
+                                    type="success"
+                                    disable-transitions
+                                >已通过</el-tag>
+                                <el-tag
+                                    v-if="apply.checkStatus =='未通过'"
+                                    type="danger"
+                                    disable-transitions
+                                >未通过</el-tag>
+                            </el-form-item>
+                            <el-form-item v-if="apply.checkStatus=='未通过'" label="结果反馈" label-width="80px">
+                                <el-input disabled v-model="apply.result" autocomplete="off" type="textarea" :rows="3"/>
+                            </el-form-item>
                         </el-form>
                         <template #footer>
-                        <span class="dialog-footer">
-                            <el-button :disabled="apply.result != null" v-if="!display" @click="display=true;">不通过</el-button>
-                            <el-button v-if="display" @click="display=false;result=null;">返回</el-button>
-                            <el-button v-if="display" @click="noPass">确认</el-button>
-                            <el-button :disabled="apply.result != null" v-if="!display" type="primary" @click="pass">通过</el-button>
-                        </span>
+                            <span class="dialog-footer">
+                                <el-button v-if="apply.checkStatus!='未审核'" type="primary" @click="dialogFormVisible=false">返回</el-button>
+                                <el-button v-if="apply.checkStatus=='未审核'" type="danger" plain @click="dialogFormVisible1 = true;">驳回</el-button>
+                                <el-button v-if="apply.checkStatus=='未审核'" type="primary" plain @click="pass">通过</el-button>
+                            </span>
+                        </template>
+                    </el-dialog>
+                    <el-dialog style="width:30%" v-model="dialogFormVisible1" title="结果反馈" align-center draggable>
+                        <el-input v-model="result" autocomplete="off" type="textarea" :rows="3"/>
+                        <template #footer>
+                            <span class="dialog-footer">
+                                <el-button type="danger" plain @click="dialogFormVisible1=false;">取消</el-button>
+                                <el-button type="primary" plain @click="noPass">确认</el-button>
+                            </span>
                         </template>
                     </el-dialog>
                 </el-card>
@@ -177,42 +206,11 @@ export default {
             page: 1,
             limit: 8,
             total: 6,
-            applyList:[{
-                "applyID": 1,
-                "companyName": "张三",
-                "companyType": "民办",
-                "recuriterID": 1,
-                "applyTime": "2019-06-05 13:53:42",
-                "companyID": "620403111122223333",
-                "certification": "http://dummyimage.com/400x400",
-                "checkStatus": "未通过",
-                "checkTime": null,
-                "result": null
-            },
-            {
-                "applyID": 2,
-                "companyName": "李四",
-                "companyType": "公办",
-                "recuriterID": 2,
-                "applyTime": "2003-04-20 03:17:12",
-                "companyID": "620403111122223333",
-                "certification": "http://dummyimage.com/400x400",
-                "checkStatus": "未通过",
-                "checkTime": null,
-                "result": null
-            }],
+            applyList:[{}],
             dialogFormVisible: false,
             dialogFormVisible1: false,
             result:null,
-            apply:{
-                "applyID": null,
-                "applyTime": "2019-06-05 13:53:42",
-                "checkStatus": "未通过",
-                "result": null,
-                "companyID": null,
-                "certification": null,
-                "companyType": null,
-            },
+            apply:{},
             display:false,
             isPass:true,
         }
@@ -224,18 +222,11 @@ export default {
         getCurrentRow(value){
             if(value!=null){
                 console.log(value);
-                this.apply.applyID=value.applyID;
-                this.apply.result=value.result;
-                this.apply.checkStatus=value.checkStatus;
-                this.apply.applyTime=value.applyTime;
-                this.apply.companyID=value.companyID;
-                this.apply.certification=value.certification;
-                this.apply.companyType=value.companyType;
-                console.log(this.currentPubnot);
+                this.apply=value;
+                console.log(this.apply);
             }
         },
         noPass(){
-            this.dialogFormVisible1 = false;
             console.log("不通过");
             if(this.result==""||this.result==null){
                 ElMessage({
@@ -244,16 +235,41 @@ export default {
                 })
                 return;
             }
+            this.$axios({
+                method: 'post',
+                url: '/api/admin/auditCompanyAuthentication',
+                data:{
+                    applyId: this.apply.applyId,
+                    checkStatus: '未通过',
+                    result: this.result
+                }
+            })
+            .then(res => {
+                if(res.data.code==200){
+                    ElMessage({
+                        message: "已驳回该申请",
+                        type: 'success',
+                    })
+                    this.$router.go(0);
+                }
+                else{
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                ElMessage({
+                    message: "操作失败",
+                    type: 'error',
+                })
+            })
         },
         pass(){
-            this.dialogFormVisible1 = false;
-        },
-        delete(){
-
-        },
-        confirmDelete(){
             ElMessageBox.confirm(
-                '确认删除?',
+                '确认通过该申请?',
                 '提示',
                 {
                     distinguishCancelAndClose: true,
@@ -262,12 +278,62 @@ export default {
                 }
             )
             .then(() => {
-                this.delete();
+                this.dialogFormVisible = false;
+                this.$axios({
+                    method: 'post',
+                    url: '/api/admin/auditCompanyAuthentication',
+                    data:{
+                        applyId: this.apply.applyId,
+                        checkStatus: '已通过'
+                    }
+                })
+                .then(res => {
+                    if(res.data.code==200){
+                        ElMessage({
+                            message: "已通过该申请",
+                            type: 'success',
+                        })
+                        this.$router.go(0);
+                    }
+                    else{
+                        ElMessage({
+                            message: "操作失败",
+                            type: 'error',
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                })
             })
-        }
-    },
-    creater(){
 
+        },
+        filterTag(value, row) {
+            return row.checkStatus===value;
+        },
+    },
+    created(){
+        this.$axios({
+            method: 'get',
+            url: '/api/admin/getCompanyAuthenticationList',
+        })
+        .then(res => {
+            if(res.data.code==200){
+                this.applyList=res.data.data.companyauthen_list;
+                this.total=this.applyList.length;
+                console.log('企业认证申请列表'+this.applyList);
+            }
+            else{
+                this.applyList=null
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     },
 }
 
