@@ -93,27 +93,59 @@
                             <template #default="scope">
                                 <el-tag
                                     v-if="scope.row.appealType == '求职者评价申诉'"
+                                    type="warning"
                                     disable-transitions
                                 >求职者评价申诉</el-tag>
                                 <el-tag
                                     v-if="scope.row.appealType == '招聘方评价申诉'"
-                                    type="success"
+                                    type="warning"
                                     disable-transitions
                                 >招聘方评价申诉</el-tag>
                                 <el-tag
                                     v-if="scope.row.appealType =='支付申诉'"
-                                    type="danger"
+                                    type="warning"
                                     disable-transitions
                                 >支付申诉</el-tag>
                             </template>
                         </el-table-column>
                         <el-table-column prop="appealContent" label="申诉理由"/>
                         <el-table-column prop="appealTime" sortable label="申诉时间" />
+                        <el-table-column
+                            prop="status"
+                            label="状态"
+                            width="100"
+                            :filters="[
+                                { text: '已通过', value: '已通过' },
+                                { text: '未通过', value: '未通过' },
+                                { text: '未审核', value: '未审核' },
+                            ]"
+                            :filter-method="filterTag1"
+                            filter-placement="bottom-end"
+                            >
+                            <template #default="scope">
+                                <el-tag
+                                    v-if="scope.row.status == '未审核'"
+                                    disable-transitions
+                                >未审核</el-tag>
+                                <el-tag
+                                    v-if="scope.row.status == '已通过'"
+                                    type="success"
+                                    disable-transitions
+                                >已通过</el-tag>
+                                <el-tag
+                                    v-if="scope.row.status =='未通过'"
+                                    type="danger"
+                                    disable-transitions
+                                >未通过</el-tag>
+                            </template>
+                        </el-table-column>
                         <el-table-column fixed="right" label="操作" width="120">
-                            <el-button v-if="operation.row.checkStatus =='未审核'" link type="primary" size="small" @click="dialogFormVisible = true"
-                            >审核</el-button>
-                            <el-button v-if="operation.row.checkStatus !='未审核'" link type="primary" size="small" @click="dialogFormVisible = true"
-                            >查看</el-button>
+                            <template #default="operation">
+                                <el-button v-if="operation.row.status =='未审核'" link type="primary" size="small" @click="dialogFormVisible = true"
+                                >审核</el-button>
+                                <el-button v-if="operation.row.status !='未审核'" link type="primary" size="small" @click="dialogFormVisible = true"
+                                >查看</el-button>
+                            </template>
                         </el-table-column>
                     </el-table>
                     <el-row justify="center">
@@ -129,31 +161,57 @@
                             />
                         </div>
                     </el-row>
-                    <el-dialog v-model="dialogFormVisible" title="审批申请" align-center draggable>
+                    <el-dialog v-model="dialogFormVisible" title="申请详情" align-center draggable>
                         <el-form :model="apply">
-                        <el-form-item label="申诉类型" label-width="70px">
-                            <el-input disabled v-model="apply.appealType" autocomplete="off" />
-                        </el-form-item>
-                        <el-form-item label="申诉时间" label-width="70px">
-                            <el-input disabled v-model="apply.appealTime" autocomplete="off" />
-                        </el-form-item>
-                        <el-form-item label="申诉理由" label-width="70px">
-                            <el-input disabled v-model="apply.appealContent" autocomplete="off" />
-                        </el-form-item>
-                        <el-form-item required v-if="display" label="结果" label-width="70px">
-                            <el-input :disabled="apply.appealResult != null" v-model="result" autocomplete="off" type="textarea" :rows="3"/>
-                        </el-form-item>
-                        <el-form-item required v-if="apply.appealResult != null" label="结果" label-width="70px">
-                            <el-input :disabled="apply.appealResult != null" v-model="apply.appealResult" autocomplete="off" type="textarea" :rows="3"/>
-                        </el-form-item>
+                            <el-form-item label="申诉类型" label-width="80px">
+                                <el-tag type="warning" disable-transitions>{{ apply.appealType }}</el-tag>
+                            </el-form-item>
+                            <el-form-item label="申诉时间" label-width="80px">
+                                <el-input disabled v-model="apply.appealTime" autocomplete="off" />
+                            </el-form-item>
+                            <el-form-item label="申诉理由" label-width="80px">
+                                <el-input disabled v-model="apply.appealContent" autocomplete="off" type="textarea" :rows="3"/>
+                            </el-form-item>
+                            <el-form-item v-if="apply.status!='未审核'" label="审核状态" label-width="80px">
+                                <el-tag
+                                    v-if="apply.status == '已通过'"
+                                    type="success"
+                                    disable-transitions
+                                >{{apply.status}}</el-tag>
+                                <el-tag
+                                    v-if="apply.status =='未通过'"
+                                    type="danger"
+                                    disable-transitions
+                                >{{apply.status}}</el-tag>
+                            </el-form-item>
+                            <el-form-item v-if="apply.status!='未审核'" label="结果反馈" label-width="80px">
+                                <el-input disabled v-model="apply.appealResult" autocomplete="off" type="textarea" :rows="3"/>
+                            </el-form-item>
                         </el-form>
                         <template #footer>
-                        <span class="dialog-footer">
-                            <el-button :disabled="apply.appealResult != null" v-if="!display" @click="display=true;">不通过</el-button>
-                            <el-button v-if="display" @click="display=false;result=null;">返回</el-button>
-                            <el-button v-if="display" @click="noPass">确认</el-button>
-                            <el-button :disabled="apply.appealResult != null" v-if="!display" type="primary" @click="pass">通过</el-button>
-                        </span>
+                            <span class="dialog-footer">
+                                <el-button v-if="apply.status!='未审核'" type="primary" @click="dialogFormVisible=false">返回</el-button>
+                                <el-button v-if="apply.status=='未审核'" type="danger" plain @click="dialogFormVisible1 = true;">驳回</el-button>
+                                <el-button v-if="apply.status=='未审核'" type="primary" plain @click="dialogFormVisible2 = true;">通过</el-button>
+                            </span>
+                        </template>
+                    </el-dialog>
+                    <el-dialog style="width:30%" v-model="dialogFormVisible1" title="结果反馈" align-center draggable>
+                        <el-input v-model="result" autocomplete="off" type="textarea" :rows="3"/>
+                        <template #footer>
+                            <span class="dialog-footer">
+                                <el-button type="danger" plain @click="dialogFormVisible1=false;">取消</el-button>
+                                <el-button type="primary" plain @click="noPass">确认</el-button>
+                            </span>
+                        </template>
+                    </el-dialog>
+                    <el-dialog style="width:30%" v-model="dialogFormVisible2" title="结果反馈" align-center draggable>
+                        <el-input v-model="result" autocomplete="off" type="textarea" :rows="3"/>
+                        <template #footer>
+                            <span class="dialog-footer">
+                                <el-button type="danger" plain @click="dialogFormVisible2=false;">取消</el-button>
+                                <el-button type="primary" plain @click="pass">确认</el-button>
+                            </span>
                         </template>
                     </el-dialog>
                 </el-card>
@@ -175,30 +233,12 @@ export default {
             page: 1,
             limit: 8,
             total: 6,
-            applyList:[{
-                "orderID":1,
-                "appealTime":"2013-03-03 16:45:26",
-                "appealType":"评价申诉",
-                "appealContent":"nostrud sunt ea et",
-                "appealResult": null
-            },
-            {
-                "orderID":2,
-                "appealTime":"2000-10-05 14:25:36",
-                "appealType":"评价申诉",
-                "appealContent":"anim eu velit ut",
-                "appealResult": null
-            }],
+            applyList:[{}],
             dialogFormVisible: false,
             dialogFormVisible1: false,
+            dialogFormVisible2: false,
             result:null,
-            apply:{
-                "orderID":1,
-                "appealTime":"2013-03-03 16:45:26",
-                "appealType":"评价申诉",
-                "appealContent":"nostrud sunt ea et",
-                "appealResult": null
-            },
+            apply:{},
             display:false,
             isPass:true,
         }
@@ -210,15 +250,10 @@ export default {
         getCurrentRow(value){
             if(value!=null){
                 console.log(value);
-                this.apply.orderID=value.orderID;
-                this.apply.appealTime=value.appealTime;
-                this.apply.appealType=value.appealType;
-                this.apply.appealContent=value.appealContent;
-                this.apply.appealResult=value.appealResult;
+                this.apply=value;
             }
         },
         noPass(){
-            this.dialogFormVisible1 = false;
             console.log("不通过");
             if(this.result==""||this.result==null){
                 ElMessage({
@@ -227,9 +262,80 @@ export default {
                 })
                 return;
             }
+            this.$axios({
+                method: 'post',
+                url: '/api/admin/dealAppeal',
+                data:{
+                    orderId: this.apply.orderId,
+                    appealType: this.apply.appealType,
+                    appealResult: this.result,
+                    status: false
+                }
+            })
+            .then(res => {
+                if(res.data.code==200){
+                    ElMessage({
+                        message: "已驳回该申诉",
+                        type: 'success',
+                    })
+                    this.$router.go(0);
+                }
+                else{
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                ElMessage({
+                    message: "操作失败",
+                    type: 'error',
+                })
+            })
         },
         pass(){
-            this.dialogFormVisible1 = false;
+            console.log("不通过");
+            if(this.result==""||this.result==null){
+                ElMessage({
+                    message: "反馈不能为空",
+                    type: 'error',
+                })
+                return;
+            }
+            this.$axios({
+                method: 'post',
+                url: '/api/admin/dealAppeal',
+                data:{
+                    orderId: this.apply.orderId,
+                    appealType: this.apply.appealType,
+                    appealResult: this.result,
+                    status: true
+                }
+            })
+            .then(res => {
+                if(res.data.code==200){
+                    ElMessage({
+                        message: "已通过该申诉",
+                        type: 'success',
+                    })
+                    this.$router.go(0);
+                }
+                else{
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                ElMessage({
+                    message: "操作失败",
+                    type: 'error',
+                })
+            })
         },
         delete(){
 
@@ -250,6 +356,9 @@ export default {
         },
         filterTag(value, row) {
             return row.appealType===value;
+        },
+        filterTag1(value, row) {
+            return row.status===value;
         },
     },
     created(){
