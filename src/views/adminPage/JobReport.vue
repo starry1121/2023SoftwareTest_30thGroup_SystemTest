@@ -76,9 +76,9 @@
                         highlight-current-row
                         @current-change="getCurrentRow"
                     >
-                        <el-table-column label="序号" type="index" width="150" />
-                        <el-table-column prop="jobhunterID" label="举报者ID" sortable width="170"/>
-                        <el-table-column prop="jobID" label="兼职ID" sortable width="170"/>
+                        <el-table-column label="序号" type="index" width="100" />
+                        <el-table-column prop="jobhunterId" label="举报者ID" sortable width="160"/>
+                        <el-table-column prop="jobId" label="兼职ID" sortable width="160"/>
                         <el-table-column prop="reportReason" label="举报理由"/>
                         <el-table-column prop="reportTime" sortable label="举报时间" />
                         <el-table-column
@@ -88,33 +88,36 @@
                             :filters="[
                                 { text: '已通过', value: '已通过' },
                                 { text: '未通过', value: '未通过' },
+                                { text: '未审核', value: '未审核' },
                             ]"
                             :filter-method="filterTag"
                             filter-placement="bottom-end"
                             >
                             <template #default="scope">
                                 <el-tag
-                                v-if="scope.row.reportState == '已通过'"
-                                :type="success"
-                                disable-transitions
+                                    v-if="scope.row.reportState == '未审核'"
+                                    disable-transitions
+                                >未审核</el-tag>
+                                <el-tag
+                                    v-if="scope.row.reportState == '已通过'"
+                                    type="success"
+                                    disable-transitions
                                 >已通过</el-tag>
                                 <el-tag
-                                v-if="scope.row.reportState =='未通过'"
-                                :type="scope.row.reportState === '已通过' ? 'success' : 'danger'"
-                                disable-transitions
+                                    v-if="scope.row.reportState =='未通过'"
+                                    type="danger"
+                                    disable-transitions
                                 >未通过</el-tag>
                             </template>
                         </el-table-column>
                         <el-table-column fixed="right" label="操作" width="120">
                             <template #default="operation">
-                                <el-button v-if="operation.row.appealResult == null" :disabled="operation.row.appealResult != null" link type="primary" size="small" @click="dialogFormVisible = true"
+                                <el-button v-if="operation.row.reportState == '未审核'" link type="primary" size="small" @click="detail(operation.row.jobId)"
                                 >审核</el-button>
-                                <el-button v-if="operation.row.appealResult != null" :disabled="operation.row.appealResult != null" link type="primary" size="small" @click="dialogFormVisible = true"
+                                <el-button v-if="operation.row.reportState != '未审核'" link type="primary" size="small" @click="detail(operation.row.jobId)"
                                 >查看</el-button>
-                                <el-button link type="primary" size="small" @click="confirmDelete">删除</el-button>
                             </template>
                         </el-table-column>
-
                     </el-table>
                     <el-row justify="center">
                         <div class="pagination">
@@ -129,46 +132,70 @@
                             />
                         </div>
                     </el-row>
-                    <el-dialog v-model="dialogFormVisible" title="审批申请" align-center draggable>
+                    <el-dialog v-model="dialogFormVisible" title="举报详情" align-center draggable>
                         <el-scrollbar max-height="400px">
-                            <el-descriptions
-                                direction="vertical"
-                                :column="3"
-                                size="large"
-                                border
-                                style="width:90%;"
-                                title="兼职详情"
-                            >
-                                <el-descriptions-item label="开始时间">{{job.startTime}}</el-descriptions-item>
-                                <el-descriptions-item label="结束时间">{{job.endTime}}</el-descriptions-item>
-                                <el-descriptions-item label="每日工作时间">{{job.workTime}}</el-descriptions-item>
-                                <el-descriptions-item label="兼职类型">
-                                <el-tag size="small">{{job.jobType}}</el-tag>
-                                </el-descriptions-item>
-                                <el-descriptions-item :span="3" label="地点">
-                                    {{job.workPlace}}
-                                </el-descriptions-item>
-                                <el-descriptions-item :span="3" label="兼职详情">
-                                    <div v-html="job.workDetails" class="workDetails"></div>
-                                </el-descriptions-item>
+                            <!-- 兼职详情 -->
+                            <el-descriptions direction="vertical" :column="2" size="large" border style="width:100%;" title="兼职详情">
+                            <el-descriptions-item :span="2" label="兼职名称">
+                                {{ job.workName }}
+                            </el-descriptions-item>
+                            <el-descriptions-item :span="1" label="兼职类型">
+                                <el-tag size="small">{{ job.jobType }}</el-tag>
+                            </el-descriptions-item>
+                            <el-descriptions-item label="薪水">{{ job.salary }}</el-descriptions-item>
+                            <el-descriptions-item label="开始时间">{{ job.startTime }}</el-descriptions-item>
+                            <el-descriptions-item label="结束时间">{{ job.endTime }}</el-descriptions-item>
+                            <el-descriptions-item label="每日工作时间">{{ job.workTime }}</el-descriptions-item>
+                            <el-descriptions-item :span="2" label="公司名称">
+                                {{ job.companyName }}
+                            </el-descriptions-item>
+                            <el-descriptions-item :span="2" label="地点">
+                                {{ job.workPlace }}
+                            </el-descriptions-item>
+                            <el-descriptions-item :span="2" label="兼职详情">
+                                <div v-html="job.workDetails" class="workDetails"></div>
+                            </el-descriptions-item>
                             </el-descriptions>
+                            <el-form :model="apply">
+                                <br>
+                                <h3 style="margin-bottom:10px;">举报理由</h3>
+                                <el-input disabled v-model="apply.reportReason" autocomplete="off" type="textarea" :rows="3"/>
+                            </el-form>
+                            <el-form v-if="apply.reportState!='未审核'" :model="apply">
+                                <br>
+                                <h3 style="margin-bottom:10px;">审核详情</h3>
+                                <el-form-item label="审核状态" label-width="80px">
+                                    <el-tag
+                                        v-if="apply.reportState == '已通过'"
+                                        type="success"
+                                        disable-transitions
+                                    >已通过</el-tag>
+                                    <el-tag
+                                        v-if="apply.reportState =='未通过'"
+                                        type="danger"
+                                        disable-transitions
+                                    >未通过</el-tag>
+                                </el-form-item>
+                                <el-form-item v-if="apply.reportState=='未通过'" label="结果反馈" label-width="80px">
+                                    <el-input disabled v-model="apply.reportResult" autocomplete="off" type="textarea" :rows="3"/>
+                                </el-form-item>
+                            </el-form>
                         </el-scrollbar>
-                        <el-form :model="apply">
-
-                        <el-form-item required v-if="display" label="结果" label-width="70px">
-                            <el-input :disabled="apply.reportResult != null" v-model="result" autocomplete="off" type="textarea" :rows="3"/>
-                        </el-form-item>
-                        <el-form-item required v-if="apply.reportResult != null" label="结果" label-width="70px">
-                            <el-input :disabled="apply.reportResult != null" v-model="apply.reportResult" autocomplete="off" type="textarea" :rows="3"/>
-                        </el-form-item>
-                        </el-form>
                         <template #footer>
-                        <span class="dialog-footer">
-                            <el-button :disabled="apply.reportResult != null" v-if="!display" @click="display=true;">不通过</el-button>
-                            <el-button v-if="display" @click="display=false;result=null;">返回</el-button>
-                            <el-button v-if="display" @click="noPass">确认</el-button>
-                            <el-button :disabled="apply.reportResult != null" v-if="!display" type="primary" @click="pass">通过</el-button>
-                        </span>
+                            <span class="dialog-footer">
+                                <el-button v-if="apply.reportState!='未审核'" type="primary" @click="dialogFormVisible=false">返回</el-button>
+                                <el-button v-if="apply.reportState=='未审核'" type="danger" plain @click="dialogFormVisible1 = true;">驳回</el-button>
+                                <el-button v-if="apply.reportState=='未审核'" type="primary" plain @click="pass">通过</el-button>
+                            </span>
+                        </template>
+                    </el-dialog>
+                    <el-dialog style="width:30%" v-model="dialogFormVisible1" title="结果反馈" align-center draggable>
+                        <el-input v-model="result" autocomplete="off" type="textarea" :rows="3"/>
+                        <template #footer>
+                            <span class="dialog-footer">
+                                <el-button type="danger" plain @click="dialogFormVisible1=false;">取消</el-button>
+                                <el-button type="primary" plain @click="noPass">确认</el-button>
+                            </span>
                         </template>
                     </el-dialog>
                 </el-card>
@@ -190,47 +217,12 @@ export default {
             page: 1,
             limit: 8,
             total: 6,
-            applyList:[{
-                "jobhunterID":1,
-                "reportReason":"这个兼职违规了",
-                "reportState":"未通过",
-                "reportResult":null,
-                "jobID":1,
-                "reportTime":"1980-11-13 22:09:23"
-            },
-            {
-                "jobhunterID":2,
-                "reportReason":"这个兼职违规了",
-                "reportState":"未通过",
-                "reportResult":null,
-                "jobID":1,
-                "reportTime":"1980-11-13 22:09:23"
-            }],
+            applyList:[{}],
             dialogFormVisible: false,
             dialogFormVisible1: false,
             result:null,
-            apply:{
-                "jobhunterID":1,
-                "reportReason":"这个兼职违规了",
-                "reportState":null,
-                "reportResult":null,
-                "jobID":1,
-                "reportTime":"1980-11-13 22:09:23"
-            },
-            job:{
-                "jobId":1,
-                "workDetails":'<br>【工作薪酬】时薪20.5/h&nbsp;&nbsp;法定三薪<br>【上班时间】9:00-22:00之间安排每班4-8小时，一周上班3-7天，需要周末＋工作日最少一天<br>【工作地点】 广州市番禺区东艺路139号-15<br>【岗位要求】<br>1、性格开朗,沟通能力强,擅长与陌生人打交道,能主动招揽商场访客成为会员<br>2、周六日、节假日(包含春节)均能上班,适应零售排班制度,不随意请假缺勤<br>3、完成每日招募目标,超额完成月度目标,可获额外奖励<br>4、亲和力强,热爱家居生活,有服务意识,为商场访客提供良好的购物体验<br>【工作内容】<br>以下为部分部门，实际目前招聘部门可添加报名咨询~<br>顾客关系部收银：面对顾客有服务意识.&nbsp;2.适应轮岗轮休，能接受长时间站着工作。3.对工作充满热情，乐于同团队其他成员合作&nbsp;。<br>销售部：办公家具区卖场服务顾客、开单、卖场basic的维护"<br>餐饮部：顾客餐厅打热餐、小餐馆打雪糕、热狗；餐厅收银、货品补货、盘点"<br>【上岗要求】<br>1.春节可以上班（指的是除夕至初十可以轮岗轮休）<br>2主动积极,服从任何排班安排,服务意识强。<br>3.男女均可,适合学生族,上班族。<br>4、18周岁以上&nbsp;&nbsp;<br>【薪酬发放】工资月结，每月的25号结算',
-                "startTime":"2018-04-01",
-                "endTime":"2015-12-24",
-                "jobType":"市场服务",
-                "workPlace":"广东广州番禺广州市番禺区东艺路139号",
-                "salary":800,
-                "workName":"广州番禺宜家家居长短期兼职",
-                "recuriterID":1,
-                "releaseTime":"2015-12-24 22:21:18",
-                "workTime":"12:07:43",
-                "jobState":"未通过"
-            },
+            apply:{},
+            job:{},
             display:false,
             isPass:true,
         }
@@ -241,16 +233,31 @@ export default {
         },
         getCurrentRow(value){
             if(value!=null){
-                console.log(value);
-                this.apply.jobhunterID=value.jobhunterID;
-                this.apply.reportReason=value.reportReason;
-                this.apply.reportState=value.reportState;
-                this.apply.jobID=value.jobID;
-                this.apply.reportTime=value.reportTime;
+                this.apply=value;
+                console.log(this.apply);
             }
         },
+        detail(Id){
+            // 获取兼职详情
+            this.$axios({
+                method: 'get',
+                url: '/api/job/getJobList/?jobId='+Id,
+            })
+            .then(res => {
+                if(res.data.code==200){
+                    this.job=res.data.data.job_list[0];
+                    console.log('兼职详情'+this.job.startTime);
+                }
+                else{
+                    this.job=null
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            this.dialogFormVisible = true;
+        },
         noPass(){
-            this.dialogFormVisible1 = false;
             console.log("不通过");
             if(this.result==""||this.result==null){
                 ElMessage({
@@ -259,16 +266,42 @@ export default {
                 })
                 return;
             }
+            this.$axios({
+                method: 'post',
+                url: '/api/admin/auditReport',
+                data:{
+                    jobhunterId: this.apply.jobhunterId,
+                    reportState: false,
+                    jobId: this.apply.jobId,
+                    reportResult: this.result
+                }
+            })
+            .then(res => {
+                if(res.data.code==200){
+                    ElMessage({
+                        message: "已驳回该举报",
+                        type: 'success',
+                    })
+                    this.$router.go(0);
+                }
+                else{
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                ElMessage({
+                    message: "操作失败",
+                    type: 'error',
+                })
+            })
         },
         pass(){
-            this.dialogFormVisible1 = false;
-        },
-        delete(){
-
-        },
-        confirmDelete(){
             ElMessageBox.confirm(
-                '确认删除?',
+                '确认通过该申请?',
                 '提示',
                 {
                     distinguishCancelAndClose: true,
@@ -277,11 +310,63 @@ export default {
                 }
             )
             .then(() => {
-                this.delete();
+                this.dialogFormVisible = false;
+                this.$axios({
+                    method: 'post',
+                    url: '/api/admin/auditReport',
+                    data:{
+                        jobhunterId: this.apply.jobhunterId,
+                        reportState: true,
+                        jobId: this.apply.jobId,
+                    }
+                })
+                .then(res => {
+                    if(res.data.code==200){
+                        ElMessage({
+                            message: "已通过该申请",
+                            type: 'success',
+                        })
+                        this.$router.go(0);
+                    }
+                    else{
+                        ElMessage({
+                            message: "操作失败",
+                            type: 'error',
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                })
             })
-        }
+        },
+        filterTag(value, row) {
+            return row.reportState===value;
+        },
     },
-    creater(){
+    created(){
+        // 获取兼职举报列表
+        this.$axios({
+            method: 'get',
+            url: '/api/admin/getReportList',
+        })
+        .then(res => {
+            if(res.data.code==200){
+                this.applyList=res.data.data.report_list;
+                this.total=this.applyList.length;
+                console.log('兼职举报列表'+this.applyList);
+            }
+            else{
+                this.applyList=null
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
 
     },
 }
