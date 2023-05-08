@@ -76,19 +76,44 @@
                         highlight-current-row
                         @current-change="getCurrentRow"
                     >
-                        <el-table-column label="序号" type="index" width="150" />
-                        <el-table-column prop="orderID" label="订单ID" sortable width="170"/>
-                        <el-table-column prop="appealType" label="申诉类型" sortable width="170"/>
+                        <el-table-column label="序号" type="index" width="100" />
+                        <el-table-column prop="orderId" label="订单ID" sortable width="100"/>
+                        <el-table-column
+                            prop="appealType"
+                            label="申诉类型"
+                            width="170"
+                            :filters="[
+                                { text: '求职者评价申诉', value: '求职者评价申诉' },
+                                { text: '招聘方评价申诉', value: '招聘方评价申诉' },
+                                { text: '支付申诉', value: '支付申诉' },
+                            ]"
+                            :filter-method="filterTag"
+                            filter-placement="bottom-end"
+                            >
+                            <template #default="scope">
+                                <el-tag
+                                    v-if="scope.row.appealType == '求职者评价申诉'"
+                                    disable-transitions
+                                >求职者评价申诉</el-tag>
+                                <el-tag
+                                    v-if="scope.row.appealType == '招聘方评价申诉'"
+                                    type="success"
+                                    disable-transitions
+                                >招聘方评价申诉</el-tag>
+                                <el-tag
+                                    v-if="scope.row.appealType =='支付申诉'"
+                                    type="danger"
+                                    disable-transitions
+                                >支付申诉</el-tag>
+                            </template>
+                        </el-table-column>
                         <el-table-column prop="appealContent" label="申诉理由"/>
                         <el-table-column prop="appealTime" sortable label="申诉时间" />
                         <el-table-column fixed="right" label="操作" width="120">
-                            <template #default="operation">
-                                <el-button v-if="operation.row.appealResult == null" :disabled="operation.row.appealResult != null" link type="primary" size="small" @click="dialogFormVisible = true"
-                                >审核</el-button>
-                                <el-button v-if="operation.row.appealResult != null" :disabled="operation.row.appealResult != null" link type="primary" size="small" @click="dialogFormVisible = true"
-                                >查看</el-button>
-                                <el-button link type="primary" size="small" @click="confirmDelete">删除</el-button>
-                            </template>
+                            <el-button v-if="operation.row.checkStatus =='未审核'" link type="primary" size="small" @click="dialogFormVisible = true"
+                            >审核</el-button>
+                            <el-button v-if="operation.row.checkStatus !='未审核'" link type="primary" size="small" @click="dialogFormVisible = true"
+                            >查看</el-button>
                         </el-table-column>
                     </el-table>
                     <el-row justify="center">
@@ -222,10 +247,29 @@ export default {
             .then(() => {
                 this.delete();
             })
-        }
+        },
+        filterTag(value, row) {
+            return row.appealType===value;
+        },
     },
-    creater(){
-
+    created(){
+        this.$axios({
+            method: 'get',
+            url: '/api/admin/getAppealList',
+        })
+        .then(res => {
+            if(res.data.code==200){
+                this.applyList=res.data.data.appeal_list;
+                this.total=this.applyList.length;
+                console.log('订单申诉列表'+this.applyList);
+            }
+            else{
+                this.applyList=null
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     },
 }
 

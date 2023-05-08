@@ -446,18 +446,30 @@
                 })
                 return;
             }
-            // this.$axios({
-            //     method: 'put',
-            //     url: '/api/user-info/person-info',
-            //     data : this.userInfoEdit
-            // })
-            // .then(res => {
-            //     console.log(JSON.stringify(res.data));
-            // })
-            // .catch(function (error) {
-            //     console.log(error);
-            // })
-            this.dialogFormVisible=false
+            this.$axios({
+                method: 'post',
+                url: '/api/order/appealOrder',
+                data : this.appeal
+            })
+            .then(res => {
+                this.dialogFormVisible=false;
+                if(res.data.code==200){
+                    ElMessage({
+                        message: "已提交申诉",
+                        type: 'success',
+                    })
+                    this.$router.go(0);
+                }
+                else{
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
         },
         cancelOrder(value){
             ElMessageBox.confirm(
