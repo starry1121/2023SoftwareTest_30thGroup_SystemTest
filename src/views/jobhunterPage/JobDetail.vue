@@ -96,24 +96,21 @@
         </el-dialog>
 
         <el-dialog v-model="dialogFormVisible2" title="收藏兼职" align-center>
-            请选择收藏夹：
-            <el-tree-select
-                v-model="favoritesDirId"
-                :data="favoritesList"
-                :label="favoritesDirName"
-                check-strictly
-                :render-after-expand="false"
-            >
-
-            </el-tree-select>
-
-            <el-divider />
+            <span style="font-size:16px;">请选择收藏夹：</span>
+            <el-select v-model="collectPosition" placeholder="Select" clearable >
+                <el-option
+                v-for="item in favoritesList"
+                :key="item.favoritesDirId"
+                :label="item.favoritesDirName"
+                :value="item.favoritesDirId"
+                />
+            </el-select>
             <template #footer>
             <span class="dialog-footer">
-                <el-button type="primary" @click="reportJob">
+                <el-button type="primary" @click="collectJob">
                     确认
                 </el-button>
-                <el-button type="primary" @click="dialogFormVisible1=false">
+                <el-button type="primary" @click="dialogFormVisible2=false">
                     取消
                 </el-button>
             </span>
@@ -153,6 +150,7 @@ components: {
 },
 data(){
     return{
+        collectPosition:null,
         applyState:null,
         recruiterId:null,
         recruiterInfo:{},
@@ -358,6 +356,47 @@ methods: {
             console.log(error);
             ElMessage({
                 message: "举报失败！",
+                type: 'error',
+            })
+        })
+    },
+    collectJob(){
+        if(this.collectPosition==null||this.collectPosition==''){
+            ElMessage({
+                message: "请选择收藏夹！",
+                type: 'error',
+            })
+            return;
+        }
+        this.$axios({
+            method: 'post',
+            url: '/api/jobhunter/addCollect',
+            data: {
+                jobhunterId: localStorage.getItem('userId'),
+                jobId: localStorage.getItem('jobDetailId'),
+                collectPosition: this.collectPosition
+            }
+        })
+        .then(res => {
+            console.log(res)
+            if(res.data.code==200){
+                ElMessage({
+                    message: "收藏成功",
+                    type: 'success',
+                })
+                this.$router.go(0);
+            }
+            else{
+                ElMessage({
+                    message: "操作失败",
+                    type: 'error',
+                })
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+            ElMessage({
+                message: "操作失败",
                 type: 'error',
             })
         })
