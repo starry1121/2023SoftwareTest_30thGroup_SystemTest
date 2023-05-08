@@ -66,7 +66,7 @@
                     <template #header>
                     <div class="card-header">
                         <span class="title">公告列表</span>
-                        <el-button class="button" color="#444076" @click="dialogFormVisible = true">发布公告</el-button>
+                        <el-button class="button" color="#444076" @click="dialogFormVisible = true">上传公告</el-button>
                     </div>
                     </template>
                     <el-table
@@ -86,11 +86,40 @@
                             </template>
                         </el-table-column>
                         <el-table-column prop="announceTime" sortable label="发布时间" />
+                        <el-table-column
+                            prop="status"
+                            label="状态"
+                            width="100"
+                            :filters="[
+                                { text: '未发布', value: '未发布' },
+                                { text: '已发布', value: '已发布' },
+                                { text: '已撤销', value: '已撤销' },
+                            ]"
+                            :filter-method="filterTag1"
+                            filter-placement="bottom-end"
+                        >
+                            <template #default="scope">
+                                <el-tag
+                                    v-if="scope.row.status == '未发布'"
+                                    disable-transitions
+                                >未发布</el-tag>
+                                <el-tag
+                                    v-if="scope.row.status == '已发布'"
+                                    type="success"
+                                    disable-transitions
+                                >已发布</el-tag>
+                                <el-tag
+                                    v-if="scope.row.status =='已撤销'"
+                                    type="danger"
+                                    disable-transitions
+                                >已撤销</el-tag>
+                            </template>
+                        </el-table-column>
+
                         <el-table-column fixed="right" label="操作" width="120">
-                            <template #default>
-                                <el-button link type="primary" size="small" @click="dialogFormVisible1 = true"
-                                >编辑</el-button
-                                >
+                            <template #default="options">
+                                <el-button v-if="options.row.status =='未发布'" link type="primary" size="small" @click="submit">发布</el-button>
+                                <el-button v-if="options.row.status =='已发布'" link type="primary" size="small" @click="cancelPubnot">撤销</el-button>
                                 <el-button link type="primary" size="small" @click="confirmDeletePubnot">删除</el-button>
                             </template>
                         </el-table-column>
@@ -108,7 +137,7 @@
                             />
                         </div>
                     </el-row>
-                    <el-dialog v-model="dialogFormVisible" title="发布公告" align-center draggable>
+                    <el-dialog v-model="dialogFormVisible" title="上传公告" align-center draggable>
                         <el-form :model="pubnot">
                         <el-form-item label="公告标题" label-width="70px">
                             <el-input v-model="pubnot.title" autocomplete="off" />
@@ -116,47 +145,27 @@
                         <el-form-item label="公告内容" label-width="70px">
                             <el-input v-model="pubnot.content" autocomplete="off" type="textarea" :rows="6"/>
                         </el-form-item>
+                        <el-form-item label="公告封面" label-width="70px">
+                            <el-image v-if="picDisplay" style="width: 300px; height: 150px"  fit="fit"/>
+                            <el-image v-if="!picDisplay" style="width: 300px; height: 150px" :src="picUrlReview" :fit="fit" />
+                        </el-form-item>
+                        <el-form-item label="&emsp;" label-width="70px">
+                            <el-upload class="upload"
+                                :show-file-list=false
+                                :name="'iFile'"
+                                limit=1
+                                accept=".jpg,.jpeg,.png,.gif"
+                                :http-request="upload"
+                                :on-remove="handleRemove"
+                            >
+                                <el-button color="#444076" class="btn" type="primary">上传封面</el-button>
+                            </el-upload>
+                        </el-form-item>
                         </el-form>
                         <template #footer>
                         <span class="dialog-footer">
                             <el-button @click="dialogFormVisible = false;">取消</el-button>
-                            <el-button type="primary" @click="addPubnot">
-                            确认
-                            </el-button>
-                        </span>
-                        </template>
-                    </el-dialog>
-                    <el-dialog v-model="dialogFormVisible1" title="编辑公告" align-center draggable>
-                        <el-form :model="currentPubnot">
-                        <el-form-item
-                         label="公告标题" 
-                         label-width="80px"
-                         :rules="{
-                            required: true,
-                            message: '请输入公告标题',
-                            trigger: 'blur',
-                         }"
-                         >
-                            <el-input v-model="currentPubnot.title" autocomplete="off" />
-                        </el-form-item>
-                        <el-form-item 
-                         label="公告内容" 
-                         label-width="80px"
-                         :rules="{
-                            required: true,
-                            message: '请输入公告内容',
-                            trigger: 'blur',
-                         }"
-                         >
-                            <el-input v-model="currentPubnot.content" autocomplete="off" type="textarea" :rows="6"/>
-                        </el-form-item>
-                        </el-form>
-                        <template #footer>
-                        <span class="dialog-footer">
-                            <el-button @click="dialogFormVisible1 = false">取消</el-button>
-                            <el-button type="primary" @click="editPubnot">
-                            确认
-                            </el-button>
+                            <el-button type="primary" @click="addPubnot">确认</el-button>
                         </span>
                         </template>
                     </el-dialog>
@@ -170,67 +179,137 @@
 <script>
 import { ElMessageBox } from 'element-plus'
 import 'element-plus/es/components/message-box/style/index'
+import { ElMessage } from 'element-plus'
+import 'element-plus/es/components/message/style/index'
+import COS from "cos-js-sdk-v5"
+import {ref} from "vue"
+
+var cos = new COS({
+    SecretId: "AKIDGOL8fy1oLbeU9aom8E3d2E8tOffQxWzG",
+    SecretKey: "7yZw63j9KTXP6f22xoVwFLOFsIkDVgdM",
+})
 
 export default {
     name: 'adminNotice',
     data() {
         return {
+            picDisplay: true,
             page: 1,
             limit: 8,
             total: 6,
-            pubnotList:[{
-                "noticeID": 1,
-                "adminID": 1,
-                "content": "这是公告内容",
-                "status": "已发布",
-                "announceTime": "2021-02-18 05:43:00",
-                "title": "这是公告标题",
-                "imgURL": "http://dummyimage.com/400x400"
-            },
-            {
-                "noticeID": 2,
-                "adminID": 2,
-                "content": "这是公告内容",
-                "status": "已发布",
-                "announceTime": "1974-12-11 07:41:38",
-                "title": "这是公告标题",
-                "imgURL": "http://dummyimage.com/400x400"
-            }],
+            pubnotList:[{}],
             dialogFormVisible: false,
             dialogFormVisible1: false,
-            pubnot:{
-                adminId: 1,
-                pubnotTitle: "",
-                pubnotContent: ""
-            },
-            currentPubnot:{
-                id: 0,
-                pubnotTitle: "",
-                pubnotContent: ""
-            },
+            pubnot:{},
+            currentPubnot:{},
+            uploadIcon:'https://cluboat-1314598070.cos.ap-nanjing.myqcloud.com/upload.png',
+            picUrlReview:ref('https://cluboat-1314598070.cos.ap-nanjing.myqcloud.com/test.png'),
+            picUrl:ref(''),
         }
     },
     methods: {
+        cancel(){
+            this.picDisplay=true;
+        },
+        upload(picture) {
+            // 随机创建文件昵称
+            var suffix = picture.file.name.substring(picture.file.name.lastIndexOf("."));
+            var randomContent = Math.random().toString(36);
+            var picName = randomContent + suffix;
+            console.log(picName)
+            cos.putObject({
+                Bucket: 'jbgz-1312275634',
+                Region: 'ap-shanghai', // 地区
+                Key: picName, // 上传的文件名
+                StorageClass: 'STANDARD',
+                Body: picture.file, // 上传文件对象
+            }, function (err, data) {
+                console.log(err, data)
+            })
+            this.picUrl = 'https://jbgz-1312275634.cos.ap-shanghai.myqcloud.com/' + picName;
+            console.log(this.picUrlReview)
+            this.picDisplay=false;
+            setTimeout(() => {
+                this.picUrlReview = this.picUrl;
+            },500)
+        },
+        handleRemove(){
+            this.picDisplay=true;
+        },
         handleCurrentChange(val){
             this.page=val
         },
         addPubnot(){
-
+            if(this.pubnot.title==null||this.pubnot.content==null||this.picUrlReview==null){
+                ElMessage({
+                    message: "不能为空",
+                    type: 'error',
+                })
+                return;
+            }
+            this.$axios({
+                method: 'post',
+                url: '/api/admin/addNotice',
+                data:{
+                    adminId: localStorage.getItem('userId'),
+                    title: this.pubnot.title,
+                    content: this.pubnot.content,
+                    imgURL: this.picUrlReview,
+                    status: "未发布"
+                }
+            })
+            .then(res => {
+                console.log(res)
+                if(res.data.code==200){
+                    ElMessage({
+                        message: "上传成功",
+                        type: 'success',
+                    })
+                    this.picUrlReview==null;
+                    this.$router.go(0);
+                }else{
+                    ElMessage({
+                        message: "上传失败",
+                        type: 'error',
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                ElMessage.error('上传失败')
+            })
         },
         getCurrentRow(value){
             if(value!=null){
                 console.log(value);
-                this.currentPubnot.noticeID=value.noticeID;
-                this.currentPubnot.title=value.title;
-                this.currentPubnot.content=value.content;
+                this.currentPubnot=value;
                 console.log(this.currentPubnot);
             }
         },
-        editPubnot(){
-
-        },
         deletePubnot(){
-
+            this.$axios({
+                method: 'delete',
+                url: '/api/admin/deleteNotice/?noticeId='+this.currentPubnot.noticeId,
+            })
+            .then(res => {
+                console.log(res)
+                if(res.data.code==200){
+                    ElMessage({
+                        message: "删除成功",
+                        type: 'success',
+                    })
+                    this.$router.go(0);
+                }else{
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                ElMessage.error('操作失败')
+            })
         },
         confirmDeletePubnot(){
             ElMessageBox.confirm(
@@ -245,10 +324,101 @@ export default {
             .then(() => {
                 this.deletePubnot();
             })
-        }
+        },
+        filterTag(value, row) {
+            return row.status===value;
+        },
+        submit(){
+            ElMessageBox.confirm(
+                '确认发布公告?',
+                '提示',
+                {
+                    distinguishCancelAndClose: true,
+                    confirmButtonText: '确认',
+                    cancelButtonText: '取消',
+                }
+            )
+            .then(() => {
+                this.$axios({
+                    method: 'put',
+                    url: '/api/admin/releaseOrRepealNotice/?noticeId='+this.currentPubnot.noticeId+'&status=已发布',
+                })
+                .then(res => {
+                    console.log(res)
+                    if(res.data.code==200){
+                        ElMessage({
+                            message: "发布成功",
+                            type: 'success',
+                        })
+                        this.$router.go(0);
+                    }else{
+                        ElMessage({
+                            message: "操作失败",
+                            type: 'error',
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    ElMessage.error('操作失败')
+                })
+            })
+        },
+        cancelPubnot(){
+            ElMessageBox.confirm(
+                '确认撤销公告?',
+                '提示',
+                {
+                    distinguishCancelAndClose: true,
+                    confirmButtonText: '确认',
+                    cancelButtonText: '取消',
+                }
+            )
+            .then(() => {
+                this.$axios({
+                    method: 'put',
+                    url: '/api/admin/releaseOrRepealNotice/?noticeId='+this.currentPubnot.noticeId+'&status=已撤销',
+                })
+                .then(res => {
+                    console.log(res)
+                    if(res.data.code==200){
+                        ElMessage({
+                            message: "撤销成功",
+                            type: 'success',
+                        })
+                        this.$router.go(0);
+                    }else{
+                        ElMessage({
+                            message: "操作失败",
+                            type: 'error',
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    ElMessage.error('操作失败')
+                })
+            })
+        },
     },
-    creater(){
-
+    created(){
+        this.$axios({
+            method: 'get',
+            url: '/api/admin/getNoticeList',
+        })
+        .then(res => {
+            if(res.data.code==200){
+                this.pubnotList=res.data.data.notice_list;
+                this.total=this.pubnotList.length;
+                console.log('公告列表'+this.pubnotList);
+            }
+            else{
+                this.pubnotList=null
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     },
 }
 

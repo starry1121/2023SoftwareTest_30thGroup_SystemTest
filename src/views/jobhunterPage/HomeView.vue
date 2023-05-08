@@ -51,9 +51,9 @@
         >
         <el-card class="noticeList">
           <div style="padding: 10px">
-            <img class="noticeImg" :src="item.imgURL" alt="公告img">
+            <el-image style="width: 300px; height: 240px" :src="item.imgURL" fit="fit" alt="公告img"/>
             <h2 class="noticeTitle">{{ item.title }}</h2>
-            <p class="announceTime">{{ item.announceTime }}</p>
+            <p class="announceTime">{{ item.announceTime}}</p>
             <el-button color="#7A74C2" class="btn" type="primary"  @click="item.drawer = true">查看详情</el-button>
             <!-- <p class="noticeContent">{{ item.content }}</p> -->
           </div>
@@ -69,7 +69,7 @@
         >
           <div class="drawer">
             <span class="announceTime">{{ item.announceTime }}</span>
-            <img class="noticeImg" :src="item.imgURL" alt="公告img">
+            <el-image style="width: 400px; height: 300px" :src="item.imgURL" fit="fit" alt="公告img"/>
             <p v-html="item.content"></p>
           </div>
         </el-drawer>
@@ -118,124 +118,8 @@ export default {
     page: 1,
     limit: 3,
     total: 6,
-    // jobList: [{
-    //   job_id: '1',
-    //   recuriter_id: '1',
-    //   work_name: '广州番禺宜家家居长短期兼职',
-    //   work_details: '',
-    //   start_time: '2020.02.22',
-    //   end_time: '2020.02.25',
-    //   job_type: '市场服务',
-    //   work_place:'广东广州番禺广州市番禺区东艺路139号广东广州番禺广州市番禺区东艺路139号广东广州番禺广州市番禺区东艺路139号',
-    //   salary:'800.00'
-    // }, {
-    //   job_id: '2',
-    //   recuriter_id: '1',
-    //   work_name: '上海市宜家家居长短期兼职',
-    //   work_details: '',
-    //   start_time: '2020.02.22',
-    //   end_time: '2020.02.25',
-    //   job_type: '市场服务',
-    //   work_place:'上海市嘉定区曹安公路4800号',
-    //   salary:'800.00'
-    // }, {
-    //   job_id: '3',
-    //   recuriter_id: '1',
-    //   work_name: '广州番禺宜家家居长短期兼职',
-    //   work_details: '',
-    //   start_time: '2020.02.22',
-    //   end_time: '2020.02.25',
-    //   job_type: '市场服务',
-    //   work_place:'广东广州番禺广州市番禺区东艺路139号',
-    //   salary:'800.00'
-    // }, {
-    //   job_id: '4',
-    //   recuriter_id: '1',
-    //   work_name: '广州番禺宜家家居长短期兼职',
-    //   work_details: '',
-    //   start_time: '2020.02.22',
-    //   end_time: '2020.02.25',
-    //   job_type: '市场服务',
-    //   work_place:'广东广州番禺广州市番禺区东艺路139号',
-    //   salary:'800.00'
-    // }, {
-    //   job_id: '5',
-    //   recuriter_id: '1',
-    //   work_name: '广州番禺宜家家居长短期兼职',
-    //   work_details: '',
-    //   start_time: '2020.02.22',
-    //   end_time: '2020.02.25',
-    //   job_type: '市场服务',
-    //   work_place:'广东广州番禺广州市番禺区东艺路139号',
-    //   salary:'800.00'
-    // }, {
-    //   job_id: '6',
-    //   recuriter_id: '1',
-    //   work_name: '广州番禺宜家家居长短期兼职',
-    //   work_details: '',
-    //   start_time: '2020.02.22',
-    //   end_time: '2020.02.25',
-    //   job_type: '市场服务',
-    //   work_place:'广东广州番禺广州市番禺区东艺路139号',
-    //   salary:'800.00'
-    // }, {
-    //   job_id: '7',
-    //   recuriter_id: '1',
-    //   work_name: '广州番禺宜家家居长短期兼职',
-    //   work_details: '',
-    //   start_time: '2020.02.22',
-    //   end_time: '2020.02.25',
-    //   job_type: '市场服务',
-    //   work_place:'广东广州番禺广州市番禺区东艺路139号',
-    //   salary:'800.00'
-    // }],
     jobList:[{}],
-    noticeList: [{
-      "drawer":false,
-      "noticeID": 1,
-      "content": "这是公告内容",
-      "status": "已发布",
-      "announceTime": "2021-02-18 05:43:00",
-      "adminID": 23,
-      "title": "这是公告标题",
-      "imgURL": "http://dummyimage.com/400x400"
-    },{
-      "drawer":false,
-      "noticeID": 2,
-      "content": "这是公告内容",
-      "status": "已发布",
-      "announceTime": "1974-12-11 07:41:38",
-      "adminID": 26,
-      "title": "这是公告标题",
-      "imgURL": "http://dummyimage.com/400x400"
-    },{
-      "drawer":false,
-      "noticeID": 3,
-      "content": "这是公告内容",
-      "status": "已发布",
-      "announceTime": "1974-12-11 07:41:38",
-      "adminID": 26,
-      "title": "这是公告标题",
-      "imgURL": "http://dummyimage.com/400x400"
-    },{
-      "drawer":false,
-      "noticeID": 4,
-      "content": "这是公告内容",
-      "status": "已发布",
-      "announceTime": "1974-12-11 07:41:38",
-      "adminID": 26,
-      "title": "这是公告标题",
-      "imgURL": "http://dummyimage.com/400x400"
-    },{
-      "drawer":false,
-      "noticeID": 5,
-      "content": "这是公告内容",
-      "status": "已发布",
-      "announceTime": "1974-12-11 07:41:38",
-      "adminID": 26,
-      "title": "这是公告标题",
-      "imgURL": "http://dummyimage.com/400x400"
-    }]
+    noticeList: [{}]
   }
   },
   methods: {
@@ -261,6 +145,23 @@ export default {
     })
     .catch(function (error) {
       console.log(error);
+    })
+    this.$axios({
+        method: 'get',
+        url: '/api/admin/getNoticeList/?status=已发布',
+    })
+    .then(res => {
+        if(res.data.code==200){
+            this.noticeList=res.data.data.notice_list;
+            this.total=this.noticeList.length;
+            console.log('公告列表'+this.noticeList);
+        }
+        else{
+            this.pubnotList=null
+        }
+    })
+    .catch(function (error) {
+        console.log(error);
     })
   },
 }
@@ -396,9 +297,6 @@ export default {
     height: 410px;
   }
 
-  .noticeList .noticeImg{
-    width: 16vw;
-  }
   .noticeList .noticeTitle{
     color: #444076;
     font-size: 22px;

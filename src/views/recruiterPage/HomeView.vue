@@ -23,7 +23,7 @@
         >
         <el-card class="noticeList">
           <div style="padding: 10px">
-            <img class="noticeImg" :src="item.imgURL" alt="公告img">
+            <el-image style="width: 300px; height: 240px" :src="item.imgURL" fit="fit" alt="公告img"/>
             <h2 class="noticeTitle">{{ item.title }}</h2>
             <p class="announceTime">{{ item.announceTime }}</p>
             <el-button color="#7A74C2" class="btn" type="primary"  @click="item.drawer = true">查看详情</el-button>
@@ -41,7 +41,7 @@
         >
           <div class="drawer">
             <span class="announceTime">{{ item.announceTime }}</span>
-            <img class="noticeImg" :src="item.imgURL" alt="公告img">
+            <el-image style="width: 400px; height: 300px" :src="item.imgURL" fit="fit" alt="公告img"/>
             <p v-html="item.content"></p>
           </div>
         </el-drawer>
@@ -90,52 +90,7 @@ export default {
     page: 1,
     limit: 3,
     total: 6,
-    noticeList: [{
-      "drawer":false,
-      "noticeID": 1,
-      "content": "这是公告内容",
-      "status": "已发布",
-      "announceTime": "2021-02-18 05:43:00",
-      "adminID": 23,
-      "title": "这是公告标题",
-      "imgURL": "http://dummyimage.com/400x400"
-    },{
-      "drawer":false,
-      "noticeID": 2,
-      "content": "这是公告内容",
-      "status": "已发布",
-      "announceTime": "1974-12-11 07:41:38",
-      "adminID": 26,
-      "title": "这是公告标题",
-      "imgURL": "http://dummyimage.com/400x400"
-    },{
-      "drawer":false,
-      "noticeID": 3,
-      "content": "这是公告内容",
-      "status": "已发布",
-      "announceTime": "1974-12-11 07:41:38",
-      "adminID": 26,
-      "title": "这是公告标题",
-      "imgURL": "http://dummyimage.com/400x400"
-    },{
-      "drawer":false,
-      "noticeID": 4,
-      "content": "这是公告内容",
-      "status": "已发布",
-      "announceTime": "1974-12-11 07:41:38",
-      "adminID": 26,
-      "title": "这是公告标题",
-      "imgURL": "http://dummyimage.com/400x400"
-    },{
-      "drawer":false,
-      "noticeID": 5,
-      "content": "这是公告内容",
-      "status": "已发布",
-      "announceTime": "1974-12-11 07:41:38",
-      "adminID": 26,
-      "title": "这是公告标题",
-      "imgURL": "http://dummyimage.com/400x400"
-    }]
+    noticeList: [{}]
   }
   },
   methods: {
@@ -144,6 +99,23 @@ export default {
     },
   },
   created() {
+    this.$axios({
+        method: 'get',
+        url: '/api/admin/getNoticeList/?status=已发布',
+    })
+    .then(res => {
+        if(res.data.code==200){
+            this.noticeList=res.data.data.notice_list;
+            this.total=this.noticeList.length;
+            console.log('公告列表'+this.noticeList);
+        }
+        else{
+            this.pubnotList=null
+        }
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
   },
 }
 </script>
