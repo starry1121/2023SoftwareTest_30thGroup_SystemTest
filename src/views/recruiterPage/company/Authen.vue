@@ -43,16 +43,9 @@
       <el-col :span="15" class="card">
           <el-header class="card_hd">
           <span class="word">企业认证</span>
-          <el-button v-if="authen==null" class="btn" color="#444076" @click="dialogFormVisible=true">申请</el-button>
+          <el-button v-if="authen==null||authen.checkStatus=='未通过'" class="btn" color="#444076" @click="dialogFormVisible=true">申请</el-button>
           </el-header>
           <el-row justify="center">
-          <!-- <el-col class="userPhoto" :span="8">
-              <el-avatar :size="100" fit="cover" :src="userInfo.headportrait" />
-              <el-upload>
-              <el-button color="#444076" class="btn" type="primary">修改头像</el-button>
-              </el-upload>
-              <el-button color="#444076" class="btn" type="primary" @click="display=true">修改密码</el-button>
-          </el-col> -->
               <el-form v-if="authen!=null" class="form"
                   label-position="top"
                   label-width="100px"
@@ -72,7 +65,20 @@
                       <el-image style="width: 300px; height: 150px" :src="authen.certification" :fit="fit" />
                   </el-form-item>
                   <el-form-item label="审核状态">
-                    <el-tag>{{ authen.checkStatus }}</el-tag>
+                    <el-tag
+                        v-if="authen.checkStatus == '未审核'"
+                        disable-transitions
+                    >未审核</el-tag>
+                    <el-tag
+                        v-if="authen.checkStatus == '已通过'"
+                        type="success"
+                        disable-transitions
+                    >已通过</el-tag>
+                    <el-tag
+                        v-if="authen.checkStatus =='未通过'"
+                        type="danger"
+                        disable-transitions
+                    >未通过</el-tag>
                   </el-form-item>
               </el-scrollbar>
 
@@ -94,12 +100,20 @@
               <el-input v-model="authenApply.companyId" autocomplete="off"/>
           </el-form-item>
           <el-form-item label="证件照片" label-width="70px">
-            <el-image style="width: 300px; height: 150px" :src="authenApply.certification" :fit="fit" />
+            <el-image v-if="picDisplay" style="width: 300px; height: 150px"  fit="fit"/>
+            <el-image v-if="!picDisplay" style="width: 300px; height: 150px" :src="picUrlReview" :fit="fit" />
           </el-form-item>
           <el-form-item label="&emsp;" label-width="70px">
-            <el-upload>
-              <el-button color="#444076" class="btn" type="primary" @click="authenApply.certification='http://dummyimage.com/400x400'">上传证件</el-button>
-              </el-upload>
+            <el-upload class="upload"
+                :show-file-list=false
+                :name="'iFile'"
+                limit=1
+                accept=".jpg,.jpeg,.png,.gif"
+                :http-request="upload"
+                :on-remove="handleRemove"
+            >
+              <el-button color="#444076" class="btn" type="primary">上传证件</el-button>
+            </el-upload>
           </el-form-item>
         </el-form>
         <template #footer>
@@ -116,24 +130,20 @@
 import companyNav from '@/components/companyNav.vue'
 import { ElMessage } from 'element-plus'
 import 'element-plus/es/components/message/style/index'
+import COS from "cos-js-sdk-v5"
+import {ref} from "vue"
+
+var cos = new COS({
+    SecretId: "AKIDGOL8fy1oLbeU9aom8E3d2E8tOffQxWzG",
+    SecretKey: "7yZw63j9KTXP6f22xoVwFLOFsIkDVgdM",
+})
 
   export default {
   name: "jobhunterPerson",
   data () {
   return {
+    picDisplay: true,
     dialogFormVisible:false,
-    // authen:{
-    //   applyId:1,
-    //   companyName:"四川爱慕聚优网络技术有限公司",
-    //   recruiterId:1,
-    //   applyTime:"2019-06-05 13:53:42",
-    //   companyType:'公办',
-    //   companyId:"620403111122223333",
-    //   certification:"http://dummyimage.com/400x400",
-    //   checkStatus:"未审核",
-    //   checkTime:null,
-    //   result:null
-    // },
     authen:null,
     authenApply:{
       recruiterId:1,
@@ -141,11 +151,43 @@ import 'element-plus/es/components/message/style/index'
       certification:null,
       companyName:null,
       companyType:null,
-    }
+    },
+    uploadIcon:'https://cluboat-1314598070.cos.ap-nanjing.myqcloud.com/upload.png',
+    picUrlReview:ref('https://cluboat-1314598070.cos.ap-nanjing.myqcloud.com/test.png'),
+    picUrl:ref(''),
   }
   },
   methods: {
+    cancel(){
+        this.picDisplay=true;
+    },
+    upload(picture) {
+        // 随机创建文件昵称
+        var suffix = picture.file.name.substring(picture.file.name.lastIndexOf("."));
+        var randomContent = Math.random().toString(36);
+        var picName = randomContent + suffix;
+        console.log(picName)
+        cos.putObject({
+            Bucket: 'jbgz-1312275634',
+            Region: 'ap-shanghai', // 地区
+            Key: picName, // 上传的文件名
+            StorageClass: 'STANDARD',
+            Body: picture.file, // 上传文件对象
+        }, function (err, data) {
+            console.log(err, data)
+        })
+        this.picUrl = 'https://jbgz-1312275634.cos.ap-shanghai.myqcloud.com/' + picName;
+        console.log(this.picUrlReview)
+        this.picDisplay=false;
+        setTimeout(() => {
+            this.picUrlReview = this.picUrl;
+        },500)
+    },
+    handleRemove(){
+        this.picDisplay=true;
+    },
       apply(){
+        this.authenApply.certification=this.picUrlReview;
           if(this.authenApply.companyId==null||this.authenApply.companyName==null||this.authenApply.certification==null||this.authenApply.companyType==null){
               ElMessage({
                   message: "不能为空",
@@ -165,6 +207,7 @@ import 'element-plus/es/components/message/style/index'
                     message: "申请提交成功",
                     type: 'success',
                 })
+                this.$router.go(0);
               }else{
                 ElMessage({
                     message: "申请提交失败",
@@ -181,22 +224,22 @@ import 'element-plus/es/components/message/style/index'
   },
   created() {
     this.authenApply.recruiterId=localStorage.getItem('userId')
-      // this.$axios({
-      //     method: 'get',
-      //     url: ''+localStorage.getItem('userId'),
-      // })
-      // .then(res => {
-        // if(resizeBy.data.code==200){
-        //     console.log(res.data.data);
-        //     this.authen=res.data.data.personauthen_list[0];
-        // }
-        // else{
-        //   this.authen=null
-        // }
-      // })
-      // .catch(function (error) {
-      //     console.log(error);
-      // })
+    this.$axios({
+        method: 'get',
+        url: '/api/recruiter/getAuthentication/?recruiterId='+localStorage.getItem('userId'),
+    })
+    .then(res => {
+      if(res.data.code==200){
+        this.authen=res.data.data.companyauthen_list[0];
+        console.log('我的实名申请'+this.authen);
+      }
+      else{
+        this.authen=null
+      }
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
   },
   components: {
       companyNav,

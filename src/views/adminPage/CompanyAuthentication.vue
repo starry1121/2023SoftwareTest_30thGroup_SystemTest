@@ -141,7 +141,7 @@
                     </el-row>
                     <el-dialog v-model="dialogFormVisible" title="申请详情" align-center draggable>
                         <el-form :model="apply">
-                            <el-form-item label="审核时间" label-width="80px">
+                            <el-form-item v-if="apply.checkStatus !='未审核'" label="审核时间" label-width="80px">
                                 <el-input disabled v-model="apply.checkTime" autocomplete="off" />
                             </el-form-item>
                             <el-form-item label="公司类型" label-width="80px">

@@ -78,6 +78,7 @@
                     >
                         <el-table-column label="序号" type="index" width="80" />
                         <el-table-column prop="jobhunterId" label="求职者ID" sortable width="120"/>
+                        <el-table-column prop="realName" label="真实姓名" sortable width="120"/>
                         <el-table-column prop="idCard" label="证件号码" width="200"/>
                         <el-table-column label="证件照片">
                             <template #default="scope">
@@ -139,8 +140,11 @@
                     </el-row>
                     <el-dialog v-model="dialogFormVisible" title="申请详情" align-center draggable>
                         <el-form :model="apply">
-                            <el-form-item label="审核时间" label-width="80px">
+                            <el-form-item v-if="apply.checkStatus !='未审核'" label="审核时间" label-width="80px">
                                 <el-input disabled v-model="apply.checkTime" autocomplete="off" />
+                            </el-form-item>
+                            <el-form-item label="真实姓名" label-width="80px">
+                                <el-input disabled v-model="apply.realName" autocomplete="off" />
                             </el-form-item>
                             <el-form-item label="证件号码" label-width="80px">
                                 <el-input disabled v-model="apply.idCard" autocomplete="off" />

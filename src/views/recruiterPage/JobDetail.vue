@@ -251,8 +251,8 @@ export default {
                 url: '/api/recruiter/personInfo/get?recruiterId='+this.recruiterId,
             })
             .then(resu => {
-                console.log(resu.data.data.company_list);
-                this.company=resu.data.data.company_list;
+                console.log(resu.data.data.company_list[0]);
+                this.company=resu.data.data.company_list[0];
                 console.log(this.company);
             })
             .catch(function (error) {
@@ -290,6 +290,8 @@ export default {
         .catch(function (error) {
             console.log(error);
         })
+
+
     },
     methods: {
         goBack() {
