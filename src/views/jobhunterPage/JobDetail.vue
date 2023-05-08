@@ -51,7 +51,7 @@
                     <el-button v-if="!applyState" color="#7A74C2" class="btn" type="primary" @click="this.dialogFormVisible=true;">报名兼职</el-button>
                     <el-button v-if="applyState" color="#7A74C2" class="btn" type="primary" disabled>已报名</el-button>
                     <el-button color="#7A74C2" class="btn" type="primary" @click="dialogFormVisible1=true">举报兼职</el-button>
-                    <el-button color="#7A74C2" class="btn" type="primary" @click="jobDetail">收藏兼职</el-button>
+                    <el-button color="#7A74C2" class="btn" type="primary" @click="dialogFormVisible2=true">收藏兼职</el-button>
                 </div>
             </el-row>
         </el-row>
@@ -83,6 +83,31 @@
                     <el-input v-model="report.reason" :rows="5" type="textarea"/>
                 </el-form-item>
             </el-form>
+            <template #footer>
+            <span class="dialog-footer">
+                <el-button type="primary" @click="reportJob">
+                    确认
+                </el-button>
+                <el-button type="primary" @click="dialogFormVisible1=false">
+                    取消
+                </el-button>
+            </span>
+            </template>
+        </el-dialog>
+
+        <el-dialog v-model="dialogFormVisible2" title="收藏兼职" align-center>
+            请选择收藏夹：
+            <el-tree-select
+                v-model="favoritesDirId"
+                :data="favoritesList"
+                :label="favoritesDirName"
+                check-strictly
+                :render-after-expand="false"
+            >
+
+            </el-tree-select>
+
+            <el-divider />
             <template #footer>
             <span class="dialog-footer">
                 <el-button type="primary" @click="reportJob">
@@ -133,6 +158,7 @@ data(){
         recruiterInfo:{},
         dialogFormVisible:false,
         dialogFormVisible1:false,
+        dialogFormVisible2:false,
         contactMethod:null,
         commitContactMethod:null,
         job: {},
@@ -146,8 +172,8 @@ data(){
             jobhunterId:null,
             reason:null
         },
-        company:{}
-        
+        company:{},
+        favoritesList:[{}],
     }
 },
 created() {
@@ -205,6 +231,7 @@ created() {
     .catch(function (error) {
         console.log(error);
     })
+    
     //获取联系方式
     this.$axios({
         method: 'get',
@@ -212,6 +239,19 @@ created() {
     })
     .then(res => {
         this.contactMethod=res.data.data.contactMethod;
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+
+    // 获取收藏夹列表
+    this.$axios({
+        method: 'get',
+        url: '/api/jobhunter/favorites/?jobhunterId='+localStorage.getItem('userId'),
+    })
+    .then(res => {
+        this.favoritesList=res.data.data.favorites_list;
+        console.log('收藏夹列表'+this.favoritesList);
     })
     .catch(function (error) {
         console.log(error);
