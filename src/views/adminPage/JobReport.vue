@@ -301,7 +301,7 @@ export default {
         },
         pass(){
             ElMessageBox.confirm(
-                '确认通过该申请?',
+                '确认通过该申请?将冻结被举报的兼职！',
                 '提示',
                 {
                     distinguishCancelAndClose: true,
@@ -324,6 +324,32 @@ export default {
                     if(res.data.code==200){
                         ElMessage({
                             message: "已通过该申请",
+                            type: 'success',
+                        })
+                        this.$router.go(0);
+                    }
+                    else{
+                        ElMessage({
+                            message: "操作失败",
+                            type: 'error',
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                })
+                this.$axios({
+                    method: 'post',
+                    url: '/api/admin/auditJobUnreviewed?jobId='+this.apply.jobId+'&jobState=已冻结',
+                })
+                .then(res => {
+                    if(res.data.code==200){
+                        ElMessage({
+                            message: "已冻结被举报的兼职",
                             type: 'success',
                         })
                         this.$router.go(0);

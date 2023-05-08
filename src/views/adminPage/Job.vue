@@ -77,36 +77,47 @@
                         @current-change="getCurrentRow"
                     >
                         <el-table-column label="序号" type="index" />
-                        <el-table-column prop="jobId" label="兼职ID" sortable/>
-                        <el-table-column prop="recuriterID" label="招聘方ID" sortable/>
-                        <el-table-column
+                        <el-table-column prop="jobId" label="兼职ID" sortable width="100"/>
+                        <el-table-column prop="companyName" label="发布公司"/>
+                        <el-table-column prop="workName" label="兼职名称"/>
+                        <el-table-column prop="workDetails" label="兼职详情"/>
+                        <el-table-column prop="jobType" label="兼职类型"/>
+                        <el-table-column prop="workPlace" label="兼职地点"/>
+                        <!-- <el-table-column
                             prop="jobState"
                             label="状态"
                             width="100"
                             :filters="[
                                 { text: '已通过', value: '已通过' },
                                 { text: '未通过', value: '未通过' },
+                                { text: '未审核', value: '未审核' },
                             ]"
                             :filter-method="filterTag"
                             filter-placement="bottom-end"
                             >
                             <template #default="scope">
                                 <el-tag
-                                v-if="scope.row.jobState == '已通过'"
-                                :type="success"
-                                disable-transitions
+                                    v-if="scope.row.jobState == '未审核'"
+                                    disable-transitions
+                                >未审核</el-tag>
+                                <el-tag
+                                    v-if="scope.row.jobState == '已通过'"
+                                    type="success"
+                                    disable-transitions
                                 >已通过</el-tag>
                                 <el-tag
-                                v-if="scope.row.jobState =='未通过'"
-                                :type="scope.row.jobState === '已通过' ? 'success' : 'danger'"
-                                disable-transitions
+                                    v-if="scope.row.jobState =='未通过'"
+                                    type="danger"
+                                    disable-transitions
                                 >未通过</el-tag>
                             </template>
-                        </el-table-column>
+                        </el-table-column> -->
                         <el-table-column fixed="right" label="操作" width="120">
                             <template #default="operation">
-                                <el-button :disabled="operation.row.jobState == '已通过'" link type="primary" size="small" @click="dialogFormVisible = true"
-                                >查看详情</el-button>
+                                <el-button v-if="operation.row.jobState == '未审核'" link type="primary" size="small" @click="dialogFormVisible = true"
+                                >审核</el-button>
+                                <el-button v-if="operation.row.jobState != '未审核'" link type="primary" size="small" @click="dialogFormVisible = true"
+                                >查看</el-button>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -123,35 +134,59 @@
                             />
                         </div>
                     </el-row>
-                    <el-dialog v-model="dialogFormVisible" title="审批申请" align-center draggable>
+                    <el-dialog v-model="dialogFormVisible" title="兼职详情" align-center draggable>
                         <el-scrollbar max-height="400px">
-                            <el-descriptions
-                                direction="vertical"
-                                :column="3"
-                                size="large"
-                                border
-                                style="width:90%;"
-                            >
-                                <el-descriptions-item label="开始时间">{{apply.startTime}}</el-descriptions-item>
-                                <el-descriptions-item label="结束时间">{{apply.endTime}}</el-descriptions-item>
-                                <el-descriptions-item label="每日工作时间">{{apply.workTime}}</el-descriptions-item>
-                                <el-descriptions-item label="兼职类型">
-                                <el-tag size="small">{{apply.jobType}}</el-tag>
-                                </el-descriptions-item>
-                                <el-descriptions-item :span="3" label="地点">
-                                    {{apply.workPlace}}
-                                </el-descriptions-item>
-                                <el-descriptions-item :span="3" label="兼职详情">
-                                    <div v-html="apply.workDetails" class="workDetails"></div>
-                                </el-descriptions-item>
+                            <!-- 兼职详情 -->
+                            <el-descriptions direction="vertical" :column="2" size="large" border style="width:100%;" title="兼职详情">
+                            <el-descriptions-item :span="1" label="兼职名称">
+                                {{ apply.workName }}
+                            </el-descriptions-item>
+                            <el-descriptions-item :span="1" label="发布公司">
+                                {{ apply.companyName }}
+                            </el-descriptions-item>
+                            <el-descriptions-item :span="1" label="兼职类型">
+                                <el-tag size="small">{{ apply.jobType }}</el-tag>
+                            </el-descriptions-item>
+                            <el-descriptions-item label="薪水">{{ apply.salary }}</el-descriptions-item>
+                            <el-descriptions-item label="开始时间">{{ apply.startTime }}</el-descriptions-item>
+                            <el-descriptions-item label="结束时间">{{ apply.endTime }}</el-descriptions-item>
+                            <el-descriptions-item label="每日工作时间">{{ apply.workTime }}</el-descriptions-item>
+                            <el-descriptions-item :span="2" label="公司名称">
+                                {{ apply.companyName }}
+                            </el-descriptions-item>
+                            <el-descriptions-item :span="2" label="地点">
+                                {{ apply.workPlace }}
+                            </el-descriptions-item>
+                            <el-descriptions-item :span="2" label="兼职详情">
+                                <div v-html="apply.workDetails" class="workDetails"></div>
+                            </el-descriptions-item>
                             </el-descriptions>
+                            <el-form v-if="apply.jobState!='未审核'" :model="apply">
+                                <br>
+                                <h3 style="margin-bottom:10px;">审核详情</h3>
+                                <el-form-item label="审核状态" label-width="80px">
+                                    <el-tag
+                                        v-if="apply.jobState == '已通过'"
+                                        type="success"
+                                        disable-transitions
+                                    >已通过</el-tag>
+                                    <el-tag
+                                        v-if="apply.jobState =='未通过'"
+                                        type="danger"
+                                        disable-transitions
+                                    >未通过</el-tag>
+                                </el-form-item>
+                                <el-form-item v-if="apply.jobState=='未通过'" label="结果反馈" label-width="80px">
+                                    <el-input disabled v-model="apply.reportResult" autocomplete="off" type="textarea" :rows="3"/>
+                                </el-form-item>
+                            </el-form>
                         </el-scrollbar>
-
                         <template #footer>
-                        <span class="dialog-footer">
-                            <el-button @click="noPass">不通过</el-button>
-                            <el-button type="primary" @click="pass">通过</el-button>
-                        </span>
+                            <span class="dialog-footer">
+                                <el-button v-if="apply.jobState!='未审核'" type="primary" @click="dialogFormVisible=false">返回</el-button>
+                                <el-button v-if="apply.jobState=='未审核'" type="danger" plain @click="noPass">驳回</el-button>
+                                <el-button v-if="apply.jobState=='未审核'" type="primary" plain @click="pass">通过</el-button>
+                            </span>
                         </template>
                     </el-dialog>
                 </el-card>
@@ -162,7 +197,7 @@
 </template>
 
 <script>
-import { ElMessageBox } from 'element-plus'
+import { ElMessage,ElMessageBox } from 'element-plus'
 import 'element-plus/es/components/message/style/index'
 import 'element-plus/es/components/message-box/style/index'
 
@@ -173,49 +208,9 @@ export default {
             page: 1,
             limit: 8,
             total: 6,
-            applyList:[{
-                "jobId":1,
-                "workDetails":'<br>【工作薪酬】时薪20.5/h&nbsp;&nbsp;法定三薪<br>【上班时间】9:00-22:00之间安排每班4-8小时，一周上班3-7天，需要周末＋工作日最少一天<br>【工作地点】 广州市番禺区东艺路139号-15<br>【岗位要求】<br>1、性格开朗,沟通能力强,擅长与陌生人打交道,能主动招揽商场访客成为会员<br>2、周六日、节假日(包含春节)均能上班,适应零售排班制度,不随意请假缺勤<br>3、完成每日招募目标,超额完成月度目标,可获额外奖励<br>4、亲和力强,热爱家居生活,有服务意识,为商场访客提供良好的购物体验<br>【工作内容】<br>以下为部分部门，实际目前招聘部门可添加报名咨询~<br>顾客关系部收银：面对顾客有服务意识.&nbsp;2.适应轮岗轮休，能接受长时间站着工作。3.对工作充满热情，乐于同团队其他成员合作&nbsp;。<br>销售部：办公家具区卖场服务顾客、开单、卖场basic的维护"<br>餐饮部：顾客餐厅打热餐、小餐馆打雪糕、热狗；餐厅收银、货品补货、盘点"<br>【上岗要求】<br>1.春节可以上班（指的是除夕至初十可以轮岗轮休）<br>2主动积极,服从任何排班安排,服务意识强。<br>3.男女均可,适合学生族,上班族。<br>4、18周岁以上&nbsp;&nbsp;<br>【薪酬发放】工资月结，每月的25号结算',
-                "startTime":"2018-04-01",
-                "endTime":"2015-12-24",
-                "jobType":"市场服务",
-                "workPlace":"广东广州番禺广州市番禺区东艺路139号",
-                "salary":800,
-                "workName":"广州番禺宜家家居长短期兼职",
-                "recuriterID":1,
-                "releaseTime":"2015-12-24 22:21:18",
-                "workTime":"12:07:43",
-                "jobState":"未通过"
-            },
-            {
-                "jobId":2,
-                "workDetails":"这是工作详情",
-                "startTime":"2018-04-01 12:07:43",
-                "endTime":"2015-12-24 22:21:18",
-                "jobType":"市场服务",
-                "workPlace":"广东广州番禺广州市番禺区东艺路139号",
-                "salary":800,
-                "workName":"广州番禺宜家家居长短期兼职",
-                "recuriterID":1,
-                "releaseTime":"2015-12-24 22:21:18",
-                "workTime":"12:07:43",
-                "jobState":"未通过"
-            }],
+            applyList:[],
             dialogFormVisible: false,
-            apply:{
-                "jobId":2,
-                "workDetails":"这是工作详情",
-                "startTime":"2018-04-01 12:07:43",
-                "endTime":"2015-12-24 22:21:18",
-                "jobType":"市场服务",
-                "workPlace":"广东广州番禺广州市番禺区东艺路139号",
-                "salary":800,
-                "workName":"广州番禺宜家家居长短期兼职",
-                "recuriterID":1,
-                "releaseTime":"2015-12-24 22:21:18",
-                "workTime":"12:07:43",
-                "jobState":"未通过"
-            },
+            apply:{},
         }
     },
     methods: {
@@ -225,32 +220,14 @@ export default {
         getCurrentRow(value){
             if(value!=null){
                 console.log(value);
-                this.apply.jobId=value.jobId;
-                this.apply.workDetails=value.workDetails;
-                this.apply.startTime=value.startTime;
-                this.apply.endTime=value.endTime;
-                this.apply.jobType=value.jobType;
-                this.apply.workPlace=value.workPlace;
-                this.apply.salary=value.salary;
-                this.apply.workName=value.workName;
-                this.apply.recuriterID=value.recuriterID;
-                this.apply.releaseTime=value.releaseTime;
-                this.apply.workTime=value.workTime;
-                this.apply.jobState=value.jobState;
+                this.apply=value;
             }
         },
         noPass(){
-            this.dialogFormVisible = false;
-        },
-        pass(){
-            this.dialogFormVisible = false;
-        },
-        delete(){
+            console.log("不通过");
 
-        },
-        confirmDelete(){
             ElMessageBox.confirm(
-                '确认删除?',
+                '确认驳回该兼职?',
                 '提示',
                 {
                     distinguishCancelAndClose: true,
@@ -259,12 +236,99 @@ export default {
                 }
             )
             .then(() => {
-                this.delete();
+                this.dialogFormVisible = false;
+                this.$axios({
+                    method: 'post',
+                    url: '/api/admin/auditJobUnreviewed?jobId='+this.apply.jobId+'&jobState=未通过',
+                })
+                .then(res => {
+                    if(res.data.code==200){
+                        ElMessage({
+                            message: "已驳回该兼职",
+                            type: 'success',
+                        })
+                        this.$router.go(0);
+                    }
+                    else{
+                        ElMessage({
+                            message: "操作失败",
+                            type: 'error',
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                })
             })
-        }
-    },
-    creater(){
+        },
+        pass(){
+            ElMessageBox.confirm(
+                '确认通过该兼职?',
+                '提示',
+                {
+                    distinguishCancelAndClose: true,
+                    confirmButtonText: '确认',
+                    cancelButtonText: '取消',
+                }
+            )
+            .then(() => {
+                this.dialogFormVisible = false;
+                this.$axios({
+                    method: 'post',
+                    url: '/api/admin/auditJobUnreviewed?jobId='+this.apply.jobId+'&jobState=已通过',
+                })
+                .then(res => {
+                    if(res.data.code==200){
+                        ElMessage({
+                            message: "已通过该兼职",
+                            type: 'success',
+                        })
+                        this.$router.go(0);
+                    }
+                    else{
+                        ElMessage({
+                            message: "操作失败",
+                            type: 'error',
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                })
+            })
 
+        },
+        filterTag(value, row) {
+            return row.jobState===value;
+        },
+    },
+    created(){
+        // 获取待审核的兼职列表
+        this.$axios({
+            method: 'get',
+            url: '/api/admin/getJobUnreviewed/?jobId=-1',
+        })
+        .then(res => {
+            if(res.data.code==200){
+                this.applyList=res.data.data.job_list;
+                this.total=this.applyList.length;
+                console.log('待审核的兼职列表'+this.applyList);
+            }
+            else{
+                this.applyList=null
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     },
 }
 
