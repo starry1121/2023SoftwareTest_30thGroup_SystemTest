@@ -48,10 +48,26 @@
                 <el-row style="width:90%;margin-top: 20px;"><div class="card-header">工作详情</div></el-row>
                 <el-row style="width:90%;"><div style="width:90%;" v-html="job.workDetails" class="workDetails"></div></el-row>
                 <div style="margin:20px auto;">
-                    <el-button v-if="!applyState" color="#7A74C2" class="btn" type="primary" @click="this.dialogFormVisible=true;">报名兼职</el-button>
-                    <el-button v-if="applyState" color="#7A74C2" class="btn" type="primary" disabled>已报名</el-button>
-                    <el-button color="#7A74C2" class="btn" type="primary" @click="dialogFormVisible1=true">举报兼职</el-button>
-                    <el-button color="#7A74C2" class="btn" type="primary" @click="dialogFormVisible2=true">收藏兼职</el-button>
+                    <!-- 报名兼职按钮 -->
+                    <el-tooltip content="报名兼职" placement="bottom" effect="light">
+                        <el-button v-if="!applyState" type="primary" plain circle @click="this.dialogFormVisible=true;"><el-icon><User /></el-icon></el-button>
+                    </el-tooltip>
+                    <!-- 已报名按钮 -->
+                    <el-tooltip content="已报名" placement="bottom" effect="light">
+                        <el-button v-if="applyState" type="primary" disabled circle><el-icon><User /></el-icon></el-button>
+                    </el-tooltip>
+                    <!-- 举报兼职按钮 -->
+                    <el-tooltip content="举报兼职" placement="bottom" effect="light">
+                        <el-button @click="dialogFormVisible1=true" type="danger" plain circle><el-icon><Warning /></el-icon></el-button>
+                    </el-tooltip>
+                    <!-- 收藏兼职按钮 -->
+                    <el-tooltip content="收藏兼职" placement="bottom" effect="light">
+                        <el-button v-if="!isCollected" type="warning" plain circle @click="dialogFormVisible2=true"><el-icon><Star /></el-icon></el-button>
+                    </el-tooltip>
+                    <!-- 取消收藏兼职按钮 -->
+                    <el-tooltip content="取消收藏" placement="bottom" effect="light">
+                        <el-button v-if="isCollected" type="warning" circle @click="cancelCollect"><el-icon><Star /></el-icon></el-button>
+                    </el-tooltip>
                 </div>
             </el-row>
         </el-row>
@@ -116,6 +132,7 @@
             </span>
             </template>
         </el-dialog>
+
         <el-backtop :bottom="80">
             <div style="height: 100%;width: 100%;background-color: #444076;text-align: center;line-height: 45px;color: #FFCAA6;vertical-align: middle;border-radius: 10px;">
                 <el-icon><ArrowUpBold /></el-icon>
@@ -125,8 +142,9 @@
 </template>
 <script>
 // @ is an alias to /src
-import { ElMessage } from 'element-plus'
-import 'element-plus/es/components/message/style/index'
+import { ElMessage,ElMessageBox } from 'element-plus'
+    import 'element-plus/es/components/message/style/index'
+    import 'element-plus/es/components/message-box/style/index'
 import {useRouter} from 'vue-router';
 
 export default {
@@ -172,6 +190,7 @@ data(){
         },
         company:{},
         favoritesList:[{}],
+        isCollected: null,
     }
 },
 created() {
@@ -250,6 +269,24 @@ created() {
     .then(res => {
         this.favoritesList=res.data.data.favorites_list;
         console.log('收藏夹列表'+this.favoritesList);
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+
+    // 获取兼职收藏状态
+    this.$axios({
+        method: 'get',
+        url: '/api/jobhunter/getCollectState?jobhunterId='+localStorage.getItem('userId')+'&jobId='+localStorage.getItem('jobDetailId'),
+    })
+    .then(res => {
+        console.log(res)
+        if(res.data.code==200){
+            this.isCollected=true;
+        }
+        else{
+            this.isCollected=false;
+        }
     })
     .catch(function (error) {
         console.log(error);
@@ -401,17 +438,45 @@ methods: {
             })
         })
     },
-    
-    // contact(){
-    //     const router = useRouter();
-    //     router.replace({
-    //         path: '/jobhunter/message/conversations/privatechat/' + 'fdee46b0-4b01-4590-bdba-6586d7617f95',
-    //         query: {
-    //             name: 'Tracy',
-    //             avatar: '/static/images/Avatar-3.png'
-    //         }
-    //     }); 
-    // }
+    cancelCollect(){
+        ElMessageBox.confirm(
+            '确认取消收藏？',
+            '提示',
+            {
+                distinguishCancelAndClose: true,
+                confirmButtonText: '确认',
+                cancelButtonText: '取消',
+            }
+        )
+        .then(() => {
+            this.$axios({
+                method: 'delete',
+                url: '/api/jobhunter/cancelCollect/?jobhunterId='+localStorage.getItem('userId')+'&jobId='+localStorage.getItem('jobDetailId'),
+            })
+            .then(res => {
+                if(res.data.code==200){
+                    ElMessage({
+                        message: "已取消该收藏",
+                        type: 'success',
+                    })
+                    this.$router.go(0);
+                }
+                else{
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                ElMessage({
+                    message: "操作失败",
+                    type: 'error',
+                })
+            })
+        })
+    },
 }
 }
 </script>

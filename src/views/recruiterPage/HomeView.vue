@@ -123,7 +123,7 @@ export default {
 <style scoped>
   .head{
     background-image: url("../../assets/bg.png");
-    height: 762px;
+    height: 100vh;
     background-size:cover;
     background-position:center center;
   }
