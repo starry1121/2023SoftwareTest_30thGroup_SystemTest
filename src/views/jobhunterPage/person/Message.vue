@@ -68,12 +68,19 @@
                                 <el-timeline style="margin: 20px 0px;">
                                     <el-timeline-item class="item" v-for="item in notification_list" :key="item" center :timestamp="item.sendTime" placement="top">
                                     <el-card>
-                                        <div style="font-size:18px;color:#444076;">
-                                            {{ item.title }}
-                                        </div>
-                                        <div style="font-size:14px;color:#444076;margin-top: 10px;">
-                                            {{ item.content }}
-                                        </div>
+                                        <el-row>
+                                            <el-col :span="22">
+                                                <div style="font-size:18px;color:#444076;">
+                                                    {{ item.title }}
+                                                </div>
+                                                <div style="font-size:14px;color:#444076;margin-top: 10px;">
+                                                    {{ item.content }}
+                                                </div>
+                                            </el-col>
+                                            <el-col :span="2">
+                                                <el-button type="danger" plain size="small" @click="deleteNotification(item.notificationId)" circle><el-icon><Delete /></el-icon></el-button>
+                                            </el-col>
+                                        </el-row>
                                     </el-card>
                                     </el-timeline-item>
                                 </el-timeline>
@@ -152,20 +159,7 @@
         dialogFormVisible:false,
         nickName:null,
         display:false,
-        notification_list: [
-            {
-                notificationId: 1,
-                content: "reprehenderit consectetur cupidatat consequat",
-                sendTime: "1979-05-11 14:19:56",
-                title: "术构合适南"
-            },
-            {
-                notificationId: 2,
-                content: "cillum",
-                sendTime: "1999-01-22 13:59:30",
-                title: "东况上类可"
-            }
-        ],
+        notification_list: [{}],
         jobhuntersession_list: [{}],
         message_list: [{}],
         appeal:{
@@ -236,24 +230,63 @@
             .then(() => {
             })
         },
+        deleteNotification(Id){
+            ElMessageBox.confirm(
+                '确认删除该通知？',
+                '提示',
+                {
+                    distinguishCancelAndClose: true,
+                    confirmButtonText: '确认',
+                    cancelButtonText: '取消',
+                }
+            )
+            .then(() => {
+                this.$axios({
+                    method: 'delete',
+                    url: '/api/message/deleteNotification/?notificationId='+Id,
+                })
+                .then(res => {
+                    if(res.data.code==200){
+                        ElMessage({
+                            message: "已删除",
+                            type: 'success',
+                        })
+                        this.$router.go(0);
+                    }
+                    else{
+                        ElMessage({
+                            message: "操作失败",
+                            type: 'error',
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                })
+            })
+        },
     },
     created() {
-        // this.$axios({
-        //     method: 'get',
-        //     url: ''+localStorage.getItem('userId'),
-        // })
-        // .then(res => {
-          // if(resizeBy.data.code==200){
-          //     console.log(res.data.data);
-          //     this.authen=res.data.data.personauthen_list[0];
-          // }
-          // else{
-          //   this.authen=null
-          // }
-        // })
-        // .catch(function (error) {
-        //     console.log(error);
-        // })
+        this.$axios({
+            method: 'get',
+            url: '/api/message/getNotificationList/?userId='+localStorage.getItem('userId'),
+        })
+        .then(res => {
+          if(res.data.code==200){
+              console.log(res.data.data);
+              this.notification_list=res.data.data.notification_list;
+          }
+          else{
+            this.notification_list=null
+          }
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     },
   }
   </script>

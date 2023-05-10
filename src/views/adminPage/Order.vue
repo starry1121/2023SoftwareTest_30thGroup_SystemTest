@@ -35,12 +35,12 @@
                     <el-menu-item class="menu-item2" index="/admin/jobReport">&emsp;兼职举报</el-menu-item>
                     <el-menu-item class="menu-item2" index="/admin/jobType">&emsp;兼职类型</el-menu-item>
                 </el-sub-menu>
-                <el-menu-item index="/admin/notification">
+                <!-- <el-menu-item index="/admin/notification">
                 <template #title>
                     <el-icon><Bell /></el-icon>
                     <span class="menu-item1">系统通知</span>
                 </template>
-                </el-menu-item>
+                </el-menu-item> -->
                 <el-menu-item index="/admin/notice">
                 <template #title>
                     <el-icon><Reading /></el-icon>

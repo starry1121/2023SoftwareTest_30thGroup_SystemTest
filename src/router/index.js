@@ -9,7 +9,7 @@ import adminOrder from '../views/adminPage/Order.vue'
 import adminJob from '../views/adminPage/Job.vue'
 import adminJobReport from '../views/adminPage/JobReport.vue'
 import adminJobType from '../views/adminPage/JobType.vue'
-import adminNotification from '../views/adminPage/Notification.vue'
+// import adminNotification from '../views/adminPage/Notification.vue'
 
 import jobhunterHomeView from '../views/jobhunterPage/HomeView.vue'
 import jobhunterJob from '../views/jobhunterPage/Job.vue'
@@ -87,11 +87,11 @@ const routes = [
     name: 'adminJobType',
     component: adminJobType
   },
-  {
-    path: '/admin/notification',
-    name: 'adminNotification',
-    component: adminNotification
-  },
+  // {
+  //   path: '/admin/notification',
+  //   name: 'adminNotification',
+  //   component: adminNotification
+  // },
   {
     path: '/jobhunter/person',
     name: 'jobhunterInfo',
