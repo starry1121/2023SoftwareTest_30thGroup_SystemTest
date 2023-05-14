@@ -46,7 +46,7 @@
             <el-row class="card" style="text-align: left;">
                 <div class="card-header">求职者列表-已报名</div>
                 <el-row style="width:100%;" justify="center">
-                    <el-table key="one" :data="signupList" style="width: 90%" height="250">
+                    <el-table :key="signupList" :data="signupList" style="width: 90%" height="250">
                         <el-table-column label="用户">
                             <template #default="scope">
                                 <div style="display: flex; align-items: center">
@@ -73,7 +73,7 @@
             <el-row key="two" class="card" style="text-align: left;">
                 <div class="card-header">求职者列表-已通过</div>
                 <el-row style="width:100%;" justify="center">
-                    <el-table :data="replyList" style="width: 90%" height="250">
+                    <el-table :key="replyList" :data="replyList" style="width: 90%" height="250">
                         <el-table-column label="用户">
                             <template #default="scope">
                                 <div style="display: flex; align-items: center">
@@ -96,7 +96,7 @@
             <el-row class="card">
                 <div class="card-header">求职者列表-已录用</div>
                 <el-row style="width:100%;" justify="center">
-                    <el-table key="three" :data="workingList" style="width: 90%" height="250">
+                    <el-table :key="workingList" :data="workingList" style="width: 90%" height="250">
                         <el-table-column label="用户">
                             <template #default="scope">
                                 <div style="display: flex; align-items: center">
@@ -121,7 +121,7 @@
             <el-row class="card">
                 <div class="card-header">求职者列表-已完成</div>
                 <el-row style="width:100%;" justify="center">
-                    <el-table key="four" :data="finishList" style="width: 90%" height="250" show-header>
+                    <el-table :key="finishList" :data="finishList" style="width: 90%" height="250" show-header>
                         <el-table-column prop="jobhunter.email" label="用户">
                             <template #default="scope">
                                 <div style="display: flex; align-items: center">
