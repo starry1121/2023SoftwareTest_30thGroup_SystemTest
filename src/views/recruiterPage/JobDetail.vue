@@ -46,7 +46,7 @@
             <el-row class="card" style="text-align: left;">
                 <div class="card-header">求职者列表-已报名</div>
                 <el-row style="width:100%;" justify="center">
-                    <el-table :data="signupList" style="width: 90%" height="250">
+                    <el-table key="one" :data="signupList" style="width: 90%" height="250">
                         <el-table-column label="用户">
                             <template #default="scope">
                                 <div style="display: flex; align-items: center">
@@ -70,7 +70,7 @@
                 </el-row>
             </el-row>
 
-            <el-row class="card" style="text-align: left;">
+            <el-row key="two" class="card" style="text-align: left;">
                 <div class="card-header">求职者列表-已通过</div>
                 <el-row style="width:100%;" justify="center">
                     <el-table :data="replyList" style="width: 90%" height="250">
@@ -96,7 +96,7 @@
             <el-row class="card">
                 <div class="card-header">求职者列表-已录用</div>
                 <el-row style="width:100%;" justify="center">
-                    <el-table :data="workingList" style="width: 90%" height="250">
+                    <el-table key="three" :data="workingList" style="width: 90%" height="250">
                         <el-table-column label="用户">
                             <template #default="scope">
                                 <div style="display: flex; align-items: center">
@@ -121,8 +121,8 @@
             <el-row class="card">
                 <div class="card-header">求职者列表-已完成</div>
                 <el-row style="width:100%;" justify="center">
-                    <el-table :data="finishList" style="width: 90%" height="250">
-                        <el-table-column label="用户">
+                    <el-table key="four" :data="finishList" style="width: 90%" height="250" show-header>
+                        <el-table-column prop="jobhunter.email" label="用户">
                             <template #default="scope">
                                 <div style="display: flex; align-items: center">
                                     <el-avatar :size="30" fit="cover" :src="scope.row.jobhunter.headportrait" />
@@ -130,10 +130,10 @@
                                 </div>
                             </template>
                         </el-table-column>
-                        <el-table-column prop="jobhunter.email" label="电子邮箱"/>
+                        <el-table-column prop="jobhunter.email" label="电子邮箱" width="200"/>
                         <el-table-column prop="jobhunter.school" label="学校" />
-                        <el-table-column prop="score1" label="员工评分" />
-                        <el-table-column prop="score2" label="我的评分" />
+                        <el-table-column prop="order.jobhunterScore" label="员工评分"  width="100"/>
+                        <el-table-column prop="order.recruiterScore" label="我的评分"  width="100"/>
                         <el-table-column label="操作">
                         <template #default="scope">
                             <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
@@ -282,15 +282,23 @@ export default {
             this.workingList= this.orderList.filter((value)=>{
                 return value.orderState.includes('已录用');
             });
-            this.finishList= this.orderList.filter((value)=>{
-                return value.orderState.includes('已完成');
-            });
             console.log(this.signupList);
         })
         .catch(function (error) {
             console.log(error);
         })
+        //获取兼职报名者列表
+        this.$axios({
+            method: 'get',
+            url: '/api/order/getAcceptedList?jobId='+localStorage.getItem('jobDetailId'),
+        })
+        .then(resu => {
 
+            this.finishList= resu.data.data.order_list;
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
 
     },
     methods: {
