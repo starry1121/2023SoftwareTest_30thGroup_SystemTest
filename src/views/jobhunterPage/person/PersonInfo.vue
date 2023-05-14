@@ -216,6 +216,9 @@ var cos = new COS({
                 })
             })
         },
+        cancel(){
+            this.picDisplay=true;
+        },
         upload(picture) {
             // 随机创建文件昵称
             var suffix = picture.file.name.substring(picture.file.name.lastIndexOf("."));
