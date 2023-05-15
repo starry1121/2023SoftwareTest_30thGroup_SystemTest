@@ -219,12 +219,22 @@
                     <el-row>
                         <el-col :span="21">
                         <div style="font-size:18px;color:grey;margin-bottom: 5px;">{{ item.job.workPlace }}</div>
-                        <el-row style="font-size:14px;color:grey;margin-bottom: 5px;">
+                        <el-row style="font-size:14px;color:grey;">
                             {{ item.job.startTime }}-{{ item.job.endTime }}&emsp;{{ item.job.workTime }}小时/天
+                        </el-row>
+                        <el-row >
+                            <el-col :span="10">
+                                <span  style="font-size:14px;color:grey;">我的评分：</span>
+                                <el-rate v-model="item.orderScore.jobhunterScore" allow-half disabled show-score/>
+                            </el-col>
+                            <el-col :span="10">
+                                <span style="font-size:14px;color:grey;">招聘方评分：</span>
+                                <el-rate v-model="item.orderScore.recruiterScore" allow-half disabled show-score/>
+                            </el-col>
                         </el-row>
                         </el-col>
                         <el-col :span="3">
-                            <el-row><el-button class="button" color="#444076" @click="dialogFormVisible=true;appeal.orderId=item.orderId;" style="margin-bottom:5px;">&emsp;申诉&emsp;</el-button></el-row>
+                            <el-row><el-button class="button" color="#444076" @click="dialogFormVisible=true;appeal.orderId=item.orderId;" style="margin-bottom:15px;">&emsp;申诉&emsp;</el-button></el-row>
                             <el-row><el-button class="button" color="#444076" @click="score(item.orderId)">&emsp;评分&emsp;</el-button></el-row>
                         </el-col>
                     </el-row>
@@ -307,96 +317,23 @@
         select:"已报名",
         dialogFormVisible:false,
         dialogFormVisible1:false,
-        order_list: [
-            {
-                "orderId": 94,
-                "orderState": "已报名",
-                "job": {
-                    "workName": "种米两产即十",
-                    "workPlace": "officia dolor consectetur",
-                    "startTime": "2014-04-28 10:02:37",
-                    "endTime": "2005-08-21 02:47:19",
-                    "workTime": "1973-05-26 21:46:17"
-                }
-            },
-            {
-                "orderId": 77,
-                "orderState": "已取消",
-                "job": {
-                    "workName": "问类接眼",
-                    "workPlace": "laboris ut ad",
-                    "startTime": "2016-02-22 06:38:18",
-                    "endTime": "1991-06-21 07:01:07",
-                    "workTime": "1998-10-09 09:42:10"
-                }
-            },
-            {
+        order_list: [{
+            "orderId": 50,
+            "orderState": "已通过",
+            "orderScore": {
                 "orderId": 50,
-                "orderState": "已通过",
-                "job": {
-                    "workName": "治种无区",
-                    "workPlace": "sed eu",
-                    "startTime": "2007-06-02 10:24:19",
-                    "endTime": "1981-03-18 22:19:36",
-                    "workTime": "1981-09-07 21:16:07"
-                }
+                "jobhunterScore": 0,
+                "recruiterScore": 0
             },
-            {
-                "orderId": 50,
-                "orderState": "未通过",
-                "job": {
-                    "workName": "治种无区",
-                    "workPlace": "sed eu",
-                    "startTime": "2007-06-02 10:24:19",
-                    "endTime": "1981-03-18 22:19:36",
-                    "workTime": "1981-09-07 21:16:07"
-                }
-            },
-            {
-                "orderId": 50,
-                "orderState": "已录用",
-                "job": {
-                    "workName": "治种无区",
-                    "workPlace": "sed eu",
-                    "startTime": "2007-06-02 10:24:19",
-                    "endTime": "1981-03-18 22:19:36",
-                    "workTime": "1981-09-07 21:16:07"
-                }
-            },
-            {
-                "orderId": 50,
-                "orderState": "已放弃",
-                "job": {
-                    "workName": "治种无区",
-                    "workPlace": "sed eu",
-                    "startTime": "2007-06-02 10:24:19",
-                    "endTime": "1981-03-18 22:19:36",
-                    "workTime": "1981-09-07 21:16:07"
-                }
-            },
-            {
-                "orderId": 50,
-                "orderState": "已完成",
-                "job": {
-                    "workName": "治种无区",
-                    "workPlace": "sed eu",
-                    "startTime": "2007-06-02 10:24:19",
-                    "endTime": "1981-03-18 22:19:36",
-                    "workTime": "1981-09-07 21:16:07"
-                }
-            },
-            {
-                "orderId": 50,
-                "orderState": "支付异常",
-                "job": {
-                    "workName": "治种无区",
-                    "workPlace": "sed eu",
-                    "startTime": "2007-06-02 10:24:19",
-                    "endTime": "1981-03-18 22:19:36",
-                    "workTime": "1981-09-07 21:16:07"
-                }
+            "job": {
+                "workName": "一年级家教",
+                "workPlace": "云南省 怒江傈僳族自治州 泸水县",
+                "startTime": "2003-02-02 10:00:00",
+                "endTime": "2003-02-16 16:00:00",
+                "workTime": 5,
+                "score": 0
             }
-        ],
+        }],
         appeal:{
             orderId:null,
             appealContent:null,

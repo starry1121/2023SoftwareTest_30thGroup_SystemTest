@@ -42,6 +42,9 @@
                     <el-descriptions-item :span="2" label="地点">
                         {{job.workPlace}}
                     </el-descriptions-item>
+                    <el-descriptions-item :span="2" label="招聘方评分">
+                        <el-rate v-model="job.recruiterScore" allow-half disabled show-score/>
+                    </el-descriptions-item>
                 </el-descriptions>
             </el-row>
             <el-row class="card1"  justify="center">

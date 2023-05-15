@@ -57,6 +57,7 @@
                         </el-table-column>
                         <el-table-column prop="jobhunter.email" label="电子邮箱"/>
                         <el-table-column prop="jobhunter.school" label="学校" />
+                        <el-table-column prop="jobhunter.score" label="求职者评分"/>
                         <el-table-column label="操作">
                             <template #default="scope">
                                 <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
@@ -84,6 +85,7 @@
                         </el-table-column>
                         <el-table-column prop="jobhunter.email" label="电子邮箱"/>
                         <el-table-column prop="jobhunter.school" label="学校" />
+                        <el-table-column prop="jobhunter.score" label="求职者评分"/>
                         <el-table-column label="操作">
                             <template #default="scope">
                                 <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
@@ -107,6 +109,7 @@
                         </el-table-column>
                         <el-table-column prop="jobhunter.email" label="电子邮箱"/>
                         <el-table-column prop="jobhunter.school" label="学校" />
+                        <el-table-column prop="jobhunter.score" label="求职者评分"/>
                         <el-table-column label="操作">
                             <template #default="scope">
                                 <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
@@ -132,8 +135,8 @@
                         </el-table-column>
                         <el-table-column prop="jobhunter.email" label="电子邮箱" width="200"/>
                         <el-table-column prop="jobhunter.school" label="学校" />
-                        <el-table-column prop="order.jobhunterScore" label="员工评分"  width="100"/>
-                        <el-table-column prop="order.recruiterScore" label="我的评分"  width="100"/>
+                        <el-table-column prop="orderScore.jobhunterScore" label="员工评分"  width="100"/>
+                        <el-table-column prop="orderScore.recruiterScore" label="我的评分"  width="100"/>
                         <el-table-column label="操作">
                         <template #default="scope">
                             <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>

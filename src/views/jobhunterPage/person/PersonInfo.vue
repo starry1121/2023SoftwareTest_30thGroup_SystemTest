@@ -96,6 +96,9 @@
                         />
                         <!-- <el-input v-model="userInfo.birthday" :disabled="input_show"/> -->
                     </el-form-item>
+                    <el-form-item label="我的评分">
+                        <el-rate v-model="userInfo.score" allow-half disabled show-score/>
+                    </el-form-item>
                     <el-form-item label="学历">
                         <el-input v-model="userInfo.school" :disabled="input_show"/>
                     </el-form-item>

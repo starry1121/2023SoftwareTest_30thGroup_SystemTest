@@ -83,6 +83,9 @@
                     <el-form-item label="企业名称">
                         <el-input v-model="userInfo.companyName" :disabled="input_show"/>
                     </el-form-item>
+                    <el-form-item label="我的评分">
+                        <el-rate v-model="userInfo.score" allow-half disabled show-score/>
+                    </el-form-item>
                     <el-form-item label="联系方式">
                         <el-input v-model="userInfo.contactMethod" :disabled="input_show"/>
                     </el-form-item>
