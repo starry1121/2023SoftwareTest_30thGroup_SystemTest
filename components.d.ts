@@ -56,6 +56,7 @@ declare module '@vue/runtime-core' {
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     ElUpload: typeof import('element-plus/es')['ElUpload']
     GaodeMap: typeof import('./src/components/GaodeMap.vue')['default']
+    GaodeMapforJobDetail: typeof import('./src/components/GaodeMapforJobDetail.vue')['default']
     Nav: typeof import('./src/components/Nav.vue')['default']
     PersonNav: typeof import('./src/components/personNav.vue')['default']
     PrivateChat: typeof import('./src/components/PrivateChat.vue')['default']

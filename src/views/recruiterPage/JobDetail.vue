@@ -151,7 +151,9 @@
 
         </el-row>
         <br>
-        <el-dialog v-model="dialogFormVisible" title="兼职地点" align-center>
+        <!-- 兼职地点查看对话框 -->
+        <el-dialog v-model="dialogFormVisible" title="兼职地点" align-center  width="80%">
+            <GaodeMapDetail ></GaodeMapDetail>
             <template #footer>
                 <span class="dialog-footer">
                     <el-button type="primary" @click="dialogFormVisible = false">
@@ -187,10 +189,13 @@ import { ElMessage,ElMessageBox } from 'element-plus'
 import 'element-plus/es/components/message/style/index'
 import 'element-plus/es/components/message-box/style/index'
 import {useRouter} from 'vue-router';
+import GaodeMapDetail from '@/components/GaodeMapforJobDetail.vue'
 
 export default {
     name: 'jobDetail',
     components: {
+        GaodeMapDetail,
+
     },
     setup(){
         const router = useRouter();
@@ -209,6 +214,11 @@ export default {
     },
     data() {
         return {
+            jobPositionCenter:[31.233462,121.492156],
+            // jobPosition:{
+            //     lat:31.233462,
+            //     lng:121.492156,
+            // },
             jobhunterScore:null,
             scoreId:null,
             recruiterId:null,
