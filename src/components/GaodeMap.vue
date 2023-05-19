@@ -150,6 +150,7 @@ export default {
             console.log("所选地点啊啊啊");
             console.log(e);
             this.mylocation = e.selected.data.address+e.selected.data.name;
+            this.$emit("getMapData", e.selected)
         }
     },
     mounted() {

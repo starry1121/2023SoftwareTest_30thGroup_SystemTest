@@ -67,10 +67,11 @@
                 </el-form>
             </el-row>
         </div>
+        <!-- //地图选点对话框 -->
         <el-dialog v-model="mapDialogVisible" title="选择地点" width="80%">
             <span>
                 <div>
-                    <GaodeMap></GaodeMap>
+                    <GaodeMap @getMapData="getMapData"></GaodeMap>
                 </div>
             </span>
             <template #footer>
@@ -78,7 +79,7 @@
                     <el-button @click="mapDialogVisible = false">
                         取消
                     </el-button>
-                    <el-button type="primary" @click="mapDialogVisible = false">
+                    <el-button type="primary" @click="closeMap">
                         确定
                     </el-button>
                 </span>
@@ -99,6 +100,7 @@ import 'element-plus/es/components/message/style/index'
 import GaodeMap from '@/components/GaodeMap.vue'
 
 
+
 export default {
     name: 'UpJob',
     components: {
@@ -106,6 +108,7 @@ export default {
     },
     data() {
         return {
+            mapData:null,
             mapDialogVisible: false,
             recruiterId: null,
             typeList: [{}],
@@ -122,7 +125,9 @@ export default {
                 salary: null,
                 employeeNum: null,
                 workTime: null,
-                workDetails: null
+                workDetails: null,
+                locationLat:0,
+                locationLng:0,
             },
         }
     },
@@ -215,7 +220,18 @@ export default {
                         type: 'error',
                     })
                 })
-        }
+        },
+        //获取地图数据对象
+        getMapData(val){
+            this.mapData=val;
+        },
+        //地图组件对话框的确定按钮事件
+        closeMap(){
+            
+            this.place=this.mapData.data.address+this.mapData.data.name;
+            this.mapDialogVisible = false;
+
+        },
     },
     created() {
         this.recruiterId = localStorage.getItem('userId')
