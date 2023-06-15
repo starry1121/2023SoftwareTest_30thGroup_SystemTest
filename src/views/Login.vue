@@ -15,7 +15,7 @@
                                         <el-input v-model="loginInfo.password" show-password/>
                                     </el-form-item>
                                     <el-form-item>
-                                        <el-button class="btn" color="#444076" type="primary" @click="login">登录</el-button>
+                                        <el-button id="login" class="btn" color="#444076" type="primary" @click="login">登录</el-button>
                                         <el-button class="btn" color="#444076" type="primary" @click="dialogFormVisible=true">找回密码</el-button>
                                     </el-form-item>
                                 </el-form>
@@ -205,7 +205,7 @@ export default {
                     }
                 }else{
                     ElMessage({
-                        message: "登陆失败",
+                        message: "登录失败",
                         type: 'error',
                     })
                 }
