@@ -440,7 +440,7 @@ export default {
                 })
                 return;
             }
-            if(this.confirmCaptcha==null||this.confirmCaptcha==''){
+            if(this.captcha!=this.confirmCaptcha){
                 ElMessage({
                     message: "验证码不正确！",
                     type: 'error',
