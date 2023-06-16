@@ -1,0 +1,163 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-16T01:27:07.943Z",
+    "end": "2023-06-16T01:27:13.741Z",
+    "duration": 5798,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7201571c-3158-4819-a0ef-4bda6ee49a81",
+      "title": "",
+      "fullFile": "tests/e2e/specs/register.js",
+      "file": "tests/e2e/specs/register.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "92917113-c6b6-4200-9b5f-1ba10b3426dc",
+          "title": "登录注册子系统-用户注册-获取邮箱验证码",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "邮箱格式不正确",
+              "fullTitle": "登录注册子系统-用户注册-获取邮箱验证码 邮箱格式不正确",
+              "timedOut": null,
+              "duration": 1041,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//登录界面\ncy.visit('/'); //点击去注册按钮，跳转至注册界面\ncy.get('.con-box > .el-button').click(); //输入邮箱\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"bucunzai@com\"); //点击获取验证码\ncy.get('.el-input-group__append > .el-button').click(); //断言\ncy.get('#message_1').should('contain', '请检查邮箱');",
+              "err": {},
+              "uuid": "5182bde2-001e-4530-b9f1-db4bb30a49f9",
+              "parentUUID": "92917113-c6b6-4200-9b5f-1ba10b3426dc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "邮箱为空",
+              "fullTitle": "登录注册子系统-用户注册-获取邮箱验证码 邮箱为空",
+              "timedOut": null,
+              "duration": 412,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//登录界面\ncy.visit('/'); //点击去注册按钮，跳转至注册界面\ncy.get('.con-box > .el-button').click(); //不输入邮箱\n//点击获取验证码\ncy.get('.el-input-group__append > .el-button').click(); //断言\ncy.get('#message_1').should('contain', '请检查邮箱');",
+              "err": {},
+              "uuid": "2f969724-abe4-4abd-8f99-5f918630be0f",
+              "parentUUID": "92917113-c6b6-4200-9b5f-1ba10b3426dc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "邮箱已注册",
+              "fullTitle": "登录注册子系统-用户注册-获取邮箱验证码 邮箱已注册",
+              "timedOut": null,
+              "duration": 781,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//登录界面\ncy.visit('/'); //点击去注册按钮，跳转至注册界面\ncy.get('.con-box > .el-button').click(); //输入邮箱\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"278803847@qq.com\"); //点击获取验证码\ncy.get('.el-input-group__append > .el-button').click(); //断言\ncy.contains('p', '邮箱已注册').should('contain', '邮箱已注册');",
+              "err": {},
+              "uuid": "40edd909-facf-4224-a786-9fdc30397554",
+              "parentUUID": "92917113-c6b6-4200-9b5f-1ba10b3426dc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "邮箱格式正确且未注册",
+              "fullTitle": "登录注册子系统-用户注册-获取邮箱验证码 邮箱格式正确且未注册",
+              "timedOut": null,
+              "duration": 3513,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//登录界面\ncy.visit('/'); //点击去注册按钮，跳转至注册界面\ncy.get('.con-box > .el-button').click(); //输入邮箱\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"1261106631@qq.com\"); //点击获取验证码\ncy.get('.el-input-group__append > .el-button > span').click();\ncy.wait(2000);\ncy.get('.el-input-group__append > .el-button > span').click(); //断言\ncy.contains('p', '验证码已发送至您的邮箱').should('contain', '验证码已发送至您的邮箱');",
+              "err": {},
+              "uuid": "a5b44769-dd7e-4b2a-be70-2819dc35f0af",
+              "parentUUID": "92917113-c6b6-4200-9b5f-1ba10b3426dc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5182bde2-001e-4530-b9f1-db4bb30a49f9",
+            "2f969724-abe4-4abd-8f99-5f918630be0f",
+            "40edd909-facf-4224-a786-9fdc30397554",
+            "a5b44769-dd7e-4b2a-be70-2819dc35f0af"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5747,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

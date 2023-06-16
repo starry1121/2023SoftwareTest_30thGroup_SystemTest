@@ -1,0 +1,153 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 1,
+    "pending": 0,
+    "failures": 2,
+    "start": "2023-06-16T01:27:16.878Z",
+    "end": "2023-06-16T01:27:24.273Z",
+    "duration": 7395,
+    "testsRegistered": 3,
+    "passPercent": 33.33333333333333,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "24766203-4aae-46f2-8a4e-b321d83227c5",
+      "title": "",
+      "fullFile": "tests/e2e/specs/retrievePWD.js",
+      "file": "tests/e2e/specs/retrievePWD.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f6ecb9a4-d586-4692-986a-f0821e096341",
+          "title": "登录注册子系统-用户找回密码-获取邮箱验证码",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "邮箱格式不正确",
+              "fullTitle": "登录注册子系统-用户找回密码-获取邮箱验证码 邮箱格式不正确",
+              "timedOut": null,
+              "duration": 6232,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "//登录界面\ncy.visit('/'); //点击找回密码按钮，打开找回密码弹窗\ncy.get('.el-form-item__content > :nth-child(2)').click();\ncy.wait(1000); //输入邮箱\ncy.get('.el-dialog').find('input').first().type(\"bucunzai\"); //点击获取验证码\ncy.get('.el-input-group__append > .el-button').click(); //断言\ncy.get('#message_1').should('contain', '请检查邮箱');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<div#message_1.el-message.el-message--error.el-message-fade-leave-active.el-message-fade-leave-to>' to contain '请检查邮箱'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div#message_1.el-message.el-message--error.el-message-fade-leave-active.el-message-fade-leave-to>' to contain '请检查邮箱'\n    at Context.eval (http://localhost:8080/__cypress/tests?p=tests\\e2e\\specs\\retrievePWD.js:112:26)",
+                "diff": null
+              },
+              "uuid": "91cdaef5-869d-477c-9d1f-040884086bb2",
+              "parentUUID": "f6ecb9a4-d586-4692-986a-f0821e096341",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "邮箱为空",
+              "fullTitle": "登录注册子系统-用户找回密码-获取邮箱验证码 邮箱为空",
+              "timedOut": null,
+              "duration": 518,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//登录界面\ncy.visit('/'); //点击找回密码按钮，打开找回密码弹窗\ncy.get('.el-form-item__content > :nth-child(2)').click(); //不输入邮箱\n//点击获取验证码\ncy.get('.el-input-group__append > .el-button').click(); //断言\ncy.get('#message_1').should('contain', '请检查邮箱');",
+              "err": {},
+              "uuid": "cbc78266-aa63-4a52-96e3-ec546c371837",
+              "parentUUID": "f6ecb9a4-d586-4692-986a-f0821e096341",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "邮箱格式正确",
+              "fullTitle": "登录注册子系统-用户找回密码-获取邮箱验证码 邮箱格式正确",
+              "timedOut": null,
+              "duration": 543,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "//登录界面\ncy.visit('/'); //点击找回密码按钮，打开找回密码弹窗\ncy.get('.el-form-item__content > :nth-child(2)').click(); //输入邮箱\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"1261106631@qq.com\"); //点击获取验证码\ncy.get('.el-input-group__append > .el-button > span').click();\ncy.wait(2000);\ncy.get('.el-input-group__append > .el-button > span').click(); //断言\ncy.contains('p', '验证码已发送至您的邮箱').should('contain', '验证码已发送至您的邮箱');",
+              "err": {
+                "message": "CypressError: `cy.type()` can only be called on a single element. Your subject contained 2 elements.\n\nhttps://on.cypress.io/type",
+                "estack": "CypressError: `cy.type()` can only be called on a single element. Your subject contained 2 elements.\n\nhttps://on.cypress.io/type\n    at Context.type (http://localhost:8080/__cypress/runner/cypress_runner.js:158836:76)\n    at Context.<anonymous> (http://localhost:8080/__cypress/runner/cypress_runner.js:178437:19)\nFrom Your Spec Code:\n    at Context.eval (http://localhost:8080/__cypress/tests?p=tests\\e2e\\specs\\retrievePWD.js:131:87)",
+                "diff": null
+              },
+              "uuid": "fc7fc2e7-bb61-48ce-9743-a4ea7ee6b5ad",
+              "parentUUID": "f6ecb9a4-d586-4692-986a-f0821e096341",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cbc78266-aa63-4a52-96e3-ec546c371837"
+          ],
+          "failures": [
+            "91cdaef5-869d-477c-9d1f-040884086bb2",
+            "fc7fc2e7-bb61-48ce-9743-a4ea7ee6b5ad"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 7293,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
