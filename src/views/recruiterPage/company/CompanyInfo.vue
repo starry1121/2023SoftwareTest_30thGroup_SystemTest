@@ -103,7 +103,7 @@
                     style="margin-top:63px;"
                 >
                     <el-form-item label="邮箱&emsp;" :label-width="formLabelWidth">
-                        <el-input v-model="findPWD.email" autocomplete="off" />
+                        <el-input v-model="userInfo.email" autocomplete="off" disabled/>
                     </el-form-item>
                     <el-form-item class="input" label="验证码">
                         <el-input
@@ -270,18 +270,11 @@ var cos = new COS({
             this.btn_show=false
         },
         getfindPWDCaptcha(){
-            if(this.findPWD.email==null||this.findPWD.email==''){
-                ElMessage({
-                    message: "请检查邮箱！",
-                    type: 'error',
-                })
-                return;
-            }
             this.$axios({
                 method: 'post',
                 url: '/api/register/email',
                 data:{
-                    email:this.findPWD.email
+                    email:this.userInfo.email
                 },
             })
             .then(res => {
@@ -310,14 +303,14 @@ var cos = new COS({
             }
         },
         findPassword(){
-            if(this.findPWD.email==null||this.findPWD.email==''){
+            if(this.captcha!=this.confirmCaptcha){
                 ElMessage({
-                    message: "请检查邮箱！",
+                    message: "验证码不正确！",
                     type: 'error',
                 })
                 return;
             }
-            if(this.confirmCaptcha==null||this.confirmCaptcha==''){
+            else if(this.confirmCaptcha==null||this.confirmCaptcha==''){
                 ElMessage({
                     message: "验证码不正确！",
                     type: 'error',
@@ -331,6 +324,7 @@ var cos = new COS({
                 })
                 return;
             }
+            this.findPWD.email=this.userInfo.email;
             this.$axios({
                 method: 'post',
                 url: '/api/findPassword',
