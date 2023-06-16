@@ -10,6 +10,8 @@ describe('登录注册子系统-用户注册', () => {
     cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("bucunzai@com");
     //输入邮箱 
     cy.get('.el-input-group__append > .el-button').click();
+    cy.wait(2000);
+    cy.get('.el-input-group__append > .el-button > span').click();
     //点击获取验证码 
     cy.get('#message_1').should('contain', '请检查邮箱');
     //断言
@@ -20,6 +22,8 @@ describe('登录注册子系统-用户注册', () => {
     cy.get('.con-box > .el-button').click();
     //点击去注册按钮，跳转至注册界面 
     cy.get('.el-input-group__append > .el-button').click();
+    cy.wait(2000);
+    cy.get('.el-input-group__append > .el-button > span').click();
     //不输入邮箱，点击获取验证码 
     cy.get('#message_1').should('contain', '请检查邮箱');
     //断言
@@ -32,6 +36,8 @@ describe('登录注册子系统-用户注册', () => {
     cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("278803847@qq.com");
     //输入邮箱 
     cy.get('.el-input-group__append > .el-button').click();
+    cy.wait(2000);
+    cy.get('.el-input-group__append > .el-button > span').click();
     //点击获取验证码 
     cy.contains('p', '邮箱已注册').should('contain', '邮箱已注册');
     //断言

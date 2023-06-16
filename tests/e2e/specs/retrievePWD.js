@@ -7,12 +7,11 @@ describe('登录注册子系统-用户找回密码', () => {
     //登录界面 
     cy.get('.el-form-item__content > :nth-child(2)').click();
     //点击找回密码按钮，打开找回密码弹窗
-    cy.wait(1000); 
-    cy.get('.el-dialog').find('input').first().type("bucunzai");
+    cy.get('.el-dialog').find('input').first().type("bucunzai@com");
     //输入邮箱 
     cy.get('.el-input-group__append > .el-button').click();
     //点击获取验证码 
-    cy.get('#message_1').should('contain', '请检查邮箱');
+    cy.get('#message_1').should('contain', '邮箱未注册');
     //断言
 
     //邮箱为空
@@ -31,8 +30,10 @@ describe('登录注册子系统-用户找回密码', () => {
     //登录界面 
     cy.get('.el-form-item__content > :nth-child(2)').click();
     //点击找回密码按钮，打开找回密码弹窗 
-    cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("1261106631@qq.com");
+    cy.get('.el-dialog').find('input').first().type("278803847@qq.com");
     //输入邮箱 
+    cy.get('.el-input-group__append > .el-button > span').click();
+    cy.wait(2000);
     cy.get('.el-input-group__append > .el-button > span').click();
     //点击获取验证码 
     cy.contains('p', '验证码已发送至您的邮箱').should('contain', '验证码已发送至您的邮箱');
