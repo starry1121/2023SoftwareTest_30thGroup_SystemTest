@@ -41,7 +41,7 @@ describe('登录注册子系统-用户登录', () => {
     //招聘方登录-邮箱
     cy.visit('/')
     //访问网站
-    cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("123@qq.com")
+    cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("2523862206@qq.com")
     cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("021121")
     //输入账号密码
     cy.get("#login").click()
