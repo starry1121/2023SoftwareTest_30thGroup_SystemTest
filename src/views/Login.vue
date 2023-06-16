@@ -74,7 +74,7 @@
             <el-dialog v-model="dialogFormVisible" title="找回密码" align-center>
                 <el-form :model="findPWD">
                 <el-form-item label="邮箱&emsp;" :label-width="formLabelWidth">
-                    <el-input v-model="findPWD.email" autocomplete="off" />
+                    <el-input v-model="findPWD.email" autocomplete="off" @change="isRegistedfindPWD"/>
                 </el-form-item>
                 <el-form-item class="input" label="验证码">
                     <el-input
@@ -135,7 +135,9 @@ export default {
             findPWD:{
                 email:null,
                 password:null,
-            }
+            },
+            isRegistedSignup:null,
+            isRegistedFPWD:null,
         }
     },
     methods: {
@@ -226,12 +228,10 @@ export default {
             .then(res => {
                 console.log(res)
                 if(res.data.code==200){
-                    this.register.email=this.email
+                    this.register.email=this.email;
+                    this.isRegistedSignup=false;
                 }else{
-                    ElMessage({
-                        message: "邮箱已注册！",
-                        type: 'error',
-                    })
+                    this.isRegistedSignup=true;
                 }
             })
             .catch(function (error) {
@@ -240,6 +240,21 @@ export default {
             })
         },
         getCaptcha(){
+            if(this.isRegistedSignup){
+                ElMessage({
+                    message: "邮箱已注册！",
+                    type: 'error',
+                })
+                return;
+            }
+            var verify = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if (!verify.test(this.register.email)) {
+                ElMessage({
+                    message: "请检查邮箱！",
+                    type: 'error',
+                })
+                return;
+            }
             if(this.register.email==null||this.register.email==''){
                 ElMessage({
                     message: "请检查邮箱！",
@@ -281,6 +296,13 @@ export default {
                 })
                 return;
             }
+            if(!this.isRegistedFPWD){
+                ElMessage({
+                    message: "邮箱未注册！",
+                    type: 'error',
+                })
+                return;
+            }
             this.$axios({
                 method: 'post',
                 url: '/api/register/email',
@@ -314,6 +336,21 @@ export default {
             }
         },
         signup(){
+            if(this.isRegistedSignup){
+                ElMessage({
+                    message: "邮箱已注册！",
+                    type: 'error',
+                })
+                return;
+            }
+            var verify = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if (!verify.test(this.register.email)) {
+                ElMessage({
+                    message: "请检查邮箱！",
+                    type: 'error',
+                })
+                return;
+            }
             if(this.register.email==null||this.register.email==''){
                 ElMessage({
                     message: "请检查邮箱！",
@@ -367,10 +404,38 @@ export default {
                 ElMessage.error('注册失败！')
             })
         },
+        isRegistedfindPWD(){
+            this.$axios({
+                method: 'post',
+                url: '/api/register/find',
+                data:{
+                    email:this.findPWD.email
+                },
+            })
+            .then(res => {
+                console.log(res)
+                if(res.data.code==200){
+                    this.isRegistedFPWD=false;
+                }else{
+                    this.isRegistedFPWD=true;
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                ElMessage.error('邮箱校验失败！')
+            })
+        },
         findPassword(){
             if(this.findPWD.email==null||this.findPWD.email==''){
                 ElMessage({
                     message: "请检查邮箱！",
+                    type: 'error',
+                })
+                return;
+            }
+            if(!this.isRegistedFPWD){
+                ElMessage({
+                    message: "邮箱未注册！",
                     type: 'error',
                 })
                 return;
