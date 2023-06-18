@@ -47,7 +47,7 @@
                 <div class="card-header">求职者列表-已报名</div>
                 <el-row style="width:100%;" justify="center">
                     <el-table :key="signupList" :data="signupList" style="width: 90%" height="250">
-                        <el-table-column label="用户">
+                        <el-table-column label="用户" width="110">
                             <template #default="scope">
                                 <div style="display: flex; align-items: center">
                                     <el-avatar :size="30" fit="cover" :src="scope.row.jobhunter.headportrait" />
@@ -58,7 +58,7 @@
                         <el-table-column prop="jobhunter.email" label="电子邮箱"/>
                         <el-table-column prop="jobhunter.school" label="学校" />
                         <el-table-column prop="jobhunter.score" label="求职者评分"/>
-                        <el-table-column label="操作">
+                        <el-table-column label="操作" width="200">
                             <template #default="scope">
                                 <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
                                 <el-button type="primary" round size="small"
@@ -75,7 +75,7 @@
                 <div class="card-header">求职者列表-已通过</div>
                 <el-row style="width:100%;" justify="center">
                     <el-table :key="replyList" :data="replyList" style="width: 90%" height="250">
-                        <el-table-column label="用户">
+                        <el-table-column label="用户" width="110">
                             <template #default="scope">
                                 <div style="display: flex; align-items: center">
                                     <el-avatar :size="30" fit="cover" :src="scope.row.jobhunter.headportrait" />
@@ -86,7 +86,7 @@
                         <el-table-column prop="jobhunter.email" label="电子邮箱"/>
                         <el-table-column prop="jobhunter.school" label="学校" />
                         <el-table-column prop="jobhunter.score" label="求职者评分"/>
-                        <el-table-column label="操作">
+                        <el-table-column label="操作" width="100">
                             <template #default="scope">
                                 <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
                             </template>
@@ -99,7 +99,7 @@
                 <div class="card-header">求职者列表-已录用</div>
                 <el-row style="width:100%;" justify="center">
                     <el-table :key="workingList" :data="workingList" style="width: 90%" height="250">
-                        <el-table-column label="用户">
+                        <el-table-column label="用户" width="110">
                             <template #default="scope">
                                 <div style="display: flex; align-items: center">
                                     <el-avatar :size="30" fit="cover" :src="scope.row.jobhunter.headportrait" />
@@ -110,7 +110,7 @@
                         <el-table-column prop="jobhunter.email" label="电子邮箱"/>
                         <el-table-column prop="jobhunter.school" label="学校" />
                         <el-table-column prop="jobhunter.score" label="求职者评分"/>
-                        <el-table-column label="操作">
+                        <el-table-column label="操作" width="200">
                             <template #default="scope">
                                 <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
                                 <el-button type="primary" round size="small"
@@ -125,7 +125,7 @@
                 <div class="card-header">求职者列表-已完成</div>
                 <el-row style="width:100%;" justify="center">
                     <el-table :key="finishList" :data="finishList" style="width: 90%" height="250" show-header>
-                        <el-table-column prop="jobhunter.email" label="用户">
+                        <el-table-column prop="jobhunter.email" label="用户" width="110">
                             <template #default="scope">
                                 <div style="display: flex; align-items: center">
                                     <el-avatar :size="30" fit="cover" :src="scope.row.jobhunter.headportrait" />
@@ -137,11 +137,12 @@
                         <el-table-column prop="jobhunter.school" label="学校" />
                         <el-table-column prop="orderScore.jobhunterScore" label="员工评分"  width="100"/>
                         <el-table-column prop="orderScore.recruiterScore" label="我的评分"  width="100"/>
-                        <el-table-column label="操作">
+                        <el-table-column label="操作" width="200">
                         <template #default="scope">
                             <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
                             <el-button type="primary" round size="small"
                                 @click="score(scope.row.orderId)">评分</el-button>
+                            <el-button round size="small" @click="this.dialogFormVisible2=true;this.appeal.orderId=scope.row.orderId;">申诉</el-button>
                         </template>
                     </el-table-column>
                     </el-table>
@@ -172,7 +173,19 @@
             </span>
             </template>
         </el-dialog>
-
+        <el-dialog v-model="dialogFormVisible2" title="提交申诉" align-center draggable>
+            <el-form :model="appeal" label-width="120px">
+                <el-form-item class="input" label="申诉理由">
+                    <el-input v-model="appeal.appealContent" :rows="5" type="textarea"/>
+                </el-form-item>
+            </el-form>
+            <template #footer>
+            <span class="dialog-footer">
+                <el-button @click="dialogFormVisible2=false;">取消</el-button>
+                <el-button type="primary" @click="apply">确认</el-button>
+            </span>
+            </template>
+        </el-dialog>
         <el-backtop :bottom="80">
             <div
                 style="height: 100%;width: 100%;background-color: #444076;text-align: center;line-height: 45px;color: #FFCAA6;vertical-align: middle;border-radius: 10px;">
@@ -225,6 +238,7 @@ export default {
             company:{},
             dialogFormVisible: false,
             dialogFormVisible1: false,
+            dialogFormVisible2:false,
             job: {},
             employeeList: [
                 {
@@ -247,6 +261,11 @@ export default {
             replyList:[{}],
             workingList:[{}],
             finishList:[{}],
+            appeal:{
+                orderId:null,
+                appealContent:null,
+                appealType:"招聘方评价申诉",
+            }
         }
     },
     created() {
@@ -501,6 +520,39 @@ export default {
                     message: "操作失败",
                     type: 'error',
                 })
+            })
+        },
+        apply(){
+            if(this.appeal.appealContent==null||this.appeal.appealContent==""){
+                ElMessage({
+                    message: "不能为空",
+                    type: 'error',
+                })
+                return;
+            }
+            this.$axios({
+                method: 'post',
+                url: '/api/order/appealOrder',
+                data : this.appeal
+            })
+            .then(res => {
+                this.dialogFormVisible=false;
+                if(res.data.code==200){
+                    ElMessage({
+                        message: "已提交申诉",
+                        type: 'success',
+                    })
+                    this.$router.go(0);
+                }
+                else{
+                    ElMessage({
+                        message: "操作失败",
+                        type: 'error',
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
             })
         },
     }
