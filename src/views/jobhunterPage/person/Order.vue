@@ -61,7 +61,7 @@
                                 <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
-                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle></el-button>
+                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle  @click="jobDetail(item.job.jobId)"></el-button>
                             </el-col>
                         </el-row>
                     </template>
@@ -88,7 +88,7 @@
                                 <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
-                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle></el-button>
+                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
                             </el-col>
                         </el-row>
                     </template>
@@ -112,7 +112,7 @@
                                 <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
-                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle></el-button>
+                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
                             </el-col>
                         </el-row>
                     </template>
@@ -140,7 +140,7 @@
                                 <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
-                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle></el-button>
+                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
                             </el-col>
                         </el-row>
                     </template>
@@ -164,7 +164,7 @@
                                 <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
-                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle></el-button>
+                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
                             </el-col>
                         </el-row>
                     </template>
@@ -188,7 +188,7 @@
                                 <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
-                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle></el-button>
+                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
                             </el-col>
                         </el-row>
                     </template>
@@ -212,7 +212,7 @@
                                 <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
-                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle></el-button>
+                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle  @click="jobDetail(item.job.jobId)"></el-button>
                             </el-col>
                         </el-row>
                     </template>
@@ -250,7 +250,7 @@
                                 <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
-                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle></el-button>
+                                <el-button color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
                             </el-col>
                         </el-row>
                     </template>
@@ -497,6 +497,11 @@
                     })
                 })
             })
+        },
+        jobDetail(value) {
+            console.log("查看详情");
+            localStorage.setItem('jobDetailId',value);
+            this.$router.push('/jobhunter/jobDetail');
         },
     },
     created() {

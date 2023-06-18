@@ -53,6 +53,7 @@
           </el-col>
           <el-col :span="3" style="display:flex;">
             <el-button color="#7A74C2" class="btn" type="primary"   @click="jobDetail(item.jobId)">查看详情</el-button>
+            
           </el-col>
         </el-row>
       </el-card>
