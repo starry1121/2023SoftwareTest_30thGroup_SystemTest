@@ -236,7 +236,8 @@
                         message: "添加成功",
                         type: 'success',
                     })
-                    this.$router.go(0);
+                    this.dialogFormVisible=false;
+                    this.fetchFavoritesList();
                 }
                 else{
                     ElMessage({
@@ -270,7 +271,7 @@
                             message: "已删除该收藏夹",
                             type: 'success',
                         })
-                        this.$router.go(0);
+                        this.fetchFavoritesList();
                     }
                     else{
                         ElMessage({
@@ -306,7 +307,8 @@
                         message: "修改成功",
                         type: 'success',
                     })
-                    this.$router.go(0);
+                    this.dialogFormVisible1=false;
+                    this.fetchFavoritesList();
                 }
                 else{
                     ElMessage({
@@ -340,7 +342,8 @@
                             message: "已取消该收藏",
                             type: 'success',
                         })
-                        this.$router.go(0);
+                        this.dialogFormVisible2=false;
+                        this.fetchFavoritesList();
                     }
                     else{
                         ElMessage({
@@ -386,7 +389,9 @@
                         message: "移动成功",
                         type: 'success',
                     })
-                    this.$router.go(0);
+                    this.dialogFormVisible2=false;
+                    this.dialogFormVisible3=false;
+                    this.fetchFavoritesList();
                 }
                 else{
                     ElMessage({
@@ -402,6 +407,25 @@
                     type: 'error',
                 })
             })
+        },
+        fetchFavoritesList(){
+            this.$axios({
+                method: 'get',
+                url: '/api/jobhunter/favorites/?jobhunterId='+localStorage.getItem('userId'),
+            })
+            .then(res => {
+                if(res.data.code==200){
+                    this.favorites_list=res.data.data.favorites_list;
+                    this.total=this.favorites_list.length;
+                    console.log('收藏夹列表'+this.favorites_list);
+                }
+                else{
+                    this.favorites_list=null
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
         }
     },
     created() {
@@ -413,7 +437,7 @@
             if(res.data.code==200){
                 this.favorites_list=res.data.data.favorites_list;
                 this.total=this.favorites_list.length;
-                console.log('收藏夹列表'+this.favorites_list[1].favorites.favorites_list[0].jobId);
+                console.log('收藏夹列表'+this.favorites_list);
             }
             else{
                 this.favorites_list=null
