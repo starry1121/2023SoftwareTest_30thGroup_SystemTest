@@ -194,6 +194,7 @@ data(){
         company:{},
         favoritesList:[{}],
         isCollected: null,
+        isAuthened: false,
     }
 },
 created() {
@@ -202,6 +203,22 @@ created() {
     this.report.jobhunterId=localStorage.getItem('userId');
     this.report.jobId=localStorage.getItem('jobDetailId');
 
+    //判断用户实名认证是否通过
+    this.$axios({
+        method: 'get',
+        url: '/api/Jobhunter/getAuthentication/?jobhunterId='+localStorage.getItem('userId'),
+    })
+    .then(res => {
+      if(res.data.code==200){
+        if(res.data.data.personauthen_list){
+            if(res.data.data.personauthen_list[0].checkStatus=="已通过")
+            this.isAuthened=true;
+        }
+      }
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
     //判断用户是否报名
     this.$axios({
         method: 'get',
@@ -300,6 +317,13 @@ methods: {
         this.$router.go(-1);
     },
     signUpJob(){
+        if(!this.isAuthened){
+            ElMessage({
+                message: "请先进行实名认证！",
+                type: 'error',
+            })
+            return;
+        }
         console.log(this.order)
         if((this.contactMethod==null||this.contactMethod=='')&&(this.commitContactMethod==null||this.commitContactMethod=='')){
             ElMessage({

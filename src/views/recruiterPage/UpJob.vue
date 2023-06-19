@@ -129,6 +129,7 @@ export default {
                 locationLat:0,
                 locationLng:0,
             },
+            isAuthened: false,
         }
     },
     methods: {
@@ -150,6 +151,13 @@ export default {
             // console.log(this.addForm)
         },
         upJob() {
+            if(!this.isAuthened){
+                ElMessage({
+                    message: "请先进行企业认证！",
+                    type: 'error',
+                })
+                return;
+            }
             this.ruleForm.workPlace = this.addtions + this.place;
             this.$axios({
                 method: 'post',
@@ -239,12 +247,28 @@ export default {
             method: 'get',
             url: '/api/admin/getJobTypeList',
         })
-            .then(res => {
-                this.typeList = res.data.data.jobtype_list;
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
+        .then(res => {
+            this.typeList = res.data.data.jobtype_list;
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+
+        this.$axios({
+            method: 'get',
+            url: '/api/recruiter/getAuthentication/?recruiterId='+localStorage.getItem('userId'),
+        })
+        .then(res => {
+            if(res.data.code==200){
+                if(res.data.data.companyauthen_list){
+                    if(res.data.data.companyauthen_list[0].checkStatus=="已通过")
+                    this.isAuthened=true;
+                }
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     },
 }
 </script>
