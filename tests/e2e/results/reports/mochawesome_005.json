@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-19T03:36:00.363Z",
+    "end": "2023-06-19T03:36:05.872Z",
+    "duration": 5509,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "45b2b6f2-a521-4f6b-9a73-a527060be9c2",
+      "title": "",
+      "fullFile": "tests/e2e/specs/UserInfoManageSubSys/Authentication/handInAuthen.js",
+      "file": "tests/e2e/specs/UserInfoManageSubSys/Authentication/handInAuthen.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a7ea05e4-1bf9-473c-954f-7c2589fe5ef8",
+          "title": "用户信息管理子系统-用户提交认证申请",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "提交异常",
+              "fullTitle": "用户信息管理子系统-用户提交认证申请 提交异常",
+              "timedOut": null,
+              "duration": 5395,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//前提：求职者未提交实名认证申请，或者提交的实名认证申请状态为“未通过”，个人中心-实名认证显示申请按钮\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10028\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"666\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(2)').click(); //跳转至实名认证界面\ncy.get('.el-header > .el-button').should('contain', '申请'); //断言\ncy.get('.el-header > .el-button').click(); //点击申请按钮\ncy.get('.dialog-footer > :nth-child(1)').click(); //点击确认\ncy.contains('p', '不能为空').should('exist'); //断言\n//前提：招聘方未提交企业认证申请，或者提交的企业认证申请状态为“未通过”，企业中心-企业认证显示申请按钮\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10023\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"666\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/recruiter/company\"]').click(); //跳转至企业中心-企业信息页面\ncy.get('.el-menu > :nth-child(2)').click(); //跳转至企业认证界面\ncy.get('.el-header > .el-button').should('contain', '申请'); //断言\ncy.get('.el-header > .el-button').click(); //点击申请按钮\ncy.get('.dialog-footer > :nth-child(1)').click(); //点击确认\ncy.contains('p', '不能为空').should('exist'); //断言",
+              "err": {},
+              "uuid": "5d98cca2-a58c-4e09-aa19-b8c42bc22b42",
+              "parentUUID": "a7ea05e4-1bf9-473c-954f-7c2589fe5ef8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5d98cca2-a58c-4e09-aa19-b8c42bc22b42"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5395,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

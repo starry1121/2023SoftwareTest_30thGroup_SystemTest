@@ -210,7 +210,7 @@ created() {
     .then(res => {
         console.log('状态');
         console.log(res);
-        if(res.data.message=='已取消'||res.data.message=='已放弃'){
+        if(res.data.message=='已取消'||res.data.message=='已放弃'||res.data.message=='未报名'){
             this.applyState=false;
         }
         else{

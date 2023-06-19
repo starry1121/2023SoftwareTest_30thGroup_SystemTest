@@ -113,7 +113,7 @@
                         <el-table-column label="操作" width="200">
                             <template #default="scope">
                                 <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
-                                <el-button type="primary" round size="small"
+                                <el-button id="confirmFinishJob" type="primary" round size="small"
                                     @click="finishJob(scope.row)">确认工作完成</el-button>
                             </template>
                         </el-table-column>
@@ -140,9 +140,9 @@
                         <el-table-column label="操作" width="200">
                         <template #default="scope">
                             <el-button round size="small" @click="contact(scope.row.jobhunter)">私信</el-button>
-                            <el-button type="primary" round size="small"
+                            <el-button id="score" type="primary" round size="small"
                                 @click="score(scope.row.orderId)">评分</el-button>
-                            <el-button round size="small" @click="this.dialogFormVisible2=true;this.appeal.orderId=scope.row.orderId;">申诉</el-button>
+                            <el-button id="apply" round size="small" @click="this.dialogFormVisible2=true;this.appeal.orderId=scope.row.orderId;">申诉</el-button>
                         </template>
                     </el-table-column>
                     </el-table>
@@ -165,7 +165,7 @@
         </el-dialog>
 
         <el-dialog v-model="dialogFormVisible1" title="为求职者打分" align-center draggable>
-            <el-rate v-model="jobhunterScore" />
+            <el-rate id="scoreValue" v-model="jobhunterScore" />
             <template #footer>
             <span class="dialog-footer">
                 <el-button @click="dialogFormVisible1=false;">取消</el-button>
@@ -334,6 +334,44 @@ export default {
 
     },
     methods: {
+        getNewData(){
+            //获取兼职报名者列表
+            this.$axios({
+                method: 'get',
+                url: '/api/order/getAppliedList?jobId='+localStorage.getItem('jobDetailId'),
+            })
+            .then(resu => {
+                console.log(this.signupList);
+                this.orderList=resu.data.data.order_list;
+                this.signupList= this.orderList.filter((value)=>{
+                    return value.orderState.includes('已报名');
+                });
+                console.log(this.signupList);
+                this.replyList= this.orderList.filter((value)=>{
+                    return value.orderState.includes('已通过');
+                });
+                console.log(this.replyList);
+                this.workingList= this.orderList.filter((value)=>{
+                    return value.orderState.includes('已录用');
+                });
+                console.log(this.signupList);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            //获取兼职报名者列表
+            this.$axios({
+                method: 'get',
+                url: '/api/order/getAcceptedList?jobId='+localStorage.getItem('jobDetailId'),
+            })
+            .then(resu => {
+
+                this.finishList= resu.data.data.order_list;
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        },
         goBack() {
             this.$router.go(-1);
         },
@@ -406,8 +444,7 @@ export default {
                             message: "录用成功",
                             type: 'success',
                         })
-                        setTimeout(() => console.log(1), 2000)
-                        this.$router.go(0)
+                        this.getNewData();
                     }
                 })
                 .catch(function (error) {
@@ -441,8 +478,7 @@ export default {
                             message: "拒绝成功",
                             type: 'success',
                         })
-                        setTimeout(() => console.log(1), 2000)
-                        this.$router.go(0)
+                        this.getNewData();
                     }
                 })
                 .catch(function (error) {
@@ -476,8 +512,7 @@ export default {
                             message: "操作成功",
                             type: 'success',
                         })
-                        setTimeout(() => console.log(1), 2000)
-                        this.$router.go(0)
+                        this.getNewData();
                     }
                 })
                 .catch(function (error) {
@@ -512,7 +547,14 @@ export default {
                         type: 'success',
                     })
                 }
+                else{
+                    ElMessage({
+                        message: "打分成功",
+                        type: 'success',
+                    })
+                }
                 this.dialogFormVisible1=false;
+                this.getNewData();
             })
             .catch(function (error) {
                 console.log(error);
@@ -542,11 +584,12 @@ export default {
                         message: "已提交申诉",
                         type: 'success',
                     })
-                    this.$router.go(0);
+                    this.dialogFormVisible2=false;
+                    this.getNewData();
                 }
                 else{
                     ElMessage({
-                        message: "操作失败",
+                        message: "您的申诉审核中",
                         type: 'error',
                     })
                 }

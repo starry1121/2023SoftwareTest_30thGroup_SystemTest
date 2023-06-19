@@ -58,7 +58,7 @@
                     <template #header>
                         <el-row>
                             <el-col :span="22">
-                                <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
+                                <span id="workName" style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
                                 <el-button id="detail" color="#444076" size="small" class="button" icon="ArrowRightBold" circle  @click="jobDetail(item.job.jobId)"></el-button>
@@ -85,7 +85,7 @@
                     <template #header>
                         <el-row>
                             <el-col :span="22">
-                                <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
+                                <span id="workName" style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
                                 <el-button id="detail" color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
@@ -109,7 +109,7 @@
                     <template #header>
                         <el-row>
                             <el-col :span="22">
-                                <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
+                                <span id="workName" style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
                                 <el-button id="detail" color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
@@ -124,8 +124,8 @@
                         </el-row>
                         </el-col>
                         <el-col :span="3">
-                            <el-row><el-button class="button" color="#444076" @click="accept(item.orderId)" style="margin-bottom:5px;">接受录用</el-button></el-row>
-                            <el-row><el-button class="button" color="#444076" @click="noAccept(item.orderId)">放弃录用</el-button></el-row>
+                            <el-row><el-button id="accept" class="button" color="#444076" @click="accept(item.orderId)" style="margin-bottom:5px;">接受录用</el-button></el-row>
+                            <el-row><el-button id="noAccept" class="button" color="#444076" @click="noAccept(item.orderId)">放弃录用</el-button></el-row>
                         </el-col>
                     </el-row>
                     </el-card>
@@ -137,7 +137,7 @@
                     <template #header>
                         <el-row>
                             <el-col :span="22">
-                                <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
+                                <span id="workName" style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
                                 <el-button id="detail" color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
@@ -161,7 +161,7 @@
                     <template #header>
                         <el-row>
                             <el-col :span="22">
-                                <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
+                                <span id="workName" style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
                                 <el-button id="detail" color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
@@ -185,7 +185,7 @@
                     <template #header>
                         <el-row>
                             <el-col :span="22">
-                                <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
+                                <span id="workName" style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
                                 <el-button id="detail" color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
@@ -209,7 +209,7 @@
                     <template #header>
                         <el-row>
                             <el-col :span="22">
-                                <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
+                                <span id="workName" style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
                                 <el-button id="detail" color="#444076" size="small" class="button" icon="ArrowRightBold" circle  @click="jobDetail(item.job.jobId)"></el-button>
@@ -234,8 +234,8 @@
                         </el-row>
                         </el-col>
                         <el-col :span="3">
-                            <el-row><el-button class="button" color="#444076" @click="dialogFormVisible=true;appeal.orderId=item.orderId;" style="margin-bottom:15px;">&emsp;申诉&emsp;</el-button></el-row>
-                            <el-row><el-button class="button" color="#444076" @click="score(item.orderId)">&emsp;评分&emsp;</el-button></el-row>
+                            <el-row><el-button id="apply" class="button" color="#444076" @click="dialogFormVisible=true;appeal.orderId=item.orderId;" style="margin-bottom:15px;">&emsp;申诉&emsp;</el-button></el-row>
+                            <el-row><el-button id="score" class="button" color="#444076" @click="score(item.orderId)">&emsp;评分&emsp;</el-button></el-row>
                         </el-col>
                     </el-row>
                     </el-card>
@@ -247,7 +247,7 @@
                     <template #header>
                         <el-row>
                             <el-col :span="22">
-                                <span style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
+                                <span id="workName" style="font-size:18px;color:#444076;font-weight: 600;">{{ item.job.workName }}</span>
                             </el-col>
                             <el-col :span="2">
                                 <el-button id="detail" color="#444076" size="small" class="button" icon="ArrowRightBold" circle @click="jobDetail(item.job.jobId)"></el-button>
@@ -291,7 +291,7 @@
             </template>
         </el-dialog>
         <el-dialog v-model="dialogFormVisible1" title="为招聘方打分" align-center draggable>
-            <el-rate v-model="recruiterScore" />
+            <el-rate id="scoreValue" v-model="recruiterScore" />
             <template #footer>
             <span class="dialog-footer">
                 <el-button @click="dialogFormVisible1=false;">取消</el-button>
@@ -342,6 +342,21 @@
     }
     },
     methods: {
+        newData(){
+            this.$axios({
+                method: 'get',
+                url: '/api/order/getJobhunterOrderList?jobhunterId='+localStorage.getItem('userId'),
+            })
+            .then(res => {
+            if(res.data.code==200){
+                console.log(res.data.data);
+                this.order_list=res.data.data.order_list;
+            }
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        },
         score(value){
             this.dialogFormVisible1=true;
             this.scoreId=value;
@@ -366,6 +381,7 @@
                     })
                 }
                 this.dialogFormVisible1=false;
+                this.newData()
             })
             .catch(function (error) {
                 console.log(error);
@@ -389,17 +405,17 @@
                 data : this.appeal
             })
             .then(res => {
-                this.dialogFormVisible=false;
                 if(res.data.code==200){
                     ElMessage({
                         message: "已提交申诉",
                         type: 'success',
                     })
-                    this.$router.go(0);
+                    this.dialogFormVisible=false;
+                    this.newData();
                 }
                 else{
                     ElMessage({
-                        message: "操作失败",
+                        message: "您的申诉审核中",
                         type: 'error',
                     })
                 }
@@ -426,7 +442,7 @@
                 .then(res => {
                     if(res.data.code==200){
                         console.log(res.data.data);
-                        this.$router.go(0);
+                        this.newData();
                     }
                 })
                 .catch(function (error) {
@@ -456,7 +472,11 @@
                 .then(res => {
                     if(res.data.code==200){
                         console.log(res.data.data);
-                        this.$router.go(0);
+                        ElMessage({
+                            message: "已接受该录用",
+                            type: 'success',
+                        })
+                        this.newData();
                     }
                 })
                 .catch(function (error) {
@@ -486,7 +506,11 @@
                 .then(res => {
                     if(res.data.code==200){
                         console.log(res.data.data);
-                        this.$router.go(0);
+                        ElMessage({
+                            message: "已放弃该录用",
+                            type: 'success',
+                        })
+                        this.newData();
                     }
                 })
                 .catch(function (error) {
