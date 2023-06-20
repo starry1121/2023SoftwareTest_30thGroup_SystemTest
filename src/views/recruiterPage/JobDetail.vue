@@ -376,6 +376,13 @@ export default {
             this.$router.go(-1);
         },
         finishRecruit(){
+            if(!this.replyList){
+                ElMessage({
+                    message: "请等待求职者答复",
+                    type: 'error',
+                })
+                return;
+            }
             if(this.job.jobState=='已完成'){
                 ElMessage({
                     message: "该兼职已完成",
@@ -411,6 +418,14 @@ export default {
                             message: "已结束招聘",
                             type: 'success',
                         })
+                        this.getNewData();
+                    }
+                    else{
+                        ElMessage({
+                            message: "招聘结束，已拒绝录用所有报名者",
+                            type: 'success',
+                        })
+                        this.getNewData();
                     }
                 })
                 .catch(function (error) {
