@@ -15,6 +15,7 @@ describe('兼职订单子系统-招聘方', () => {
         //断言
         cy.wait(200)
         cy.get(':nth-child(3) > div > .el-button > span').click()
+        cy.get(':nth-child(3) > div > .el-button > span').click()
         //点击筛选“已通过”的兼职
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
         .parents('.el-card > .el-card__body')
@@ -39,6 +40,7 @@ describe('兼职订单子系统-招聘方', () => {
         cy.get('[href="/recruiter/jobManage"]').click()
         //跳转至兼职管理界面
         cy.wait(200)
+        cy.get(':nth-child(3) > div > .el-button > span').click()
         cy.get(':nth-child(3) > div > .el-button > span').click()
         //点击筛选“已通过”的兼职
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
@@ -68,6 +70,7 @@ describe('兼职订单子系统-招聘方', () => {
         cy.get('[href="/recruiter/jobManage"]').click()
         //跳转至兼职管理界面
         cy.wait(200)
+        cy.get(':nth-child(3) > div > .el-button > span').click()
         cy.get(':nth-child(3) > div > .el-button > span').click()
         //点击筛选“已通过”的兼职
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
@@ -100,6 +103,7 @@ describe('兼职订单子系统-招聘方', () => {
         //跳转至兼职管理界面
         cy.wait(200)
         cy.get(':nth-child(3) > div > .el-button > span').click()
+        cy.get(':nth-child(3) > div > .el-button > span').click()
         //点击筛选“已通过”的兼职
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
         .parents('.el-card > .el-card__body')
@@ -131,6 +135,7 @@ describe('兼职订单子系统-招聘方', () => {
         //跳转至兼职管理界面
         cy.wait(200)
         cy.get(':nth-child(3) > div > .el-button > span').click()
+        cy.get(':nth-child(3) > div > .el-button > span').click()
         //点击筛选“已通过”的兼职
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
         .parents('.el-card > .el-card__body')
@@ -161,6 +166,7 @@ describe('兼职订单子系统-招聘方', () => {
         cy.get('[href="/recruiter/jobManage"]').click()
         //跳转至兼职管理界面
         cy.wait(1000)
+        cy.get(':nth-child(3) > div > .el-button > span').click()
         cy.get(':nth-child(3) > div > .el-button > span').click()
         //点击筛选“已通过”的兼职
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
@@ -197,6 +203,7 @@ describe('兼职订单子系统-招聘方', () => {
         //跳转至兼职管理界面
         cy.wait(1000)
         cy.get(':nth-child(3) > div > .el-button > span').click()
+        cy.get(':nth-child(3) > div > .el-button > span').click()
         //点击筛选“已通过”的兼职
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
         .parents('.el-card > .el-card__body')
@@ -227,6 +234,7 @@ describe('兼职订单子系统-招聘方', () => {
         cy.get('[href="/recruiter/jobManage"]').click()
         //跳转至兼职管理界面
         cy.wait(1000)
+        cy.get(':nth-child(3) > div > .el-button > span').click()
         cy.get(':nth-child(3) > div > .el-button > span').click()
         //点击筛选“已通过”的兼职
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
@@ -260,6 +268,7 @@ describe('兼职订单子系统-招聘方', () => {
         //跳转至兼职管理界面
         cy.wait(1000)
         cy.get(':nth-child(3) > div > .el-button > span').click()
+        cy.get(':nth-child(3) > div > .el-button > span').click()
         //点击筛选“已通过”的兼职
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
         .parents('.el-card > .el-card__body')
@@ -278,6 +287,31 @@ describe('兼职订单子系统-招聘方', () => {
         cy.get('.dialog-footer > .el-button--primary').click()
         //点击确认
         cy.contains('p', '您的申诉审核中').should('exist');
+        //断言
+
+        //管理员驳回申诉
+        cy.visit('/')
+        //访问网站
+        cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10007")
+        cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("admin")
+        //输入账号密码
+        cy.get("#login").click()
+        //点击登录按钮
+        cy.wait(500)
+        cy.get('.el-menu--vertical > :nth-child(2)').click()
+        //点击订单申诉
+        cy.wait(500)
+        cy.get('button.el-button').filter(':contains("审核")').filter(':visible').first().click();
+        //点击审核
+        cy.wait(200)
+        cy.get('button.el-button').filter(':contains("驳回")').filter(':visible').first().click();
+        //点击驳回
+        cy.wait(500)
+        cy.get('.el-textarea__inner').filter(':visible').clear()
+        cy.get('.el-textarea__inner').filter(':visible').type("已处理")
+        cy.get('button.el-button').filter(':contains("确认")').filter(':visible').first().click();
+        //点击确认
+        cy.contains('p', '已驳回该申诉').should('exist');
         //断言
     })
 })

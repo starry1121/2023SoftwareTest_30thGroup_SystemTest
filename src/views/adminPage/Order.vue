@@ -244,6 +244,34 @@ export default {
         }
     },
     methods: {
+        newData(){
+            this.$axios({
+                method: 'get',
+                url: '/api/admin/getAppealList',
+            })
+            .then(res => {
+                if(res.data.code==200){
+                    this.applyList=res.data.data.appeal_list;
+                    this.applyList.sort((a, b) => {
+                        if (a.status === '未审核' && b.status !== '未审核') {
+                            return -1; // a在前，b在后
+                        } else if (a.status !== '未审核' && b.status === '未审核') {
+                            return 1; // b在前，a在后
+                        } else {
+                            return 0; // 保持原顺序
+                        }
+                    });
+                    this.total=this.applyList.length;
+                    console.log('订单申诉列表'+this.applyList);
+                }
+                else{
+                    this.applyList=null
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        },
         handleCurrentChange(val){
             this.page=val
         },
@@ -278,7 +306,10 @@ export default {
                         message: "已驳回该申诉",
                         type: 'success',
                     })
-                    this.$router.go(0);
+                    this.newData()
+                    this.dialogFormVisible=false
+                    this.dialogFormVisible1=false
+                    this.dialogFormVisible2=false
                 }
                 else{
                     ElMessage({
@@ -320,7 +351,10 @@ export default {
                         message: "已通过该申诉",
                         type: 'success',
                     })
-                    this.$router.go(0);
+                    this.newData()
+                    this.dialogFormVisible=false
+                    this.dialogFormVisible1=false
+                    this.dialogFormVisible2=false
                 }
                 else{
                     ElMessage({
@@ -369,6 +403,15 @@ export default {
         .then(res => {
             if(res.data.code==200){
                 this.applyList=res.data.data.appeal_list;
+                this.applyList.sort((a, b) => {
+                    if (a.status === '未审核' && b.status !== '未审核') {
+                        return -1; // a在前，b在后
+                    } else if (a.status !== '未审核' && b.status === '未审核') {
+                        return 1; // b在前，a在后
+                    } else {
+                        return 0; // 保持原顺序
+                    }
+                });
                 this.total=this.applyList.length;
                 console.log('订单申诉列表'+this.applyList);
             }

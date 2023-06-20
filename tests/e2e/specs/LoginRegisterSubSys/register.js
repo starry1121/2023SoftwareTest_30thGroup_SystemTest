@@ -13,7 +13,7 @@ describe('登录注册子系统-用户注册', () => {
     cy.wait(2000);
     cy.get('.el-input-group__append > .el-button > span').click();
     //点击获取验证码 
-    cy.get('#message_1').should('contain', '请检查邮箱');
+    cy.contains('p', '请检查邮箱').should('exist');
     //断言
 
     //邮箱为空
@@ -25,7 +25,7 @@ describe('登录注册子系统-用户注册', () => {
     cy.wait(2000);
     cy.get('.el-input-group__append > .el-button > span').click();
     //不输入邮箱，点击获取验证码 
-    cy.get('#message_1').should('contain', '请检查邮箱');
+    cy.contains('p', '请检查邮箱').should('exist');
     //断言
 
     //邮箱已注册
@@ -39,7 +39,7 @@ describe('登录注册子系统-用户注册', () => {
     cy.wait(2000);
     cy.get('.el-input-group__append > .el-button > span').click();
     //点击获取验证码 
-    cy.contains('p', '邮箱已注册').should('contain', '邮箱已注册');
+    cy.contains('p', '邮箱已注册').should('exist');
     //断言
 
     //邮箱格式正确且未注册
@@ -53,7 +53,7 @@ describe('登录注册子系统-用户注册', () => {
     cy.wait(2000);
     cy.get('.el-input-group__append > .el-button > span').click();
     //点击获取验证码 
-    cy.contains('p', '验证码已发送至您的邮箱').should('contain', '验证码已发送至您的邮箱');
+    cy.contains('p', '验证码已发送至您的邮箱').should('exist');
     //断言
   })
 })

@@ -11,7 +11,7 @@ describe('登录注册子系统-用户找回密码', () => {
     //输入邮箱 
     cy.get('.el-input-group__append > .el-button').click();
     //点击获取验证码 
-    cy.get('#message_1').should('contain', '邮箱未注册');
+    cy.contains('p', '邮箱未注册').should('exist');
     //断言
 
     //邮箱为空
@@ -21,7 +21,7 @@ describe('登录注册子系统-用户找回密码', () => {
     //点击找回密码按钮，打开找回密码弹窗 
     cy.get('.el-input-group__append > .el-button').click();
     //不输入邮箱，点击获取验证码 
-    cy.get('#message_1').should('contain', '请检查邮箱');
+    cy.contains('p', '请检查邮箱').should('exist');
     //断言
 
     //邮箱格式正确
@@ -36,7 +36,7 @@ describe('登录注册子系统-用户找回密码', () => {
     cy.wait(2000);
     cy.get('.el-input-group__append > .el-button > span').click();
     //点击获取验证码 
-    cy.contains('p', '验证码已发送至您的邮箱').should('contain', '验证码已发送至您的邮箱');
+    cy.contains('p', '验证码已发送至您的邮箱').should('exist');
     //断言
   })
 
