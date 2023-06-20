@@ -1,0 +1,8 @@
+// .nycrc
+{"extension": [".js", ".vue"], // 这里配置支持的文件类型
+  "include": ["src/**/*.{js,vue}"],
+  "all": true,
+  "sourceMap": false,
+  "instrument": false,
+  "per-file": true
+}
