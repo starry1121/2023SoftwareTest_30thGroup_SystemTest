@@ -10,7 +10,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录成功');
+    cy.contains('p', '登录成功').should('exist');
     cy.url().should('contain','jobhunter')
     //断言
 
@@ -22,7 +22,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录成功');
+    cy.contains('p', '登录成功').should('exist');
     cy.url().should('contain','jobhunter')
     //断言
 
@@ -34,7 +34,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录成功');
+    cy.contains('p', '登录成功').should('exist');
     cy.url().should('contain','recruiter')
     //断言
 
@@ -46,7 +46,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮  
-    cy.get('#message_1').should('contain', '登录成功');
+    cy.contains('p', '登录成功').should('exist');
     cy.url().should('contain','recruiter')
     //断言
 
@@ -58,7 +58,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录成功');
+    cy.contains('p', '登录成功').should('exist');
     cy.url().should('contain','admin')
     //断言
 
@@ -70,7 +70,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录成功');
+    cy.contains('p', '登录成功').should('exist');
     cy.url().should('contain','admin')
     //断言
   })
@@ -84,7 +84,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录失败');
+    cy.contains('p', '登录失败').should('exist');
     //断言
 
     //求职者登录-密码错误
@@ -95,7 +95,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录失败');
+    cy.contains('p', '登录失败').should('exist');
     //断言
 
     //招聘方登录-账号不存在
@@ -106,7 +106,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录失败');
+    cy.contains('p', '登录失败').should('exist');
     //断言
 
     //招聘方登录-密码错误
@@ -117,7 +117,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录失败');
+    cy.contains('p', '登录失败').should('exist');
     //断言
 
     //管理员登录-账号不存在
@@ -128,7 +128,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录失败');
+    cy.contains('p', '登录失败').should('exist');
     //断言
 
     //管理员登录-密码错误
@@ -139,7 +139,7 @@ describe('登录注册子系统-用户登录', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录失败');
+    cy.contains('p', '登录失败').should('exist');
     //断言
   })
 

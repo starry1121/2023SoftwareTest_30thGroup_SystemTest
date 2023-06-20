@@ -165,6 +165,31 @@ describe('兼职订单子系统-求职者', () => {
         //点击确认
         cy.contains('p', '您的申诉审核中').should('exist');
         //断言
+
+        //管理员驳回申诉
+        cy.visit('/')
+        //访问网站
+        cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10007")
+        cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("admin")
+        //输入账号密码
+        cy.get("#login").click()
+        //点击登录按钮
+        cy.wait(500)
+        cy.get('.el-menu--vertical > :nth-child(2)').click()
+        //点击订单申诉
+        cy.wait(500)
+        cy.get('button.el-button').filter(':contains("审核")').filter(':visible').first().click();
+        //点击审核
+        cy.wait(200)
+        cy.get('button.el-button').filter(':contains("驳回")').filter(':visible').first().click();
+        //点击驳回
+        cy.wait(500)
+        cy.get('.el-textarea__inner').filter(':visible').clear()
+        cy.get('.el-textarea__inner').filter(':visible').type("已处理")
+        cy.get('button.el-button').filter(':contains("确认")').filter(':visible').first().click();
+        //点击确认
+        cy.contains('p', '已驳回该申诉').should('exist');
+        //断言
     })
 
     it('对未及时支付工资的订单提出申诉', () => {
@@ -218,6 +243,31 @@ describe('兼职订单子系统-求职者', () => {
         cy.get('.dialog-footer > :nth-child(2)').click()
         //点击确认
         cy.contains('p', '已提交申诉').should('exist');
+        //断言
+
+        //管理员驳回申诉
+        cy.visit('/')
+        //访问网站
+        cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10007")
+        cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("admin")
+        //输入账号密码
+        cy.get("#login").click()
+        //点击登录按钮
+        cy.wait(500)
+        cy.get('.el-menu--vertical > :nth-child(2)').click()
+        //点击订单申诉
+        cy.wait(500)
+        cy.get('button.el-button').filter(':contains("审核")').filter(':visible').first().click();
+        //点击审核
+        cy.wait(200)
+        cy.get('button.el-button').filter(':contains("驳回")').filter(':visible').first().click();
+        //点击驳回
+        cy.wait(500)
+        cy.get('.el-textarea__inner').filter(':visible').clear()
+        cy.get('.el-textarea__inner').filter(':visible').type("已处理")
+        cy.get('button.el-button').filter(':contains("确认")').filter(':visible').first().click();
+        //点击确认
+        cy.contains('p', '已驳回该申诉').should('exist');
         //断言
     })
 })
