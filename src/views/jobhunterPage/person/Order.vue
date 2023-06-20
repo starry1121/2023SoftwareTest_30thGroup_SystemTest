@@ -442,6 +442,10 @@
                 .then(res => {
                     if(res.data.code==200){
                         console.log(res.data.data);
+                        ElMessage({
+                            message: "已取消报名",
+                            type: 'success',
+                        })
                         this.newData();
                     }
                 })
