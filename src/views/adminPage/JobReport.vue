@@ -190,7 +190,7 @@
                         </template>
                     </el-dialog>
                     <el-dialog style="width:30%" v-model="dialogFormVisible1" title="结果反馈" align-center draggable>
-                        <el-input v-model="result" autocomplete="off" type="textarea" :rows="3"/>
+                        <el-input v-model="result" autocomplete="off" type="textarea" :rows="3" id="bohuiInput"/>
                         <template #footer>
                             <span class="dialog-footer">
                                 <el-button type="danger" plain @click="dialogFormVisible1=false;">取消</el-button>

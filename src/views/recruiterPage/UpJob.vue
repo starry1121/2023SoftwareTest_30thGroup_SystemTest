@@ -26,10 +26,10 @@
                         <el-input-number v-model="ruleForm.salary" :precision="2" :step="0.1" min="0" />
                     </el-form-item>
                     <el-form-item label="兼职时间" prop="jobtime">
-                        <el-date-picker v-model="ruleForm.startTime" type="datetime" placeholder="选择起始时间"
+                        <el-date-picker id="jobtime1"  v-model="ruleForm.startTime" type="datetime" placeholder="选择起始时间"
                             format="YYYY-MM-DD hh:mm:ss" value-format="YYYY-MM-DD hh:mm:ss" />
                         —
-                        <el-date-picker v-model="ruleForm.endTime" type="datetime" placeholder="选择结束时间"
+                        <el-date-picker  id="jobtime2" v-model="ruleForm.endTime" type="datetime" placeholder="选择结束时间"
                             format="YYYY-MM-DD hh:mm:ss" value-format="YYYY-MM-DD hh:mm:ss" />
                         <el-form-item label="每日时长" prop="workTime">
                             <el-input-number v-model="ruleForm.workTime" max="24" min="0" />
@@ -37,7 +37,7 @@
                     </el-form-item>
                     <el-form-item label="兼职地点" prop="selectedOptions">
                         <el-col :span="24">
-                            <el-cascader placeholder="请选择地区" style="border-radius:4px;" :options="options"
+                            <el-cascader  id="placeSelect1" placeholder="请选择地区" style="border-radius:4px;" :options="options"
                                 v-model="selectedOptions" @change="handleChange">
                             </el-cascader>
                         </el-col>
@@ -57,7 +57,7 @@
                     </el-form-item>
                     <el-form-item label="兼职详情" prop="workDetails">
                         <!-- 多行输入框 -->
-                        <el-input v-model="ruleForm.workDetails" type="textarea" :rows="5" maxlength="480" show-word-limit
+                        <el-input  id="inputJobDetail" v-model="ruleForm.workDetails" type="textarea" :rows="5" maxlength="480" show-word-limit
                             placeholder="请输入兼职详情" />
                     </el-form-item>
                     <el-form-item>

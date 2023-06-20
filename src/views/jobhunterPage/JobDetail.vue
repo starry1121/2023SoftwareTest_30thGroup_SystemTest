@@ -82,7 +82,7 @@
                     <el-input v-if="contactMethod" disabled v-model="contactMethod"/>
                 </el-form-item>
                 <el-form-item label="自我介绍">
-                    <el-input v-model="order.applyReason" :rows="5" type="textarea"/>
+                    <el-input v-model="order.applyReason" :rows="5" type="textarea" id="ziwjieshao"/>
                 </el-form-item>
             </el-form>
             <template #footer>
@@ -99,7 +99,7 @@
         <el-dialog v-model="dialogFormVisible1" title="举报兼职" align-center>
             <el-form label-width="120px">
                 <el-form-item label="举报理由">
-                    <el-input v-model="report.reason" :rows="5" type="textarea"/>
+                    <el-input v-model="report.reason" :rows="5" type="textarea" id="ReportReason"/>
                 </el-form-item>
             </el-form>
             <template #footer>

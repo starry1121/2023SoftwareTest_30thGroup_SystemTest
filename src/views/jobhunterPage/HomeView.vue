@@ -3,7 +3,7 @@
     <Nav/>
     <div class="head_bg">
       <div class="btn">
-        <router-link to="/jobhunter/job"><el-button style="height:40px;width:150px;font-size: 18px;margin-right: 20vw;margin-top: 50px;" color="#7A74C2" type="primary" round>寻找兼职</el-button></router-link>
+        <router-link to="/jobhunter/job"><el-button id="jobButton"  style="height:40px;width:150px;font-size: 18px;margin-right: 20vw;margin-top: 50px;" color="#7A74C2" type="primary" round>寻找兼职</el-button></router-link>
         &emsp;&emsp;
       </div>
       <img class="logo" src="../../assets/logo2.svg" alt="logo">

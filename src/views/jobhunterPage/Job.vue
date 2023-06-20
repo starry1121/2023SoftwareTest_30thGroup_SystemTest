@@ -2,17 +2,17 @@
   <Nav/>
   <div class="body">
     <div class="search">
-        <input v-model="search" class="text" type="text" placeholder="请输入关键词" name="search">
+        <input v-model="search" id="searchBox" class="text" type="text" placeholder="请输入关键词" name="search">
         <input class="button" type="button" value="搜索">
     </div>
     <el-row justify="center" style="margin-top: 10px;">
       <span class="title">类型</span>
       <el-space class="select" :size="28">
-        <el-button v-if="currentType=='全部'" class="type" type="info" text @click="selectType('全部')">全部</el-button>
+        <el-button id="qbButton" v-if="currentType=='全部'" class="type" type="info" text @click="selectType('全部')">全部</el-button>
         <el-button v-if="!(currentType=='全部')" class="item" type="info" text @click="selectType('全部')">全部</el-button>
         <div v-for="item in jobTypeList" :key="item">
-          <el-button v-if="currentType==item.typeName" class="type" type="info" text @click="selectType(item.typeName)">{{ item.typeName }}</el-button>
-          <el-button v-if="!(currentType==item.typeName)" class="item" type="info" text @click="selectType(item.typeName)">{{ item.typeName }}</el-button>
+          <el-button v-if="currentType==item.typeName" class="type" type="info" text @click="selectType(item.typeName) " >{{ item.typeName }}</el-button>
+          <el-button v-if="!(currentType==item.typeName)" class="item" type="info" text @click="selectType(item.typeName)" :data-button-type="item.typeName">{{ item.typeName }}</el-button>
         </div>
       </el-space>
     </el-row>
@@ -20,8 +20,8 @@
       <span class="title">距离</span>
       <el-space class="select" :size="25">
         <div v-for="item in distance" :key="item">
-          <el-button v-if="currentDistance==item" class="type" type="info" text @click="selectDistance(item)">{{ item }}</el-button>
-          <el-button v-if="!(currentDistance==item)" class="item" type="info" text @click="selectDistance(item)">{{ item }}</el-button>
+          <el-button v-if="currentDistance==item" class="type" type="info" text @click="selectDistance(item)" >{{ item }}</el-button>
+          <el-button v-if="!(currentDistance==item)" class="item" type="info" text @click="selectDistance(item)" :distancd-value=item>{{ item }}</el-button>
         </div>
       </el-space>
     </el-row>
@@ -39,9 +39,10 @@
       class="job"
       v-for="item in searchResult.slice((page-1) * limit, page * limit)"
       :key="item.jobId"
+      id="jobListRow"
     >
-      <el-card class="jobList" v-show="item.jobType==currentType||currentType=='全部'">
-        <el-row class="item">
+      <el-card class="jobList" v-show="item.jobType==currentType||currentType=='全部'" id="jobList">
+        <el-row class="item" >
           <el-col :span="18" class="content">
             <h2 class="work_name">{{ item.workName }}</h2>
             <p class="work_date">{{ item.startTime }}-{{ item.endTime }}</p>
