@@ -326,7 +326,9 @@ export default {
         })
         .then(resu => {
 
-            this.finishList= resu.data.data.order_list;
+            this.finishList= resu.data.data.order_list.filter((value)=>{
+                return value.orderState.includes('已完成');
+            });
         })
         .catch(function (error) {
             console.log(error);
@@ -350,7 +352,7 @@ export default {
                 this.replyList= this.orderList.filter((value)=>{
                     return value.orderState.includes('已通过');
                 });
-                console.log(this.replyList);
+                console.log("this.replyList"+this.replyList);
                 this.workingList= this.orderList.filter((value)=>{
                     return value.orderState.includes('已录用');
                 });
@@ -376,7 +378,7 @@ export default {
             this.$router.go(-1);
         },
         finishRecruit(){
-            if(this.replyList){
+            if(this.replyList.length){
                 ElMessage({
                     message: "请等待求职者答复",
                     type: 'error',
