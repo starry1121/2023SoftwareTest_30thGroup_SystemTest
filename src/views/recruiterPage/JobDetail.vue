@@ -376,7 +376,7 @@ export default {
             this.$router.go(-1);
         },
         finishRecruit(){
-            if(!this.replyList){
+            if(this.replyList){
                 ElMessage({
                     message: "请等待求职者答复",
                     type: 'error',
