@@ -35,10 +35,10 @@ describe('兼职订单子系统-求职者', () => {
         //跳转至个人中心-我的信息页面
         cy.get('.el-menu > :nth-child(4)').click()
         //跳转到兼职订单页
-        cy.wait(200)
+        cy.wait(500)
         cy.get('#tab-已通过').click()
         //筛选已通过的订单
-        cy.wait(500)
+        cy.wait(1000)
         cy.get('button.el-button').filter(':contains("接受录用")').filter(':visible').first().click();
         //点击接受录用
         cy.get('.el-button--primary').click()
@@ -59,10 +59,10 @@ describe('兼职订单子系统-求职者', () => {
         //跳转至个人中心-我的信息页面
         cy.get('.el-menu > :nth-child(4)').click()
         //跳转到兼职订单页
-        cy.wait(200)
+        cy.wait(500)
         cy.get('#tab-已通过').click()
         //筛选已通过的订单
-        cy.wait(500)
+        cy.wait(1000)
         cy.get('button.el-button').filter(':contains("放弃录用")').filter(':visible').first().click();
         //点击放弃录用
         cy.get('.el-button--primary').click()

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.87% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/132</span>
+                <span class='fraction'>24/132</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">15.27% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/72</span>
+                <span class='fraction'>11/72</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">13.33% </span>
+                <span class="strong">16.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/30</span>
+                <span class='fraction'>5/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.97% </span>
+                <span class="strong">18.32% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/131</span>
+                <span class='fraction'>24/131</span>
             </div>
         
             
@@ -693,17 +693,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -713,16 +713,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1256,18 +1256,18 @@
                         &lt;/el-col&gt;
                         &lt;el-col :span="12" v-if="display" class="con"&gt;
                             &lt;div class="con-box"&gt;
-                    <span class="missing-if-branch" title="if path not taken" >I</span>            &lt;img class="img" alt="logo" src="../assets/logo.png"&gt;
-<span class="cstat-no" title="statement not covered" >                                &lt;br&gt;</span>
-<span class="cstat-no" title="statement not covered" >                                &lt;el-button class="btn" color="#FFCAA6" type="primary" @click='toSignup'&gt;去注册&lt;/el-button&gt;</span>
+                                &lt;img class="img" alt="logo" src="../assets/logo.png"&gt;
+                                &lt;br&gt;
+                                &lt;el-button class="btn" color="#FFCAA6" type="primary" @click='toSignup'&gt;去注册&lt;/el-button&gt;
                             &lt;/div&gt;
                         &lt;/el-col&gt;
                     &lt;/el-row&gt;
-                &lt;/el-col&gt;<span class="fstat-no" title="function not covered" ></span>
-            &lt;/el-row&gt;<span class="cstat-no" title="statement not covered" ></span>
-            &lt;el-dialog v-mod<span class="cstat-no" title="statement not covered" >el="dialogFormVisible" title="找回密码" align-center&gt;</span>
-                &lt;el-form :mo<span class="cstat-no" title="statement not covered" >del="findPWD"&gt;</span>
-                &lt;el-form-ite<span class="cstat-no" title="statement not covered" >m label="邮箱&amp;emsp;" :label-width="formLabelWidth"&gt;</span>
-                    &lt;el-inpu<span class="cstat-no" title="statement not covered" >t v-model="findPWD.email" autoco</span>mplete="off" @change="isRegistedfindPWD"/&gt;
+                &lt;/el-col&gt;
+            &lt;/el-row&gt;
+            &lt;el-dialog v-model="dialogFormVisible" title="找回密码" align-center&gt;
+                &lt;el-form :model="findPWD"&gt;
+                &lt;el-form-item label="邮箱&amp;emsp;" :label-width="formLabelWidth"&gt;
+                    &lt;el-input v-model="findPWD.email" autocomplete="off" @change="isRegistedfindPWD"/&gt;
                 &lt;/el-form-item&gt;
                 &lt;el-form-item c<span class="fstat-no" title="function not covered" >la</span>ss="input" label="验证码"&gt;
                     &lt;el-inpu<span class="cstat-no" title="statement not covered" >t</span>
@@ -1276,7 +1276,7 @@
                     <span class="missing-if-branch" title="if path not taken" >I</span>    @change="isCaptcha"
                     &gt;<span class="cstat-no" title="statement not covered" ></span>
                         &lt;template #append&gt;
-                    <span class="missing-if-branch" title="else path not taken" >E</span>        &lt;el-button type="primary" color="#444076" @click="getfindPWDCaptcha"&gt;获取验证码&lt;/el-button&gt;
+                            &lt;el-button type="primary" color="#444076" @click="getfindPWDCaptcha"&gt;获取验证码&lt;/el-button&gt;
                         &lt;/template&gt;
                     &lt;/el-input&gt;
                 &lt;/el-form-item&gt;
@@ -1762,7 +1762,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-06-21T02:40:47.013Z
+                at 2023-06-21T03:03:24.821Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

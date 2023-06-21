@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T02:53:05.046Z",
+    "end": "2023-06-21T02:53:17.234Z",
+    "duration": 12188,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "dfc33001-9e2a-4f3b-8096-4c691c31c55a",
+      "title": "",
+      "fullFile": "tests/e2e/specs/FlowTest/FilterSearchJob.js",
+      "file": "tests/e2e/specs/FlowTest/FilterSearchJob.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "edfcf060-7b3c-468e-9e40-772388981bcb",
+          "title": "业务流测试-筛选搜索兼职",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "根据类型筛选兼职-教育行业",
+              "fullTitle": "业务流测试-筛选搜索兼职 根据类型筛选兼职-教育行业",
+              "timedOut": null,
+              "duration": 10109,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get(':nth-child(2) > .el-space > :nth-child(3) > div > .el-button > span').click(); //点击教育行业\ncy.wait(1000);\ncy.get('.body').should('contain', '大学生线上讲解小学数学长期兼职'); //断言\ncy.wait(1000);\ncy.get(\"#searchBox\").type('家教'); //输入搜索词 \ncy.wait(500); // cy.get('.body').should('contain', '家教');\n//断言\ncy.wait(1000);\ncy.get(\"#searchBox\").clear(); //清空搜索框\ncy.wait(500);\ncy.get('.el-space > :nth-child(1) > div > .el-button').click(); //点击全部\ncy.get('.body').should('contain', '屈臣氏官方招募推广云店主'); //断言",
+              "err": {},
+              "uuid": "d10fd163-db4c-4e4d-bc54-6488f6a64ddd",
+              "parentUUID": "edfcf060-7b3c-468e-9e40-772388981bcb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d10fd163-db4c-4e4d-bc54-6488f6a64ddd"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 10109,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

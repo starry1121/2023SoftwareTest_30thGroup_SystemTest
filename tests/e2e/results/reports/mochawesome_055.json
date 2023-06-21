@@ -1,0 +1,133 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2023-06-21T03:00:53.156Z",
+    "end": "2023-06-21T03:01:06.344Z",
+    "duration": 13188,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "51dab9c9-6e5f-4f81-b802-12516bac792f",
+      "title": "",
+      "fullFile": "tests/e2e/specs/SelectJobSubSys/SearchJob.js",
+      "file": "tests/e2e/specs/SelectJobSubSys/SearchJob.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fe27960a-7e77-49e3-bfae-f56d4af3dd6d",
+          "title": "选择兼职子系统-搜索兼职",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "搜索家教",
+              "fullTitle": "选择兼职子系统-搜索兼职 搜索家教",
+              "timedOut": null,
+              "duration": 6355,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.get(\"#searchBox\").type('家教'); //输入搜索词 \ncy.get('#jobList').should('contain', '家教');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#jobList`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#jobList`, but never found it.\n    at Context.eval (http://localhost:8080/__cypress/tests?p=tests\\e2e\\specs\\SelectJobSubSys\\SearchJob.js:119:24)",
+                "diff": null
+              },
+              "uuid": "de3420ca-345c-46a2-a3d9-693c3815433f",
+              "parentUUID": "fe27960a-7e77-49e3-bfae-f56d4af3dd6d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "搜索助理",
+              "fullTitle": "选择兼职子系统-搜索兼职 搜索助理",
+              "timedOut": null,
+              "duration": 6021,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 searchBox\ncy.get(\"#searchBox\").type('助理'); //输入搜索词 jobList\ncy.get('#jobList').should('contain', '助理');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#jobList`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#jobList`, but never found it.\n    at Context.eval (http://localhost:8080/__cypress/tests?p=tests\\e2e\\specs\\SelectJobSubSys\\SearchJob.js:139:24)",
+                "diff": null
+              },
+              "uuid": "0c76d053-2ff2-48dc-a127-3bc61341ff36",
+              "parentUUID": "fe27960a-7e77-49e3-bfae-f56d4af3dd6d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "de3420ca-345c-46a2-a3d9-693c3815433f",
+            "0c76d053-2ff2-48dc-a127-3bc61341ff36"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 12376,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
