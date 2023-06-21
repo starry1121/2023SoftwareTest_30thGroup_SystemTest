@@ -118,8 +118,9 @@
                     label-width="100px"
                     style="margin-top:63px;"
                 >
+                    <!-- 缺陷JBGZ-7 -->
                     <el-form-item label="邮箱&emsp;" :label-width="formLabelWidth">
-                        <el-input v-model="userInfo.email" autocomplete="off" disabled/>
+                        <el-input v-model="findPWD.email" autocomplete="off" />
                     </el-form-item>
                     <el-form-item class="input" label="验证码">
                         <el-input
@@ -291,11 +292,18 @@ var cos = new COS({
             this.btn_show=false
         },
         getfindPWDCaptcha(){
+            if(this.findPWD.email==null||this.findPWD.email==''){
+                ElMessage({
+                    message: "请检查邮箱！",
+                    type: 'error',
+                })
+                return;
+            }
             this.$axios({
                 method: 'post',
                 url: '/api/register/email',
                 data:{
-                    email:this.userInfo.email
+                    email:this.findPWD.email
                 },
             })
             .then(res => {
@@ -324,14 +332,14 @@ var cos = new COS({
             }
         },
         findPassword(){
-            if(this.captcha!=this.confirmCaptcha){
+            if(this.findPWD.email==null||this.findPWD.email==''){
                 ElMessage({
-                    message: "验证码不正确！",
+                    message: "请检查邮箱！",
                     type: 'error',
                 })
                 return;
             }
-            else if(this.confirmCaptcha==null||this.confirmCaptcha==''){
+            if(this.confirmCaptcha==null||this.confirmCaptcha==''){
                 ElMessage({
                     message: "验证码不正确！",
                     type: 'error',
@@ -345,7 +353,6 @@ var cos = new COS({
                 })
                 return;
             }
-            this.findPWD.email=this.userInfo.email;
             this.$axios({
                 method: 'post',
                 url: '/api/findPassword',

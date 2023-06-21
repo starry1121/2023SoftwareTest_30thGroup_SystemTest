@@ -317,13 +317,14 @@ methods: {
         this.$router.go(-1);
     },
     signUpJob(){
-        if(!this.isAuthened){
-            ElMessage({
-                message: "请先进行实名认证！",
-                type: 'error',
-            })
-            return;
-        }
+        // 缺陷JBGZ-9
+        // if(!this.isAuthened){
+        //     ElMessage({
+        //         message: "请先进行实名认证！",
+        //         type: 'error',
+        //     })
+        //     return;
+        // }
         console.log(this.order)
         if((this.contactMethod==null||this.contactMethod=='')&&(this.commitContactMethod==null||this.commitContactMethod=='')){
             ElMessage({

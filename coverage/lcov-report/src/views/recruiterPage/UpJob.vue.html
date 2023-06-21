@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/47</span>
+                <span class='fraction'>0/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/44</span>
+                <span class='fraction'>0/41</span>
             </div>
         
             
@@ -375,7 +375,8 @@
 <a name='L310'></a><a href='#L310'>310</a>
 <a name='L311'></a><a href='#L311'>311</a>
 <a name='L312'></a><a href='#L312'>312</a>
-<a name='L313'></a><a href='#L313'>313</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L313'></a><a href='#L313'>313</a>
+<a name='L314'></a><a href='#L314'>314</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -433,12 +434,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -745,16 +747,16 @@
                         &lt;el-input-number v-model="ruleForm.employeeNum" :step="5" min="1" /&gt;
                     &lt;/el-form-item&gt;
 <span class="fstat-no" title="function not covered" ></span>                    &lt;el-form-item label="兼职详情" prop="workDetails"&gt;
-<span class="cstat-no" title="statement not covered" >                        &lt;!-- 多行输入框 --&gt;</span>
-<span class="cstat-no" title="statement not covered" >                        &lt;el-input  id="inputJobDetail" v-model="ruleForm.workDetails" type="textarea" :rows="5" maxlength="480" show-word-limit</span>
+                        &lt;!-- 多行输入框 --&gt;
+                        &lt;el-input  id="inputJobDetail" v-model="ruleForm.workDetails" type="textarea" :rows="5" maxlength="480" show-word-limit
                             placeholder="请输入兼职详情" /&gt;
                     &lt;/el-form-item&gt;
                     &lt;el-form-item&gt;
-<span class="cstat-no" title="statement not covered" ></span>                        &lt;el-button class="btn" type="primary" @click="upJob"&gt;发 布&lt;/el-button&gt;
+                        &lt;el-button class="btn" type="primary" @click="upJob"&gt;发 布&lt;/el-button&gt;
                         &lt;el-button class="btn" @click="draftJob"&gt;存为草稿&lt;/el-button&gt;
-<span class="cstat-no" title="statement not covered" >                    &lt;/el-form-item&gt;</span>
+                    &lt;/el-form-item&gt;
 <span class="cstat-no" title="statement not covered" >                &lt;/el-form&gt;</span>
-            &lt;/el-row&gt;
+<span class="cstat-no" title="statement not covered" >            &lt;/el-row&gt;</span>
         &lt;/div&gt;
         &lt;!-- //地图选点对话框 --&gt;
         &lt;el-dialog v-model="mapDialogVisible" title="选择地点" width="80%"&gt;
@@ -762,35 +764,35 @@
                 &lt;div&gt;
                     &lt;GaodeMap @getMapData="getMapData"&gt;&lt;/GaodeMap&gt;
                 &lt;/div&gt;
-            &lt;/span&gt;<span class="fstat-no" title="function not covered" ></span>
-            &lt;templat<span class="cstat-no" title="statement not covered" >e #footer&gt;</span>
-                &lt;spa<span class="cstat-no" title="statement not covered" >n class="dialog-footer"&gt;</span>
-                    &lt;el-<span class="cstat-no" title="statement not covered" >button @click="mapDialogVisible = false"&gt;</span>
-                        取消
+            &lt;/span&gt;
+            &lt;template <span class="fstat-no" title="function not covered" >#f</span>ooter&gt;
+                &lt;spa<span class="cstat-no" title="statement not covered" >n class="dialog-f</span>ooter"&gt;
+<span class="cstat-no" title="statement not covered" >                    &lt;el-button @click="mapDialogVisible = false"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                        取消</span>
                     &lt;/el-button&gt;
                     &lt;el-button type="primary" @click="closeMap"&gt;
-<span class="cstat-no" title="statement not covered" >                        确定<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
-                    &lt;/el<span class="cstat-no" title="statement not covered" >-button&gt;</span>
-                &lt;/span&gt;
+                        确定
+                    &lt;/el<span class="cstat-no" title="statement not covered" >-button&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+                &lt;/span&gt;<span class="cstat-no" title="statement not covered" ></span>
             &lt;/template&gt;
-        &lt;/el-dialog&gt;<span class="cstat-no" title="statement not covered" ></span>
-        &lt;div&gt;
+        &lt;/el-dialog&gt;
+        &lt;div&gt;<span class="cstat-no" title="statement not covered" ></span>
             &lt;!-- &lt;GaodeMap&gt;&lt;/GaodeMap&gt; --&gt;
         &lt;/div&gt;
 &nbsp;
 &nbsp;
-    &lt;/div&gt;<span class="fstat-no" title="function not covered" ></span>
-&lt;/template&gt;<span class="cstat-no" title="statement not covered" ></span>
+    &lt;/div&gt;
+&lt;/template&gt;<span class="fstat-no" title="function not covered" ></span>
 <span class="cstat-no" title="statement not covered" ></span>
-&lt;script&gt;
+&lt;script&gt;<span class="cstat-no" title="statement not covered" ></span>
 import { regionDataPlus, CodeToText } from 'element-china-area-data'
 import { ElMessage } from 'element-plus'
 import 'element-plus/es/components/message/style/index'
 import GaodeMap from '@/components/GaodeMap.vue'
+&nbsp;
 <span class="fstat-no" title="function not covered" ></span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" ></span>
-export default {
+export defau<span class="cstat-no" title="statement not covered" >lt {</span>
     name: 'UpJob',
     components: {
         GaodeMap,
@@ -798,55 +800,56 @@ export default {
     data() {
         return {
             mapData:null,
-            mapDialogV<span class="fstat-no" title="function not covered" >is</span>ible: false,
-            recruite<span class="cstat-no" title="statement not covered" >rId: null,</span>
+            mapDialogVisible: false,
+            recruiterI<span class="fstat-no" title="function not covered" >d:</span> null,
             typeList<span class="cstat-no" title="statement not covered" >: [{}],</span>
-            addtions: ""<span class="cstat-no" title="statement not covered" >,</span>
-            options: regionDataPlus,
+            addtions<span class="cstat-no" title="statement not covered" >: "",</span>
+            options: reg<span class="cstat-no" title="statement not covered" >ionDataPlus,</span>
             selectedOptions: [],
             place: null,
-            ruleForm: {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
-                jobName:<span class="cstat-no" title="statement not covered" > null,</span>
-                jobType: null,
+            ruleForm: {
+                jobName:<span class="cstat-no" title="statement not covered" > null,<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+                jobType:<span class="cstat-no" title="statement not covered" > null,</span>
                 startTime: null,
-                endTime:<span class="cstat-no" title="statement not covered" > null,</span>
-                workPlace: null,
+                endTime: null,
+                workPlac<span class="cstat-no" title="statement not covered" >e: null,</span>
                 salary: null,
                 employeeNum: null,
                 workTime: null,
                 workDetails: null,
-                locatio<span class="fstat-no" title="function not covered" >nL</span>at:0,
-                loca<span class="cstat-no" title="statement not covered" >tionLng:0,</span>
+                locationLat:0,
+                locatio<span class="fstat-no" title="function not covered" >nL</span>ng:0,
             },<span class="cstat-no" title="statement not covered" ></span>
-            isAuthened: false,
+            isAuthen<span class="cstat-no" title="statement not covered" >ed: false,</span>
         }
     },
     methods: {
         goBack() {
             this.$router.go(-1);
-<span class="fstat-no" title="function not covered" >        },</span>
-        // R<span class="cstat-no" title="statement not covered" >esponding to data </span>changes
-        handleChange(value) {
+        },
+<span class="fstat-no" title="function not covered" >        //</span> Responding to data changes
+        hand<span class="cstat-no" title="statement not covered" >leChange(value) {</span>
             this.selectedOptions = value
-<span class="fstat-no" title="function not covered" ></span>            console.log(this.selectedOptions)
-            var name = ''
-<span class="cstat-no" title="statement not covered" >            this.selectedOptions.map(item =&gt; name += CodeToText[item] + '</span>') //将省市区三个拼接一起
+            console.log(this.selectedOptions)
+<span class="fstat-no" title="function not covered" ></span>            var name = ''
+            this.selectedOptions.map(item =&gt; name += CodeToText[item] + '') //将省市区三个拼接一起
 <span class="cstat-no" title="statement not covered" >            this.addtions = name</span>
-            console.log(this.addtions)
+<span class="cstat-no" title="statement not covered" >            console.log(this.addtions)</span>
             //运用了CodeToText把编码转成了中文
             // this.addForm.province = CodeToText[this.selectedOptions[0]]
-<span class="fstat-no" title="function not covered" ></span>            // this.addForm.county = CodeToText[this.selectedOptions[1]]
-<span class="cstat-no" title="statement not covered" >            // this.addForm.area = CodeToText[this.selecte</span>dOptions[2]]	
+            // this.addForm.county = CodeToText[this.selectedOptions[1]]
+<span class="fstat-no" title="function not covered" ></span>            // this.addForm.area = CodeToText[this.selectedOptions[2]]	
 <span class="cstat-no" title="statement not covered" >            // console.log(this.addForm)</span>
-        },
+<span class="cstat-no" title="statement not covered" >        },</span>
         upJob() {
-            if(!this.isAuthened){
-<span class="fstat-no" title="function not covered" ></span>                ElMessage({
-<span class="cstat-no" title="statement not covered" >                    message: "请先进行企业认证！",</span>
-                    type: 'error',
-<span class="fstat-no" title="function not covered" >                }</span>)
-<span class="cstat-no" title="statement not covered" >                return;</span>
-            }
+            // 缺陷JBGZ-10
+            // if(!this.isAuthened){
+            //<span class="fstat-no" title="function not covered" >  </span>   ElMessage({
+<span class="cstat-no" title="statement not covered" >            //         message: "请先进行企业认证！",</span>
+            //         type: 'error',
+            // <span class="fstat-no" title="function not covered" >  </span>  })
+<span class="cstat-no" title="statement not covered" >            //     return;</span>
+            // }
             this.ruleForm.workPlace = this.addtions + this.place;
 <span class="cstat-no" title="statement not covered" >            this.$axios({</span>
                 method: 'post',
@@ -1006,7 +1009,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-06-21T03:03:24.821Z
+                at 2023-06-21T04:48:37.850Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

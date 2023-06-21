@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">1.28% </span>
+                <span class="strong">1.25% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/78</span>
+                <span class='fraction'>1/80</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/20</span>
+                <span class='fraction'>0/26</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">1.29% </span>
+                <span class="strong">1.26% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/77</span>
+                <span class='fraction'>1/79</span>
             </div>
         
             
@@ -533,14 +533,21 @@
 <a name='L468'></a><a href='#L468'>468</a>
 <a name='L469'></a><a href='#L469'>469</a>
 <a name='L470'></a><a href='#L470'>470</a>
-<a name='L471'></a><a href='#L471'>471</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L471'></a><a href='#L471'>471</a>
+<a name='L472'></a><a href='#L472'>472</a>
+<a name='L473'></a><a href='#L473'>473</a>
+<a name='L474'></a><a href='#L474'>474</a>
+<a name='L475'></a><a href='#L475'>475</a>
+<a name='L476'></a><a href='#L476'>476</a>
+<a name='L477'></a><a href='#L477'>477</a>
+<a name='L478'></a><a href='#L478'>478</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -675,6 +682,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -729,7 +743,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -773,6 +786,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1123,131 +1137,132 @@
 <span class="cstat-no" title="statement not covered" >                    label-width="100px"</span>
                     style="margin-top:63px;"
                 &gt;
+                    &lt;!-- 缺陷JBGZ-7 --&gt;
                     &lt;el-form-item label="邮箱&amp;emsp;" :label-width="formLabelWidth"&gt;
-                        &lt;el-input v-model="userInfo.email" autocomplete="off" disabled/&gt;
-<span class="fstat-no" title="function not covered" ></span>                    &lt;/el-form-item&gt;
+<span class="fstat-no" title="function not covered" ></span>                        &lt;el-input v-model="findPWD.email" autocomplete="off" /&gt;
+<span class="cstat-no" title="statement not covered" >                    &lt;/el-form-item&gt;</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;el-form-item class="input" label="验证码"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                        &lt;el-input</span>
+                        &lt;el-input
                             v-model="confirmCaptcha"
                             class="input-with-select"
                             @change="isCaptcha"
                         &gt;
-                            &lt;template #append&gt;
-<span class="fstat-no" title="function not covered" ></span>                                &lt;el-button type="primary" color="#444076" @click="getfindPWDCaptcha"&gt;获取验证码&lt;/el-button&gt;
-<span class="cstat-no" title="statement not covered" >                            &lt;/templa</span>te&gt;
-<span class="cstat-no" title="statement not covered" >                        &lt;/el-input&gt;</span>
+<span class="fstat-no" title="function not covered" ></span>                            &lt;template #append&gt;
+<span class="cstat-no" title="statement not covered" >                                &lt;el-</span>button type="primary" color="#444076" @click="getfindPWDCaptcha"&gt;获取验证码&lt;/el-button&gt;
+<span class="cstat-no" title="statement not covered" >                            &lt;/template&gt;</span>
+                        &lt;/el-input&gt;
                     &lt;/el-form-item&gt;
                     &lt;el-form-item label="新密码" :label-width="formLabelWidth"&gt;
                         &lt;el-input v-model="findPWD.password" autocomplete="off" show-password/&gt;
-                    &lt;/el-form-item&gt;
-<span class="cstat-no" title="statement not covered" >                    &lt;el-form-item</span>&gt;
-<span class="cstat-no" title="statement not covered" >                    &lt;el-button c</span>lass="btn1" type="primary" color="#444076" @click="findPassword"&gt;确认&lt;/el-button&gt;
-                    &lt;el-button  class="btn2" color="#444076" @click="display=false"&gt;取消&lt;/el-button&gt;
-<span class="fstat-no" title="function not covered" ></span>                    &lt;/el-form-item&gt;
+<span class="cstat-no" title="statement not covered" >                    &lt;/el-form-ite</span>m&gt;
+<span class="cstat-no" title="statement not covered" >                    &lt;el-form-ite</span>m&gt;
+                    &lt;el-button class="btn1" type="primary" color="#444076" @click="findPassword"&gt;确认&lt;/el-button&gt;
+<span class="fstat-no" title="function not covered" ></span>                    &lt;el-button  class="btn2" color="#444076" @click="display=false"&gt;取消&lt;/el-button&gt;
+<span class="cstat-no" title="statement not covered" >                    &lt;/el-form-item&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;/el-form&gt;</span>
                 &lt;/el-scrollbar&gt;
     
             &lt;/el-col&gt;
-            &lt;/el-row&gt;
+            &lt;/el<span class="cstat-no" title="statement not covered" >-row&gt;</span>
     
-        &lt;/el-col&gt;
-        &lt;/el-row&gt;<span class="fstat-no" title="function not covered" ></span>
-    &lt;/div&gt;<span class="cstat-no" title="statement not covered" ></span>
-&lt;/template&gt;<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" ></span>
+        &lt;/el<span class="cstat-no" title="statement not covered" >-col&gt;</span>
+        &lt;/el-row&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&nbsp;
 &lt;script&gt;
 import personNav from '@/components/personNav.vue'
-import { ElMessage } from 'element-plus'
-import 'element-plus<span class="cstat-no" title="statement not covered" >/es/components/message/style/index'</span>
-import COS from "cos-js-sdk-v5"
+import { ElMessage<span class="fstat-no" title="function not covered" > }</span> from 'element-plus'
+import 'element-<span class="cstat-no" title="statement not covered" >plus/es/component</span>s/message/style/index'
+import COS from <span class="cstat-no" title="statement not covered" >"cos-js-sdk-v5"</span>
 import {ref} from "v<span class="cstat-no" title="statement not covered" >ue"</span>
 &nbsp;
 var cos = new COS({
-    SecretId: "AKID<span class="fstat-no" title="function not covered" >GO</span>L8fy1oLbeU9aom8E3d2E8tOffQxWzG",
-    SecretKey: "<span class="cstat-no" title="statement not covered" >7yZw63j9KTXP6f22xoVw</span>FLOFsIkDVgdM",
-})<span class="cstat-no" title="statement not covered" ></span>
-&nbsp;
+    SecretId: "AKIDGOL8fy1oLbeU9aom8E3d2E8tOffQxWzG",
+    SecretKey: "7yZw<span class="cstat-no" title="statement not covered" >63j9KTXP6f22xoVwFLOFsIkDVgdM",</span>
+})
+<span class="cstat-no" title="statement not covered" ></span>
     export default {
-    name<span class="fstat-no" title="function not covered" >: </span>"jobhunterPerson",
-    data () <span class="cstat-no" title="statement not covered" >{</span>
+    name: "jobhunterPerson",
+    data () {<span class="fstat-no" title="function not covered" ></span>
     return {<span class="cstat-no" title="statement not covered" ></span>
-        picDisplay: true,
+        picDispl<span class="cstat-no" title="statement not covered" >ay: true,</span>
         display: false,
         input_show : true,
-        btn_show : false,
-        captcha:null,
-<span class="fstat-no" title="function not covered" >        co</span>nfirmCaptcha:null,
-        jobh<span class="cstat-no" title="statement not covered" >unterId:null,</span>
-        findPWD:<span class="cstat-no" title="statement not covered" >{</span>
+<span class="fstat-no" title="function not covered" >        bt</span>n_show : false,
+        capt<span class="cstat-no" title="statement not covered" >cha:null,</span>
+        confirmC<span class="cstat-no" title="statement not covered" >aptcha:null,</span>
+        jobhunterId:null,
+        findPWD:{
             email:null,
             password:null,
         },
-        userInfo<span class="cstat-no" title="statement not covered" >:{},</span>
-        userInfoEdit:{},
-        uploadIco<span class="cstat-no" title="statement not covered" >n:'https://cluboat-1314598070.cos.ap-nanjing.myqcloud.com/upload.png',</span>
-        picUrlRe<span class="cstat-no" title="statement not covered" >view:ref('https://cluboat-1314598070.cos.ap-nanjing.myqcloud.com/test.png'),</span>
+<span class="fstat-no" title="function not covered" >        us</span>erInfo:{},
+        user<span class="cstat-no" title="statement not covered" >InfoEdit:{},</span>
+        uploadIc<span class="cstat-no" title="statement not covered" >on:'https://cluboat-1314598070.cos.ap-nanjing.myqcloud.com/upload.png',</span>
+        picUrlReview:ref('https://cluboat-1314598070.cos.ap-nanjing.myqcloud.com/test.png'),
         picUrl:ref(''),
     }
-    },
-    methods: {<span class="cstat-no" title="statement not covered" ></span>
-        submit()
+    },<span class="cstat-no" title="statement not covered" ></span>
+    methods: {
+        subm<span class="cstat-no" title="statement not covered" >it()</span>
         {<span class="cstat-no" title="statement not covered" ></span>
-            cons<span class="cstat-no" title="statement not covered" >ole.log('图片存储位置',this.picUrl)</span>
+            console.log('图片存储位置',this.picUrl)
             //注意：
             //此处要用axios请求将picUrl传到后端存入数据库（可随表单其他内容一起上传，以业务逻辑为准）
-            this.picDisplay=true;
-            this<span class="cstat-no" title="statement not covered" >.userInf</span>oEdit.nickname=this.userInfo.nickname,
-            this.userInfoEdit.contactMethod=this.userInfo.contactMethod,
-<span class="cstat-no" title="statement not covered" >            this.userInfoEdit.introduction=this.user</span>Info.introduction,
-<span class="cstat-no" title="statement not covered" >            this.userInfoEdit.birthday=this.userInfo.birthday,</span>
+            this<span class="cstat-no" title="statement not covered" >.picDisp</span>lay=true;
+            this.userInfoEdit.nickname=this.userInfo.nickname,
+<span class="cstat-no" title="statement not covered" >            this.userInfoEdit.contactMethod=this.userInfo.contactMethod,</span>
+            this<span class="cstat-no" title="statement not covered" >.userInfoEdit.introduction=this.userInfo.introduction,</span>
+            this.userInfoEdit.birthday=this.userInfo.birthday,
             this.userInfoEdit.school=this.userInfo.school,
             this.userInfoEdit.headportrait=this.picUrl,
-            this.$axios({
+            this<span class="cstat-no" title="statement not covered" >.$axios(</span>{
                 method: 'put',
-                ur<span class="fstat-no" title="function not covered" >l:</span> '/api/Jobhunter/personInfo/set',
-<span class="cstat-no" title="statement not covered" >                data : this.userI</span>nfoEdit
-            })<span class="cstat-no" title="statement not covered" ></span>
-            .then(re<span class="cstat-no" title="statement not covered" >s =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                url: '/api/Jobhunter/personInfo/set',</span>
+                data : this.userInfoEdit
+            })
+            .then(res =&gt; {
                 if(res.data.code==200){
-                    ElMessage({
-                        message: "上传成功",
-<span class="cstat-no" title="statement not covered" >                        type: '<span class="fstat-no" title="function not covered" >su</span>cces<span class="cstat-no" title="statement not covered" >s',</span></span>
+<span class="fstat-no" title="function not covered" ></span>                    ElMessage({
+<span class="cstat-no" title="statement not covered" >                        message: </span>"上传成功",
+<span class="cstat-no" title="statement not covered" >                        type: 'success',</span>
 <span class="cstat-no" title="statement not covered" >                    })</span>
                     this.$router.go(0)
-                }<span class="cstat-no" title="statement not covered" ></span>
+                }
             })
-            .catch(function (error) {
-                con<span class="fstat-no" title="function not covered" >so</span>le.log(error);
-<span class="cstat-no" title="statement not covered" >                ElMessage({</span>
+            .catch(f<span class="cstat-no" title="statement not covered" >unction (er<span class="fstat-no" title="function not covered" >ro</span>r) {<span class="cstat-no" title="statement not covered" ></span></span>
+                cons<span class="cstat-no" title="statement not covered" >ole.log(error);</span>
+                ElMessage({
 <span class="cstat-no" title="statement not covered" >                    message: "上传失败",</span>
                     type: 'error',
                 })
-            })
-<span class="fstat-no" title="function not covered" ></span>        },
-<span class="cstat-no" title="statement not covered" >        cancel(){</span>
-<span class="cstat-no" title="statement not covered" >            this.picDisplay=true;</span>
+            })<span class="fstat-no" title="function not covered" ></span>
+        },<span class="cstat-no" title="statement not covered" ></span>
+        cancel()<span class="cstat-no" title="statement not covered" >{</span>
+            this.picDisplay=true;
         },
         upload(picture) {
-            // 随机创建文件昵称
-            va<span class="fstat-no" title="function not covered" >r </span>suffix = picture.file.name.substring(picture.file.name.lastIndexOf("."));
-<span class="cstat-no" title="statement not covered" >            var randomContent = Math.ran</span>dom().toString(36);
-<span class="cstat-no" title="statement not covered" >            var picName = randomContent + suffix;</span>
-<span class="cstat-no" title="statement not covered" >            console.log(picName)</span>
-<span class="cstat-no" title="statement not covered" >            cos.putObject({</span>
-                Bucket: 'jbgz-1312275634',
-                Region: 'ap-shanghai', // 地区
-                Key: picName, // 上传的文件名
-                StorageClass: 'STANDARD',
-                Body: picture.file, // 上传文件对象
+<span class="fstat-no" title="function not covered" ></span>            // 随机创建文件昵称
+<span class="cstat-no" title="statement not covered" >            var suffix = picture.file.name.substring(pic</span>ture.file.name.lastIndexOf("."));
+<span class="cstat-no" title="statement not covered" >            var randomContent = Math.random().toString(36);</span>
+            var picName = randomContent + suffix;
+            console.log(picName)
+            cos.putObject({
+<span class="fstat-no" title="function not covered" ></span>                Bucket: 'jbgz-1312275634',
+<span class="cstat-no" title="statement not covered" >                Region: 'ap-shanghai', /</span>/ 地区
+<span class="cstat-no" title="statement not covered" >                Key: picName, // 上传的文件名</span>
+<span class="cstat-no" title="statement not covered" >                StorageClass: 'STANDARD'</span>,
+<span class="cstat-no" title="statement not covered" >                Body: picture.file, // 上传文件对象</span>
             }, function (err, data) {
                 console.log(err, data)
-            })<span class="fstat-no" title="function not covered" ></span>
-<span class="cstat-no" title="statement not covered" >            this.picUrl = 'https</span>://jbgz-1312275634.cos.ap-shanghai.myqcloud.com/' + picName;
+            })
+            this.picUrl = 'https://jbgz-1312275634.cos.ap-shanghai.myqcloud.com/' + picName;
             console.log(this.picUrlReview)
             this.picDisplay=false;
             setTimeout(() =&gt; {
-                this.picUrlReview = this.picUrl;
-            },500)
+<span class="fstat-no" title="function not covered" >                t</span>his.picUrlReview = this.picUrl;
+<span class="cstat-no" title="statement not covered" >            },500)</span>
         },
         handleRemove(){
             this.picDisplay=true;
@@ -1296,11 +1311,18 @@ var cos = new COS({
             this.btn_show=false
         },
         getfindPWDCaptcha(){
+            if(this.findPWD.email==null||this.findPWD.email==''){
+                ElMessage({
+                    message: "请检查邮箱！",
+                    type: 'error',
+                })
+                return;
+            }
             this.$axios({
                 method: 'post',
                 url: '/api/register/email',
                 data:{
-                    email:this.userInfo.email
+                    email:this.findPWD.email
                 },
             })
             .then(res =&gt; {
@@ -1329,14 +1351,14 @@ var cos = new COS({
             }
         },
         findPassword(){
-            if(this.captcha!=this.confirmCaptcha){
+            if(this.findPWD.email==null||this.findPWD.email==''){
                 ElMessage({
-                    message: "验证码不正确！",
+                    message: "请检查邮箱！",
                     type: 'error',
                 })
                 return;
             }
-            else if(this.confirmCaptcha==null||this.confirmCaptcha==''){
+            if(this.confirmCaptcha==null||this.confirmCaptcha==''){
                 ElMessage({
                     message: "验证码不正确！",
                     type: 'error',
@@ -1350,7 +1372,6 @@ var cos = new COS({
                 })
                 return;
             }
-            this.findPWD.email=this.userInfo.email;
             this.$axios({
                 method: 'post',
                 url: '/api/findPassword',
@@ -1480,7 +1501,7 @@ var cos = new COS({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-06-21T03:03:24.821Z
+                at 2023-06-21T04:48:37.850Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

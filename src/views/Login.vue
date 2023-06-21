@@ -228,7 +228,6 @@ export default {
             .then(res => {
                 console.log(res)
                 if(res.data.code==200){
-                    this.register.email=this.email;
                     this.isRegistedSignup=false;
                 }else{
                     this.isRegistedSignup=true;
@@ -247,15 +246,16 @@ export default {
                 })
                 return;
             }
-            var verify = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-            if (!verify.test(this.register.email)) {
-                ElMessage({
-                    message: "请检查邮箱！",
-                    type: 'error',
-                })
-                return;
-            }
-            if(this.register.email==null||this.register.email==''){
+            //缺陷JBGZ-6
+            // var verify = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            // if (!verify.test(this.register.email)) {
+            //     ElMessage({
+            //         message: "请检查邮箱！",
+            //         type: 'error',
+            //     })
+            //     return;
+            // }
+            if(this.email==null||this.email==''){
                 ElMessage({
                     message: "请检查邮箱！",
                     type: 'error',
@@ -267,7 +267,7 @@ export default {
                     method: 'post',
                     url: '/api/register/email',
                     data:{
-                        email:this.register.email
+                        email:this.email
                     },
                 })
                 .then(res => {
@@ -296,13 +296,14 @@ export default {
                 })
                 return;
             }
-            if(!this.isRegistedFPWD){
-                ElMessage({
-                    message: "邮箱未注册！",
-                    type: 'error',
-                })
-                return;
-            }
+            //缺陷JBGZ-6
+            // if(!this.isRegistedFPWD){
+            //     ElMessage({
+            //         message: "邮箱未注册！",
+            //         type: 'error',
+            //     })
+            //     return;
+            // }
             this.$axios({
                 method: 'post',
                 url: '/api/register/email',

@@ -151,13 +151,14 @@ export default {
             // console.log(this.addForm)
         },
         upJob() {
-            if(!this.isAuthened){
-                ElMessage({
-                    message: "请先进行企业认证！",
-                    type: 'error',
-                })
-                return;
-            }
+            // 缺陷JBGZ-10
+            // if(!this.isAuthened){
+            //     ElMessage({
+            //         message: "请先进行企业认证！",
+            //         type: 'error',
+            //     })
+            //     return;
+            // }
             this.ruleForm.workPlace = this.addtions + this.place;
             this.$axios({
                 method: 'post',
