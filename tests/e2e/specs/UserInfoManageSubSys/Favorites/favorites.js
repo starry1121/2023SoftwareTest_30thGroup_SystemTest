@@ -22,19 +22,6 @@ describe('用户信息管理子系统-我的收藏', () => {
         //断言
 
         //收藏夹名称不为空
-        cy.visit('/')
-        //访问网站
-        cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10014")
-        cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("021121")
-        //输入账号密码
-        cy.get("#login").click()
-        //点击登录按钮
-        cy.get('.nav > [href="/jobhunter/person"]').click()
-        //跳转至个人中心-我的信息页面
-        cy.get('.el-menu > :nth-child(3)').click()
-        //跳转至我的收藏界面
-        cy.get('.el-header > .el-button').click()
-        //点击新建收藏夹
         cy.get('.el-input__wrapper').type("newTestDir")
         //填写收藏夹名称
         cy.get('.dialog-footer > .el-button--primary').click()
@@ -64,19 +51,6 @@ describe('用户信息管理子系统-我的收藏', () => {
         //断言
 
         //收藏夹名称不为空
-        cy.visit('/')
-        //访问网站
-        cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10014")
-        cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("021121")
-        //输入账号密码
-        cy.get("#login").click()
-        //点击登录按钮
-        cy.get('.nav > [href="/jobhunter/person"]').click()
-        //跳转至个人中心-我的信息页面
-        cy.get('.el-menu > :nth-child(3)').click()
-        //跳转至我的收藏界面
-        cy.contains('tr', 'newTestDir').find('.el-table_1_column_2 > .cell > .el-button--primary').click()
-        //点击重命名按钮
         cy.get('.el-input__wrapper').clear()
         cy.get('.el-input__wrapper').type("newTestDir1")
         //重命名收藏夹名称
@@ -150,22 +124,6 @@ describe('用户信息管理子系统-我的收藏', () => {
         //断言
 
         //选择收藏夹
-        cy.visit('/')
-        //访问网站
-        cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10014")
-        cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("021121")
-        //输入账号密码
-        cy.get("#login").click()
-        //点击登录按钮
-        cy.get('.nav > [href="/jobhunter/person"]').click()
-        //跳转至个人中心-我的信息页面
-        cy.get('.el-menu > :nth-child(3)').click()
-        //跳转至我的收藏界面
-        cy.contains('tr', '默认收藏夹').find('.el-table_1_column_2 > .cell > .el-button--success').click()
-        //点击详情按钮
-        cy.get(500)
-        cy.get('.el-scrollbar__view > :nth-child(1) > .el-button--primary').click()
-        //点击移动收藏
         cy.get('.el-input__suffix-inner').click()
         //点击下拉按钮
         cy.contains('span', '测试收藏夹').click();

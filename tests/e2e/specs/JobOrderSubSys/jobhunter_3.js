@@ -18,7 +18,7 @@ describe('兼职订单子系统-求职者', () => {
         cy.wait(200)
         cy.get('#tab-已完成').click()
         //筛选已完成的订单
-        cy.wait(2000)
+        cy.wait(1000)
         cy.get('button.el-button').filter(':contains("申诉")').filter(':visible').first().click();      
         //点击申诉按钮
         cy.get('.el-textarea__inner').clear()
@@ -36,7 +36,7 @@ describe('兼职订单子系统-求职者', () => {
         //断言
 
         //用户已提交申诉，状态为审核中
-        cy.wait(2000)
+        cy.wait(1000)
         cy.get('button.el-button').filter(':contains("申诉")').filter(':visible').first().click();   
         //点击申诉按钮
         cy.get('.el-textarea__inner').clear()
