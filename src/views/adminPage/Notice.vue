@@ -95,7 +95,7 @@
                                 { text: '已发布', value: '已发布' },
                                 { text: '已撤销', value: '已撤销' },
                             ]"
-                            :filter-method="filterTag1"
+                            :filter-method="filterTag"
                             filter-placement="bottom-end"
                         >
                             <template #default="scope">
@@ -409,6 +409,15 @@ export default {
         .then(res => {
             if(res.data.code==200){
                 this.pubnotList=res.data.data.notice_list;
+                this.pubnotList.sort((a, b) => {
+                    if (a.status === '未发布' && b.status !== '未发布') {
+                        return -1; // a在前，b在后
+                    } else if (a.status !== '未发布' && b.status === '未发布') {
+                        return 1; // b在前，a在后
+                    } else {
+                        return 0; // 保持原顺序
+                    }
+                });
                 this.total=this.pubnotList.length;
                 console.log('公告列表'+this.pubnotList);
             }

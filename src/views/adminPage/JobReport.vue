@@ -383,6 +383,15 @@ export default {
         .then(res => {
             if(res.data.code==200){
                 this.applyList=res.data.data.report_list;
+                this.applyList.sort((a, b) => {
+                    if (a.reportState === '未审核' && b.reportState !== '未审核') {
+                        return -1; // a在前，b在后
+                    } else if (a.reportState !== '未审核' && b.reportState === '未审核') {
+                        return 1; // b在前，a在后
+                    } else {
+                        return 0; // 保持原顺序
+                    }
+                });
                 this.total=this.applyList.length;
                 console.log('兼职举报列表'+this.applyList);
             }
