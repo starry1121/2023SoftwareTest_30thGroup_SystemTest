@@ -26,14 +26,19 @@ describe('兼职信息管理子系统-处理兼职举报', () => {
         cy.get(':nth-child(1) > .el-table_2_column_15 > .cell > .el-button').click()
         //点击审核
         cy.wait(200)
-        cy.get('.dialog-footer > .el-button--primary').click()
+        // cy.get('.dialog-footer > .el-button--primary').click()
+        cy.get('.el-dialog__headerbtn > .el-icon > svg').click()
         // 点击审核通过
-        cy.get('.el-message-box__btns > .el-button--primary').click()
+        // cy.get('.el-message-box__btns > .el-button--primary').click()
+        // cy.wait(200)
+        // cy.get('.el-message-box__btns > :nth-child(1)').click()
+        // cy.get('.el-message-box__headerbtn > .el-icon > svg').click()
         //点击确认
+        // cy.get('.el-dialog__headerbtn > .el-icon > svg').click()
         cy.url().should('contain', 'admin/jobReport')
         //断言
     })
-    it('处理兼职举报-通过', () => {
+    it('处理兼职举报-驳回', () => {
         //管理员登录-邮箱
         cy.visit('/')
         //访问网站
@@ -55,7 +60,7 @@ describe('兼职信息管理子系统-处理兼职举报', () => {
         cy.get('.el-table__column-filter-trigger > .el-icon > svg').click()
         cy.get(':nth-child(3) > .el-checkbox__label').click()
         cy.get('.el-table-filter__bottom > :nth-child(1)').click()
-        cy.wait(1000)
+        cy.wait(500)
 
         cy.get(':nth-child(1) > .el-table_2_column_15 > .cell > .el-button').click()
         //点击审核

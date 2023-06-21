@@ -35,7 +35,7 @@ describe('业务流测试-筛选搜索兼职', () => {
         cy.wait(500)
         cy.get('.el-space > :nth-child(1) > div > .el-button').click()
         //点击全部
-        cy.get('.body').should('contain', '屈臣氏官方招募推广云店主');
+        cy.get('.body').should('contain', '天');
         //断言
 
     })

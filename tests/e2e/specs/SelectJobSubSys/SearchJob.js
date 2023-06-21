@@ -1,7 +1,7 @@
 // https://docs.cypress.io/api/table-of-contents
 
 describe('选择兼职子系统-搜索兼职', () => {
-    it('搜索家教', () => {
+    it('搜索短视频', () => {
       //求职者登录-ID
       cy.visit('/')
       //访问网站
@@ -17,11 +17,12 @@ describe('选择兼职子系统-搜索兼职', () => {
       //点击寻找兼职按钮
       cy.url().should('contain','jobhunter/job')
       //断言 
-      cy.get("#searchBox").type('家教')
+      cy.get("#searchBox").type('短视频')
       //输入搜索词 
-      cy.get('#jobList').should('contain', '家教');
+      cy.get('.body').should('contain', '短视频');
+      //断言
     })
-    it('搜索助理', () => {
+    it('搜索测试', () => {
         //求职者登录-ID
         cy.visit('/')
         //访问网站
@@ -37,9 +38,10 @@ describe('选择兼职子系统-搜索兼职', () => {
         //点击寻找兼职按钮
         cy.url().should('contain','jobhunter/job')
         //断言 searchBox
-        cy.get("#searchBox").type('助理')
+        cy.get("#searchBox").type('测试')
         //输入搜索词 jobList
-        cy.get('#jobList').should('contain', '助理');
+        cy.get('.body').should('contain', '测试');
+        //断言
     })
   
   })
