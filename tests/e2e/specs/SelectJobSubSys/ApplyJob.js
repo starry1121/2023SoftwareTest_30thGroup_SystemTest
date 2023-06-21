@@ -37,10 +37,9 @@ describe('选择兼职子系统-报名兼职', () => {
        cy.wait(500)
         cy.get('.dialog-footer > :nth-child(1)').click()
         //点击确定
+        cy.wait(500)
         cy.url().should('contain', 'jobDetail')
         //断言
-
-
     })
     it('取消报名兼职', () => {
         //求职者登录-ID
@@ -54,13 +53,16 @@ describe('选择兼职子系统-报名兼职', () => {
         cy.get('#message_1').should('contain', '登录成功');
         cy.url().should('contain', 'jobhunter')
         //断言
+        cy.wait(500)
         cy.get('.nav > [href="/jobhunter/person"]').click()
         //点击个人中心
+        cy.wait(500)
         cy.get('.el-menu > :nth-child(4)').click()
         //点击我的兼职
         cy.wait(3000)
         cy.get(':nth-child(1) > .el-card__body > :nth-child(1) > .el-col-3 > .el-button').click()
         //点击取消报名
+        cy.wait(500)
         cy.get('.el-button--primary').click()
         //点击确认
     })

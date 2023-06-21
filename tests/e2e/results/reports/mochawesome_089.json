@@ -1,0 +1,182 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T04:17:01.740Z",
+    "end": "2023-06-21T04:17:53.156Z",
+    "duration": 51416,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "613aff2a-20cb-4e6c-9b63-eab7c2e48c24",
+      "title": "",
+      "fullFile": "tests/e2e/specs/UserInfoManageSubSys/Favorites/favorites.js",
+      "file": "tests/e2e/specs/UserInfoManageSubSys/Favorites/favorites.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "69d45249-b444-4dd3-9152-eb92b3ae772c",
+          "title": "用户信息管理子系统-我的收藏",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "用户新建收藏夹",
+              "fullTitle": "用户信息管理子系统-我的收藏 用户新建收藏夹",
+              "timedOut": null,
+              "duration": 7767,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//收藏夹名称为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(3)').click(); //跳转至我的收藏界面\ncy.get('.el-header > .el-button').click(); //点击新建收藏夹\ncy.get('.dialog-footer > .el-button--primary').click(); //点击确认\ncy.contains('p', '收藏夹名称不能为空').should('exist'); //断言\n//收藏夹名称不为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(3)').click(); //跳转至我的收藏界面\ncy.get('.el-header > .el-button').click(); //点击新建收藏夹\ncy.get('.el-input__wrapper').type(\"newTestDir\"); //填写收藏夹名称\ncy.get('.dialog-footer > .el-button--primary').click(); //点击确认\ncy.contains('p', '添加成功').should('exist'); //断言",
+              "err": {},
+              "uuid": "e2cad0bc-d2d3-4063-a165-9278fe5998b6",
+              "parentUUID": "69d45249-b444-4dd3-9152-eb92b3ae772c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "用户重命名收藏夹",
+              "fullTitle": "用户信息管理子系统-我的收藏 用户重命名收藏夹",
+              "timedOut": null,
+              "duration": 11651,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//收藏夹名称为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(3)').click(); //跳转至我的收藏界面\ncy.contains('tr', 'newTestDir').find('.el-table_1_column_2 > .cell > .el-button--primary').click(); //点击重命名按钮\ncy.get('.el-input__wrapper').clear();\ncy.get('.dialog-footer > .el-button--primary').click(); //点击确认\ncy.contains('p', '收藏夹名称不能为空').should('exist'); //断言\n//收藏夹名称不为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(3)').click(); //跳转至我的收藏界面\ncy.contains('tr', 'newTestDir').find('.el-table_1_column_2 > .cell > .el-button--primary').click(); //点击重命名按钮\ncy.get('.el-input__wrapper').clear();\ncy.get('.el-input__wrapper').type(\"newTestDir1\"); //重命名收藏夹名称\ncy.get('.dialog-footer > .el-button--primary').click(); //点击确认\ncy.contains('p', '修改成功').should('exist'); //断言",
+              "err": {},
+              "uuid": "b25fef1b-baf3-4d0a-b61e-836c8b570fee",
+              "parentUUID": "69d45249-b444-4dd3-9152-eb92b3ae772c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "用户移除收藏夹",
+              "fullTitle": "用户信息管理子系统-我的收藏 用户移除收藏夹",
+              "timedOut": null,
+              "duration": 6730,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(3)').click(); //跳转至我的收藏界面\ncy.contains('tr', 'newTestDir1').find('.el-table_1_column_2 > .cell > .el-button--danger').click(); //点击删除按钮\ncy.get('.el-message-box__btns > .el-button--primary').click(); //点击确认\ncy.contains('p', '已删除该收藏夹').should('exist'); //断言",
+              "err": {},
+              "uuid": "9407ae32-cdde-4cb4-86f6-3d0a4693a188",
+              "parentUUID": "69d45249-b444-4dd3-9152-eb92b3ae772c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "用户移除某收藏",
+              "fullTitle": "用户信息管理子系统-我的收藏 用户移除某收藏",
+              "timedOut": null,
+              "duration": 6171,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(3)').click(); //跳转至我的收藏界面\ncy.contains('tr', '默认收藏夹').find('.el-table_1_column_2 > .cell > .el-button--success').click(); //点击详情按钮\ncy.get('.el-scrollbar__view > :nth-child(1) > .el-button--danger').click(); //点击取消收藏\ncy.get('.el-message-box__btns > .el-button--primary').click(); //点击确认\ncy.contains('p', '已取消该收藏').should('exist'); //断言",
+              "err": {},
+              "uuid": "696f9bae-9082-4f9e-9117-2b90bce19bad",
+              "parentUUID": "69d45249-b444-4dd3-9152-eb92b3ae772c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "用户移动某收藏",
+              "fullTitle": "用户信息管理子系统-我的收藏 用户移动某收藏",
+              "timedOut": null,
+              "duration": 15729,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//未选择收藏夹\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(3)').click(); //跳转至我的收藏界面\ncy.contains('tr', '默认收藏夹').find('.el-table_1_column_2 > .cell > .el-button--success').click(); //点击详情按钮\ncy.get('.el-scrollbar__view > :nth-child(1) > .el-button--primary').click(); //点击移动收藏\ncy.get('.dialog-footer > :nth-child(1)').click(); //点击确认\ncy.contains('p', '请选择收藏夹').should('exist'); //断言\n//选择收藏夹\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(3)').click(); //跳转至我的收藏界面\ncy.contains('tr', '默认收藏夹').find('.el-table_1_column_2 > .cell > .el-button--success').click(); //点击详情按钮\ncy.get('.el-scrollbar__view > :nth-child(1) > .el-button--primary').click(); //点击移动收藏\ncy.get('.el-input__suffix-inner').click(); //点击下拉按钮\ncy.contains('span', '测试收藏夹').click(); //选择收藏夹\ncy.get('.dialog-footer > :nth-child(1)').click(); //点击确认\ncy.contains('p', '移动成功').should('exist'); //断言",
+              "err": {},
+              "uuid": "3e499bc7-70a4-40e2-b644-6e233604c290",
+              "parentUUID": "69d45249-b444-4dd3-9152-eb92b3ae772c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e2cad0bc-d2d3-4063-a165-9278fe5998b6",
+            "b25fef1b-baf3-4d0a-b61e-836c8b570fee",
+            "9407ae32-cdde-4cb4-86f6-3d0a4693a188",
+            "696f9bae-9082-4f9e-9117-2b90bce19bad",
+            "3e499bc7-70a4-40e2-b644-6e233604c290"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 48048,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T04:06:30.740Z",
+    "end": "2023-06-21T04:06:41.085Z",
+    "duration": 10345,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2549bd8c-e35f-4f0a-8be6-dbca5f41a487",
+      "title": "",
+      "fullFile": "tests/e2e/specs/JobManageSys/admin/HandleJobReport.js",
+      "file": "tests/e2e/specs/JobManageSys/admin/HandleJobReport.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "72a18483-82f0-4489-aef6-0a7044a4f7e9",
+          "title": "兼职信息管理子系统-处理兼职举报",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "处理兼职举报-通过",
+              "fullTitle": "兼职信息管理子系统-处理兼职举报 处理兼职举报-通过",
+              "timedOut": null,
+              "duration": 5073,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'admin'); //断言-登录成功\ncy.wait(200);\ncy.get('[aria-expanded=\"false\"] > .el-sub-menu__title').click(); //点击兼职管理\ncy.get(':nth-child(3) > .el-menu > :nth-child(2)').click(); //点击审核兼职\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(1000);\ncy.get(':nth-child(1) > .el-table_2_column_15 > .cell > .el-button').click(); //点击审核\ncy.wait(200); // cy.get('.dialog-footer > .el-button--primary').click()\ncy.get('.el-dialog__headerbtn > .el-icon > svg').click(); // 点击审核通过\n// cy.get('.el-message-box__btns > .el-button--primary').click()\n// cy.wait(200)\n// cy.get('.el-message-box__btns > :nth-child(1)').click()\n// cy.get('.el-message-box__headerbtn > .el-icon > svg').click()\n//点击确认\n// cy.get('.el-dialog__headerbtn > .el-icon > svg').click()\ncy.url().should('contain', 'admin/jobReport'); //断言",
+              "err": {},
+              "uuid": "c7731f44-c303-4d18-a6f9-6df4489179b3",
+              "parentUUID": "72a18483-82f0-4489-aef6-0a7044a4f7e9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "处理兼职举报-驳回",
+              "fullTitle": "兼职信息管理子系统-处理兼职举报 处理兼职举报-驳回",
+              "timedOut": null,
+              "duration": 4579,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'admin'); //断言-登录成功\ncy.wait(200);\ncy.get('[aria-expanded=\"false\"] > .el-sub-menu__title').click(); //点击兼职管理\ncy.get(':nth-child(3) > .el-menu > :nth-child(2)').click(); //点击审核兼职\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(500);\ncy.get(':nth-child(1) > .el-table_2_column_15 > .cell > .el-button').click(); //点击审核\ncy.wait(200);\ncy.get('.el-button--danger').click(); // 点击驳回\ncy.get('#bohuiInput').type('驳回测试'); //输入结果反馈\ncy.get('[style=\"z-index: 2013;\"] > .el-overlay-dialog > .el-dialog > .el-dialog__footer > .dialog-footer > .el-button--primary').click(); //点击确认\ncy.url().should('contain', 'admin/jobReport'); //断言",
+              "err": {},
+              "uuid": "cf746e36-81b4-489b-92d8-f33e9225dc8c",
+              "parentUUID": "72a18483-82f0-4489-aef6-0a7044a4f7e9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c7731f44-c303-4d18-a6f9-6df4489179b3",
+            "cf746e36-81b4-489b-92d8-f33e9225dc8c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9652,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

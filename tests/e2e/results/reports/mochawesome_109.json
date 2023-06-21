@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T06:19:56.581Z",
+    "end": "2023-06-21T06:20:17.276Z",
+    "duration": 20695,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9a82cb98-7572-4f30-96a6-d247194f3d4c",
+      "title": "",
+      "fullFile": "tests/e2e/specs/SelectJobSubSys/ApplyJob.js",
+      "file": "tests/e2e/specs/SelectJobSubSys/ApplyJob.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6b8bf4b7-d473-44f0-8eca-b55f3f7df3bb",
+          "title": "选择兼职子系统-报名兼职",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "报名兼职",
+              "fullTitle": "选择兼职子系统-报名兼职 报名兼职",
+              "timedOut": null,
+              "duration": 6156,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \n// cy.wait(2000)\n// cy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click();\n// //点击“查看详情”\n// cy.url().should('contain', 'jobDetail')\n// //断言\ncy.wait(500);\ncy.get('.el-pager > :nth-child(8)').click(); //第17\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click(); // 点击“查看详情”\ncy.url().should('contain', 'jobDetail'); //断言\ncy.wait(500);\ncy.get('[style=\"margin: 20px auto;\"] > .el-button--primary').click(); //点击报名兼职\ncy.wait(500);\ncy.get('#ziwjieshao').type(\"本人本科学历，有多次家教经验，认真耐心\"); //填写自我介绍\ncy.wait(500);\ncy.get('.dialog-footer > :nth-child(1)').click(); //点击确定\ncy.wait(500);\ncy.url().should('contain', 'jobDetail'); //断言",
+              "err": {},
+              "uuid": "e4b0b6a7-6e66-4f41-8ebb-fa43f74c8392",
+              "parentUUID": "6b8bf4b7-d473-44f0-8eca-b55f3f7df3bb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "取消报名兼职",
+              "fullTitle": "选择兼职子系统-报名兼职 取消报名兼职",
+              "timedOut": null,
+              "duration": 8468,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //点击个人中心\ncy.wait(500);\ncy.get('.el-menu > :nth-child(4)').click(); //点击我的兼职\ncy.wait(3000);\ncy.get(':nth-child(1) > .el-card__body > :nth-child(1) > .el-col-3 > .el-button').click(); //点击取消报名\ncy.wait(500);\ncy.get('.el-button--primary').click(); //点击确认",
+              "err": {},
+              "uuid": "af200890-bc33-4d35-98b1-6308cd8dcee7",
+              "parentUUID": "6b8bf4b7-d473-44f0-8eca-b55f3f7df3bb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e4b0b6a7-6e66-4f41-8ebb-fa43f74c8392",
+            "af200890-bc33-4d35-98b1-6308cd8dcee7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 14624,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T04:11:21.050Z",
+    "end": "2023-06-21T04:11:42.360Z",
+    "duration": 21310,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "63e31229-5652-4edc-9b22-84d4c4f61669",
+      "title": "",
+      "fullFile": "tests/e2e/specs/JobOrderSubSys/recruiter.js",
+      "file": "tests/e2e/specs/JobOrderSubSys/recruiter.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9c2a8453-a535-4d82-bfa0-59c3ce27b6ba",
+          "title": "兼职订单子系统-招聘方",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "结束招聘",
+              "fullTitle": "兼职订单子系统-招聘方 结束招聘",
+              "timedOut": null,
+              "duration": 20641,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//兼职存在“已通过”的求职者\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(500);\ncy.get('[href=\"/recruiter/jobManage\"]').click(); //跳转至兼职管理界面\ncy.url().should('contain', '/recruiter/jobManage'); //断言\ncy.wait(200);\ncy.get(':nth-child(3) > div > .el-button > span').click();\ncy.wait(1000);\ncy.get(':nth-child(3) > div > .el-button > span').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('.btn-next').click();\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click();\ncy.get('button.el-button').filter(':contains(\"结束招聘\")').filter(':visible').first().click(); //点击结束招聘\ncy.contains('p', '请等待求职者答复').should('exist'); //断言\n//兼职状态为“已结束”\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(500);\ncy.get('[href=\"/recruiter/jobManage\"]').click(); //跳转至兼职管理界面\ncy.url().should('contain', '/recruiter/jobManage'); //断言\ncy.wait(200);\ncy.get(':nth-child(6) > div > .el-button > span').click();\ncy.wait(1000);\ncy.get(':nth-child(6) > div > .el-button > span').click();\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click();\ncy.get('button.el-button').filter(':contains(\"结束招聘\")').filter(':visible').first().click();\ncy.wait(500); //点击结束招聘\ncy.contains('p', '招聘已结束').should('exist'); //断言\n//兼职状态为“已完成”\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(500);\ncy.get('[href=\"/recruiter/jobManage\"]').click(); //跳转至兼职管理界面\ncy.url().should('contain', '/recruiter/jobManage'); //断言\ncy.wait(200);\ncy.get(':nth-child(7) > div > .el-button > span').click();\ncy.wait(1000);\ncy.get(':nth-child(7) > div > .el-button > span').click();\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click();\ncy.get('button.el-button').filter(':contains(\"结束招聘\")').filter(':visible').first().click();\ncy.wait(500); //点击结束招聘\ncy.contains('p', '该兼职已完成').should('exist'); //断言",
+              "err": {},
+              "uuid": "c1ff233f-02ff-4dee-8ba6-20aa68f484ba",
+              "parentUUID": "9c2a8453-a535-4d82-bfa0-59c3ce27b6ba",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c1ff233f-02ff-4dee-8ba6-20aa68f484ba"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 20641,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
