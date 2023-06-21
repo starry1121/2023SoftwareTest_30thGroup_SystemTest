@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687332672209" clover="3.2.0">
-  <project timestamp="1687332672209" name="All files">
+<coverage generated="1687333534857" clover="3.2.0">
+  <project timestamp="1687333534857" name="All files">
     <metrics statements="1694" coveredstatements="114" conditionals="602" coveredconditionals="15" methods="628" coveredmethods="25" elements="2924" coveredelements="154" complexity="0" loc="1694" ncloc="1694" packages="12" files="40" classes="40"/>
     <package name="src">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -1567,17 +1567,17 @@
         <metrics statements="44" coveredstatements="17" conditionals="12" coveredconditionals="5" methods="19" coveredmethods="7"/>
         <line num="15" count="13" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
-        <line num="45" count="7" type="cond" truecount="1" falsecount="1"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="52" count="7" type="stmt"/>
-        <line num="53" count="7" type="stmt"/>
-        <line num="63" count="2" type="stmt"/>
-        <line num="64" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="52" count="5" type="stmt"/>
+        <line num="53" count="5" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="65" count="0" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
-        <line num="73" count="2" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
         <line num="81" count="0" type="stmt"/>
         <line num="89" count="0" type="stmt"/>
@@ -1601,14 +1601,14 @@
         <line num="146" count="0" type="stmt"/>
         <line num="151" count="13" type="stmt"/>
         <line num="152" count="13" type="stmt"/>
-        <line num="157" count="12" type="stmt"/>
+        <line num="157" count="9" type="stmt"/>
         <line num="160" count="0" type="stmt"/>
         <line num="163" count="13" type="stmt"/>
-        <line num="168" count="12" type="cond" truecount="1" falsecount="1"/>
-        <line num="169" count="12" type="cond" truecount="1" falsecount="1"/>
-        <line num="170" count="12" type="cond" truecount="1" falsecount="1"/>
-        <line num="171" count="12" type="stmt"/>
-        <line num="176" count="0" type="stmt"/>
+        <line num="168" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="169" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="170" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="171" count="7" type="stmt"/>
+        <line num="176" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.views.recruiterPage.company">
