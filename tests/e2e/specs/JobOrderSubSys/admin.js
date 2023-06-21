@@ -11,9 +11,12 @@ describe('兼职订单子系统-管理员', () => {
         //点击登录按钮
         cy.get('[href="/recruiter/jobManage"]').click()
         //跳转至兼职管理界面
-        cy.wait(1000)
-        cy.get(':nth-child(3) > div > .el-button > span').click()
+        cy.wait(200)
+        cy.get('button.el-button').filter(':contains("已通过")').filter(':visible').first().click();   
+        cy.wait(2000)
+        cy.get('button.el-button').filter(':contains("已通过")').filter(':visible').first().click();   
         //点击筛选“已通过”的兼职
+        cy.wait(2000)
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
         .parents('.el-card > .el-card__body')
         .within(() => {
@@ -70,10 +73,10 @@ describe('兼职订单子系统-管理员', () => {
         cy.wait(500)
         cy.get('.el-menu--vertical > :nth-child(2)').click()
         //点击订单申诉
-        cy.wait(500)
+        cy.wait(1000)
         cy.get('button.el-button').filter(':contains("审核")').filter(':visible').first().click();
         //点击审核
-        cy.wait(200)
+        cy.wait(500)
         cy.get('button.el-button').filter(':contains("驳回")').filter(':visible').first().click();
         //点击驳回
         cy.wait(500)
