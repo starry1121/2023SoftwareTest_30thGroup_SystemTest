@@ -17,7 +17,7 @@ describe('用户信息管理子系统-用户修改密码', () => {
         cy.wait(200)
         cy.get('.el-input-group__append > .el-button').click()
         //点击获取验证码按钮
-        cy.get('#message_2').should('contain', '验证码已发送至您的邮箱');
+        cy.contains('p', '验证码已发送至您的邮箱').should('exist');
         //断言
     })
     it('招聘方修改密码', () => {
@@ -36,7 +36,7 @@ describe('用户信息管理子系统-用户修改密码', () => {
         cy.wait(200)
         cy.get('.el-input-group__append > .el-button').click()
         //点击获取验证码按钮
-        cy.get('#message_2').should('contain', '验证码已发送至您的邮箱');
+        cy.contains('p', '验证码已发送至您的邮箱').should('exist');
         //断言
     })
 })

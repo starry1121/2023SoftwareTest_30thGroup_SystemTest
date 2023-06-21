@@ -9,3 +9,9 @@ if (process.env.npm_lifecycle_script === 'vue-cli-service test:e2e') {console.lo
     ['istanbul', {useInlineSourceMaps: false}]
   ]
 }
+
+if (process.env.npm_lifecycle_script === 'vue-cli-service test.headless:e2e') {console.log('Instrument the code')
+  module.exports.plugins = [
+    ['istanbul', {useInlineSourceMaps: false}]
+  ]
+}

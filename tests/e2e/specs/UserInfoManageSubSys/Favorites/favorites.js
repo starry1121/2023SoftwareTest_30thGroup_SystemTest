@@ -118,6 +118,7 @@ describe('用户信息管理子系统-我的收藏', () => {
         //跳转至我的收藏界面
         cy.contains('tr', '默认收藏夹').find('.el-table_1_column_2 > .cell > .el-button--success').click()
         //点击详情按钮
+        cy.get(500)
         cy.get('.el-scrollbar__view > :nth-child(1) > .el-button--danger').click()
         //点击取消收藏
         cy.get('.el-message-box__btns > .el-button--primary').click()
@@ -140,6 +141,7 @@ describe('用户信息管理子系统-我的收藏', () => {
         //跳转至我的收藏界面
         cy.contains('tr', '默认收藏夹').find('.el-table_1_column_2 > .cell > .el-button--success').click()
         //点击详情按钮
+        cy.get(500)
         cy.get('.el-scrollbar__view > :nth-child(1) > .el-button--primary').click()
         //点击移动收藏
         cy.get('.dialog-footer > :nth-child(1)').click()
@@ -161,6 +163,7 @@ describe('用户信息管理子系统-我的收藏', () => {
         //跳转至我的收藏界面
         cy.contains('tr', '默认收藏夹').find('.el-table_1_column_2 > .cell > .el-button--success').click()
         //点击详情按钮
+        cy.get(500)
         cy.get('.el-scrollbar__view > :nth-child(1) > .el-button--primary').click()
         //点击移动收藏
         cy.get('.el-input__suffix-inner').click()

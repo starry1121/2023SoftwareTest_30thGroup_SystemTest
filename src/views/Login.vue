@@ -247,7 +247,7 @@ export default {
                 return;
             }
             var verify = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-            if (!verify.test(this.register.email)) {
+            if (!verify.test(this.email)) {
                 ElMessage({
                     message: "请检查邮箱！",
                     type: 'error',
