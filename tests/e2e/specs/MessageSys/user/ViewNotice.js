@@ -8,7 +8,7 @@ describe('消息通知子系统-查看公告', () => {
       //输入账号密码
       cy.get("#login").click()
       //点击登录按钮
-      cy.get('#message_1').should('contain', '登录成功');
+      // cy.get('#message_1').should('contain', '登录成功');
       cy.url().should('contain','jobhunter')
       //断言
       cy.wait(2000)

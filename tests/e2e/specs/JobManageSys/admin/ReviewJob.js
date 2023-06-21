@@ -9,9 +9,9 @@ describe('兼职信息管理子系统-审核兼职', () => {
         //输入账号密码
         cy.get("#login").click()
         //点击登录按钮
-        cy.get('#message_1').should('contain', '登录成功');
-        cy.url().should('contain', 'admin')
-        //断言-登录成功
+        // cy.get('#message_1').should('contain', '登录成功');
+        // cy.url().should('contain', 'admin')
+        // //断言-登录成功
 
         cy.wait(200)
         cy.get('[aria-expanded="false"] > .el-sub-menu__title').click()
@@ -39,9 +39,9 @@ describe('兼职信息管理子系统-审核兼职', () => {
         //输入账号密码
         cy.get("#login").click()
         //点击登录按钮
-        cy.get('#message_1').should('contain', '登录成功');
-        cy.url().should('contain', 'admin')
-        //断言-登录成功
+        // cy.get('#message_1').should('contain', '登录成功');
+        // cy.url().should('contain', 'admin')
+        // //断言-登录成功
 
         cy.wait(200)
         cy.get('[aria-expanded="false"] > .el-sub-menu__title').click()

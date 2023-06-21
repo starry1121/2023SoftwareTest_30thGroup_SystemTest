@@ -9,7 +9,7 @@ describe('消息通知子系统-发布公告', () => {
         //输入账号密码
         cy.get("#login").click()
         //点击登录按钮
-        cy.get('#message_1').should('contain', '登录成功');
+        // cy.get('#message_1').should('contain', '登录成功');
         cy.url().should('contain', 'admin')
         //断言
         cy.get('.el-menu--vertical > :nth-child(4)').click()

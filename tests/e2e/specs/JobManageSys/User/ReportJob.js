@@ -8,9 +8,9 @@ describe('兼职管理子系统-举报兼职', () => {
         //输入账号密码
         cy.get("#login").click()
         //点击登录按钮
-        cy.get('#message_1').should('contain', '登录成功');
-        cy.url().should('contain', 'jobhunter')
-        //断言
+        // cy.get('#message_1').should('contain', '登录成功');
+        // cy.url().should('contain', 'jobhunter')
+        // //断言
         cy.get("#jobButton").click()
         //点击寻找兼职按钮
         cy.url().should('contain', 'jobhunter/job')

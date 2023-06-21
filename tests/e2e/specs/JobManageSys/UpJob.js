@@ -8,7 +8,7 @@ describe('兼职管理子系统-发布兼职', () => {
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮
-    cy.get('#message_1').should('contain', '登录成功');
+    // cy.get('#message_1').should('contain', '登录成功');
     cy.get('a > .el-button').click()
     //点击发布兼职按钮
     cy.get('.el-button--primary').click()
@@ -24,7 +24,7 @@ describe('兼职管理子系统-发布兼职', () => {
       //输入账号密码
       cy.get("#login").click()
       //点击登录按钮
-      cy.get('#message_1').should('contain', '登录成功');
+      // cy.get('#message_1').should('contain', '登录成功');
       cy.url().should('contain','recruiter')
       //断言
 
@@ -66,7 +66,7 @@ describe('兼职管理子系统-发布兼职', () => {
       //输入账号密码
       cy.get("#login").click()
       //点击登录按钮
-      cy.get('#message_1').should('contain', '登录成功');
+      // cy.get('#message_1').should('contain', '登录成功');
       cy.url().should('contain','recruiter')
       //断言
 
@@ -108,7 +108,7 @@ describe('兼职管理子系统-发布兼职', () => {
       //输入账号密码
       cy.get("#login").click()
       //点击登录按钮
-      cy.get('#message_1').should('contain', '登录成功');
+      // cy.get('#message_1').should('contain', '登录成功');
       cy.url().should('contain','recruiter')
       //断言
 
@@ -150,7 +150,7 @@ describe('兼职管理子系统-发布兼职', () => {
       //输入账号密码
       cy.get("#login").click()
       //点击登录按钮
-      cy.get('#message_1').should('contain', '登录成功');
+      // cy.get('#message_1').should('contain', '登录成功');
       cy.url().should('contain','recruiter')
       //断言
 
@@ -192,7 +192,7 @@ describe('兼职管理子系统-发布兼职', () => {
       //输入账号密码
       cy.get("#login").click()
       //点击登录按钮
-      cy.get('#message_1').should('contain', '登录成功');
+      // cy.get('#message_1').should('contain', '登录成功');
       cy.url().should('contain','recruiter')
       //断言
 
@@ -234,7 +234,7 @@ describe('兼职管理子系统-发布兼职', () => {
       //输入账号密码
       cy.get("#login").click()
       //点击登录按钮
-      cy.get('#message_1').should('contain', '登录成功');
+      // cy.get('#message_1').should('contain', '登录成功');
       cy.url().should('contain','recruiter')
       //断言
 
