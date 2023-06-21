@@ -1,15 +1,15 @@
 {
   "stats": {
     "suites": 1,
-    "tests": 1,
+    "tests": 2,
     "passes": 1,
     "pending": 0,
-    "failures": 0,
-    "start": "2023-06-21T01:41:55.598Z",
-    "end": "2023-06-21T01:42:00.910Z",
-    "duration": 5312,
-    "testsRegistered": 1,
-    "passPercent": 100,
+    "failures": 1,
+    "start": "2023-06-21T05:12:14.505Z",
+    "end": "2023-06-21T05:12:24.550Z",
+    "duration": 10045,
+    "testsRegistered": 2,
+    "passPercent": 50,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,49 +18,73 @@
   },
   "results": [
     {
-      "uuid": "8ef0f6f7-d6bf-4cee-a77b-056f6bc27c50",
+      "uuid": "a4417921-3e66-4ead-88b2-39c9f957053a",
       "title": "",
-      "fullFile": "tests/e2e/specs/SelectJobSubSys/ApplyJob.js",
-      "file": "tests/e2e/specs/SelectJobSubSys/ApplyJob.js",
+      "fullFile": "tests/e2e/specs/UserInfoManageSubSys/Information/changePWD.js",
+      "file": "tests/e2e/specs/UserInfoManageSubSys/Information/changePWD.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "72b4d475-8090-4df9-8063-b8b2731301df",
-          "title": "选择兼职子系统-报名兼职",
+          "uuid": "d70f09a5-ea37-429b-8a3d-66043e063c83",
+          "title": "用户信息管理子系统-用户修改密码",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [
             {
-              "title": "报名兼职",
-              "fullTitle": "选择兼职子系统-报名兼职 报名兼职",
+              "title": "求职者修改密码",
+              "fullTitle": "用户信息管理子系统-用户修改密码 求职者修改密码",
               "timedOut": null,
-              "duration": 5219,
+              "duration": 2959,
               "state": "passed",
-              "speed": "medium",
+              "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(2000);\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click(); //点击“查看详情”\ncy.url().should('contain', 'jobDetail'); //断言\ncy.get('.el-button--primary > span > .el-icon > svg').click(); //点击报名兼职\ncy.get('#ziwjieshao').type(\"本人本科学历，有多次家教经验，认真耐心\"); //填写自我介绍\ncy.get('.dialog-footer > :nth-child(1)').click(); //点击确定\ncy.url().should('contain', 'jobDetail'); //断言",
+              "code": "//求职者登录\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-col-8 > :nth-child(3)').click(); //点击修改密码按钮\ncy.wait(200);\ncy.get('.el-input-group__append > .el-button').click(); //点击获取验证码按钮\ncy.get('#message_2').should('contain', '验证码已发送至您的邮箱'); //断言",
               "err": {},
-              "uuid": "e39209a3-e841-48ce-8bd1-b31ae004f3a9",
-              "parentUUID": "72b4d475-8090-4df9-8063-b8b2731301df",
+              "uuid": "cb598538-78fd-4e83-9b48-67aeda8988bd",
+              "parentUUID": "d70f09a5-ea37-429b-8a3d-66043e063c83",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "招聘方修改密码",
+              "fullTitle": "用户信息管理子系统-用户修改密码 招聘方修改密码",
+              "timedOut": null,
+              "duration": 6093,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/recruiter/company\"]').click(); //跳转至企业中心-企业信息页面\ncy.get('.el-col-8 > :nth-child(3)').click(); //点击修改密码按钮\ncy.wait(200);\ncy.get('.el-input-group__append > .el-button').click(); //点击获取验证码按钮\ncy.get('#message_2').should('contain', '验证码已发送至您的邮箱'); //断言",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#message_2`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#message_2`, but never found it.\n    at Context.eval (http://localhost:8080/__cypress/tests?p=tests\\e2e\\specs\\UserInfoManageSubSys\\Information\\changePWD.js:135:26)",
+                "diff": null
+              },
+              "uuid": "850c6201-5464-40bf-8806-602e2a51ae20",
+              "parentUUID": "d70f09a5-ea37-429b-8a3d-66043e063c83",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "e39209a3-e841-48ce-8bd1-b31ae004f3a9"
+            "cb598538-78fd-4e83-9b48-67aeda8988bd"
           ],
-          "failures": [],
+          "failures": [
+            "850c6201-5464-40bf-8806-602e2a51ae20"
+          ],
           "pending": [],
           "skipped": [],
-          "duration": 5219,
+          "duration": 9052,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

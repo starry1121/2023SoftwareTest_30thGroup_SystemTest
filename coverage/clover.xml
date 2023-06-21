@@ -1,8 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687318580080" clover="3.2.0">
-  <project timestamp="1687318580080" name="All files">
-    <metrics statements="1695" coveredstatements="157" conditionals="602" coveredconditionals="20" methods="628" coveredmethods="36" elements="2925" coveredelements="213" complexity="0" loc="1695" ncloc="1695" packages="12" files="40" classes="40"/>
-    <package name="src">
+<coverage generated="1687324358988" clover="3.2.0">
+  <project timestamp="1687324358988" name="All files">
+    <metrics statements="1695" coveredstatements="289" conditionals="602" coveredconditionals="76" methods="628" coveredmethods="88" elements="2925" coveredelements="453" complexity="0" loc="1695" ncloc="1695" packages="24" files="80" classes="80"/>
+    <package name="VUE.JBGZ_front.src">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="App.vue" path="D:/VUE/JBGZ_front/src/App.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="main.js" path="D:/VUE/JBGZ_front/src/main.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="VUE.JBGZ_front.src.api">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="restapi.js" path="D:/VUE/JBGZ_front/src/api/restapi.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="VUE.JBGZ_front.src.assets.iconfont">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="iconfont.js" path="D:/VUE/JBGZ_front/src/assets/iconfont/iconfont.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="VUE.JBGZ_front.src.components">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Conversations.vue" path="D:/VUE/JBGZ_front/src/components/Conversations.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="GaodeMap.vue" path="D:/VUE/JBGZ_front/src/components/GaodeMap.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="GaodeMapforJobDetail.vue" path="D:/VUE/JBGZ_front/src/components/GaodeMapforJobDetail.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Nav.vue" path="D:/VUE/JBGZ_front/src/components/Nav.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="PrivateChat.vue" path="D:/VUE/JBGZ_front/src/components/PrivateChat.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="RecruiterNav.vue" path="D:/VUE/JBGZ_front/src/components/RecruiterNav.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="companyNav.vue" path="D:/VUE/JBGZ_front/src/components/companyNav.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="personNav.vue" path="D:/VUE/JBGZ_front/src/components/personNav.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="VUE.JBGZ_front.src.router">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.js" path="D:/VUE/JBGZ_front/src/router/index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="VUE.JBGZ_front.src.utils">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="EmojiDecoder.js" path="D:/VUE/JBGZ_front/src/utils/EmojiDecoder.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="utils.js" path="D:/VUE/JBGZ_front/src/utils/utils.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="VUE.JBGZ_front.src.views">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Login.vue" path="D:/VUE/JBGZ_front/src/views/Login.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="VUE.JBGZ_front.src.views.adminPage">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="CompanyAuthentication.vue" path="D:/VUE/JBGZ_front/src/views/adminPage/CompanyAuthentication.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Job.vue" path="D:/VUE/JBGZ_front/src/views/adminPage/Job.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="JobReport.vue" path="D:/VUE/JBGZ_front/src/views/adminPage/JobReport.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="JobType.vue" path="D:/VUE/JBGZ_front/src/views/adminPage/JobType.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Notice.vue" path="D:/VUE/JBGZ_front/src/views/adminPage/Notice.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Notification.vue" path="D:/VUE/JBGZ_front/src/views/adminPage/Notification.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Order.vue" path="D:/VUE/JBGZ_front/src/views/adminPage/Order.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="PersonAuthentication.vue" path="D:/VUE/JBGZ_front/src/views/adminPage/PersonAuthentication.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="VUE.JBGZ_front.src.views.jobhunterPage">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="HomeView.vue" path="D:/VUE/JBGZ_front/src/views/jobhunterPage/HomeView.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Job.vue" path="D:/VUE/JBGZ_front/src/views/jobhunterPage/Job.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="JobDetail.vue" path="D:/VUE/JBGZ_front/src/views/jobhunterPage/JobDetail.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="VUE.JBGZ_front.src.views.jobhunterPage.person">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Authen.vue" path="D:/VUE/JBGZ_front/src/views/jobhunterPage/person/Authen.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Favorites.vue" path="D:/VUE/JBGZ_front/src/views/jobhunterPage/person/Favorites.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Message.vue" path="D:/VUE/JBGZ_front/src/views/jobhunterPage/person/Message.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Order.vue" path="D:/VUE/JBGZ_front/src/views/jobhunterPage/person/Order.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="PersonInfo.vue" path="D:/VUE/JBGZ_front/src/views/jobhunterPage/person/PersonInfo.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="VUE.JBGZ_front.src.views.recruiterPage">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="HomeView.vue" path="D:/VUE/JBGZ_front/src/views/recruiterPage/HomeView.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="JobDetail.vue" path="D:/VUE/JBGZ_front/src/views/recruiterPage/JobDetail.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="JobManage.vue" path="D:/VUE/JBGZ_front/src/views/recruiterPage/JobManage.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="UpJob.vue" path="D:/VUE/JBGZ_front/src/views/recruiterPage/UpJob.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="VUE.JBGZ_front.src.views.recruiterPage.company">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Authen.vue" path="D:/VUE/JBGZ_front/src/views/recruiterPage/company/Authen.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="CompanyInfo.vue" path="D:/VUE/JBGZ_front/src/views/recruiterPage/company/CompanyInfo.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Draft.vue" path="D:/VUE/JBGZ_front/src/views/recruiterPage/company/Draft.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Message.vue" path="D:/VUE/JBGZ_front/src/views/recruiterPage/company/Message.vue">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\App.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -21,30 +177,30 @@
         <line num="21" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.api">
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src.api">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="restapi.js" path="E:/大三下/软件测试/兼饼果职/JBGZ_front_5_10_13/JBGZ_front/src/api/restapi.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
-    <package name="src.assets.iconfont">
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src.assets.iconfont">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="iconfont.js" path="E:/大三下/软件测试/兼饼果职/JBGZ_front_5_10_13/JBGZ_front/src/assets/iconfont/iconfont.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
-    <package name="src.components">
-      <metrics statements="299" coveredstatements="59" conditionals="121" coveredconditionals="2" methods="118" coveredmethods="10"/>
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src.components">
+      <metrics statements="299" coveredstatements="135" conditionals="121" coveredconditionals="46" methods="118" coveredmethods="41"/>
       <file name="Conversations.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\components\Conversations.vue">
-        <metrics statements="40" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="18" coveredmethods="0"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
+        <metrics statements="40" coveredstatements="24" conditionals="8" coveredconditionals="3" methods="18" coveredmethods="9"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="40" count="3" type="stmt"/>
         <line num="44" count="7" type="stmt"/>
@@ -126,7 +282,7 @@
         <line num="37" count="0" type="stmt"/>
       </file>
       <file name="PrivateChat.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\components\PrivateChat.vue">
-        <metrics statements="206" coveredstatements="51" conditionals="109" coveredconditionals="0" methods="68" coveredmethods="7"/>
+        <metrics statements="206" coveredstatements="95" conditionals="109" coveredconditionals="41" methods="68" coveredmethods="23"/>
         <line num="7" count="6" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -343,23 +499,23 @@
         <line num="23" count="0" type="stmt"/>
       </file>
       <file name="companyNav.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\components\companyNav.vue">
-        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
+        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
       </file>
       <file name="personNav.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\components\personNav.vue">
-        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
+        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.router">
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src.router">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\router\index.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -367,34 +523,34 @@
         <line num="189" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.utils">
-      <metrics statements="40" coveredstatements="0" conditionals="24" coveredconditionals="0" methods="5" coveredmethods="0"/>
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src.utils">
+      <metrics statements="40" coveredstatements="20" conditionals="24" coveredconditionals="8" methods="5" coveredmethods="3"/>
       <file name="EmojiDecoder.js" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\utils\EmojiDecoder.js">
-        <metrics statements="11" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <metrics statements="11" coveredstatements="10" conditionals="8" coveredconditionals="3" methods="3" coveredmethods="2"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="8" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="30" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="30" type="stmt"/>
+        <line num="19" count="574" type="stmt"/>
         <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
       </file>
       <file name="utils.js" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\utils\utils.js">
-        <metrics statements="29" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="7" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="16" count="0" type="stmt"/>
+        <metrics statements="29" coveredstatements="10" conditionals="16" coveredconditionals="5" methods="2" coveredmethods="1"/>
+        <line num="7" count="358" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="358" type="stmt"/>
+        <line num="9" count="358" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="358" type="stmt"/>
+        <line num="11" count="358" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="358" type="stmt"/>
+        <line num="13" count="358" type="stmt"/>
+        <line num="14" count="358" type="stmt"/>
+        <line num="15" count="358" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="358" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
@@ -416,7 +572,7 @@
         <line num="47" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.views">
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src.views">
       <metrics statements="131" coveredstatements="18" conditionals="72" coveredconditionals="9" methods="30" coveredmethods="4"/>
       <file name="Login.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\views\Login.vue">
         <metrics statements="131" coveredstatements="18" conditionals="72" coveredconditionals="9" methods="30" coveredmethods="4"/>
@@ -553,7 +709,7 @@
         <line num="371" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.views.adminPage">
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src.views.adminPage">
       <metrics statements="362" coveredstatements="1" conditionals="149" coveredconditionals="0" methods="139" coveredmethods="0"/>
       <file name="CompanyAuthentication.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\views\adminPage\CompanyAuthentication.vue">
         <metrics statements="57" coveredstatements="0" conditionals="30" coveredconditionals="0" methods="19" coveredmethods="0"/>
@@ -942,7 +1098,7 @@
         <line num="180" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.views.jobhunterPage">
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src.views.jobhunterPage">
       <metrics statements="146" coveredstatements="63" conditionals="51" coveredconditionals="9" methods="57" coveredmethods="21"/>
       <file name="HomeView.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\views\jobhunterPage\HomeView.vue">
         <metrics statements="17" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="8" coveredmethods="4"/>
@@ -1100,8 +1256,8 @@
         <line num="355" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.views.jobhunterPage.person">
-      <metrics statements="290" coveredstatements="2" conditionals="91" coveredconditionals="0" methods="115" coveredmethods="0"/>
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src.views.jobhunterPage.person">
+      <metrics statements="290" coveredstatements="20" conditionals="91" coveredconditionals="2" methods="115" coveredmethods="9"/>
       <file name="Authen.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\views\jobhunterPage\person\Authen.vue">
         <metrics statements="40" coveredstatements="1" conditionals="9" coveredconditionals="0" methods="13" coveredmethods="0"/>
         <line num="8" count="1" type="stmt"/>
@@ -1224,12 +1380,12 @@
         <line num="282" count="0" type="stmt"/>
       </file>
       <file name="Message.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\views\jobhunterPage\person\Message.vue">
-        <metrics statements="38" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="22" coveredmethods="0"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
+        <metrics statements="38" coveredstatements="18" conditionals="10" coveredconditionals="2" methods="22" coveredmethods="9"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
         <line num="32" count="2" type="stmt"/>
         <line num="38" count="2" type="stmt"/>
@@ -1408,7 +1564,7 @@
         <line num="240" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.views.recruiterPage">
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src.views.recruiterPage">
       <metrics statements="189" coveredstatements="0" conditionals="40" coveredconditionals="0" methods="83" coveredmethods="0"/>
       <file name="HomeView.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\views\recruiterPage\HomeView.vue">
         <metrics statements="9" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
@@ -1612,8 +1768,8 @@
         <line num="175" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.views.recruiterPage.company">
-      <metrics statements="226" coveredstatements="2" conditionals="54" coveredconditionals="0" methods="80" coveredmethods="0"/>
+    <package name="大三下.软件测试.兼饼果职.JBGZ_front_5_10_13.JBGZ_front.src.views.recruiterPage.company">
+      <metrics statements="226" coveredstatements="20" conditionals="54" coveredconditionals="2" methods="80" coveredmethods="9"/>
       <file name="Authen.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\views\recruiterPage\company\Authen.vue">
         <metrics statements="35" coveredstatements="1" conditionals="10" coveredconditionals="0" methods="12" coveredmethods="0"/>
         <line num="8" count="1" type="stmt"/>
@@ -1812,12 +1968,12 @@
         <line num="239" count="0" type="stmt"/>
       </file>
       <file name="Message.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\views\recruiterPage\company\Message.vue">
-        <metrics statements="38" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="22" coveredmethods="0"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
+        <metrics statements="38" coveredstatements="18" conditionals="10" coveredconditionals="2" methods="22" coveredmethods="9"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="34" count="2" type="stmt"/>
