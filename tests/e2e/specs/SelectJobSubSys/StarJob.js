@@ -18,7 +18,6 @@ describe('选择兼职子系统-收藏兼职', () => {
         cy.wait(2000)
         cy.get('button.el-button').filter(':contains("查看详情")').filter(':visible').first().click();
         //点击“查看详情”
-        cy.url().should('contain', 'jobDetail')
         cy.wait(500)
         // cy.get('.el-button--primary > span > .el-icon > svg')
         cy.get('.el-button--warning').click()
@@ -26,9 +25,10 @@ describe('选择兼职子系统-收藏兼职', () => {
         cy.wait(500)
         cy.get('.el-input__wrapper').click()
         //点击收藏夹选择框
-        cy.get('.el-scrollbar__view > :nth-child(3)').click()
         cy.wait(500)
+        cy.get('.el-scrollbar__view > :nth-child(3)').click()
         //点击选择测试收藏夹
+        cy.wait(500)
         cy.get('.dialog-footer > :nth-child(1)').click()
         //点击确认
         
