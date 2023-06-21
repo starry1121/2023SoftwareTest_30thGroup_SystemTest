@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T08:19:27.166Z",
-    "end": "2023-06-21T08:19:58.423Z",
-    "duration": 31257,
+    "start": "2023-06-21T08:55:20.206Z",
+    "end": "2023-06-21T08:56:10.596Z",
+    "duration": 50390,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "5c04fec8-6ab6-46a4-9887-e348d172d0b4",
+      "uuid": "01f305f7-07ff-4297-9651-e32f4553faa4",
       "title": "",
       "fullFile": "tests/e2e/specs/SelectJobSubSys/ApplyJob.js",
       "file": "tests/e2e/specs/SelectJobSubSys/ApplyJob.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "758f3eab-45ac-4070-a1b7-56d8288137a2",
+          "uuid": "ff1e4862-76f2-4a77-b4a7-fe1f89a61f11",
           "title": "选择兼职子系统-报名兼职",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "报名兼职",
               "fullTitle": "选择兼职子系统-报名兼职 报名兼职",
               "timedOut": null,
-              "duration": 16709,
+              "duration": 19259,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10071\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"666\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.wait(2000);\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click(); //点击“查看详情”\ncy.url().should('contain', 'jobDetail'); //断言\ncy.wait(500);\ncy.get('[style=\"margin: 20px auto;\"] > .el-button--primary').click(); //点击报名兼职\ncy.wait(500);\ncy.get('#ziwjieshao').type(\"本人本科学历，有多次家教经验，认真耐心\"); //填写自我介绍\ncy.wait(500);\ncy.get('.dialog-footer > :nth-child(1)').click(); //点击确定\ncy.wait(500);\ncy.contains('p', '请先进行实名认证').should('exist'); //断言\n//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \n// cy.wait(2000)\n// cy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click();\n// //点击“查看详情”\n// cy.url().should('contain', 'jobDetail')\n// //断言\ncy.wait(500);\ncy.get('.el-pager > :nth-child(8)').click(); //第17\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click(); // 点击“查看详情”\ncy.url().should('contain', 'jobDetail'); //断言\ncy.wait(500);\ncy.get('[style=\"margin: 20px auto;\"] > .el-button--primary').click(); //点击报名兼职\ncy.wait(500);\ncy.get('#ziwjieshao').type(\"本人本科学历，有多次家教经验，认真耐心\"); //填写自我介绍\ncy.wait(500);\ncy.get('.dialog-footer > :nth-child(1)').click(); //点击确定\ncy.wait(500);\ncy.url().should('contain', 'jobDetail'); //断言",
               "err": {},
-              "uuid": "f011c33d-78a9-47ce-81cc-951ac6342205",
-              "parentUUID": "758f3eab-45ac-4070-a1b7-56d8288137a2",
+              "uuid": "6dbfa84e-18cb-49b7-b37c-836a5682367b",
+              "parentUUID": "ff1e4862-76f2-4a77-b4a7-fe1f89a61f11",
               "isHook": false,
               "skipped": false
             },
@@ -56,30 +56,30 @@
               "title": "取消报名兼职",
               "fullTitle": "选择兼职子系统-报名兼职 取消报名兼职",
               "timedOut": null,
-              "duration": 8803,
+              "duration": 19342,
               "state": "passed",
-              "speed": "medium",
+              "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //点击个人中心\ncy.wait(500);\ncy.get('.el-menu > :nth-child(4)').click(); //点击我的兼职\ncy.wait(3000);\ncy.get(':nth-child(1) > .el-card__body > :nth-child(1) > .el-col-3 > .el-button').click(); //点击取消报名\ncy.wait(500);\ncy.get('.el-button--primary').click(); //点击确认",
               "err": {},
-              "uuid": "8bcfdeca-1eaa-4613-a7dc-f9f09488fc60",
-              "parentUUID": "758f3eab-45ac-4070-a1b7-56d8288137a2",
+              "uuid": "bb857360-32ae-45c1-914d-250eaae8db0e",
+              "parentUUID": "ff1e4862-76f2-4a77-b4a7-fe1f89a61f11",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "f011c33d-78a9-47ce-81cc-951ac6342205",
-            "8bcfdeca-1eaa-4613-a7dc-f9f09488fc60"
+            "6dbfa84e-18cb-49b7-b37c-836a5682367b",
+            "bb857360-32ae-45c1-914d-250eaae8db0e"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 25512,
+          "duration": 38601,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

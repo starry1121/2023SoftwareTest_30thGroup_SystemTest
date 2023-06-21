@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T08:21:31.046Z",
-    "end": "2023-06-21T08:21:40.510Z",
-    "duration": 9464,
+    "start": "2023-06-21T08:58:17.981Z",
+    "end": "2023-06-21T08:58:28.701Z",
+    "duration": 10720,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "85e097a5-b3e3-4a6f-9a37-8c93fcb35876",
+      "uuid": "7975e7eb-a808-4bdf-85a0-64f4a3f28968",
       "title": "",
       "fullFile": "tests/e2e/specs/UserInfoManageSubSys/Authentication/handInAuthen.js",
       "file": "tests/e2e/specs/UserInfoManageSubSys/Authentication/handInAuthen.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "507c7f9c-eb4f-4ddf-aec5-62056f65f2ce",
+          "uuid": "32e56d49-b3bb-44ef-a636-463da7f80b39",
           "title": "用户信息管理子系统-用户提交认证申请",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "提交异常",
               "fullTitle": "用户信息管理子系统-用户提交认证申请 提交异常",
               "timedOut": null,
-              "duration": 7794,
+              "duration": 8945,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "//前提：求职者未提交实名认证申请，或者提交的实名认证申请状态为“未通过”，个人中心-实名认证显示申请按钮\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10028\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"666\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(2)').click(); //跳转至实名认证界面\ncy.get('.el-header > .el-button').should('contain', '申请'); //断言\ncy.get('.el-header > .el-button').click(); //点击申请按钮\ncy.get('.dialog-footer > :nth-child(1)').click(); //点击确认\ncy.contains('p', '不能为空').should('exist'); //断言\n//前提：招聘方未提交企业认证申请，或者提交的企业认证申请状态为“未通过”，企业中心-企业认证显示申请按钮\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10023\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"666\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/recruiter/company\"]').click(); //跳转至企业中心-企业信息页面\ncy.get('.el-menu > :nth-child(2)').click(); //跳转至企业认证界面\ncy.get('.el-header > .el-button').should('contain', '申请'); //断言\ncy.get('.el-header > .el-button').click(); //点击申请按钮\ncy.get('.dialog-footer > :nth-child(1)').click(); //点击确认\ncy.contains('p', '不能为空').should('exist'); //断言",
               "err": {},
-              "uuid": "fd761267-102c-4f4e-b32d-add50e97e8c7",
-              "parentUUID": "507c7f9c-eb4f-4ddf-aec5-62056f65f2ce",
+              "uuid": "98411548-7f12-418a-af40-c29d666ee56d",
+              "parentUUID": "32e56d49-b3bb-44ef-a636-463da7f80b39",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "fd761267-102c-4f4e-b32d-add50e97e8c7"
+            "98411548-7f12-418a-af40-c29d666ee56d"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 7794,
+          "duration": 8945,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T08:21:45.624Z",
-    "end": "2023-06-21T08:22:13.431Z",
-    "duration": 27807,
+    "start": "2023-06-21T08:58:34.742Z",
+    "end": "2023-06-21T08:59:06.723Z",
+    "duration": 31981,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "5e9abe4e-d5d7-415f-81d2-e003b44cb4a4",
+      "uuid": "02585b07-74d9-46bd-b378-f504f29c53bd",
       "title": "",
       "fullFile": "tests/e2e/specs/UserInfoManageSubSys/Authentication/handleAuthen.js",
       "file": "tests/e2e/specs/UserInfoManageSubSys/Authentication/handleAuthen.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "793f8c46-ebef-4a93-9ea1-f2550f9aa0a0",
+          "uuid": "ad7166d8-3241-4428-a1d4-5f587dc96374",
           "title": "兼职信息管理子系统-管理员审核认证申请",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "驳回",
               "fullTitle": "兼职信息管理子系统-管理员审核认证申请 驳回",
               "timedOut": null,
-              "duration": 18138,
+              "duration": 21609,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "//审核实名认证-驳回\n//反馈为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.el-sub-menu.is-active > .el-menu > .is-active').click(); //点击个人认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').first().click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '反馈不能为空').should('exist'); //断言\n//审核实名认证-驳回\n//反馈不为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.el-sub-menu.is-active > .el-menu > .is-active').click(); //点击个人认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').eq(1).click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.get('.el-textarea__inner').clear();\ncy.get('.el-textarea__inner').type(\"不可以\");\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已驳回该申请').should('exist'); //断言\n//审核企业认证-驳回\n//反馈为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.is-opened > .el-menu > :nth-child(2)').click(); //点击企业认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').first().click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '反馈不能为空').should('exist'); //断言\n//审核企业认证-驳回\n//反馈不为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.is-opened > .el-menu > :nth-child(2)').click(); //点击企业认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').eq(1).click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.get('.el-textarea__inner').clear();\ncy.get('.el-textarea__inner').type(\"不可以\");\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已驳回该申请').should('exist'); //断言",
               "err": {},
-              "uuid": "2b5bb398-4686-4647-a6ed-b4d21fa6bdc0",
-              "parentUUID": "793f8c46-ebef-4a93-9ea1-f2550f9aa0a0",
+              "uuid": "65d91941-2faf-4b82-9acf-ba108497142c",
+              "parentUUID": "ad7166d8-3241-4428-a1d4-5f587dc96374",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "通过",
               "fullTitle": "兼职信息管理子系统-管理员审核认证申请 通过",
               "timedOut": null,
-              "duration": 8558,
+              "duration": 8780,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "//审核实名认证-通过\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.el-sub-menu.is-active > .el-menu > .is-active').click(); //点击个人认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').eq(1).click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"通过\")').filter(':visible').first().click(); //点击通过\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已通过该申请').should('exist'); //断言\n//审核企业认证-通过\n//反馈为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.is-opened > .el-menu > :nth-child(2)').click(); //点击企业认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').eq(1).click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"通过\")').filter(':visible').first().click(); //点击通过\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已通过该申请').should('exist'); //断言",
               "err": {},
-              "uuid": "20fc3321-aed0-4439-a38b-334161b28c05",
-              "parentUUID": "793f8c46-ebef-4a93-9ea1-f2550f9aa0a0",
+              "uuid": "b217f02e-8feb-4287-9b78-303b2d739664",
+              "parentUUID": "ad7166d8-3241-4428-a1d4-5f587dc96374",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "2b5bb398-4686-4647-a6ed-b4d21fa6bdc0",
-            "20fc3321-aed0-4439-a38b-334161b28c05"
+            "65d91941-2faf-4b82-9acf-ba108497142c",
+            "b217f02e-8feb-4287-9b78-303b2d739664"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 26696,
+          "duration": 30389,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

@@ -2,14 +2,14 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 0,
+    "passes": 1,
     "pending": 0,
-    "failures": 1,
-    "start": "2023-06-21T08:20:59.545Z",
-    "end": "2023-06-21T08:21:10.147Z",
-    "duration": 10602,
+    "failures": 0,
+    "start": "2023-06-21T08:57:31.338Z",
+    "end": "2023-06-21T08:57:41.597Z",
+    "duration": 10259,
     "testsRegistered": 1,
-    "passPercent": 0,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "b9a1c0d6-af8b-4bb2-a519-31166195c11d",
+      "uuid": "afbda3bb-844b-4fa5-b544-173cebe89be7",
       "title": "",
       "fullFile": "tests/e2e/specs/SelectJobSubSys/SeeJobDetail.js",
       "file": "tests/e2e/specs/SelectJobSubSys/SeeJobDetail.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e4c12e11-a3b2-474b-ac57-ab5614db2753",
+          "uuid": "29c409bb-de27-4ced-9c18-a7418139e388",
           "title": "选择兼职子系统-查看兼职详情",
           "fullFile": "",
           "file": "",
@@ -38,33 +38,29 @@
               "title": "查看兼职详情",
               "fullTitle": "选择兼职子系统-查看兼职详情 查看兼职详情",
               "timedOut": null,
-              "duration": 9329,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
+              "duration": 7882,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
               "pending": false,
               "context": null,
-              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click(); //点击“查看详情”\ncy.url().should('contain', 'jobDetail');\ncy.wait(500);",
-              "err": {
-                "message": "CypressError: Timed out retrying after 4050ms: `cy.click()` failed because this element is detached from the DOM.\n\n`<button class=\"el-button el-button--primary btn\" aria-disabled=\"false\" type=\"button\" data-v-d23a72da=\"\" style=\"--el-button-bg-color:#7A74C2; --el-button-text-color:var(--el-color-white); --el-button-border-color:#7A74C2; --el-button-hover-bg-color:rgb(162, 158, 212); --el-button-hover-text-color:var(--el-color-white); --el-button-hover-border-color:rgb(162, 158, 212); --el-button-active-bg-color:rgb(102, 97, 159); --el-button-active-border-color:rgb(102, 97, 159);\">...</button>`\n\nCypress requires elements be attached in the DOM to interact with them.\n\nThe previous command that ran was:\n\n  > `cy.first()`\n\nThis DOM element likely became detached somewhere between the previous and current command.\n\nCommon situations why this happens:\n  - Your JS framework re-rendered asynchronously\n  - Your app code reacted to an event firing and removed the element\n\nYou typically need to re-query for the element or add 'guards' which delay Cypress from running new commands.\n\nhttps://on.cypress.io/element-has-detached-from-dom",
-                "estack": "CypressError: Timed out retrying after 4050ms: `cy.click()` failed because this element is detached from the DOM.\n\n`<button class=\"el-button el-button--primary btn\" aria-disabled=\"false\" type=\"button\" data-v-d23a72da=\"\" style=\"--el-button-bg-color:#7A74C2; --el-button-text-color:var(--el-color-white); --el-button-border-color:#7A74C2; --el-button-hover-bg-color:rgb(162, 158, 212); --el-button-hover-text-color:var(--el-color-white); --el-button-hover-border-color:rgb(162, 158, 212); --el-button-active-bg-color:rgb(102, 97, 159); --el-button-active-border-color:rgb(102, 97, 159);\">...</button>`\n\nCypress requires elements be attached in the DOM to interact with them.\n\nThe previous command that ran was:\n\n  > `cy.first()`\n\nThis DOM element likely became detached somewhere between the previous and current command.\n\nCommon situations why this happens:\n  - Your JS framework re-rendered asynchronously\n  - Your app code reacted to an event firing and removed the element\n\nYou typically need to re-query for the element or add 'guards' which delay Cypress from running new commands.\n\nhttps://on.cypress.io/element-has-detached-from-dom\n    at $Cy.ensureAttached (http://localhost:8080/__cypress/runner/cypress_runner.js:168765:76)\n    at runAllChecks (http://localhost:8080/__cypress/runner/cypress_runner.js:154675:12)\n    at retryActionability (http://localhost:8080/__cypress/runner/cypress_runner.js:154755:16)\n    at tryCatcher (http://localhost:8080/__cypress/runner/cypress_runner.js:13022:23)\n    at Function.Promise.attempt.Promise.try (http://localhost:8080/__cypress/runner/cypress_runner.js:10296:29)\n    at whenStable (http://localhost:8080/__cypress/runner/cypress_runner.js:173835:65)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:173290:14\n    at tryCatcher (http://localhost:8080/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (http://localhost:8080/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (http://localhost:8080/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (http://localhost:8080/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (http://localhost:8080/__cypress/runner/cypress_runner.js:11139:18)\n    at Promise._fulfill (http://localhost:8080/__cypress/runner/cypress_runner.js:11083:18)\n    at http://localhost:8080/__cypress/runner/cypress_runner.js:12697:46\nFrom Your Spec Code:\n    at Context.eval (http://localhost:8080/__cypress/tests?p=tests\\e2e\\specs\\SelectJobSubSys\\SeeJobDetail.js:118:87)",
-                "diff": null
-              },
-              "uuid": "78a4b438-53db-477a-9870-fc662727d71e",
-              "parentUUID": "e4c12e11-a3b2-474b-ac57-ab5614db2753",
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"寻找兼职\")').filter(':visible').first().click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(2000);\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click(); //点击“查看详情”\ncy.url().should('contain', 'jobDetail');\ncy.wait(500);",
+              "err": {},
+              "uuid": "2f27190c-24e3-428e-a537-2da8e6be7ca0",
+              "parentUUID": "29c409bb-de27-4ced-9c18-a7418139e388",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
-          "failures": [
-            "78a4b438-53db-477a-9870-fc662727d71e"
+          "passes": [
+            "2f27190c-24e3-428e-a537-2da8e6be7ca0"
           ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 9329,
+          "duration": 7882,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

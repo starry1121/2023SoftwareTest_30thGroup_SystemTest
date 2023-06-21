@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T08:12:12.205Z",
-    "end": "2023-06-21T08:12:36.345Z",
-    "duration": 24140,
+    "start": "2023-06-21T08:41:29.975Z",
+    "end": "2023-06-21T08:42:05.689Z",
+    "duration": 35714,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "421bc60b-e280-4550-b751-ab238d39371d",
+      "uuid": "917806d8-a58e-4e62-9188-d48fbfa68fc1",
       "title": "",
       "fullFile": "tests/e2e/specs/JobOrderSubSys/admin.js",
       "file": "tests/e2e/specs/JobOrderSubSys/admin.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "511c7dff-c5e6-4c5f-9941-94038e69ea76",
+          "uuid": "c09865d5-67d8-46b6-a419-a13df880bdf1",
           "title": "兼职订单子系统-管理员",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "对用户提交的申诉进行处理",
               "fullTitle": "兼职订单子系统-管理员 对用户提交的申诉进行处理",
               "timedOut": null,
-              "duration": 22808,
+              "duration": 33546,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "//招聘方提交申诉\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('[href=\"/recruiter/jobManage\"]').click(); //跳转至兼职管理界面\ncy.wait(1000);\ncy.get(':nth-child(3) > div > .el-button > span').click(); //点击筛选“已通过”的兼职\ncy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职').parents('.el-card > .el-card__body').within(() => {\n  // Click the \"查看详情\" button\n  cy.contains('.el-button', '查看详情').click();\n}); //跳转至兼职“大学生线上讲解小学数学长期兼职”详情页\ncy.get(':nth-child(3) > :nth-child(7)').scrollIntoView();\ncy.wait(500); //查看求职者已完成列表\ncy.get('button.el-button').filter(':contains(\"申诉\")').filter(':visible').first().click(); //点击申诉\ncy.get('.el-textarea__inner').clear();\ncy.get('.el-textarea__inner').type(\"打分不合理\");\ncy.get('.dialog-footer > .el-button--primary').click();\ncy.wait(200); //点击确认\ncy.contains('p', '已提交申诉').should('exist'); //断言\n//管理员审核评价申诉-通过申诉\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(500);\ncy.get('.el-menu--vertical > :nth-child(2)').click(); //点击订单申诉\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').first().click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"通过\")').filter(':visible').first().click(); //点击驳回\ncy.wait(500);\ncy.get('.el-textarea__inner').filter(':visible').clear();\ncy.get('.el-textarea__inner').filter(':visible').type(\"已处理\"); //cy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click();\n//点击确认\n//cy.contains('p', '已通过该申诉').should('exist');\n//断言\n//管理员审核评价申诉-驳回申诉\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(500);\ncy.get('.el-menu--vertical > :nth-child(2)').click(); //点击订单申诉\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').first().click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.wait(500);\ncy.get('.el-textarea__inner').filter(':visible').clear();\ncy.get('.el-textarea__inner').filter(':visible').type(\"已处理\");\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已驳回该申诉').should('exist'); //断言",
               "err": {},
-              "uuid": "679a8e98-bb0a-4d37-8119-32ad04a6b607",
-              "parentUUID": "511c7dff-c5e6-4c5f-9941-94038e69ea76",
+              "uuid": "756b7537-a41d-44e3-abd8-8691b0c92c11",
+              "parentUUID": "c09865d5-67d8-46b6-a419-a13df880bdf1",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "679a8e98-bb0a-4d37-8119-32ad04a6b607"
+            "756b7537-a41d-44e3-abd8-8691b0c92c11"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 22808,
+          "duration": 33546,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
