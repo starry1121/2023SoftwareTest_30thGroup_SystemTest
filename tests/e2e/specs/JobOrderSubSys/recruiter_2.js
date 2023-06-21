@@ -13,7 +13,7 @@ describe('兼职订单子系统-招聘方', () => {
         //跳转至兼职管理界面
         cy.wait(200)
         cy.get('button.el-button').filter(':contains("已通过")').filter(':visible').first().click();   
-        cy.wait(2000)
+        cy.wait(1000)
         cy.get('button.el-button').filter(':contains("已通过")').filter(':visible').first().click();   
         //点击筛选“已通过”的兼职
         cy.wait(2000)
@@ -47,7 +47,7 @@ describe('兼职订单子系统-招聘方', () => {
         //跳转至兼职管理界面
         cy.wait(200)
         cy.get('button.el-button').filter(':contains("已通过")').filter(':visible').first().click();   
-        cy.wait(2000)
+        cy.wait(1000)
         cy.get('button.el-button').filter(':contains("已通过")').filter(':visible').first().click();   
         //点击筛选“已通过”的兼职
         cy.wait(2000)

@@ -16,7 +16,7 @@ describe('兼职订单子系统-求职者', () => {
         //跳转到兼职订单页
         cy.get('#tab-已完成').click()
         //筛选已完成的订单
-        cy.wait(2000)
+        cy.wait(1000)
         cy.get('button.el-button').find('i.el-icon').filter(':visible').first().click();
         //查看兼职详情
         cy.url().should('contain','/jobhunter/jobDetail')
@@ -38,7 +38,7 @@ describe('兼职订单子系统-求职者', () => {
         cy.wait(500)
         cy.get('#tab-已通过').click()
         //筛选已通过的订单
-        cy.wait(2000)
+        cy.wait(1000)
         cy.get('button.el-button').filter(':contains("接受录用")').filter(':visible').eq(1).click();
         //点击接受录用
         cy.get('.el-button--primary').click()
@@ -62,7 +62,7 @@ describe('兼职订单子系统-求职者', () => {
         cy.wait(500)
         cy.get('#tab-已通过').click()
         //筛选已通过的订单
-        cy.wait(2000)
+        cy.wait(1000)
         cy.get('button.el-button').filter(':contains("放弃录用")').filter(':visible').eq(1).click();
         //点击放弃录用
         cy.get('.el-button--primary').click()
