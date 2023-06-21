@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T13:25:15.436Z",
+    "end": "2023-06-21T13:25:23.702Z",
+    "duration": 8266,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f2ab62e2-c6b2-4800-bf71-efca7305f17e",
+      "title": "",
+      "fullFile": "tests/e2e/specs/UserInfoManageSubSys/Information/changePWD.js",
+      "file": "tests/e2e/specs/UserInfoManageSubSys/Information/changePWD.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c771c773-f101-407a-b7f5-d59da19ae112",
+          "title": "用户信息管理子系统-用户修改密码",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "求职者修改密码",
+              "fullTitle": "用户信息管理子系统-用户修改密码 求职者修改密码",
+              "timedOut": null,
+              "duration": 3582,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-col-8 > :nth-child(3)').click(); //点击修改密码按钮\ncy.wait(200);\ncy.get('.el-input-group__append > .el-button').click(); //点击获取验证码按钮\ncy.contains('p', '验证码已发送至您的邮箱').should('exist'); //断言",
+              "err": {},
+              "uuid": "2f7fb152-63cd-4bca-877c-71d461ac93d1",
+              "parentUUID": "c771c773-f101-407a-b7f5-d59da19ae112",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "招聘方修改密码",
+              "fullTitle": "用户信息管理子系统-用户修改密码 招聘方修改密码",
+              "timedOut": null,
+              "duration": 3038,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/recruiter/company\"]').click(); //跳转至企业中心-企业信息页面\ncy.get('.el-col-8 > :nth-child(3)').click(); //点击修改密码按钮\ncy.wait(200);\ncy.get('.el-input-group__append > .el-button').click(); //点击获取验证码按钮\ncy.contains('p', '验证码已发送至您的邮箱').should('exist'); //断言",
+              "err": {},
+              "uuid": "70f188fe-2178-4a85-b2a6-580c1883acd1",
+              "parentUUID": "c771c773-f101-407a-b7f5-d59da19ae112",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2f7fb152-63cd-4bca-877c-71d461ac93d1",
+            "70f188fe-2178-4a85-b2a6-580c1883acd1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6620,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T13:17:17.850Z",
+    "end": "2023-06-21T13:17:36.821Z",
+    "duration": 18971,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "93266ee0-c074-4947-be02-c98b1e4440b2",
+      "title": "",
+      "fullFile": "tests/e2e/specs/JobOrderSubSys/jobhunter_4.js",
+      "file": "tests/e2e/specs/JobOrderSubSys/jobhunter_4.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "10adc1d7-62d5-4b61-bb73-050f5c2dd597",
+          "title": "兼职订单子系统-求职者",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "对未及时支付工资的订单提出申诉",
+              "fullTitle": "兼职订单子系统-求职者 对未及时支付工资的订单提出申诉",
+              "timedOut": null,
+              "duration": 18109,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//申诉理由为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(4)').click(); //跳转到兼职订单页\ncy.wait(200);\ncy.get('#tab-已完成').click(); //筛选已完成的订单\ncy.wait(1000);\ncy.get('button.el-button').filter(':contains(\"申诉\")').filter(':visible').first().click(); //点击申诉按钮\ncy.get(':nth-child(2) > .el-radio__input > .el-radio__inner').click(); //选择类型为支付申诉\ncy.get('.el-textarea__inner').clear();\ncy.get('.dialog-footer > :nth-child(2)').click(); //点击确认\ncy.contains('p', '不能为空').should('exist'); //断言\n//用户未提交申诉，或者提交的申诉状态为未通过\ncy.get('.el-textarea__inner').clear();\ncy.get('.el-textarea__inner').type(\"未支付\");\ncy.get('.dialog-footer > :nth-child(2)').click(); //点击确认\ncy.contains('p', '已提交申诉').should('exist'); //断言\n//管理员驳回申诉\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(500);\ncy.get('.el-menu--vertical > :nth-child(2)').click(); //点击订单申诉\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').first().click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.wait(500);\ncy.get('.el-textarea__inner').filter(':visible').clear();\ncy.get('.el-textarea__inner').filter(':visible').type(\"已处理\");\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已驳回该申诉').should('exist'); //断言",
+              "err": {},
+              "uuid": "b077db0c-bb09-41a1-873d-dca11fffabb8",
+              "parentUUID": "10adc1d7-62d5-4b61-bb73-050f5c2dd597",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b077db0c-bb09-41a1-873d-dca11fffabb8"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 18109,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

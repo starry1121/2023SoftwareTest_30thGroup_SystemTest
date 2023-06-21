@@ -18,7 +18,7 @@ describe('兼职信息管理子系统-审核兼职', () => {
         //点击兼职管理
         cy.get(':nth-child(3) > .el-menu > :nth-child(1)').click()
         //点击审核兼职
-        cy.wait(500)
+        cy.wait(1500)
         // cy.get(':nth-child(1) > .el-table_2_column_16 > .cell > .el-button').click()
         cy.get('button.el-button').filter(':contains("审核")').filter(':visible').first().click();
         //点击审核
@@ -48,7 +48,7 @@ describe('兼职信息管理子系统-审核兼职', () => {
         //点击兼职管理
         cy.get(':nth-child(3) > .el-menu > :nth-child(1)').click()
         //点击审核兼职
-        cy.wait(500)
+        cy.wait(1500)
         // cy.get(':nth-child(1) > .el-table_2_column_16 > .cell > .el-button').click()
         cy.get('button.el-button').filter(':contains("审核")').filter(':visible').first().click();
         //点击审核

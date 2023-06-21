@@ -20,7 +20,7 @@ describe('用户信息管理子系统-用户点击实名认证/企业认证', ()
         //求职者已提交实名认证申请，状态为“未审核”，个人中心-实名认证显示申请详情
         cy.visit('/')
         //访问网站
-        cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10070")
+        cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10448")
         cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("666")
         //输入账号密码
         cy.get("#login").click()
@@ -82,7 +82,7 @@ describe('用户信息管理子系统-用户点击实名认证/企业认证', ()
         //招聘方已提交企业认证申请，状态为“未审核”，企业中心-企业认证显示申请详情
         cy.visit('/')
         //访问网站
-        cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10073")
+        cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10529")
         cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("666")
         //输入账号密码
         cy.get("#login").click()

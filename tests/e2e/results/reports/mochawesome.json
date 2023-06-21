@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T13:13:06.353Z",
+    "end": "2023-06-21T13:13:37.392Z",
+    "duration": 31039,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6d25066e-635e-4faa-925d-97883c555c93",
+      "title": "",
+      "fullFile": "tests/e2e/specs/APItest/ChatAPItest.js",
+      "file": "tests/e2e/specs/APItest/ChatAPItest.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ab80a574-72bf-4e0c-9eaf-e8a4bc6b5547",
+          "title": "接口测试-聊天接口",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "发送消息",
+              "fullTitle": "接口测试-聊天接口 发送消息",
+              "timedOut": null,
+              "duration": 26543,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.wait(5000); //求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\n// cy.get('#message_1').should('contain', '登录成功');\n// cy.url().should('contain', 'jobhunter')\n// //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click(); //点击“查看详情”\ncy.url().should('contain', 'jobDetail'); //断言\ncy.wait(1000);\ncy.get('.el-col-3 > :nth-child(2) > .el-button').click(); //点击联系招聘方\ncy.wait(500);\ncy.get('.input-content').type(\"你好！消息测试2023年6月20日14:28:01\"); //输入消息\ncy.get('.send-button').click(); //点击发送按钮\ncy.get('.chat-main').should('contain', '你好！消息测试2023年6月20日14:28:01');",
+              "err": {},
+              "uuid": "958ce655-adc8-4e5b-bc0c-436077a99f8e",
+              "parentUUID": "ab80a574-72bf-4e0c-9eaf-e8a4bc6b5547",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "查看消息",
+              "fullTitle": "接口测试-聊天接口 查看消息",
+              "timedOut": null,
+              "duration": 3334,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//招聘方登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\n// cy.get('#message_1').should('contain', '登录成功');\n// cy.url().should('contain','recruiter')\n// //断言 是否登录成功\ncy.wait(1500);\ncy.get('a > .el-icon > svg').click(); //点击消息通知按钮\ncy.url().should('contain', 'conversation'); //断言 是否成功跳转到消息界面\ncy.get('.conversation').click(); //点击某一头像\ncy.get('.chat-title').should('be.visible'); //断言 是否出现了聊天信息",
+              "err": {},
+              "uuid": "da9b742b-f7bb-4f9f-858e-55156d12c19b",
+              "parentUUID": "ab80a574-72bf-4e0c-9eaf-e8a4bc6b5547",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "958ce655-adc8-4e5b-bc0c-436077a99f8e",
+            "da9b742b-f7bb-4f9f-858e-55156d12c19b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 29877,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

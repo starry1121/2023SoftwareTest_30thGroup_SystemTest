@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T13:20:54.327Z",
+    "end": "2023-06-21T13:21:00.902Z",
+    "duration": 6575,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7fe2a0f1-f369-4b04-851d-f91062805286",
+      "title": "",
+      "fullFile": "tests/e2e/specs/MessageSys/admin/ReleaseNotice.js",
+      "file": "tests/e2e/specs/MessageSys/admin/ReleaseNotice.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8ff86e1c-1147-42d2-bcae-3b1184bbc888",
+          "title": "消息通知子系统-发布公告",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "发布公告",
+              "fullTitle": "消息通知子系统-发布公告 发布公告",
+              "timedOut": null,
+              "duration": 5137,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\n// cy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'admin'); //断言\ncy.get('.el-menu--vertical > :nth-child(4)').click(); //点击公告管理\ncy.wait(500);\ncy.get('.el-pager > :nth-child(2)').click(); //点击第二页\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click(); //点击状态筛选\ncy.get(':nth-child(1) > .el-checkbox__label').click(); //点击未发布\ncy.get('.el-table-filter__bottom > :nth-child(1)').click(); // 点击confirm\n// cy.get(':nth-child(1) > .el-table_2_column_15 > .cell > :nth-child(1) > span').click()\ncy.get('button.el-button').filter(':contains(\"发布\")').filter(':visible').first().click(); //点击发布\ncy.get('.el-message-box__btns > .el-button--primary').click(); //点击确认按钮\ncy.url().should('contain', 'notice');",
+              "err": {},
+              "uuid": "bba8109d-d832-40c2-afea-8aa6c58da743",
+              "parentUUID": "8ff86e1c-1147-42d2-bcae-3b1184bbc888",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bba8109d-d832-40c2-afea-8aa6c58da743"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5137,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

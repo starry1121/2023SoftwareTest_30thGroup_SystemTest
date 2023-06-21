@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T13:19:40.498Z",
+    "end": "2023-06-21T13:20:00.247Z",
+    "duration": 19749,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d2fd8f3b-3773-4c9f-8b26-e3c3165b8e68",
+      "title": "",
+      "fullFile": "tests/e2e/specs/JobOrderSubSys/recruiter_5.js",
+      "file": "tests/e2e/specs/JobOrderSubSys/recruiter_5.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1912a247-aa33-4108-b52f-51499387a0e6",
+          "title": "兼职订单子系统-招聘方",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "录用求职者",
+              "fullTitle": "兼职订单子系统-招聘方 录用求职者",
+              "timedOut": null,
+              "duration": 9175,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('[href=\"/recruiter/jobManage\"]').click(); //跳转至兼职管理界面\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"已通过\")').filter(':visible').first().click();\ncy.wait(1000);\ncy.get('button.el-button').filter(':contains(\"已通过\")').filter(':visible').first().click(); //点击筛选“已通过”的兼职\ncy.wait(2000);\ncy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职').parents('.el-card > .el-card__body').within(() => {\n  // Click the \"查看详情\" button\n  cy.contains('.el-button', '查看详情').click();\n}); //跳转至兼职“大学生线上讲解小学数学长期兼职”详情页\ncy.get(':nth-child(3) > :nth-child(4)').scrollIntoView();\ncy.wait(1000); //查看求职者报名列表\ncy.get('button.el-button').filter(':contains(\"录用\")').filter(':visible').first().click(); //点击录用\ncy.get('.el-message-box__btns > .el-button--primary').click(); //点击确认\ncy.contains('p', '录用成功').should('exist'); //断言",
+              "err": {},
+              "uuid": "d51f086c-761d-4bf8-b860-281b56b6e35e",
+              "parentUUID": "1912a247-aa33-4108-b52f-51499387a0e6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "拒绝录用求职者",
+              "fullTitle": "兼职订单子系统-招聘方 拒绝录用求职者",
+              "timedOut": null,
+              "duration": 8983,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('[href=\"/recruiter/jobManage\"]').click(); //跳转至兼职管理界面\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"已通过\")').filter(':visible').first().click();\ncy.wait(1000);\ncy.get('button.el-button').filter(':contains(\"已通过\")').filter(':visible').first().click(); //点击筛选“已通过”的兼职\ncy.wait(2000);\ncy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职').parents('.el-card > .el-card__body').within(() => {\n  // Click the \"查看详情\" button\n  cy.contains('.el-button', '查看详情').click();\n}); //跳转至兼职“大学生线上讲解小学数学长期兼职”详情页\ncy.get(':nth-child(3) > :nth-child(4)').scrollIntoView();\ncy.wait(1000); //查看求职者报名列表\ncy.get('button.el-button').filter(':contains(\"拒绝\")').filter(':visible').first().click(); //点击拒绝\ncy.get('.el-message-box__btns > .el-button--primary').click(); //点击确认\ncy.contains('p', '拒绝成功').should('exist'); //断言",
+              "err": {},
+              "uuid": "f168253c-88b9-4521-8a01-c5be0ae79e38",
+              "parentUUID": "1912a247-aa33-4108-b52f-51499387a0e6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d51f086c-761d-4bf8-b860-281b56b6e35e",
+            "f168253c-88b9-4521-8a01-c5be0ae79e38"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 18158,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -15,7 +15,7 @@ describe('选择兼职子系统-收藏兼职', () => {
         //点击寻找兼职按钮
         cy.url().should('contain', 'jobhunter/job')
         //断言 
-        cy.wait(2000)
+        cy.wait(1500)
         cy.get('button.el-button').filter(':contains("查看详情")').filter(':visible').first().click();
         //点击“查看详情”
         cy.wait(500)
@@ -31,12 +31,8 @@ describe('选择兼职子系统-收藏兼职', () => {
         cy.wait(500)
         cy.get('.dialog-footer > :nth-child(1)').click()
         //点击确认
-        
         cy.url().should('contain', 'jobDetail')
         //断言
-
-        
-
     })
     it('取消收藏兼职', () => {
         //求职者登录-ID
@@ -54,14 +50,14 @@ describe('选择兼职子系统-收藏兼职', () => {
         //点击寻找兼职按钮
         cy.url().should('contain', 'jobhunter/job')
         //断言 
-        cy.wait(2000)
+        cy.wait(1500)
         cy.get('button.el-button').filter(':contains("查看详情")').filter(':visible').first().click();
         //点击“查看详情”
         cy.url().should('contain', 'jobDetail')
-
         cy.wait(500)
         cy.get('.el-button--warning').click()
         //点击取消收藏兼职
+        cy.wait(500)
         cy.get('.el-message-box__btns > .el-button--primary').click()
         //点击确认
         cy.url().should('contain', 'jobDetail')
