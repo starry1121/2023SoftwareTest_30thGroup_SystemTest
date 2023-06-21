@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T05:08:55.140Z",
-    "end": "2023-06-21T05:08:59.988Z",
-    "duration": 4848,
+    "start": "2023-06-21T07:06:02.701Z",
+    "end": "2023-06-21T07:06:07.364Z",
+    "duration": 4663,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "282d7f12-1fb5-4f4b-839f-d1aea1b57d15",
+      "uuid": "aa4286f3-08ed-4d30-93ec-5cd677ab6d3e",
       "title": "",
       "fullFile": "tests/e2e/specs/MessageSys/user/ViewNotice.js",
       "file": "tests/e2e/specs/MessageSys/user/ViewNotice.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "1d495489-5e23-4151-bd8d-94803ccd4377",
+          "uuid": "9d509334-ade0-4e88-91cc-0288071311b6",
           "title": "消息通知子系统-查看公告",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "查看公告",
               "fullTitle": "消息通知子系统-查看公告 查看公告",
               "timedOut": null,
-              "duration": 3835,
+              "duration": 3951,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(2000);\ncy.get(':nth-child(2) > .el-card > .el-card__body > [style=\"padding: 10px;\"] > .el-button').click(); // //点击查看详情\ncy.get('.el-drawer').should('be.visible');",
               "err": {},
-              "uuid": "07daa360-86cf-4dbe-93d7-1655e007f08f",
-              "parentUUID": "1d495489-5e23-4151-bd8d-94803ccd4377",
+              "uuid": "8591432f-1bfa-4b20-a8c5-fe7bfc32dc73",
+              "parentUUID": "9d509334-ade0-4e88-91cc-0288071311b6",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "07daa360-86cf-4dbe-93d7-1655e007f08f"
+            "8591432f-1bfa-4b20-a8c5-fe7bfc32dc73"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 3835,
+          "duration": 3951,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

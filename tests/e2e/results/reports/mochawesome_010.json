@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T05:07:23.688Z",
-    "end": "2023-06-21T05:07:40.434Z",
-    "duration": 16746,
+    "start": "2023-06-21T07:04:35.848Z",
+    "end": "2023-06-21T07:04:53.890Z",
+    "duration": 18042,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "712d19c7-e088-4845-8a97-f2d154130578",
+      "uuid": "21c17722-2514-4baf-b193-5b5e04948a91",
       "title": "",
       "fullFile": "tests/e2e/specs/LoginRegisterSubSys/login.js",
       "file": "tests/e2e/specs/LoginRegisterSubSys/login.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "b50112c8-f215-4dc1-8c6c-12e2e85ee71c",
+          "uuid": "2f6bf844-9065-4a6c-8677-e9480d07a699",
           "title": "登录注册子系统-用户登录",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "用户登录正常",
               "fullTitle": "登录注册子系统-用户登录 用户登录正常",
               "timedOut": null,
-              "duration": 10415,
+              "duration": 11602,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'jobhunter'); //断言\n//求职者登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"278803847@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'jobhunter'); //断言\n//招聘方登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'recruiter'); //断言\n//招聘方登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"2523862206@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮  \ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'recruiter'); //断言\n//管理员登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'admin'); //断言\n//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'admin'); //断言",
               "err": {},
-              "uuid": "1fb41310-97f1-4314-b748-414e125a9289",
-              "parentUUID": "b50112c8-f215-4dc1-8c6c-12e2e85ee71c",
+              "uuid": "77b48db0-4a91-4ee2-8ff8-6be1e1c73dc9",
+              "parentUUID": "2f6bf844-9065-4a6c-8677-e9480d07a699",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "登录注册子系统-用户登录异常",
               "fullTitle": "登录注册子系统-用户登录 登录注册子系统-用户登录异常",
               "timedOut": null,
-              "duration": 5176,
+              "duration": 5307,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "//求职者登录-账号不存在\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"11014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言\n//求职者登录-密码错误\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021111\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言\n//招聘方登录-账号不存在\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"11018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言\n//招聘方登录-密码错误\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021111\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言\n//管理员登录-账号不存在\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"11007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言\n//管理员登录-密码错误\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin1\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言",
               "err": {},
-              "uuid": "de40534b-e8ce-4261-b8a7-2d259d3d1e69",
-              "parentUUID": "b50112c8-f215-4dc1-8c6c-12e2e85ee71c",
+              "uuid": "d0f3b792-8a7e-4d26-aa60-59adc14bd0bb",
+              "parentUUID": "2f6bf844-9065-4a6c-8677-e9480d07a699",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "1fb41310-97f1-4314-b748-414e125a9289",
-            "de40534b-e8ce-4261-b8a7-2d259d3d1e69"
+            "77b48db0-4a91-4ee2-8ff8-6be1e1c73dc9",
+            "d0f3b792-8a7e-4d26-aa60-59adc14bd0bb"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 15591,
+          "duration": 16909,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

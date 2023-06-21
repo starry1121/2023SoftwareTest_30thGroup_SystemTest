@@ -2,14 +2,14 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 0,
+    "passes": 1,
     "pending": 0,
-    "failures": 1,
-    "start": "2023-06-21T05:07:46.008Z",
-    "end": "2023-06-21T05:08:04.013Z",
-    "duration": 18005,
+    "failures": 0,
+    "start": "2023-06-21T07:04:59.287Z",
+    "end": "2023-06-21T07:05:12.730Z",
+    "duration": 13443,
     "testsRegistered": 1,
-    "passPercent": 0,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "42767196-e1e6-4c40-ae7a-9363a5253ece",
+      "uuid": "a81b8207-764e-4bcf-a026-c8f09486eec2",
       "title": "",
       "fullFile": "tests/e2e/specs/LoginRegisterSubSys/register.js",
       "file": "tests/e2e/specs/LoginRegisterSubSys/register.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "cefd7d69-0f4b-475b-9509-f057a33cf9e7",
+          "uuid": "108cbb89-4e83-435f-b0a4-8e614d187a91",
           "title": "登录注册子系统-用户注册",
           "fullFile": "",
           "file": "",
@@ -38,33 +38,29 @@
               "title": "获取邮箱验证码",
               "fullTitle": "登录注册子系统-用户注册 获取邮箱验证码",
               "timedOut": null,
-              "duration": 17054,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
+              "duration": 12566,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
               "pending": false,
               "context": null,
               "code": "//邮箱格式不正确\ncy.visit('/'); //登录界面 \ncy.get('.con-box > .el-button').click(); //点击去注册按钮，跳转至注册界面 \ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"bucunzai@com\"); //输入邮箱 \ncy.get('.el-input-group__append > .el-button').click();\ncy.wait(2000);\ncy.get('.el-input-group__append > .el-button > span').click(); //点击获取验证码 \ncy.contains('p', '请检查邮箱').should('exist'); //断言\n//邮箱为空\ncy.visit('/'); //登录界面 \ncy.get('.con-box > .el-button').click(); //点击去注册按钮，跳转至注册界面 \ncy.get('.el-input-group__append > .el-button').click();\ncy.wait(2000);\ncy.get('.el-input-group__append > .el-button > span').click(); //不输入邮箱，点击获取验证码 \ncy.contains('p', '请检查邮箱').should('exist'); //断言\n//邮箱已注册\ncy.visit('/'); //登录界面 \ncy.get('.con-box > .el-button').click(); //点击去注册按钮，跳转至注册界面 \ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"278803847@qq.com\"); //输入邮箱 \ncy.get('.el-input-group__append > .el-button').click();\ncy.wait(2000);\ncy.get('.el-input-group__append > .el-button > span').click(); //点击获取验证码 \ncy.contains('p', '邮箱已注册').should('exist'); //断言\n//邮箱格式正确且未注册\ncy.visit('/'); //登录界面 \ncy.get('.con-box > .el-button').click(); //点击去注册按钮，跳转至注册界面 \ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"1261106631@qq.com\"); //输入邮箱 \ncy.get('.el-input-group__append > .el-button > span').click();\ncy.wait(2000);\ncy.get('.el-input-group__append > .el-button > span').click(); //点击获取验证码 \ncy.contains('p', '验证码已发送至您的邮箱').should('exist'); //断言",
-              "err": {
-                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: '验证码已发送至您的邮箱' within the selector: 'p' but never did.",
-                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: '验证码已发送至您的邮箱' within the selector: 'p' but never did.\n    at Context.eval (http://localhost:8080/__cypress/tests?p=tests\\e2e\\specs\\LoginRegisterSubSys\\register.js:150:37)",
-                "diff": null
-              },
-              "uuid": "4696fe09-1bab-49e3-84c1-0e141ac74dfe",
-              "parentUUID": "cefd7d69-0f4b-475b-9509-f057a33cf9e7",
+              "err": {},
+              "uuid": "4b173a80-f2a6-48de-94c5-288c31b6967f",
+              "parentUUID": "108cbb89-4e83-435f-b0a4-8e614d187a91",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
-          "failures": [
-            "4696fe09-1bab-49e3-84c1-0e141ac74dfe"
+          "passes": [
+            "4b173a80-f2a6-48de-94c5-288c31b6967f"
           ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 17054,
+          "duration": 12566,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

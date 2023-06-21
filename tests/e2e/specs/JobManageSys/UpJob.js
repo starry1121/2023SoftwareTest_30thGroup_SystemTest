@@ -3,8 +3,8 @@ describe('兼职管理子系统-发布兼职', () => {
     //招聘方登录-ID
     cy.visit('/')
     //访问网站
-    cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10018")
-    cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("021121")
+    cy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type("10074")
+    cy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type("666")
     //输入账号密码
     cy.get("#login").click()
     //点击登录按钮

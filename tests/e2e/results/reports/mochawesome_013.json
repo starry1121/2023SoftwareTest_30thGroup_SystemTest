@@ -2,14 +2,14 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 0,
+    "passes": 1,
     "pending": 0,
-    "failures": 1,
-    "start": "2023-06-21T05:08:20.159Z",
-    "end": "2023-06-21T05:08:30.239Z",
-    "duration": 10080,
+    "failures": 0,
+    "start": "2023-06-21T07:05:31.919Z",
+    "end": "2023-06-21T07:05:38.853Z",
+    "duration": 6934,
     "testsRegistered": 1,
-    "passPercent": 0,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "e1f4ba31-42a2-4ca2-ae43-2848ad938e11",
+      "uuid": "04bded1b-e284-4b0a-9219-b9be5dc9b298",
       "title": "",
       "fullFile": "tests/e2e/specs/MessageSys/admin/ReleaseNotice.js",
       "file": "tests/e2e/specs/MessageSys/admin/ReleaseNotice.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "5d6a4d8c-2766-4122-9332-9150297c53aa",
+          "uuid": "734fea12-ec73-4fed-80e7-c45161f1c393",
           "title": "消息通知子系统-发布公告",
           "fullFile": "",
           "file": "",
@@ -35,36 +35,32 @@
           "afterHooks": [],
           "tests": [
             {
-              "title": "发布公告公告",
-              "fullTitle": "消息通知子系统-发布公告 发布公告公告",
+              "title": "发布公告",
+              "fullTitle": "消息通知子系统-发布公告 发布公告",
               "timedOut": null,
-              "duration": 9175,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
+              "duration": 5103,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
               "pending": false,
               "context": null,
-              "code": "//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'admin'); //断言\ncy.get('.el-menu--vertical > :nth-child(4)').click(); //点击公告管理\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click(); //点击状态筛选\ncy.get(':nth-child(1) > .el-checkbox__label').click(); //点击未发布\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.get(':nth-child(1) > .el-table_2_column_15 > .cell > :nth-child(1) > span').click(); //点击发布\ncy.get('.el-message-box__btns > .el-button--primary').click(); //点击确认按钮\ncy.get('tbody > :nth-child(1) > .el-table_1_column_7 > .cell').should('contain', '撤销');",
-              "err": {
-                "message": "AssertionError: Timed out retrying after 4000ms: expected '<div.cell>' to contain '撤销'",
-                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div.cell>' to contain '撤销'\n    at Context.eval (http://localhost:8080/__cypress/tests?p=tests\\e2e\\specs\\MessageSys\\admin\\ReleaseNotice.js:124:68)",
-                "diff": null
-              },
-              "uuid": "dad66dee-91f7-4e98-aa7e-f7e16135ac47",
-              "parentUUID": "5d6a4d8c-2766-4122-9332-9150297c53aa",
+              "code": "//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'admin'); //断言\ncy.get('.el-menu--vertical > :nth-child(4)').click(); //点击公告管理\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click(); //点击状态筛选\ncy.get(':nth-child(1) > .el-checkbox__label').click(); //点击未发布\ncy.get('.el-table-filter__bottom > :nth-child(1)').click(); // 点击confirm\ncy.get(':nth-child(1) > .el-table_2_column_15 > .cell > :nth-child(1) > span').click(); //点击发布\ncy.get('.el-message-box__btns > .el-button--primary').click(); //点击确认按钮\ncy.url().should('contain', 'notice');",
+              "err": {},
+              "uuid": "c840e634-57d8-41b8-b4fb-00e7e78ea461",
+              "parentUUID": "734fea12-ec73-4fed-80e7-c45161f1c393",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
-          "failures": [
-            "dad66dee-91f7-4e98-aa7e-f7e16135ac47"
+          "passes": [
+            "c840e634-57d8-41b8-b4fb-00e7e78ea461"
           ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 9175,
+          "duration": 5103,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

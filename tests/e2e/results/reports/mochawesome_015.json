@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T05:08:46.588Z",
-    "end": "2023-06-21T05:08:51.534Z",
-    "duration": 4946,
+    "start": "2023-06-21T07:05:54.391Z",
+    "end": "2023-06-21T07:05:59.202Z",
+    "duration": 4811,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "698c589e-6420-4dc4-9b1c-336868856976",
+      "uuid": "7ce12ea0-1614-40c3-9db5-bdd3dca166a3",
       "title": "",
       "fullFile": "tests/e2e/specs/MessageSys/user/ViewMessage.js",
       "file": "tests/e2e/specs/MessageSys/user/ViewMessage.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "21c252a6-0d1c-4963-8fc1-7b6c98ef15b2",
+          "uuid": "ef7951cb-eb59-49ea-b56e-dfb96fb1e533",
           "title": "消息通知子系统-查看消息",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "招聘发查看消息",
               "fullTitle": "消息通知子系统-查看消息 招聘发查看消息",
               "timedOut": null,
-              "duration": 3951,
+              "duration": 3973,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "//招聘方登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'recruiter'); //断言 是否登录成功\ncy.wait(1500);\ncy.get('a > .el-icon > svg').click(); //点击消息通知按钮\ncy.url().should('contain', 'conversation'); //断言 是否成功跳转到消息界面\ncy.get('.conversation').click(); //点击某一头像\ncy.get('.chat-title').should('be.visible'); //断言 是否出现了聊天信息",
               "err": {},
-              "uuid": "35161965-454d-4522-b5e8-53050af4de2b",
-              "parentUUID": "21c252a6-0d1c-4963-8fc1-7b6c98ef15b2",
+              "uuid": "f0e6c70c-3b4f-443c-93b2-65dfcd303953",
+              "parentUUID": "ef7951cb-eb59-49ea-b56e-dfb96fb1e533",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "35161965-454d-4522-b5e8-53050af4de2b"
+            "f0e6c70c-3b4f-443c-93b2-65dfcd303953"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 3951,
+          "duration": 3973,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

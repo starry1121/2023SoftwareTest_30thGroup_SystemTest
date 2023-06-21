@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T05:08:09.344Z",
-    "end": "2023-06-21T05:08:16.326Z",
-    "duration": 6982,
+    "start": "2023-06-21T07:05:17.598Z",
+    "end": "2023-06-21T07:05:26.287Z",
+    "duration": 8689,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "d1fd65f4-d17a-4f1e-8805-12c23aacf898",
+      "uuid": "c158ed90-c516-4562-86f9-4b28f86fef04",
       "title": "",
       "fullFile": "tests/e2e/specs/LoginRegisterSubSys/retrievePWD.js",
       "file": "tests/e2e/specs/LoginRegisterSubSys/retrievePWD.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "82c6c10e-4d75-437d-8353-e28609fb7af3",
+          "uuid": "3a3af871-8538-499b-bb2f-6aed0f298c88",
           "title": "登录注册子系统-用户找回密码",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "获取邮箱验证码",
               "fullTitle": "登录注册子系统-用户找回密码 获取邮箱验证码",
               "timedOut": null,
-              "duration": 5811,
+              "duration": 7436,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "//邮箱格式不正确\ncy.visit('/'); //登录界面 \ncy.get('.el-form-item__content > :nth-child(2)').click(); //点击找回密码按钮，打开找回密码弹窗\ncy.get('.el-dialog').find('input').first().type(\"bucunzai@com\"); //输入邮箱 \ncy.get('.el-input-group__append > .el-button').click(); //点击获取验证码 \ncy.contains('p', '邮箱未注册').should('exist'); //断言\n//邮箱为空\ncy.visit('/'); //登录界面 \ncy.get('.el-form-item__content > :nth-child(2)').click(); //点击找回密码按钮，打开找回密码弹窗 \ncy.get('.el-input-group__append > .el-button').click(); //不输入邮箱，点击获取验证码 \ncy.contains('p', '请检查邮箱').should('exist'); //断言\n//邮箱格式正确\ncy.visit('/'); //登录界面 \ncy.get('.el-form-item__content > :nth-child(2)').click(); //点击找回密码按钮，打开找回密码弹窗 \ncy.get('.el-dialog').find('input').first().type(\"278803847@qq.com\"); //输入邮箱 \ncy.get('.el-input-group__append > .el-button > span').click();\ncy.wait(2000);\ncy.get('.el-input-group__append > .el-button > span').click(); //点击获取验证码 \ncy.contains('p', '验证码已发送至您的邮箱').should('exist'); //断言",
               "err": {},
-              "uuid": "468d6bd8-3baa-40ac-9b55-3224a56a6185",
-              "parentUUID": "82c6c10e-4d75-437d-8353-e28609fb7af3",
+              "uuid": "7a5a2beb-c8f1-442c-8a38-2997141f8e18",
+              "parentUUID": "3a3af871-8538-499b-bb2f-6aed0f298c88",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "468d6bd8-3baa-40ac-9b55-3224a56a6185"
+            "7a5a2beb-c8f1-442c-8a38-2997141f8e18"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 5811,
+          "duration": 7436,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

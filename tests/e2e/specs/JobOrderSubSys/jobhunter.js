@@ -39,7 +39,7 @@ describe('兼职订单子系统-求职者', () => {
         cy.get('#tab-已通过').click()
         //筛选已通过的订单
         cy.wait(1000)
-        cy.get('button.el-button').filter(':contains("接受录用")').filter(':visible').first().click();
+        cy.get('button.el-button').filter(':contains("接受录用")').filter(':visible').eq(1).click();
         //点击接受录用
         cy.get('.el-button--primary').click()
         //点击确认
@@ -63,7 +63,7 @@ describe('兼职订单子系统-求职者', () => {
         cy.get('#tab-已通过').click()
         //筛选已通过的订单
         cy.wait(1000)
-        cy.get('button.el-button').filter(':contains("放弃录用")').filter(':visible').first().click();
+        cy.get('button.el-button').filter(':contains("放弃录用")').filter(':visible').eq(1).click();
         //点击放弃录用
         cy.get('.el-button--primary').click()
         //点击确认

@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T05:10:00.648Z",
-    "end": "2023-06-21T05:10:06.900Z",
-    "duration": 6252,
+    "start": "2023-06-21T07:07:23.509Z",
+    "end": "2023-06-21T07:07:29.062Z",
+    "duration": 5553,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "a780cf92-c5fb-4bcc-8143-7047aad0d9c1",
+      "uuid": "78e50e75-9be2-4bf4-8df4-c0d8098221e9",
       "title": "",
       "fullFile": "tests/e2e/specs/SelectJobSubSys/SearchJob.js",
       "file": "tests/e2e/specs/SelectJobSubSys/SearchJob.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "3301e1ed-bb17-4a7b-a04f-426359100165",
+          "uuid": "1662c775-c5ef-4600-8b88-632da444384a",
           "title": "选择兼职子系统-搜索兼职",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "搜索短视频",
               "fullTitle": "选择兼职子系统-搜索兼职 搜索短视频",
               "timedOut": null,
-              "duration": 2765,
+              "duration": 2544,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.get(\"#searchBox\").type('短视频'); //输入搜索词 \ncy.get('.body').should('contain', '短视频'); //断言",
               "err": {},
-              "uuid": "6e7ff7f3-7acb-4b01-a30b-39414cf41a89",
-              "parentUUID": "3301e1ed-bb17-4a7b-a04f-426359100165",
+              "uuid": "e8b25ec2-90fe-4c16-b505-2f89f1bcfb5d",
+              "parentUUID": "1662c775-c5ef-4600-8b88-632da444384a",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "搜索测试",
               "fullTitle": "选择兼职子系统-搜索兼职 搜索测试",
               "timedOut": null,
-              "duration": 2439,
+              "duration": 2307,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 searchBox\ncy.get(\"#searchBox\").type('测试'); //输入搜索词 jobList\ncy.get('.body').should('contain', '测试'); //断言",
               "err": {},
-              "uuid": "a91c7e6e-0614-4a64-bedc-73e0298a7c8f",
-              "parentUUID": "3301e1ed-bb17-4a7b-a04f-426359100165",
+              "uuid": "f633de66-5014-4572-a2a1-92f0b8713b43",
+              "parentUUID": "1662c775-c5ef-4600-8b88-632da444384a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "6e7ff7f3-7acb-4b01-a30b-39414cf41a89",
-            "a91c7e6e-0614-4a64-bedc-73e0298a7c8f"
+            "e8b25ec2-90fe-4c16-b505-2f89f1bcfb5d",
+            "f633de66-5014-4572-a2a1-92f0b8713b43"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 5204,
+          "duration": 4851,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

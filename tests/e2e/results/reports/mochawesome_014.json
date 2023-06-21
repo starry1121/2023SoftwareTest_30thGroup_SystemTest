@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T05:08:35.248Z",
-    "end": "2023-06-21T05:08:42.662Z",
-    "duration": 7414,
+    "start": "2023-06-21T07:05:43.340Z",
+    "end": "2023-06-21T07:05:50.637Z",
+    "duration": 7297,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "8b82da76-7345-4670-8fe5-6b4a8aa4f509",
+      "uuid": "d301559d-0152-440b-bb09-4ba6fecf41ec",
       "title": "",
       "fullFile": "tests/e2e/specs/MessageSys/user/SendMessage.js",
       "file": "tests/e2e/specs/MessageSys/user/SendMessage.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "02dff9f3-4e8a-4d9b-b56e-f5181f8f8c25",
+          "uuid": "818c2d57-df32-4ce0-ab50-ab8094bb0163",
           "title": "消息通知子系统-发送消息",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "发送消息",
               "fullTitle": "消息通知子系统-发送消息 发送消息",
               "timedOut": null,
-              "duration": 6379,
+              "duration": 6630,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click(); //点击“查看详情”\ncy.url().should('contain', 'jobDetail'); //断言\ncy.wait(1000);\ncy.get('.el-col-3 > :nth-child(2) > .el-button').click(); //点击联系招聘方\ncy.wait(500);\ncy.get('.input-content').type(\"你好！消息测试2023年6月20日14:28:01\"); //输入消息\ncy.get('.send-button').click(); //点击发送按钮\ncy.get('.chat-main').should('contain', '你好！消息测试2023年6月20日14:28:01');",
               "err": {},
-              "uuid": "fc3cb8d5-3364-4811-ba06-9a77bde81ab8",
-              "parentUUID": "02dff9f3-4e8a-4d9b-b56e-f5181f8f8c25",
+              "uuid": "7b22922f-68d4-4175-9528-7c1ae8a52815",
+              "parentUUID": "818c2d57-df32-4ce0-ab50-ab8094bb0163",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "fc3cb8d5-3364-4811-ba06-9a77bde81ab8"
+            "7b22922f-68d4-4175-9528-7c1ae8a52815"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 6379,
+          "duration": 6630,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
