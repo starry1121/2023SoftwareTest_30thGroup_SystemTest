@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.05% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/57</span>
+                <span class='fraction'>0/57</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/30</span>
+                <span class='fraction'>0/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.05% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/19</span>
+                <span class='fraction'>0/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.05% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/57</span>
+                <span class='fraction'>0/57</span>
             </div>
         
             
@@ -516,7 +516,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -663,24 +663,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">912x</span>
-<span class="cline-any cline-yes">312x</span>
-<span class="cline-any cline-yes">600x</span>
-<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">578x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -960,8 +960,8 @@
             &lt;el-menu
                 class="el-menu"
                 default-active="/admin/personAuthentication"
-                router=true
-                style="height: 89vh;"
+<span class="fstat-no" title="function not covered" ></span>                router=true
+<span class="cstat-no" title="statement not covered" >                style="height: 89vh;"</span>
                 active-text-color="#FFCAA6"
                 background-color="#444076"
                 text-color="#fff"
@@ -1107,25 +1107,25 @@
 <span class="cstat-no" title="statement not covered" >                            &lt;el-form-item la</span>bel="证件照片" label-width="80px"&gt;
                                 &lt;el-image style="width: 16vw; height: 12vw" :src="apply.identification" :fit="fit" /&gt;
                             &lt;/el-form-item&gt;
-                            &lt;el-form-item v-if="apply.checkStatus!='未审核'" label="审核状态" label-width="80px"&gt;
-                                &lt;el-tag
+<span class="fstat-no" title="function not covered" ></span>                            &lt;el-form-item v-if="apply.checkStatus!='未审核'" label="审核状态" label-width="80px"&gt;
+<span class="cstat-no" title="statement not covered" >                                &lt;el-tag</span>
                                     v-if="apply.checkStatus == '已通过'"
                                     type="success"
                                     disable-transitions
-                                &gt;已通过&lt;/el-tag&gt;
-            <span class="missing-if-branch" title="else path not taken" >E</span>                    &lt;el-tag
-                                    v-if="apply.checkStatus =='未通过'"
-                                    type="danger"
-                                    disable-transitions
-                                &gt;未通过&lt;/el-tag&gt;
-                            &lt;/el-form-item&gt;
-                            &lt;el-form-item v-if="apply.checkStatus=='未通过'" label="结果反馈" label-width="80px"&gt;
+<span class="fstat-no" title="function not covered" ></span>                                &gt;已通过&lt;/el-tag&gt;
+<span class="cstat-no" title="statement not covered" >                                &lt;el-tag</span>
+<span class="cstat-no" title="statement not covered" >                                    v-if="apply.checkStatus =='未</span>通过'"
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >                                    ty</span>pe="danger"</span>
+<span class="cstat-no" title="statement not covered" >                                    disable-transitions</span>
+<span class="cstat-no" title="statement not covered" >                                &gt;未通</span>过&lt;/el-tag&gt;
+<span class="cstat-no" title="statement not covered" >                            &lt;/el-form-item&gt;</span>
+<span class="cstat-no" title="statement not covered" >                            &lt;el-fo</span>rm-item v-if="apply.checkStatus=='未通过'" label="结果反馈" label-width="80px"&gt;
                                 &lt;el-input disabled v-model="apply.result" autocomplete="off" type="textarea" :rows="3"/&gt;
-                            &lt;/el-form-item&gt;
+<span class="cstat-no" title="statement not covered" >                            &lt;/el-f</span>orm-item&gt;
                         &lt;/el-form&gt;
                         &lt;template #footer&gt;
-                            &lt;span class="dialog-footer"&gt;
-                                &lt;el-button v-if="apply.checkStatus!='未审核'" type="primary" @click="dialogFormVisible=false"&gt;返回&lt;/el-button&gt;
+<span class="cstat-no" title="statement not covered" >                            &lt;span class="dialog-fo</span>oter"&gt;
+<span class="cstat-no" title="statement not covered" >                                &lt;el-button v-if="apply</span>.checkStatus!='未审核'" type="primary" @click="dialogFormVisible=false"&gt;返回&lt;/el-button&gt;
                                 &lt;el-button v-if="apply.checkStatus=='未审核'" type="danger" plain @click="dialogFormVisible1 = true;"&gt;驳回&lt;/el-button&gt;
                                 &lt;el-button v-if="apply.checkStatus=='未审核'" type="primary" plain @click="pass"&gt;通过&lt;/el-button&gt;
 <span class="cstat-no" title="statement not covered" >                            &lt;/span&gt;</span>
@@ -1405,7 +1405,7 @@ margin: 0 auto;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-06-21T02:07:36.145Z
+                at 2023-06-21T02:40:47.013Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
