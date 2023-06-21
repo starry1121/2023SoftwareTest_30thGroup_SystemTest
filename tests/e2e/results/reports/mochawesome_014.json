@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-06-21T01:37:09.163Z",
+    "end": "2023-06-21T01:37:17.791Z",
+    "duration": 8628,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "903b4987-e807-471b-be50-296b8f7c0b3c",
+      "title": "",
+      "fullFile": "tests/e2e/specs/JobManageSys/admin/ReviewJob.js",
+      "file": "tests/e2e/specs/JobManageSys/admin/ReviewJob.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "278fce77-d38e-45cd-a245-e416bb318241",
+          "title": "兼职信息管理子系统-审核兼职",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "审核兼职-通过",
+              "fullTitle": "兼职信息管理子系统-审核兼职 审核兼职-通过",
+              "timedOut": null,
+              "duration": 8484,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'admin'); //断言-登录成功\ncy.wait(200);\ncy.get('[aria-expanded=\"false\"] > .el-sub-menu__title').click(); //点击兼职管理\ncy.get(':nth-child(3) > .el-menu > :nth-child(1)').click(); //点击审核兼职\ncy.wait(500);\ncy.get(':nth-child(1) > .el-table_2_column_16 > .cell > .el-button').click(); //点击审核\ncy.wait(200);\ncy.get('.dialog-footer > .el-button--primary').click(); // 点击审核通过\ncy.get('.el-message-box__btns > .el-button--primary').click(); //点击确认\ncy.url().should('contain', 'admin/job'); //断言",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `:nth-child(1) > .el-table_2_column_16 > .cell > .el-button`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `:nth-child(1) > .el-table_2_column_16 > .cell > .el-button`, but never found it.\n    at Context.eval (http://localhost:8080/__cypress/tests?p=tests\\e2e\\specs\\JobManageSys\\admin\\ReviewJob.js:118:8)",
+                "diff": null
+              },
+              "uuid": "680e8947-e4e7-4783-a122-35f2c1abdad3",
+              "parentUUID": "278fce77-d38e-45cd-a245-e416bb318241",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "680e8947-e4e7-4783-a122-35f2c1abdad3"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 8484,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

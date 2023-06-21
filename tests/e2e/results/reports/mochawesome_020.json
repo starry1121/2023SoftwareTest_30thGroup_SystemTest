@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T01:40:50.458Z",
+    "end": "2023-06-21T01:41:04.610Z",
+    "duration": 14152,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2ff8257e-055f-40a3-bfc7-290bd5087cdd",
+      "title": "",
+      "fullFile": "tests/e2e/specs/LoginRegisterSubSys/register.js",
+      "file": "tests/e2e/specs/LoginRegisterSubSys/register.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bd25da72-d518-4ecb-a7e0-c7eb37c3ece4",
+          "title": "登录注册子系统-用户注册",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "获取邮箱验证码",
+              "fullTitle": "登录注册子系统-用户注册 获取邮箱验证码",
+              "timedOut": null,
+              "duration": 14089,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//邮箱格式不正确\ncy.visit('/'); //登录界面 \ncy.get('.con-box > .el-button').click(); //点击去注册按钮，跳转至注册界面 \ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"bucunzai@com\"); //输入邮箱 \ncy.get('.el-input-group__append > .el-button').click();\ncy.wait(2000);\ncy.get('.el-input-group__append > .el-button > span').click(); //点击获取验证码 \ncy.get('#message_1').should('contain', '请检查邮箱'); //断言\n//邮箱为空\ncy.visit('/'); //登录界面 \ncy.get('.con-box > .el-button').click(); //点击去注册按钮，跳转至注册界面 \ncy.get('.el-input-group__append > .el-button').click();\ncy.wait(2000);\ncy.get('.el-input-group__append > .el-button > span').click(); //不输入邮箱，点击获取验证码 \ncy.get('#message_1').should('contain', '请检查邮箱'); //断言\n//邮箱已注册\ncy.visit('/'); //登录界面 \ncy.get('.con-box > .el-button').click(); //点击去注册按钮，跳转至注册界面 \ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"278803847@qq.com\"); //输入邮箱 \ncy.get('.el-input-group__append > .el-button').click();\ncy.wait(2000);\ncy.get('.el-input-group__append > .el-button > span').click(); //点击获取验证码 \ncy.contains('p', '邮箱已注册').should('contain', '邮箱已注册'); //断言\n//邮箱格式正确且未注册\ncy.visit('/'); //登录界面 \ncy.get('.con-box > .el-button').click(); //点击去注册按钮，跳转至注册界面 \ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"1261106631@qq.com\"); //输入邮箱 \ncy.get('.el-input-group__append > .el-button > span').click();\ncy.wait(2000);\ncy.get('.el-input-group__append > .el-button > span').click(); //点击获取验证码 \ncy.contains('p', '验证码已发送至您的邮箱').should('contain', '验证码已发送至您的邮箱'); //断言",
+              "err": {},
+              "uuid": "9211a49c-e9aa-47b0-ac5f-506fec414976",
+              "parentUUID": "bd25da72-d518-4ecb-a7e0-c7eb37c3ece4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9211a49c-e9aa-47b0-ac5f-506fec414976"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 14089,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T01:43:03.055Z",
+    "end": "2023-06-21T01:43:08.390Z",
+    "duration": 5335,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e96d06ab-a47d-494f-b8f8-31d40f5a1d40",
+      "title": "",
+      "fullFile": "tests/e2e/specs/SelectJobSubSys/SeeJobDetail.js",
+      "file": "tests/e2e/specs/SelectJobSubSys/SeeJobDetail.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "faff8c12-c891-4268-ad24-8eb78e8b1612",
+          "title": "选择兼职子系统-查看兼职详情",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "查看兼职详情",
+              "fullTitle": "选择兼职子系统-查看兼职详情 查看兼职详情",
+              "timedOut": null,
+              "duration": 5305,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click(); //点击“查看详情”\ncy.url().should('contain', 'jobDetail');\ncy.wait(500);",
+              "err": {},
+              "uuid": "7da0563c-06e9-4ef8-a2e5-4e8c4c641c8e",
+              "parentUUID": "faff8c12-c891-4268-ad24-8eb78e8b1612",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7da0563c-06e9-4ef8-a2e5-4e8c4c641c8e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5305,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

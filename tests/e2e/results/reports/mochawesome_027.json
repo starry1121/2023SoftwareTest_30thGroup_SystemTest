@@ -1,0 +1,220 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T01:42:04.201Z",
+    "end": "2023-06-21T01:42:34.463Z",
+    "duration": 30262,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f20630e9-b898-4b8c-9628-8d6af3b07f78",
+      "title": "",
+      "fullFile": "tests/e2e/specs/SelectJobSubSys/FilterJob.js",
+      "file": "tests/e2e/specs/SelectJobSubSys/FilterJob.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "45897c8c-2ac1-49f7-9eca-1748e98969a0",
+          "title": "选择兼职子系统-筛选兼职",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "根据类型筛选兼职-全部",
+              "fullTitle": "选择兼职子系统-筛选兼职 根据类型筛选兼职-全部",
+              "timedOut": null,
+              "duration": 3165,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(500);\ncy.get(\"#qbButton\").click(); //选择全部 \ncy.get('.body').should('contain', '天'); //断言\ncy.wait(500);",
+              "err": {},
+              "uuid": "cb823f17-bef9-414a-b7a1-b18b30923910",
+              "parentUUID": "45897c8c-2ac1-49f7-9eca-1748e98969a0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "根据类型筛选兼职-服务行业",
+              "fullTitle": "选择兼职子系统-筛选兼职 根据类型筛选兼职-服务行业",
+              "timedOut": null,
+              "duration": 4392,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get(':nth-child(2) > .el-space > :nth-child(2) > div > .el-button > span').click(); //点击服务行业\ncy.get('.body').should('contain', '服务行业'); //断言\ncy.wait(1000);",
+              "err": {},
+              "uuid": "dc357b88-9e25-4ba6-a663-6bf083a7cdb0",
+              "parentUUID": "45897c8c-2ac1-49f7-9eca-1748e98969a0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "根据类型筛选兼职-教育行业",
+              "fullTitle": "选择兼职子系统-筛选兼职 根据类型筛选兼职-教育行业",
+              "timedOut": null,
+              "duration": 4134,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get(':nth-child(2) > .el-space > :nth-child(3) > div > .el-button > span').click(); //点击教育行业\ncy.get('.body').should('contain', '教育行业'); //断言\ncy.wait(1000);",
+              "err": {},
+              "uuid": "23792d34-9147-419c-9dbf-61e5931c56ad",
+              "parentUUID": "45897c8c-2ac1-49f7-9eca-1748e98969a0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "根据类型筛选兼职-会展演出",
+              "fullTitle": "选择兼职子系统-筛选兼职 根据类型筛选兼职-会展演出",
+              "timedOut": null,
+              "duration": 4263,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get(':nth-child(2) > .el-space > :nth-child(4) > div > .el-button > span').click(); //点击会展演出\ncy.get('.body').should('contain', '会展演出'); //断言\ncy.wait(1000);",
+              "err": {},
+              "uuid": "07af469e-fd7b-46af-833b-56746050683b",
+              "parentUUID": "45897c8c-2ac1-49f7-9eca-1748e98969a0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "根据类型筛选兼职-专业技能",
+              "fullTitle": "选择兼职子系统-筛选兼职 根据类型筛选兼职-专业技能",
+              "timedOut": null,
+              "duration": 4367,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get(':nth-child(2) > .el-space > :nth-child(5) > div > .el-button > span').click(); //点击专业技能\ncy.get('.body').should('contain', '专业技能'); //断言\ncy.wait(1000);",
+              "err": {},
+              "uuid": "c80b3031-47bd-4cec-93ee-e68e9122fad4",
+              "parentUUID": "45897c8c-2ac1-49f7-9eca-1748e98969a0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "根据类型筛选兼职-市场推广",
+              "fullTitle": "选择兼职子系统-筛选兼职 根据类型筛选兼职-市场推广",
+              "timedOut": null,
+              "duration": 4582,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get(':nth-child(2) > .el-space > :nth-child(6) > div > .el-button > span').click(); //点击市场推广\ncy.get('.body').should('contain', '市场推广'); //断言\ncy.wait(1000);",
+              "err": {},
+              "uuid": "2455e7bd-3518-44b3-b6ad-d01a176709a6",
+              "parentUUID": "45897c8c-2ac1-49f7-9eca-1748e98969a0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "根据类型筛选兼职-其它",
+              "fullTitle": "选择兼职子系统-筛选兼职 根据类型筛选兼职-其它",
+              "timedOut": null,
+              "duration": 5212,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get(':nth-child(2) > .el-space > :nth-child(7) > div > .el-button > span').click(); //点击其它\ncy.get('.body').should('contain', '其它'); //断言\ncy.wait(1000);",
+              "err": {},
+              "uuid": "51f140f9-04c3-4514-aec8-8fc97ffd03aa",
+              "parentUUID": "45897c8c-2ac1-49f7-9eca-1748e98969a0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cb823f17-bef9-414a-b7a1-b18b30923910",
+            "dc357b88-9e25-4ba6-a663-6bf083a7cdb0",
+            "23792d34-9147-419c-9dbf-61e5931c56ad",
+            "07af469e-fd7b-46af-833b-56746050683b",
+            "c80b3031-47bd-4cec-93ee-e68e9122fad4",
+            "2455e7bd-3518-44b3-b6ad-d01a176709a6",
+            "51f140f9-04c3-4514-aec8-8fc97ffd03aa"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 30115,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
