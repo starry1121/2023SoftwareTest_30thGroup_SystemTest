@@ -228,7 +228,6 @@ export default {
             .then(res => {
                 console.log(res)
                 if(res.data.code==200){
-                    this.register.email=this.email;
                     this.isRegistedSignup=false;
                 }else{
                     this.isRegistedSignup=true;
@@ -255,7 +254,7 @@ export default {
                 })
                 return;
             }
-            if(this.register.email==null||this.register.email==''){
+            if(this.email==null||this.email==''){
                 ElMessage({
                     message: "请检查邮箱！",
                     type: 'error',
@@ -267,7 +266,7 @@ export default {
                     method: 'post',
                     url: '/api/register/email',
                     data:{
-                        email:this.register.email
+                        email:this.email
                     },
                 })
                 .then(res => {
