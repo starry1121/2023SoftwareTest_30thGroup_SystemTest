@@ -29,6 +29,7 @@ describe('兼职订单子系统-管理员', () => {
         cy.get('.el-textarea__inner').clear()
         cy.get('.el-textarea__inner').type("打分不合理")
         cy.get('.dialog-footer > .el-button--primary').click()
+        cy.wait(200)
         //点击确认
         cy.contains('p', '已提交申诉').should('exist');
         //断言
