@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687318649513" clover="3.2.0">
-  <project timestamp="1687318649513" name="All files">
-    <metrics statements="1695" coveredstatements="157" conditionals="602" coveredconditionals="22" methods="628" coveredmethods="36" elements="2925" coveredelements="215" complexity="0" loc="1695" ncloc="1695" packages="12" files="40" classes="40"/>
+<coverage generated="1687318580080" clover="3.2.0">
+  <project timestamp="1687318580080" name="All files">
+    <metrics statements="1695" coveredstatements="157" conditionals="602" coveredconditionals="20" methods="628" coveredmethods="36" elements="2925" coveredelements="213" complexity="0" loc="1695" ncloc="1695" packages="12" files="40" classes="40"/>
     <package name="src">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\App.vue">
@@ -943,7 +943,7 @@
       </file>
     </package>
     <package name="src.views.jobhunterPage">
-      <metrics statements="146" coveredstatements="63" conditionals="51" coveredconditionals="11" methods="57" coveredmethods="21"/>
+      <metrics statements="146" coveredstatements="63" conditionals="51" coveredconditionals="9" methods="57" coveredmethods="21"/>
       <file name="HomeView.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\views\jobhunterPage\HomeView.vue">
         <metrics statements="17" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="8" coveredmethods="4"/>
         <line num="13" count="1" type="stmt"/>
@@ -996,7 +996,7 @@
         <line num="216" count="0" type="stmt"/>
       </file>
       <file name="JobDetail.vue" path="E:\大三下\软件测试\兼饼果职\JBGZ_front_5_10_13\JBGZ_front\src\views\jobhunterPage\JobDetail.vue">
-        <metrics statements="101" coveredstatements="37" conditionals="47" coveredconditionals="9" methods="35" coveredmethods="10"/>
+        <metrics statements="101" coveredstatements="37" conditionals="47" coveredconditionals="7" methods="35" coveredmethods="10"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
@@ -1015,9 +1015,9 @@
         <line num="78" count="1" type="stmt"/>
         <line num="83" count="1" type="stmt"/>
         <line num="84" count="1" type="stmt"/>
-        <line num="85" count="1" type="cond" truecount="4" falsecount="1"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="89" count="1" type="stmt"/>
+        <line num="85" count="1" type="cond" truecount="2" falsecount="3"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
         <line num="91" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="92" count="0" type="stmt"/>
         <line num="96" count="0" type="stmt"/>

@@ -18,7 +18,7 @@ describe('兼职管理子系统-举报兼职', () => {
         cy.wait(500)
         cy.get('.el-pager > :nth-child(8)').click()
         cy.wait(500)
-        cy.get('button.el-button').filter(':contains("查看详情")').filter(':visible').eq(1).click();
+        cy.get('button.el-button').filter(':contains("查看详情")').filter(':visible').first().click();
         // 点击“查看详情”
         cy.url().should('contain', 'jobDetail')
         //断言
@@ -27,6 +27,7 @@ describe('兼职管理子系统-举报兼职', () => {
         //点击举报兼职
         cy.get('#ReportReason').type("该兼职地址信息不正确")
        //填写举报理由
+    
        cy.get('.dialog-footer > :nth-child(2)').click()
       //点击确定
         cy.url().should('contain', 'jobDetail')
