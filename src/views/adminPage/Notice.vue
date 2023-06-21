@@ -95,7 +95,7 @@
                                 { text: '已发布', value: '已发布' },
                                 { text: '已撤销', value: '已撤销' },
                             ]"
-                            :filter-method="filterTag1"
+                            :filter-method="filterTag"
                             filter-placement="bottom-end"
                         >
                             <template #default="scope">

@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T04:16:04.411Z",
+    "end": "2023-06-21T04:16:26.015Z",
+    "duration": 21604,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "54a97ac8-ea40-48ea-a678-85344f12b8a9",
+      "title": "",
+      "fullFile": "tests/e2e/specs/UserInfoManageSubSys/Authentication/handleAuthen.js",
+      "file": "tests/e2e/specs/UserInfoManageSubSys/Authentication/handleAuthen.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "14fc3521-0b54-4757-a744-385581a0ca88",
+          "title": "兼职信息管理子系统-管理员审核认证申请",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "驳回",
+              "fullTitle": "兼职信息管理子系统-管理员审核认证申请 驳回",
+              "timedOut": null,
+              "duration": 14408,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//审核实名认证-驳回\n//反馈为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.el-sub-menu.is-active > .el-menu > .is-active').click(); //点击个人认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').first().click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '反馈不能为空').should('exist'); //断言\n//审核实名认证-驳回\n//反馈不为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.el-sub-menu.is-active > .el-menu > .is-active').click(); //点击个人认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').eq(1).click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.get('.el-textarea__inner').clear();\ncy.get('.el-textarea__inner').type(\"不可以\");\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已驳回该申请').should('exist'); //断言\n//审核企业认证-驳回\n//反馈为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.is-opened > .el-menu > :nth-child(2)').click(); //点击企业认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').first().click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '反馈不能为空').should('exist'); //断言\n//审核企业认证-驳回\n//反馈不为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.is-opened > .el-menu > :nth-child(2)').click(); //点击企业认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').eq(1).click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.get('.el-textarea__inner').clear();\ncy.get('.el-textarea__inner').type(\"不可以\");\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已驳回该申请').should('exist'); //断言",
+              "err": {},
+              "uuid": "1a062980-3e6a-4e9c-8701-e4069c0933fc",
+              "parentUUID": "14fc3521-0b54-4757-a744-385581a0ca88",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "通过",
+              "fullTitle": "兼职信息管理子系统-管理员审核认证申请 通过",
+              "timedOut": null,
+              "duration": 6575,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//审核实名认证-通过\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.el-sub-menu.is-active > .el-menu > .is-active').click(); //点击个人认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').eq(1).click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"通过\")').filter(':visible').first().click(); //点击通过\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已通过该申请').should('exist'); //断言\n//审核企业认证-通过\n//反馈为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(200);\ncy.get('.is-opened > .el-menu > :nth-child(2)').click(); //点击企业认证\ncy.wait(500);\ncy.get('.el-table__column-filter-trigger > .el-icon > svg').click();\ncy.get(':nth-child(3) > .el-checkbox__label').click();\ncy.get('.el-table-filter__bottom > :nth-child(1)').click();\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').eq(1).click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"通过\")').filter(':visible').first().click(); //点击通过\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已通过该申请').should('exist'); //断言",
+              "err": {},
+              "uuid": "263b20c1-fb71-4246-a5f4-ee32893d596e",
+              "parentUUID": "14fc3521-0b54-4757-a744-385581a0ca88",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1a062980-3e6a-4e9c-8701-e4069c0933fc",
+            "263b20c1-fb71-4246-a5f4-ee32893d596e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 20983,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

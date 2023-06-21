@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T06:19:48.114Z",
+    "end": "2023-06-21T06:19:52.763Z",
+    "duration": 4649,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7d67d7ae-d611-4950-ab54-7e3a4ed7ab6a",
+      "title": "",
+      "fullFile": "tests/e2e/specs/MessageSys/user/ViewNotice.js",
+      "file": "tests/e2e/specs/MessageSys/user/ViewNotice.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "afb9000a-973f-4c8a-94ec-e2128bf2bc98",
+          "title": "消息通知子系统-查看公告",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "查看公告",
+              "fullTitle": "消息通知子系统-查看公告 查看公告",
+              "timedOut": null,
+              "duration": 4027,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(2000);\ncy.get(':nth-child(2) > .el-card > .el-card__body > [style=\"padding: 10px;\"] > .el-button').click(); // //点击查看详情\ncy.get('.el-drawer').should('be.visible');",
+              "err": {},
+              "uuid": "28678891-0d86-4c8a-8db5-c7b158081900",
+              "parentUUID": "afb9000a-973f-4c8a-94ec-e2128bf2bc98",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "28678891-0d86-4c8a-8db5-c7b158081900"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4027,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

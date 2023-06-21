@@ -1,0 +1,144 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T04:06:45.435Z",
+    "end": "2023-06-21T04:07:00.222Z",
+    "duration": 14787,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "dbbcfe70-fb8e-44fe-9c44-4e62700824e4",
+      "title": "",
+      "fullFile": "tests/e2e/specs/JobManageSys/admin/JobTypeMan.js",
+      "file": "tests/e2e/specs/JobManageSys/admin/JobTypeMan.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "72557d8b-f011-485c-9da6-a303718e6e1a",
+          "title": "兼职信息管理子系统-兼职类型管理",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "兼职类型管理-增加兼职类型",
+              "fullTitle": "兼职信息管理子系统-兼职类型管理 兼职类型管理-增加兼职类型",
+              "timedOut": null,
+              "duration": 4611,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'admin'); //断言-登录成功\ncy.wait(200);\ncy.get('[aria-expanded=\"false\"] > .el-sub-menu__title').click(); //点击兼职管理\ncy.get(':nth-child(3) > .el-menu > :nth-child(3)').click(); //点击兼职类型\ncy.wait(500);\ncy.get('.card-header > .el-button').click(); //点击“添加兼职类型”按钮\ncy.wait(500);\ncy.get('.el-input__wrapper').type('家政'); //输入兼职名称：“家政”\ncy.get('.dialog-footer > .el-button--primary').click(); //点击提示框的确认按钮\ncy.get('.el-card__body').should('contain', '家政'); //断言",
+              "err": {},
+              "uuid": "26391794-abcf-435b-b045-b9247c49e8d2",
+              "parentUUID": "72557d8b-f011-485c-9da6-a303718e6e1a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "兼职类型管理-修改兼职类型",
+              "fullTitle": "兼职信息管理子系统-兼职类型管理 兼职类型管理-修改兼职类型",
+              "timedOut": null,
+              "duration": 4253,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'admin'); //断言-登录成功\ncy.wait(200);\ncy.get('[aria-expanded=\"false\"] > .el-sub-menu__title').click(); //点击兼职管理\ncy.get(':nth-child(3) > .el-menu > :nth-child(3)').click(); //点击兼职类型\ncy.wait(500);\ncy.get(':nth-child(1) > .el-table_2_column_12 > .cell > :nth-child(1) > span').click(); //点击修改按钮\ncy.get('.el-input__wrapper').type('管理'); //填写修改后的名称\ncy.get('.dialog-footer > .el-button--primary').click(); //点击确认按钮\ncy.wait(1000);\ncy.get('.el-card__body').should('contain', '家政管理'); //断言",
+              "err": {},
+              "uuid": "5c87e19c-1b21-4918-9c4a-67580ab35339",
+              "parentUUID": "72557d8b-f011-485c-9da6-a303718e6e1a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "兼职类型管理-删除兼职类型",
+              "fullTitle": "兼职信息管理子系统-兼职类型管理 兼职类型管理-删除兼职类型",
+              "timedOut": null,
+              "duration": 5100,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'admin'); //断言-登录成功\ncy.wait(200);\ncy.get('[aria-expanded=\"false\"] > .el-sub-menu__title').click(); //点击兼职管理\ncy.get(':nth-child(3) > .el-menu > :nth-child(3)').click(); //点击兼职类型\ncy.wait(1000);\ncy.get(':nth-child(1) > .el-table_2_column_12 > .cell > :nth-child(2) > span').click(); //点击删除按钮\ncy.wait(1000);\ncy.get('.el-message-box__btns > .el-button--primary').click(); //点击确认按钮\ncy.wait(1000);",
+              "err": {},
+              "uuid": "893d1e50-9a0a-4418-9b5c-604a4963f54d",
+              "parentUUID": "72557d8b-f011-485c-9da6-a303718e6e1a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "26391794-abcf-435b-b045-b9247c49e8d2",
+            "5c87e19c-1b21-4918-9c4a-67580ab35339",
+            "893d1e50-9a0a-4418-9b5c-604a4963f54d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 13964,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

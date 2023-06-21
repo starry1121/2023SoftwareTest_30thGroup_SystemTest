@@ -26,10 +26,10 @@
                         <el-input-number v-model="ruleForm.salary" :precision="2" :step="0.1" min="0" />
                     </el-form-item>
                     <el-form-item label="兼职时间" prop="jobtime">
-                        <el-date-picker id="jobtime1"  v-model="ruleForm.startTime" type="datetime" placeholder="选择起始时间"
+                        <el-date-picker id="jobtime1" v-model="ruleForm.startTime" type="datetime" placeholder="选择起始时间"
                             format="YYYY-MM-DD hh:mm:ss" value-format="YYYY-MM-DD hh:mm:ss" />
                         —
-                        <el-date-picker  id="jobtime2" v-model="ruleForm.endTime" type="datetime" placeholder="选择结束时间"
+                        <el-date-picker id="jobtime2" v-model="ruleForm.endTime" type="datetime" placeholder="选择结束时间"
                             format="YYYY-MM-DD hh:mm:ss" value-format="YYYY-MM-DD hh:mm:ss" />
                         <el-form-item label="每日时长" prop="workTime">
                             <el-input-number v-model="ruleForm.workTime" max="24" min="0" />
@@ -37,7 +37,7 @@
                     </el-form-item>
                     <el-form-item label="兼职地点" prop="selectedOptions">
                         <el-col :span="24">
-                            <el-cascader  id="placeSelect1" placeholder="请选择地区" style="border-radius:4px;" :options="options"
+                            <el-cascader id="placeSelect1" placeholder="请选择地区" style="border-radius:4px;" :options="options"
                                 v-model="selectedOptions" @change="handleChange">
                             </el-cascader>
                         </el-col>
@@ -47,7 +47,8 @@
                             <!-- <img style="height: 30px;width: 30px;" src="..\..\assets\images\map.png" /> -->
                             <template #append>
                                 <el-button @click="mapDialogVisible = true" class="mapButton">
-                                    <img style="height: 30px;width: 30px;" class="mapImg" src="..\..\assets\images\map.png" />
+                                    <img style="height: 30px;width: 30px;" class="mapImg"
+                                        src="..\..\assets\images\map.png" />
                                 </el-button>
                             </template>
                         </el-input>
@@ -57,8 +58,8 @@
                     </el-form-item>
                     <el-form-item label="兼职详情" prop="workDetails">
                         <!-- 多行输入框 -->
-                        <el-input  id="inputJobDetail" v-model="ruleForm.workDetails" type="textarea" :rows="5" maxlength="480" show-word-limit
-                            placeholder="请输入兼职详情" />
+                        <el-input id="inputJobDetail" v-model="ruleForm.workDetails" type="textarea" :rows="5"
+                            maxlength="480" show-word-limit placeholder="请输入兼职详情" />
                     </el-form-item>
                     <el-form-item>
                         <el-button class="btn" type="primary" @click="upJob">发 布</el-button>
@@ -108,7 +109,7 @@ export default {
     },
     data() {
         return {
-            mapData:null,
+            mapData: null,
             mapDialogVisible: false,
             recruiterId: null,
             typeList: [{}],
@@ -126,8 +127,8 @@ export default {
                 employeeNum: null,
                 workTime: null,
                 workDetails: null,
-                locationLat:0,
-                locationLng:0,
+                locationLat: 0,
+                locationLng: 0,
             },
             isAuthened: false,
         }
@@ -136,22 +137,8 @@ export default {
         goBack() {
             this.$router.go(-1);
         },
-        // Responding to data changes
-        handleChange(value) {
-            this.selectedOptions = value
-            console.log(this.selectedOptions)
-            var name = ''
-            this.selectedOptions.map(item => name += CodeToText[item] + '') //将省市区三个拼接一起
-            this.addtions = name
-            console.log(this.addtions)
-            //运用了CodeToText把编码转成了中文
-            // this.addForm.province = CodeToText[this.selectedOptions[0]]
-            // this.addForm.county = CodeToText[this.selectedOptions[1]]
-            // this.addForm.area = CodeToText[this.selectedOptions[2]]	
-            // console.log(this.addForm)
-        },
         upJob() {
-            if(!this.isAuthened){
+            if (!this.isAuthened) {
                 ElMessage({
                     message: "请先进行企业认证！",
                     type: 'error',
@@ -193,6 +180,21 @@ export default {
                     })
                 })
         },
+        // Responding to data changes
+        handleChange(value) {
+            this.selectedOptions = value
+            console.log(this.selectedOptions)
+            var name = ''
+            this.selectedOptions.map(item => name += CodeToText[item] + '') //将省市区三个拼接一起
+            this.addtions = name
+            console.log(this.addtions)
+            //运用了CodeToText把编码转成了中文
+            // this.addForm.province = CodeToText[this.selectedOptions[0]]
+            // this.addForm.county = CodeToText[this.selectedOptions[1]]
+            // this.addForm.area = CodeToText[this.selectedOptions[2]]	
+            // console.log(this.addForm)
+        },
+
         draftJob() {
             this.ruleForm.workPlace = this.addtions + this.place;
             this.$axios({
@@ -230,13 +232,13 @@ export default {
                 })
         },
         //获取地图数据对象
-        getMapData(val){
-            this.mapData=val;
+        getMapData(val) {
+            this.mapData = val;
         },
         //地图组件对话框的确定按钮事件
-        closeMap(){
-            
-            this.place=this.mapData.data.address+this.mapData.data.name;
+        closeMap() {
+
+            this.place = this.mapData.data.address + this.mapData.data.name;
             this.mapDialogVisible = false;
 
         },
@@ -247,28 +249,28 @@ export default {
             method: 'get',
             url: '/api/admin/getJobTypeList',
         })
-        .then(res => {
-            this.typeList = res.data.data.jobtype_list;
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
+            .then(res => {
+                this.typeList = res.data.data.jobtype_list;
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
 
         this.$axios({
             method: 'get',
-            url: '/api/recruiter/getAuthentication/?recruiterId='+localStorage.getItem('userId'),
+            url: '/api/recruiter/getAuthentication/?recruiterId=' + localStorage.getItem('userId'),
         })
-        .then(res => {
-            if(res.data.code==200){
-                if(res.data.data.companyauthen_list){
-                    if(res.data.data.companyauthen_list[0].checkStatus=="已通过")
-                    this.isAuthened=true;
+            .then(res => {
+                if (res.data.code == 200) {
+                    if (res.data.data.companyauthen_list) {
+                        if (res.data.data.companyauthen_list[0].checkStatus == "已通过")
+                            this.isAuthened = true;
+                    }
                 }
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     },
 }
 </script>
@@ -300,10 +302,11 @@ export default {
     width: 5vw;
 }
 
-.mapButton{
-    position:relative;
+.mapButton {
+    position: relative;
 }
-.mapImg{
+
+.mapImg {
     position: absolute;
     left: 1px;
     top: 0px;

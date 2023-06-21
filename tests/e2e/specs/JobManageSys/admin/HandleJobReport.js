@@ -15,26 +15,23 @@ describe('兼职信息管理子系统-处理兼职举报', () => {
 
         cy.wait(200)
         cy.get('[aria-expanded="false"] > .el-sub-menu__title').click()
-        //点击兼职管理
+        // 点击兼职管理
         cy.get(':nth-child(3) > .el-menu > :nth-child(2)').click()
         //点击审核兼职
         cy.wait(500)
         cy.get('.el-table__column-filter-trigger > .el-icon > svg').click()
+        // 点击状态
         cy.get(':nth-child(3) > .el-checkbox__label').click()
+        // 选择未审核
         cy.get('.el-table-filter__bottom > :nth-child(1)').click()
+        // 点击confirm
         cy.wait(1000)
-        cy.get(':nth-child(1) > .el-table_2_column_15 > .cell > .el-button').click()
+        cy.get('button.el-button').filter(':contains("审核")').filter(':visible').first().click();
         //点击审核
         cy.wait(200)
         // cy.get('.dialog-footer > .el-button--primary').click()
         cy.get('.el-dialog__headerbtn > .el-icon > svg').click()
-        // 点击审核通过
-        // cy.get('.el-message-box__btns > .el-button--primary').click()
-        // cy.wait(200)
-        // cy.get('.el-message-box__btns > :nth-child(1)').click()
-        // cy.get('.el-message-box__headerbtn > .el-icon > svg').click()
-        //点击确认
-        // cy.get('.el-dialog__headerbtn > .el-icon > svg').click()
+        // 点击审核通过【
         cy.url().should('contain', 'admin/jobReport')
         //断言
     })
@@ -62,7 +59,8 @@ describe('兼职信息管理子系统-处理兼职举报', () => {
         cy.get('.el-table-filter__bottom > :nth-child(1)').click()
         cy.wait(500)
 
-        cy.get(':nth-child(1) > .el-table_2_column_15 > .cell > .el-button').click()
+        
+        cy.get('button.el-button').filter(':contains("审核")').filter(':visible').first().click();
         //点击审核
         cy.wait(200)
         cy.get('.el-button--danger').click()

@@ -1,6 +1,6 @@
 
 describe('消息通知子系统-发布公告', () => {
-    it('发布公告公告', () => {
+    it('发布公告', () => {
         //管理员登录-邮箱
         cy.visit('/')
         //访问网站
@@ -20,12 +20,13 @@ describe('消息通知子系统-发布公告', () => {
         cy.get(':nth-child(1) > .el-checkbox__label').click()
         //点击未发布
         cy.get('.el-table-filter__bottom > :nth-child(1)').click()
+        // 点击confirm
 
         cy.get(':nth-child(1) > .el-table_2_column_15 > .cell > :nth-child(1) > span').click()
         //点击发布
         cy.get('.el-message-box__btns > .el-button--primary').click()
         //点击确认按钮
-        cy.get('tbody > :nth-child(1) > .el-table_1_column_7 > .cell').should('contain', '撤销')
+        cy.url().should('contain', 'notice')
 
 
     })

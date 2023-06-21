@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-21T06:18:07.693Z",
+    "end": "2023-06-21T06:18:42.940Z",
+    "duration": 35247,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "59d46ec0-85d5-4324-8bf0-82994cea0f3a",
+      "title": "",
+      "fullFile": "tests/e2e/specs/LoginRegisterSubSys/login.js",
+      "file": "tests/e2e/specs/LoginRegisterSubSys/login.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b64410bf-c807-469b-b3ea-e9c925dc4dc5",
+          "title": "登录注册子系统-用户登录",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "用户登录正常",
+              "fullTitle": "登录注册子系统-用户登录 用户登录正常",
+              "timedOut": null,
+              "duration": 26080,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'jobhunter'); //断言\n//求职者登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"278803847@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'jobhunter'); //断言\n//招聘方登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'recruiter'); //断言\n//招聘方登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"2523862206@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮  \ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'recruiter'); //断言\n//管理员登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'admin'); //断言\n//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录成功').should('exist');\ncy.url().should('contain', 'admin'); //断言",
+              "err": {},
+              "uuid": "00e3180c-62b6-45a8-864b-3a4119569559",
+              "parentUUID": "b64410bf-c807-469b-b3ea-e9c925dc4dc5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "登录注册子系统-用户登录异常",
+              "fullTitle": "登录注册子系统-用户登录 登录注册子系统-用户登录异常",
+              "timedOut": null,
+              "duration": 7485,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录-账号不存在\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"11014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言\n//求职者登录-密码错误\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021111\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言\n//招聘方登录-账号不存在\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"11018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言\n//招聘方登录-密码错误\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021111\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言\n//管理员登录-账号不存在\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"11007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言\n//管理员登录-密码错误\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin1\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.contains('p', '登录失败').should('exist'); //断言",
+              "err": {},
+              "uuid": "bb333e16-c7a5-42ba-b74c-3b60fe47c15c",
+              "parentUUID": "b64410bf-c807-469b-b3ea-e9c925dc4dc5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "00e3180c-62b6-45a8-864b-3a4119569559",
+            "bb333e16-c7a5-42ba-b74c-3b60fe47c15c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 33565,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

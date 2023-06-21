@@ -1,0 +1,206 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 5,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-06-21T06:14:48.293Z",
+    "end": "2023-06-21T06:17:06.472Z",
+    "duration": 138179,
+    "testsRegistered": 6,
+    "passPercent": 83.33333333333334,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c0fd84b4-d136-4689-a66c-27cdd354798d",
+      "title": "",
+      "fullFile": "tests/e2e/specs/JobOrderSubSys/jobhunter.js",
+      "file": "tests/e2e/specs/JobOrderSubSys/jobhunter.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ad3e2759-ab12-4343-8096-da3518a7aaea",
+          "title": "兼职订单子系统-求职者",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "查看兼职订单",
+              "fullTitle": "兼职订单子系统-求职者 查看兼职订单",
+              "timedOut": null,
+              "duration": 6864,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(4)').click();\ncy.wait(200); //跳转到兼职订单页\ncy.get('#tab-已完成').click(); //筛选已完成的订单\ncy.wait(200);\ncy.get('button.el-button').find('i.el-icon').filter(':visible').first().click(); //查看兼职详情\ncy.url().should('contain', '/jobhunter/jobDetail'); //断言",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `:visible`, but never found it. Queried from element: [ <i.el-icon>, 7 more... ]",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `:visible`, but never found it. Queried from element: [ <i.el-icon>, 7 more... ]\n    at Context.eval (http://localhost:8080/__cypress/tests?p=tests\\e2e\\specs\\JobOrderSubSys\\jobhunter.js:117:50)",
+                "diff": null
+              },
+              "uuid": "c39b6a48-c11a-4588-98f0-bda5194c8909",
+              "parentUUID": "ad3e2759-ab12-4343-8096-da3518a7aaea",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "接受录用",
+              "fullTitle": "兼职订单子系统-求职者 接受录用",
+              "timedOut": null,
+              "duration": 12297,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(4)').click(); //跳转到兼职订单页\ncy.wait(500);\ncy.get('#tab-已通过').click(); //筛选已通过的订单\ncy.wait(1000);\ncy.get('button.el-button').filter(':contains(\"接受录用\")').filter(':visible').first().click(); //点击接受录用\ncy.get('.el-button--primary').click(); //点击确认\ncy.contains('p', '已接受该录用').should('exist'); //断言",
+              "err": {},
+              "uuid": "29e9a8b9-72ee-4a26-8edc-ef83183984b9",
+              "parentUUID": "ad3e2759-ab12-4343-8096-da3518a7aaea",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "放弃录用",
+              "fullTitle": "兼职订单子系统-求职者 放弃录用",
+              "timedOut": null,
+              "duration": 33076,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(4)').click(); //跳转到兼职订单页\ncy.wait(500);\ncy.get('#tab-已通过').click(); //筛选已通过的订单\ncy.wait(1000);\ncy.get('button.el-button').filter(':contains(\"放弃录用\")').filter(':visible').first().click(); //点击放弃录用\ncy.get('.el-button--primary').click(); //点击确认\ncy.contains('p', '已放弃该录用').should('exist'); //断言",
+              "err": {},
+              "uuid": "136c169d-f12f-443e-b03a-f961028b0ea8",
+              "parentUUID": "ad3e2759-ab12-4343-8096-da3518a7aaea",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "对招聘方打分",
+              "fullTitle": "兼职订单子系统-求职者 对招聘方打分",
+              "timedOut": null,
+              "duration": 13211,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(4)').click(); //跳转到兼职订单页\ncy.wait(200);\ncy.get('#tab-已完成').click(); //筛选已完成的订单\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"评分\")').filter(':visible').first().click(); //点击评分按钮\ncy.get('#scoreValue > :nth-child(5)').click(); //评分\ncy.get('.dialog-footer > :nth-child(2)').click(); //确认\ncy.contains('p', '打分成功').should('exist'); //断言",
+              "err": {},
+              "uuid": "ec78a642-d41d-4e36-80e3-8f0ce283f67c",
+              "parentUUID": "ad3e2759-ab12-4343-8096-da3518a7aaea",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "对自己收到的不合理的评价提出申诉",
+              "fullTitle": "兼职订单子系统-求职者 对自己收到的不合理的评价提出申诉",
+              "timedOut": null,
+              "duration": 38217,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//申诉理由为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(4)').click(); //跳转到兼职订单页\ncy.wait(200);\ncy.get('#tab-已完成').click(); //筛选已完成的订单\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"申诉\")').filter(':visible').first().click(); //点击申诉按钮\ncy.get('.el-textarea__inner').clear();\ncy.get('.dialog-footer > :nth-child(2)').click(); //点击确认\ncy.contains('p', '不能为空').should('exist'); //断言\n//用户未提交申诉，或者提交的申诉状态为未通过\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(4)').click(); //跳转到兼职订单页\ncy.wait(200);\ncy.get('#tab-已完成').click(); //筛选已完成的订单\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"申诉\")').filter(':visible').first().click(); //点击申诉按钮\ncy.get('.el-textarea__inner').clear();\ncy.get('.el-textarea__inner').type(\"打分不合理\");\ncy.get('.dialog-footer > :nth-child(2)').click(); //点击确认\ncy.contains('p', '已提交申诉').should('exist'); //断言\n//用户已提交申诉，状态为审核中\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(4)').click(); //跳转到兼职订单页\ncy.wait(200);\ncy.get('#tab-已完成').click(); //筛选已完成的订单\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"申诉\")').filter(':visible').first().click(); //点击申诉按钮\ncy.get('.el-textarea__inner').clear();\ncy.get('.el-textarea__inner').type(\"打分不合理\");\ncy.get('.dialog-footer > :nth-child(2)').click(); //点击确认\ncy.contains('p', '您的申诉审核中').should('exist'); //断言\n//管理员驳回申诉\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(500);\ncy.get('.el-menu--vertical > :nth-child(2)').click(); //点击订单申诉\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').first().click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.wait(500);\ncy.get('.el-textarea__inner').filter(':visible').clear();\ncy.get('.el-textarea__inner').filter(':visible').type(\"已处理\");\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已驳回该申诉').should('exist'); //断言",
+              "err": {},
+              "uuid": "104fe1dd-d4fd-4f31-a7a4-3a4a5ec6f34f",
+              "parentUUID": "ad3e2759-ab12-4343-8096-da3518a7aaea",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "对未及时支付工资的订单提出申诉",
+              "fullTitle": "兼职订单子系统-求职者 对未及时支付工资的订单提出申诉",
+              "timedOut": null,
+              "duration": 21908,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//申诉理由为空\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(4)').click(); //跳转到兼职订单页\ncy.wait(200);\ncy.get('#tab-已完成').click(); //筛选已完成的订单\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"申诉\")').filter(':visible').first().click(); //点击申诉按钮\ncy.get(':nth-child(2) > .el-radio__input > .el-radio__inner').click(); //选择类型为支付申诉\ncy.get('.el-textarea__inner').clear();\ncy.get('.dialog-footer > :nth-child(2)').click(); //点击确认\ncy.contains('p', '不能为空').should('exist'); //断言\n//用户未提交申诉，或者提交的申诉状态为未通过\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-menu > :nth-child(4)').click(); //跳转到兼职订单页\ncy.wait(200);\ncy.get('#tab-已完成').click(); //筛选已完成的订单\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"申诉\")').filter(':visible').first().click(); //点击申诉按钮\ncy.get(':nth-child(2) > .el-radio__input > .el-radio__inner').click(); //选择类型为支付申诉\ncy.get('.el-textarea__inner').clear();\ncy.get('.el-textarea__inner').type(\"未支付\");\ncy.get('.dialog-footer > :nth-child(2)').click(); //点击确认\ncy.contains('p', '已提交申诉').should('exist'); //断言\n//管理员驳回申诉\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10007\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.wait(500);\ncy.get('.el-menu--vertical > :nth-child(2)').click(); //点击订单申诉\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').first().click(); //点击审核\ncy.wait(200);\ncy.get('button.el-button').filter(':contains(\"驳回\")').filter(':visible').first().click(); //点击驳回\ncy.wait(500);\ncy.get('.el-textarea__inner').filter(':visible').clear();\ncy.get('.el-textarea__inner').filter(':visible').type(\"已处理\");\ncy.get('button.el-button').filter(':contains(\"确认\")').filter(':visible').first().click(); //点击确认\ncy.contains('p', '已驳回该申诉').should('exist'); //断言",
+              "err": {},
+              "uuid": "a56e0bb7-36af-4a32-9cce-519525e0e721",
+              "parentUUID": "ad3e2759-ab12-4343-8096-da3518a7aaea",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "29e9a8b9-72ee-4a26-8edc-ef83183984b9",
+            "136c169d-f12f-443e-b03a-f961028b0ea8",
+            "ec78a642-d41d-4e36-80e3-8f0ce283f67c",
+            "104fe1dd-d4fd-4f31-a7a4-3a4a5ec6f34f",
+            "a56e0bb7-36af-4a32-9cce-519525e0e721"
+          ],
+          "failures": [
+            "c39b6a48-c11a-4588-98f0-bda5194c8909"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 125573,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
