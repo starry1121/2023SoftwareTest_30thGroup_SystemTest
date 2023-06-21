@@ -20,7 +20,7 @@ describe('兼职订单子系统-招聘方', () => {
         cy.wait(1000)
         cy.get('button.el-button').filter(':contains("已通过")').filter(':visible').first().click();   
         //点击筛选“已通过”的兼职
-        cy.wait(1000)
+        cy.wait(2000)
         cy.get('.btn-next').click()
         cy.get('.btn-next').click()
         cy.get('.btn-next').click()
@@ -67,7 +67,7 @@ describe('兼职订单子系统-招聘方', () => {
         cy.get(':nth-child(6) > div > .el-button > span').click()
         cy.wait(1000)
         cy.get(':nth-child(6) > div > .el-button > span').click()
-        cy.wait(1000)
+        cy.wait(2000)
         cy.get('button.el-button').filter(':contains("查看详情")').filter(':visible').first().click();
         cy.get('button.el-button').filter(':contains("结束招聘")').filter(':visible').first().click();
         cy.get('button.el-button').filter(':contains("结束招聘")').filter(':visible').first().click();
@@ -92,7 +92,7 @@ describe('兼职订单子系统-招聘方', () => {
         cy.get(':nth-child(7) > div > .el-button > span').click()
         cy.wait(1000)
         cy.get(':nth-child(7) > div > .el-button > span').click()
-        cy.wait(1000)
+        cy.wait(2000)
         cy.get('button.el-button').filter(':contains("查看详情")').filter(':visible').first().click();
         cy.get('button.el-button').filter(':contains("结束招聘")').filter(':visible').first().click();
         

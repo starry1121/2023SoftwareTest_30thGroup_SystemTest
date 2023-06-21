@@ -18,7 +18,7 @@ describe('兼职订单子系统-招聘方', () => {
         cy.wait(1000)
         cy.get('button.el-button').filter(':contains("已通过")').filter(':visible').first().click();   
         //点击筛选“已通过”的兼职
-        cy.wait(1000)
+        cy.wait(2000)
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
         .parents('.el-card > .el-card__body')
         .within(() => {
@@ -46,7 +46,7 @@ describe('兼职订单子系统-招聘方', () => {
         cy.wait(1000)
         cy.get('button.el-button').filter(':contains("已通过")').filter(':visible').first().click();   
         //点击筛选“已通过”的兼职
-        cy.wait(1000)
+        cy.wait(2000)
         cy.get('.el-card > .el-card__body').contains('.work_name', '大学生线上讲解小学数学长期兼职')
         .parents('.el-card > .el-card__body')
         .within(() => {
