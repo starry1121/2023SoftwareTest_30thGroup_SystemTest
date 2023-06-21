@@ -13,8 +13,9 @@ describe('消息通知子系统-查看公告', () => {
       //断言
       cy.wait(2000)
       cy.get(':nth-child(2) > .el-card > .el-card__body > [style="padding: 10px;"] > .el-button').click()
-      //点击查看详情
-      cy.get('[style="z-index: 2008;"] > .el-drawer').should('be.visible')
+      
+      // //点击查看详情
+      cy.get('.el-drawer').should('be.visible')
 
     })
 })

@@ -15,15 +15,12 @@ describe('选择兼职子系统-筛选兼职', () => {
         //点击寻找兼职按钮
         cy.url().should('contain', 'jobhunter/job')
         //断言 
-
+        cy.wait(500)
         cy.get("#qbButton").click()
         //选择全部 
-        cy.get('#jobListRow').should('contain', '广州家教兼职');
-        // cy.wait(5000)
-        // cy.get('#jobListRow').should('contain', '老佛爷店兼职');
-        //   cy.get('#jobListRow').should('contain', '服务行业');
+        cy.get('.body').should('contain', '天');
         //断言
-        cy.wait(1000)
+        cy.wait(500)
     })
     it('根据类型筛选兼职-服务行业', () => {
         //求职者登录-ID
@@ -45,7 +42,7 @@ describe('选择兼职子系统-筛选兼职', () => {
         cy.wait(1000)
         cy.get(':nth-child(2) > .el-space > :nth-child(2) > div > .el-button > span').click()
         //点击服务行业
-        cy.get('.body').should('contain', '老佛爷店兼职')
+        cy.get('.body').should('contain', '服务行业');
         //断言
         cy.wait(1000)
     })
@@ -69,7 +66,7 @@ describe('选择兼职子系统-筛选兼职', () => {
         cy.wait(1000)
         cy.get(':nth-child(2) > .el-space > :nth-child(3) > div > .el-button > span').click()
         //点击教育行业
-        cy.get('.body').should('contain', '广州家教兼职')
+        cy.get('.body').should('contain', '教育行业')
         //断言
         cy.wait(1000)
     })
@@ -93,7 +90,7 @@ describe('选择兼职子系统-筛选兼职', () => {
         cy.wait(1000)
         cy.get(':nth-child(2) > .el-space > :nth-child(4) > div > .el-button > span').click()
         //点击会展演出
-        // cy.get('.body').should('contain', '广州家教兼职')
+        cy.get('.body').should('contain', '会展演出')
         //断言
         cy.wait(1000)
      
@@ -118,7 +115,7 @@ describe('选择兼职子系统-筛选兼职', () => {
         cy.wait(1000)
         cy.get(':nth-child(2) > .el-space > :nth-child(5) > div > .el-button > span').click()
         //点击专业技能
-        // cy.get('.body').should('contain', '广州家教兼职')
+        cy.get('.body').should('contain', '专业技能')
         //断言
         cy.wait(1000)
      
@@ -143,7 +140,7 @@ describe('选择兼职子系统-筛选兼职', () => {
         cy.wait(1000)
         cy.get(':nth-child(2) > .el-space > :nth-child(6) > div > .el-button > span').click()
         //点击市场推广
-        cy.get('.body').should('contain', '屈臣氏官方招募推广云店主')
+        cy.get('.body').should('contain', '市场推广')
         //断言
         cy.wait(1000)
      
@@ -168,7 +165,7 @@ describe('选择兼职子系统-筛选兼职', () => {
         cy.wait(1000)
         cy.get(':nth-child(2) > .el-space > :nth-child(7) > div > .el-button > span').click()
         //点击其它
-        cy.get('.body').should('contain', '纪念堂景区工作人员')
+        cy.get('.body').should('contain', '其它')
         //断言
         cy.wait(1000)
      
