@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T06:55:09.326Z",
-    "end": "2023-06-21T06:55:22.291Z",
-    "duration": 12965,
+    "start": "2023-06-21T08:11:58.307Z",
+    "end": "2023-06-21T08:12:07.111Z",
+    "duration": 8804,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "98a3976b-25a5-4024-84b9-54595e9f3eae",
+      "uuid": "bbdff699-0d51-4eb4-9cd3-b5e1a48013fc",
       "title": "",
       "fullFile": "tests/e2e/specs/JobManageSys/User/ReportJob.js",
       "file": "tests/e2e/specs/JobManageSys/User/ReportJob.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "ebf51167-7a0f-4066-9387-911a311d2754",
+          "uuid": "18cc98c7-87be-41ef-989a-10e57d5d7e33",
           "title": "兼职管理子系统-举报兼职",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,29 @@
               "title": "举报兼职",
               "fullTitle": "兼职管理子系统-举报兼职 举报兼职",
               "timedOut": null,
-              "duration": 10295,
+              "duration": 7761,
               "state": "passed",
-              "speed": "slow",
+              "speed": "medium",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10028\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"666\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(500);\ncy.get('.el-pager > :nth-child(8)').click(); // 17页\ncy.wait(500);\ncy.get('button.el-button').filter(':contains(\"查看详情\")').filter(':visible').first().click(); // 点击“查看详情”\ncy.url().should('contain', 'jobDetail'); //断言\ncy.wait(500);\ncy.get('.el-button--danger').click(); //点击举报兼职\ncy.wait(500);\ncy.get('#ReportReason').type(\"该兼职地址信息不正确\"); //填写举报理由\ncy.wait(500);\ncy.get('.dialog-footer > :nth-child(1)').click(); //点击确定\ncy.url().should('contain', 'jobDetail'); //断言",
               "err": {},
-              "uuid": "eef8f15a-a2ac-47ca-bd6f-0ea2c090f9b6",
-              "parentUUID": "ebf51167-7a0f-4066-9387-911a311d2754",
+              "uuid": "bd4ac97c-d210-4652-b4a1-2c0ca3188bb1",
+              "parentUUID": "18cc98c7-87be-41ef-989a-10e57d5d7e33",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "eef8f15a-a2ac-47ca-bd6f-0ea2c090f9b6"
+            "bd4ac97c-d210-4652-b4a1-2c0ca3188bb1"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 10295,
+          "duration": 7761,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

@@ -1,0 +1,130 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-06-21T08:23:44.759Z",
+    "end": "2023-06-21T08:24:00.396Z",
+    "duration": 15637,
+    "testsRegistered": 2,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ab071694-6346-4fcb-8312-109988ce7c14",
+      "title": "",
+      "fullFile": "tests/e2e/specs/UserInfoManageSubSys/Information/editInfo.js",
+      "file": "tests/e2e/specs/UserInfoManageSubSys/Information/editInfo.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3665707f-9133-40d6-a41d-cfa53dcef8e4",
+          "title": "用户信息管理子系统-编辑信息",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "求职者编辑个人信息",
+              "fullTitle": "用户信息管理子系统-编辑信息 求职者编辑个人信息",
+              "timedOut": null,
+              "duration": 9696,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/jobhunter/person\"]').click(); //跳转至个人中心-我的信息页面\ncy.get('.el-header > .el-button').click(); //点击编辑按钮\ncy.get(':nth-child(3) > .el-form-item__content > .el-input > .el-input__wrapper').clear();\ncy.get(':nth-child(3) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"starry\"); // 输入用户名：“starry”；\ncy.get(':nth-child(4) > .el-form-item__content > .el-input > .el-input__wrapper').clear();\ncy.get(':nth-child(4) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"2002-11-21\");\ncy.get('.word').click();\ncy.wait(500); // 输入生日：“2002-11-21”；\ncy.get(':nth-child(6) > .el-form-item__content > .el-input > .el-input__wrapper > .el-input__inner').clear();\ncy.get(':nth-child(6) > .el-form-item__content > .el-input > .el-input__wrapper > .el-input__inner').type(\"黄渡理工大学\"); // 输入学历：“黄渡理工大学”；\ncy.get(':nth-child(7) > .el-form-item__content > .el-input > .el-input__wrapper > .el-input__inner').clear();\ncy.get(':nth-child(7) > .el-form-item__content > .el-input > .el-input__wrapper > .el-input__inner').type(\"15379982023\"); // 输入联系方式：“15379982023”；\ncy.get(':nth-child(8) > .el-form-item__content > .el-textarea > .el-textarea__inner').clear();\ncy.get(':nth-child(8) > .el-form-item__content > .el-textarea > .el-textarea__inner').type(\"你好，我是一名大学生\"); // 输入个人简介：“你好，我是一名大学生”；\ncy.get('.el-form-item__content > .el-button--primary').click(); //点击保存按钮\ncy.get('#message_2').should('contain', '修改成功'); //断言",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#message_2`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#message_2`, but never found it.\n    at Context.eval (http://localhost:8080/__cypress/tests?p=tests\\e2e\\specs\\UserInfoManageSubSys\\Information\\editInfo.js:133:26)",
+                "diff": null
+              },
+              "uuid": "a93516fd-7483-4961-ae40-d42fca6dddaf",
+              "parentUUID": "3665707f-9133-40d6-a41d-cfa53dcef8e4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "招聘方编辑企业信息",
+              "fullTitle": "用户信息管理子系统-编辑信息 招聘方编辑企业信息",
+              "timedOut": null,
+              "duration": 4871,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//求职者登录\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10018\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('.nav > [href=\"/recruiter/company\"]').click(); //跳转至企业中心-企业信息页面\ncy.get('.el-header > .el-button').click(); //点击编辑按钮\ncy.get(':nth-child(3) > .el-form-item__content > .el-input > .el-input__wrapper').clear();\ncy.get(':nth-child(3) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"Boaibai\"); // 输入用户名：“Boaibai”；\ncy.get(':nth-child(4) > .el-form-item__content > .el-input > .el-input__wrapper').clear();\ncy.get(':nth-child(4) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"四川爱慕聚优网络技术有限公司\");\ncy.get('.word').click();\ncy.wait(500); // 输入企业名称：“四川爱慕聚优网络技术有限公司”；\ncy.get(':nth-child(6) > .el-form-item__content > .el-input > .el-input__wrapper > .el-input__inner').clear();\ncy.get(':nth-child(6) > .el-form-item__content > .el-input > .el-input__wrapper > .el-input__inner').type(\"15379982000\"); // 输入联系方式：“15379982000”；\ncy.get(':nth-child(7) > .el-form-item__content > .el-textarea > .el-textarea__inner').clear();\ncy.get(':nth-child(7) > .el-form-item__content > .el-textarea > .el-textarea__inner').type(\"你好，这里是四川爱慕聚优网络技术有限公司\"); // 输入企业简介：“你好，这里是四川爱慕聚优网络技术有限公司”；\ncy.get('.el-form-item__content > .el-button--primary').click(); //点击保存按钮\ncy.get('#message_2').should('contain', '修改成功'); //断言",
+              "err": {},
+              "uuid": "0146e934-8723-43f5-825c-85821e144c34",
+              "parentUUID": "3665707f-9133-40d6-a41d-cfa53dcef8e4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0146e934-8723-43f5-825c-85821e144c34"
+          ],
+          "failures": [
+            "a93516fd-7483-4961-ae40-d42fca6dddaf"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 14567,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "tests/e2e/results/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "toConsole": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

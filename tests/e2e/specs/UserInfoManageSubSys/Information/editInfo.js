@@ -33,7 +33,7 @@ describe('用户信息管理子系统-编辑信息', () => {
         // 输入个人简介：“你好，我是一名大学生”；
         cy.get('.el-form-item__content > .el-button--primary').click()
         //点击保存按钮
-        cy.get('#message_2').should('contain', '修改成功');
+        cy.contains('p', '修改成功').should('exist');
         //断言
     })
     it('招聘方编辑企业信息', () => {
@@ -65,7 +65,7 @@ describe('用户信息管理子系统-编辑信息', () => {
         // 输入企业简介：“你好，这里是四川爱慕聚优网络技术有限公司”；
         cy.get('.el-form-item__content > .el-button--primary').click()
         //点击保存按钮
-        cy.get('#message_2').should('contain', '修改成功');
+        cy.contains('p', '修改成功').should('exist');
         //断言
 
 

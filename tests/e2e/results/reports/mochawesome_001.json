@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T06:53:40.517Z",
-    "end": "2023-06-21T06:53:49.827Z",
-    "duration": 9310,
+    "start": "2023-06-21T08:09:36.723Z",
+    "end": "2023-06-21T08:09:48.611Z",
+    "duration": 11888,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "f4311e03-5102-4a2f-8fa8-27647681ea12",
+      "uuid": "e92fb6a2-e91c-4ef5-84b5-83a7ea7dd2a8",
       "title": "",
       "fullFile": "tests/e2e/specs/FlowTest/FilterSearchJob.js",
       "file": "tests/e2e/specs/FlowTest/FilterSearchJob.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "eef629a5-5dc9-4591-9468-b1ee70d4c2c1",
+          "uuid": "ec4ed1ee-f2e0-451c-8b87-91f22e43c4cf",
           "title": "业务流测试-筛选搜索兼职",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,29 @@
               "title": "根据类型筛选兼职-教育行业",
               "fullTitle": "业务流测试-筛选搜索兼职 根据类型筛选兼职-教育行业",
               "timedOut": null,
-              "duration": 8504,
+              "duration": 10477,
               "state": "passed",
-              "speed": "medium",
+              "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "//求职者登录-ID\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"10014\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"021121\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'jobhunter'); //断言\ncy.wait(500);\ncy.get(\"#jobButton\").click(); //点击寻找兼职按钮\ncy.url().should('contain', 'jobhunter/job'); //断言 \ncy.wait(1000);\ncy.get(':nth-child(2) > .el-space > :nth-child(3) > div > .el-button > span').click(); //点击教育行业\ncy.wait(1000);\ncy.get('.body').should('contain', '大学生线上讲解小学数学长期兼职'); //断言\ncy.wait(1000);\ncy.get(\"#searchBox\").type('家教'); //输入搜索词 \ncy.wait(500); // cy.get('.body').should('contain', '家教');\n//断言\ncy.wait(1000);\ncy.get(\"#searchBox\").clear(); //清空搜索框\ncy.wait(500);\ncy.get('.el-space > :nth-child(1) > div > .el-button').click(); //点击全部\ncy.get('.body').should('contain', '天'); //断言",
               "err": {},
-              "uuid": "9100b0b4-d9a0-4919-ae2c-e2327d172040",
-              "parentUUID": "eef629a5-5dc9-4591-9468-b1ee70d4c2c1",
+              "uuid": "d4aa9748-dc44-417f-beb5-a5bf2517b99e",
+              "parentUUID": "ec4ed1ee-f2e0-451c-8b87-91f22e43c4cf",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "9100b0b4-d9a0-4919-ae2c-e2327d172040"
+            "d4aa9748-dc44-417f-beb5-a5bf2517b99e"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 8504,
+          "duration": 10477,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

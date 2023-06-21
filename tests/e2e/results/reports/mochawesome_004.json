@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2023-06-21T06:54:24.841Z",
-    "end": "2023-06-21T06:54:32.166Z",
-    "duration": 7325,
+    "start": "2023-06-21T08:10:51.760Z",
+    "end": "2023-06-21T08:11:01.642Z",
+    "duration": 9882,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "3533f111-d3f4-4fd1-8c63-4efc25d04eba",
+      "uuid": "21c63a7f-ce7e-4c3c-aa07-f92068de646d",
       "title": "",
       "fullFile": "tests/e2e/specs/JobManageSys/admin/ReviewJob.js",
       "file": "tests/e2e/specs/JobManageSys/admin/ReviewJob.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "436afd02-2be3-4543-a0a0-1af706b658bd",
+          "uuid": "4c7f10ef-0a6a-429a-a747-0faf9b799025",
           "title": "兼职信息管理子系统-审核兼职",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "审核兼职-通过",
               "fullTitle": "兼职信息管理子系统-审核兼职 审核兼职-通过",
               "timedOut": null,
-              "duration": 3401,
+              "duration": 4278,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'admin'); //断言-登录成功\ncy.wait(200);\ncy.get('[aria-expanded=\"false\"] > .el-sub-menu__title').click(); //点击兼职管理\ncy.get(':nth-child(3) > .el-menu > :nth-child(1)').click(); //点击审核兼职\ncy.wait(500); // cy.get(':nth-child(1) > .el-table_2_column_16 > .cell > .el-button').click()\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').first().click(); //点击审核\ncy.wait(200);\ncy.get('.dialog-footer > .el-button--primary').click(); // 点击审核通过\ncy.get('.el-message-box__btns > .el-button--primary').click(); //点击确认\ncy.url().should('contain', 'admin/job'); //断言",
               "err": {},
-              "uuid": "655dbaac-6fe7-413e-922a-5065c65bca42",
-              "parentUUID": "436afd02-2be3-4543-a0a0-1af706b658bd",
+              "uuid": "58e1e0f7-3110-436a-b93c-2d188e3a0a10",
+              "parentUUID": "4c7f10ef-0a6a-429a-a747-0faf9b799025",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "审核兼职-不通过",
               "fullTitle": "兼职信息管理子系统-审核兼职 审核兼职-不通过",
               "timedOut": null,
-              "duration": 2979,
+              "duration": 4052,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "//管理员登录-邮箱\ncy.visit('/'); //访问网站\ncy.get(':nth-child(1) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin@qq.com\");\ncy.get(':nth-child(2) > .el-form-item__content > .el-input > .el-input__wrapper').type(\"admin\"); //输入账号密码\ncy.get(\"#login\").click(); //点击登录按钮\ncy.get('#message_1').should('contain', '登录成功');\ncy.url().should('contain', 'admin'); //断言-登录成功\ncy.wait(200);\ncy.get('[aria-expanded=\"false\"] > .el-sub-menu__title').click(); //点击兼职管理\ncy.get(':nth-child(3) > .el-menu > :nth-child(1)').click(); //点击审核兼职\ncy.wait(500); // cy.get(':nth-child(1) > .el-table_2_column_16 > .cell > .el-button').click()\ncy.get('button.el-button').filter(':contains(\"审核\")').filter(':visible').first().click(); //点击审核\ncy.wait(200);\ncy.get('.el-button--danger').click(); // 点击驳回\ncy.get('.el-message-box__btns > .el-button--primary').click(); //点击确认\ncy.url().should('contain', 'admin/job'); //断言",
               "err": {},
-              "uuid": "3d1b4ff2-6771-4cbd-9795-b4c723e6e84c",
-              "parentUUID": "436afd02-2be3-4543-a0a0-1af706b658bd",
+              "uuid": "5a8e08cf-ee9d-4b20-acdc-3068d5235ee5",
+              "parentUUID": "4c7f10ef-0a6a-429a-a747-0faf9b799025",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "655dbaac-6fe7-413e-922a-5065c65bca42",
-            "3d1b4ff2-6771-4cbd-9795-b4c723e6e84c"
+            "58e1e0f7-3110-436a-b93c-2d188e3a0a10",
+            "5a8e08cf-ee9d-4b20-acdc-3068d5235ee5"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 6380,
+          "duration": 8330,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
